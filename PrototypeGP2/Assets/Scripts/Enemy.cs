@@ -32,7 +32,10 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        damage = Mathf.Clamp(damage, 2f, maxHealth);
+        
         CurrentHealth -= damage;
+        
     }
     public void dealDamage(float damage)
     {
