@@ -34,7 +34,11 @@ public class Enemy : MonoBehaviour
     {
         CurrentHealth -= damage;
     }
-    
+    public void dealDamage(float damage)
+    {
+        damage = 10f;
+        return;
+    }
     
     
     

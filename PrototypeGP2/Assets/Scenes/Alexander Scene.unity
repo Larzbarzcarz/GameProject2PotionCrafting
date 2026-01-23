@@ -1134,6 +1134,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3216788372749675844, guid: 2efa7866fb04d8643b1ad2bf3ec4f39b, type: 3}
+      propertyPath: enemyName
+      value: bob
+      objectReference: {fileID: 0}
     - target: {fileID: 5280748317651988394, guid: 2efa7866fb04d8643b1ad2bf3ec4f39b, type: 3}
       propertyPath: HealthBarText
       value: 
@@ -1246,6 +1250,10 @@ PrefabInstance:
     - target: {fileID: 6016644043573031859, guid: f0560694dbe00814d9d45a3e952ca352, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 2.898
+      objectReference: {fileID: 0}
+    - target: {fileID: 6634130751900083789, guid: f0560694dbe00814d9d45a3e952ca352, type: 3}
+      propertyPath: Strength
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6890426415437695200, guid: f0560694dbe00814d9d45a3e952ca352, type: 3}
       propertyPath: m_AnchorMax.x

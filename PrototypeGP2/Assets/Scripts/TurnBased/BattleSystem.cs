@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using TMPro;
 public enum BattleState
 {
     Start,
-    PlayerTurn,
+    MonsterTurn,
     EnemyTurn,
     Win,
     Lose
@@ -45,20 +46,20 @@ public class BattleSystem : MonoBehaviour
 
         dialogeText.text = "A wild " + _enemy.enemyName + "approaches";
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
-        state = BattleState.PlayerTurn;
+        state = BattleState.MonsterTurn;
         MonsterTurn();
 
     }
 
     IEnumerator MonsterAttack()
     {
-        _enemy.TakeDamage(monster.Damage(2f));
+        _enemy.TakeDamage(2f);
         Debug.Log("Dealing Damage");
             dialogeText.text = "The attack hit";
             
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
 
             if (_enemy.isDead)
             {
@@ -75,6 +76,7 @@ public class BattleSystem : MonoBehaviour
     IEnumerator EnemyTurn()
     {
         dialogeText.text = "Enemy +  Attacks!";
+        monster.TakeDamage(2f);
         yield return new WaitForSeconds(1f);
 
         if (monster.CurrentHealth == 0)
@@ -84,7 +86,7 @@ public class BattleSystem : MonoBehaviour
         }
         else
         {
-            state = BattleState.PlayerTurn;
+            state = BattleState.MonsterTurn;
             MonsterTurn();
         }
 
@@ -97,7 +99,7 @@ public class BattleSystem : MonoBehaviour
 
     public void OnAttackButton()
     {
-        if (state == BattleState.PlayerTurn)
+        if (state == BattleState.MonsterTurn)
         return;
 
         StartCoroutine(MonsterAttack());
@@ -114,10 +116,11 @@ public class BattleSystem : MonoBehaviour
             dialogeText.text = "You lose";
         }
     }
-    
-  
-   
-    
 
-
+    public void Update()
+    {
+        Debug.Log("current state: " + state);
+        Debug.Log("Monster Health: " + monster.CurrentHealth);
+        Debug.Log("Enemy Health: " + monster.CurrentHealth);
+    }
 }
