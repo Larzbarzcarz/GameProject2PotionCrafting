@@ -49,7 +49,7 @@ public class Brewing : MonoBehaviour
          foreach (var ingredient in recipe.ingredients)
              for (int i = 0; i < ingredient.amount; i++)
              {
-                 inventory.RemoveItem(ingredient.item);
+                 //inventory.RemoveItem(ingredient.item);
              }
      }
 
@@ -57,7 +57,7 @@ public class Brewing : MonoBehaviour
      {
          for (int i = 0; i < recipe.resultAmount; i++)
          {
-             inventory.AddItem(recipe.result);
+             //inventory.AddItem(recipe.result);
          }
      }
 

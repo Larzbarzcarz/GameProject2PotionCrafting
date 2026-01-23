@@ -8,12 +8,12 @@ public class Item : ScriptableObject
     public bool isStackable = true;
 }
 
- public enum ItemType
- {
- Mushroom,
- Bat_wing
+ //public enum ItemType
+ //{
+ //Mushroom,
+ //Bat_wing
 
- }
+ //}
 
 
 
