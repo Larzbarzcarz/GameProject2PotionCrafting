@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using System.Collections.Generic;
 
-[CreateAssetMenu(fileName = "New Item Database", menuName = "Inventory System/Items/Database")]
+[CreateAssetMenu(fileName = "New Item Database", menuName = "Inventory System/Database")]
 public class ItemDatabaseObject : ScriptableObject, ISerializationCallbackReceiver
 {
     public ItemScriptableObject[] Items;

@@ -15,7 +15,7 @@ public abstract class ItemScriptableObject : ScriptableObject
 public enum ItemType
 {
     Equipment,
-    Mushroom,
+    Ingredient,
     Default,
     Potion
 }
