@@ -1,9 +1,9 @@
-
-using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using TMPro;
-using static UnityEngine.Random;
 
 
 public enum BattleState
@@ -58,7 +58,7 @@ public class BattleSystem : MonoBehaviour
     IEnumerator MonsterAttack()
     {
 
-        int hitChance = RandomRange(0, 100);
+        int hitChance = UnityEngine.Random.Range(0, 100);
         if (hitChance < 80)
         {
             _enemy.TakeDamage(2f);
@@ -130,7 +130,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (state != BattleState.MonsterTurn)
             return;
-        int defendChance = RandomRange(0, 100);
+        int defendChance = UnityEngine.Random.Range(0, 100);
         if (defendChance < 70)
         {
             isDefending = true;
