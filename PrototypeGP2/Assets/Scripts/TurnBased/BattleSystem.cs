@@ -1,10 +1,9 @@
-using System;
+
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+
 using TMPro;
+using static UnityEngine.Random;
 
 
 public enum BattleState
@@ -24,6 +23,7 @@ public class BattleSystem : MonoBehaviour
     public Enemy _enemy;
     public Transform MonsterBattleStation;
     public Transform EnemyBattleStation;
+    public bool isDefending = false;
     
     public BattleState state;
     public TextMeshProUGUI dialogeText;
@@ -35,6 +35,8 @@ public class BattleSystem : MonoBehaviour
          state = BattleState.Start;
         StartCoroutine(SetupBattle());
     }
+
+  
     
     IEnumerator SetupBattle()
     {
@@ -55,9 +57,19 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator MonsterAttack()
     {
-        _enemy.TakeDamage(2f);
-        Debug.Log("Dealing Damage");
-            dialogeText.text = "The attack hit";
+
+        int hitChance = RandomRange(0, 100);
+        if (hitChance < 80)
+        {
+            _enemy.TakeDamage(2f);
+            Debug.Log("Dealing Damage");
+            dialogeText.text = "The attack hit"; 
+        }
+        else
+        {
+            dialogeText.text = "You missed";
+        }
+      
             
             yield return new WaitForSeconds(1f);
 
@@ -78,6 +90,15 @@ public class BattleSystem : MonoBehaviour
         dialogeText.text = "Enemy +  Attacks!";
         monster.TakeDamage(2f);
         yield return new WaitForSeconds(1f);
+        float damage = 2f;
+        if (isDefending)
+        {
+            damage = 1f;
+            dialogeText.text = "You reduced damage";
+            isDefending = false;
+            yield return new WaitForSeconds(1f);
+        }
+        monster.TakeDamage(damage);
 
         if (monster.CurrentHealth == 0)
         {
@@ -99,10 +120,32 @@ public class BattleSystem : MonoBehaviour
 
     public void OnAttackButton()
     {
-        if (state == BattleState.MonsterTurn)
+        if (state != BattleState.MonsterTurn)
         return;
 
         StartCoroutine(MonsterAttack());
+    }
+
+    public void DefenseButton()
+    {
+        if (state != BattleState.MonsterTurn)
+            return;
+        int defendChance = RandomRange(0, 100);
+        if (defendChance < 70)
+        {
+            isDefending = true;
+            dialogeText.text = "You brace for impact";
+        }
+        else
+        {
+            dialogeText.text = "You failed to defend yourself";
+            monster.TakeDamage(2f);
+        }
+
+        state = BattleState.EnemyTurn;
+        StartCoroutine(EnemyTurn());
+
+
     }
 
     void EndBattle()
@@ -121,6 +164,6 @@ public class BattleSystem : MonoBehaviour
     {
         Debug.Log("current state: " + state);
         Debug.Log("Monster Health: " + monster.CurrentHealth);
-        Debug.Log("Enemy Health: " + monster.CurrentHealth);
+        Debug.Log("Enemy Health: " + _enemy.CurrentHealth);
     }
 }
