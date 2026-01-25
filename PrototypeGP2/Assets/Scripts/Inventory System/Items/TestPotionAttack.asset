@@ -9,11 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00d86d7f6e441b94eabea795fbf82465, type: 3}
-  m_Name: TestItem1
+  m_Script: {fileID: 11500000, guid: 3c991e76c8e347d488e807ea670b7675, type: 3}
+  m_Name: TestPotionAttack
   m_EditorClassIdentifier: 
-  ItemName: TestItem1
-  itemSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  itemType: 0
+  ItemName: Test Potion Attack
+  itemSprite: {fileID: 0}
+  itemType: 3
   prefab: {fileID: 6555772860921109130, guid: 1528c9c1628bfef40b26a76826629a54, type: 3}
-  description: test123123
+  description: 
+  healing: 0
+  attackBonus: 15
+  defenceBonus: 0

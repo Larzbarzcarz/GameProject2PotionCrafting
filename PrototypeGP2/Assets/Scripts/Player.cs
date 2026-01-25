@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
         {
             inventory.AddItem(item.item, 1);
             Destroy(other.gameObject);
+            inventory.Save();
+            Debug.Log("INVENTORY SAVED AUTOMATICALLY");
         }
     }
 
@@ -21,13 +23,13 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             inventory.Save();
-            Debug.Log("SPARAT");
+            Debug.Log("SAVED");
         }
 
         if (Input.GetKeyDown(KeyCode.L))
         {
             inventory.Load();
-            Debug.Log("LADDAT");
+            Debug.Log("LOADED");
         }
     }
 
