@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34d798448000bc946b30dd4c5f6feb0a, type: 3}
-  m_Name: TestIngredient
+  m_Name: Batwing_Material
   m_EditorClassIdentifier: 
-  Id: 0
-  ItemName: Test Ingredient
-  itemSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  worldPrefab: {fileID: 1501400040163770210, guid: 063ca5b5726998f4bbb374b489150cf1, type: 3}
+  Id: 4
+  ItemName: Batwing_Material
+  itemSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  worldPrefab: {fileID: 8370106416403302915, guid: 8cf5a742291a6634f9b0898013ebb3a5, type: 3}
   itemType: 1
-  description: '123 123 456 '
+  description: Batwing test item

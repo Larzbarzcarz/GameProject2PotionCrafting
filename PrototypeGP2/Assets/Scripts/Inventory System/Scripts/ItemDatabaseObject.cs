@@ -10,10 +10,11 @@ public class ItemDatabaseObject : ScriptableObject, ISerializationCallbackReceiv
 
     public void OnAfterDeserialize()
     {
+		GetItem.Clear();
         for (int i = 0; i < Items.Length; i++)
         {
             Items[i].Id = i;
-            GetItem.Add(i, Items[i]);
+            GetItem[i] = Items[i];
         }
     }
 

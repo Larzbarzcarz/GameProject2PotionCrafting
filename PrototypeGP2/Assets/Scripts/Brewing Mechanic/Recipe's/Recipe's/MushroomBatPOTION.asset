@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 93dfe43f36536a14fbb42fa02cd72f18, type: 3}
-  m_Name: TestRecipe
+  m_Name: MushroomBatPOTION
   m_EditorClassIdentifier: 
-  recipeName: Test Recipe
+  recipeName: MushroomBatPotion
   ingredients:
-  - item: {fileID: 11400000, guid: efa46c2dd48668f4cb5ca1719d0b797e, type: 2}
+  - item: {fileID: 11400000, guid: 7d7e4e290ddcd544aa52f9b20f41c79e, type: 2}
     amount: 2
-  result: {fileID: 11400000, guid: a4ef5cf8cb3eba04c818ed34d5ecce01, type: 2}
+  - item: {fileID: 11400000, guid: 5f9b7a4ed3e80424c885b1e5ec75ce9e, type: 2}
+    amount: 1
+  result: {fileID: 11400000, guid: ab4c23b8a1b7a8242ba42351214915f4, type: 2}
   resultAmount: 1

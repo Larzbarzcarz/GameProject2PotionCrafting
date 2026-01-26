@@ -5,7 +5,7 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - itemSprite: {instanceID: 0}
-  - worldPrefab: {fileID: 919132149155446097, guid: 5496000c01b3c9a458ac3361da9743a5, type: 3}
+  - worldPrefab: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

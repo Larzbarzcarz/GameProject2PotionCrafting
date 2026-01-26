@@ -44,10 +44,21 @@ public class DisplayInventory : MonoBehaviour
             else
             {
                 var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform);
+                if (!inventory.database.GetItem.ContainsKey(slot.item.Id))
+                {
+                    Debug.LogError(
+                        $"Item ID {slot.item.Id} not found in ItemDatabase! " +
+                        $"Check your ItemDatabaseObject asset."
+                    );
+                    continue;
+                }
                 obj.transform.GetChild(0).GetComponentInChildren<UnityEngine.UI.Image>().sprite = inventory.database.GetItem[slot.item.Id].itemSprite;
                 obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
                 obj.GetComponentInChildren<TextMeshProUGUI>().text = slot.amount.ToString("n0");
-                itemsDisplayed.Add(inventory.Container.Items[i], obj);
+                
+                itemsDisplayed.Add(slot, obj);
+                
+                //itemsDisplayed.Add(inventory.Container.Items[i], obj);
                 var button = obj.GetComponent<Button>();
                 Debug.Log("Button found: " + button);
                 button.onClick.AddListener(() => OnclickSpawn(slot));
