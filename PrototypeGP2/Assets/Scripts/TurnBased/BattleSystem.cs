@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Serialization;
 
 
 public enum BattleState
@@ -27,11 +28,13 @@ public class BattleSystem : MonoBehaviour
     
     public BattleState state;
     public TextMeshProUGUI dialogeText;
+   public GameObject inventory;
     
     
     
     void Start()
      { 
+         inventory.SetActive(false);
          state = BattleState.Start;
         StartCoroutine(SetupBattle());
     }
@@ -158,6 +161,17 @@ public class BattleSystem : MonoBehaviour
         {
             dialogeText.text = "You lose";
         }
+    }
+
+    public void ActivateInventory()
+    {
+        inventory.SetActive(true);
+        
+    }
+
+    public void DeactivateInventory()
+    {
+        inventory.SetActive(false);
     }
 
     public void Update()

@@ -15,7 +15,7 @@ public class Brewing : MonoBehaviour
             return;
         }
 
-        ConsumeIngredients(recipe);
+        //ConsumeIngredients(recipe);
         CreateResult(recipe);
 
         Debug.Log($"Crafted: {recipe.recipeName}");
@@ -51,10 +51,12 @@ public class Brewing : MonoBehaviour
         inventory.AddItem(item, recipe.resultAmount);
      }
 
-    public void OnTriggerEnter(Collider collider)
+    public void OnTriggerEnter(Collider collider,CraftingRecipe recipe)
     {
         if (collider.tag == "Material")
         {
+            ConsumeIngredients(recipe);
+            
             Debug.Log("Now we are cooking");
             // Craft(CraftingRecipe())
            

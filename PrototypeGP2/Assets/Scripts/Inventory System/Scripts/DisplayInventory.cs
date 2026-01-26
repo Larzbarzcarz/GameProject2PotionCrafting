@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UIElements;
+
 using UnityEngine.UI;
+using Button = UnityEngine.UI.Button;
 
 public class DisplayInventory : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class DisplayInventory : MonoBehaviour
     public int X_SpaceBetweenItems;
     public int Y_SpaceBetweenItems;
     public int numberOfColumns;
-
+    
     Dictionary<InventorySlot, GameObject> itemsDisplayed = new Dictionary<InventorySlot, GameObject>();
 
     void Start()
@@ -31,6 +32,7 @@ public class DisplayInventory : MonoBehaviour
 
     public void UpdateDisplay()
     {
+        
         for (int i = 0; i < inventory.Container.Items.Count; i++)
         {
             InventorySlot slot = inventory.Container.Items[i];
@@ -46,8 +48,37 @@ public class DisplayInventory : MonoBehaviour
                 obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
                 obj.GetComponentInChildren<TextMeshProUGUI>().text = slot.amount.ToString("n0");
                 itemsDisplayed.Add(inventory.Container.Items[i], obj);
+                var button = obj.GetComponent<Button>();
+                Debug.Log("Button found: " + button);
+                button.onClick.AddListener(() => OnclickSpawn(slot));
             }
+            
         }
+    }
+
+    public void OnclickSpawn(InventorySlot slot)
+    {     Debug.Log("Inventory item clicked!");
+        if (slot.amount <= 0)
+            return;
+        
+        Vector3 spawnPosition = Camera.main.transform.position + Camera.main.transform.forward * 2f;
+        var itemData = inventory.database.GetItem[slot.item.Id];
+        if (itemData.worldPrefab == null)
+        {
+            Debug.LogError($"Item '{itemData.name}' has NO worldPrefab assigned!");
+            return;
+        }
+        Instantiate(itemData.worldPrefab, spawnPosition, Quaternion.identity);
+        slot.amount -= 1;
+
+        if (slot.amount <= 0)
+        {
+            inventory.Container.Items.Remove(slot);
+            Destroy(itemsDisplayed[slot]);
+            itemsDisplayed.Remove(slot);
+
+        }
+        
     }
 
     public void CreateDisplay()
@@ -57,10 +88,15 @@ public class DisplayInventory : MonoBehaviour
             InventorySlot slot = inventory.Container.Items[i];
 
             var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform);
+            InventorySlot capturedSlot = slot; 
+            obj.GetComponent<Button>().onClick.AddListener(() => OnclickSpawn(capturedSlot));
             obj.transform.GetChild(0).GetComponentInChildren<UnityEngine.UI.Image>().sprite = inventory.database.GetItem[slot.item.Id].itemSprite;
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
             obj.GetComponentInChildren<TextMeshProUGUI>().text = slot.amount.ToString("n0");
             itemsDisplayed.Add(slot, obj);
+            var button = obj.GetComponent<Button>();
+            Debug.Log("Button found: " + button);
+            button.onClick.AddListener(() => OnclickSpawn(slot));
         }
     }
 
@@ -69,3 +105,5 @@ public class DisplayInventory : MonoBehaviour
         return new Vector3(X_Start + (X_SpaceBetweenItems * (i % numberOfColumns)), Y_Start + (-Y_SpaceBetweenItems * (i / numberOfColumns)), 0f);
     }
 }
+
+

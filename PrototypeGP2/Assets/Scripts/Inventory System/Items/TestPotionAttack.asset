@@ -15,6 +15,7 @@ MonoBehaviour:
   Id: 1
   ItemName: Test Potion Attack
   itemSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  worldPrefab: {fileID: 204980588104128897, guid: 53cb98df6dd246e428a3685eef34db8a, type: 3}
   itemType: 3
   description: 'jhgf dxhjgfjhg '
   healing: 0

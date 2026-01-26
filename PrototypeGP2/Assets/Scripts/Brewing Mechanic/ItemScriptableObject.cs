@@ -8,6 +8,7 @@ public abstract class ItemScriptableObject : ScriptableObject
     public int Id;
     public string ItemName;
     public Sprite itemSprite;
+    public GameObject worldPrefab;
     public ItemType itemType;
     [TextArea(15, 20)]
     public string description;
