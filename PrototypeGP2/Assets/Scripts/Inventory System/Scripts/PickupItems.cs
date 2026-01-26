@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Items : MonoBehaviour
+public class PickupItems : MonoBehaviour
 {
     public ItemScriptableObject item;
 }

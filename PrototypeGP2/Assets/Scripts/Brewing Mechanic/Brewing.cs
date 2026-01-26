@@ -4,61 +4,51 @@ using System.Collections.Generic;
 
 public class Brewing : MonoBehaviour
 {
-    
     public InventoryObject inventory;
      public List<CraftingRecipe> craftingRecipes;
     
      public void Craft(CraftingRecipe recipe)
      {
-         if (CanCraft(recipe))
-         {
-             Debug.Log("cooking");
-             ConsumeIngredients(recipe);
-              CreateResult(recipe);
-         }
-         else
-         {
-             Debug.Log("Cannot be crafted");
-         }
-         
+         if (!CanCraft(recipe, out string missingItems))
+        {
+            Debug.Log($"Cannot be crafted: {missingItems}");
+            return;
+        }
+
+        ConsumeIngredients(recipe);
+        CreateResult(recipe);
+
+        Debug.Log($"Crafted: {recipe.recipeName}");
      }
 
-     private bool CanCraft(CraftingRecipe recipe)
+     private bool CanCraft(CraftingRecipe recipe, out string missingItems)
      {
+        missingItems = "";
+
          foreach (var ingredient in recipe.ingredients)
          {
-             int itemCount = 0;
-             foreach (var item in inventory.Container )
-             {
-                 if (Equals(item, ingredient.item)) 
-                     {
-                     itemCount++;
-                     }
-
-                 if (itemCount < ingredient.amount)
-                 {
-                     return false;
-                 }
-             }
+            int have = inventory.GetAmount(ingredient.item.Id);
+            if (have < ingredient.amount)
+            {
+                int missing = ingredient.amount - have;
+                missingItems += $"{ingredient.item.name} missing {missing}.";
+            }
          }
-         return true;
+         return string.IsNullOrEmpty(missingItems);
      }
 
      private void ConsumeIngredients(CraftingRecipe recipe)
      {
          foreach (var ingredient in recipe.ingredients)
-             for (int i = 0; i < ingredient.amount; i++)
-             {
-                 //inventory.RemoveItem(ingredient.item);
-             }
+        {
+            inventory.RemoveItem(ingredient.item.Id, ingredient.amount);
+        }
      }
 
      private void CreateResult(CraftingRecipe recipe)
      {
-         for (int i = 0; i < recipe.resultAmount; i++)
-         {
-             //inventory.AddItem(recipe.result);
-         }
+        var item = new Item(recipe.result);
+        inventory.AddItem(item, recipe.resultAmount);
      }
 
     public void OnTriggerEnter(Collider collider)

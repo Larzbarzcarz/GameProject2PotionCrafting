@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d798448000bc946b30dd4c5f6feb0a, type: 3}
   m_Name: TestIngredient
   m_EditorClassIdentifier: 
+  Id: 0
   ItemName: Test Ingredient
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   itemType: 1
-  prefab: {fileID: 1608956892051391538, guid: 6e4264b964325a54c943a087ec81999f, type: 3}
   description: '123 123 456 '
