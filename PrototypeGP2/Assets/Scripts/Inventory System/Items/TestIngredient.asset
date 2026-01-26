@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 0
   ItemName: Test Ingredient
-  itemSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  itemSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   itemType: 1
   description: '123 123 456 '
