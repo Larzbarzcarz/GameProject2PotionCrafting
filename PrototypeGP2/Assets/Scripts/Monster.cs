@@ -35,7 +35,7 @@ public class Monster : MonoBehaviour
     }
     public float Damage(float damage)
     {
-        Strength = damage;
+        damage = 3f;
         return damage;
     }
     
