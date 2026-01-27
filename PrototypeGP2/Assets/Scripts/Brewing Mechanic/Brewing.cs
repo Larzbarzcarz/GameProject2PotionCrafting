@@ -53,7 +53,7 @@ public class Brewing : MonoBehaviour
     }
 
 
-    public void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other, InventoryObject inventoryObject)
     {
         Debug.Log("now we are cooking");
         var item = other.GetComponent<PickupItems>();

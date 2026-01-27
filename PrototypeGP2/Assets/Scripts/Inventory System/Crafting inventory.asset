@@ -10,29 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35ad88c2b8104374fb1185c1e35e8e6a, type: 3}
-  m_Name: Player Inventory
+  m_Name: Crafting inventory
   m_EditorClassIdentifier: 
   savePath: /inventory.save
-  database: {fileID: 11400000, guid: 5800c4f68444a954abad04ad86edd734, type: 2}
+  database: {fileID: 11400000, guid: fa501bc0ef7f06f459fd648129cbfd9b, type: 2}
   Container:
     Items:
     - ID: 4
-      amount: 7
+      amount: 10
       item:
-        Name: Batwing_Material
+        Name: Batwing
         Id: 4
-    - ID: 5
-      amount: 1
-      item:
-        Name: Mushroom_Material
-        Id: 5
     - ID: 3
-      amount: 6
+      amount: 10
       item:
-        Name: TestPotionHeal
-        Id: 3
-    - ID: 3
-      amount: 6
-      item:
-        Name: TestPotionHeal
+        Name: Mushroom
         Id: 3
