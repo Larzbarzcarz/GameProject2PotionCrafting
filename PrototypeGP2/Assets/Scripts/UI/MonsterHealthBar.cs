@@ -18,7 +18,7 @@ public class MonsterHealthBar : MonoBehaviour
       }
    }
 
-   void Update()
+   public void Update()
    {
 
       HealthBarText.text = _monster.CurrentHealth.ToString() + "/" + _monster.maxHealth.ToString();

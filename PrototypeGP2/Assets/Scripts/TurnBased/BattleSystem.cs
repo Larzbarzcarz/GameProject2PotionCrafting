@@ -43,11 +43,11 @@ public class BattleSystem : MonoBehaviour
     
     IEnumerator SetupBattle()
     {
-        GameObject MonsterGO = Instantiate(MonsterPrefab, MonsterBattleStation );
-        monster =  MonsterGO.GetComponent<Monster>();
+        GameObject MonsterGO = MonsterPrefab; 
+        //monster =  MonsterGO.GetComponent<Monster>();
 
-        GameObject EnemyGO = Instantiate(EnemyPrefab, EnemyBattleStation);
-        _enemy = EnemyGO.GetComponent<Enemy>();
+        GameObject EnemyGO = EnemyPrefab;
+        //_enemy = EnemyGO.GetComponent<Enemy>();
 
         dialogeText.text = "A wild " + _enemy.enemyName + "approaches";
 
