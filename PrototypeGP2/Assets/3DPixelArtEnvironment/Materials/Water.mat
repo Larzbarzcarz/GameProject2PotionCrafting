@@ -105,7 +105,7 @@ Material:
     - _Bands: 5
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
-    - _Brightness: -1
+    - _Brightness: -3.6
     - _BumpScale: 1
     - _CHILLFOAM: 0
     - _CLOUDSENABLED: 1
@@ -114,7 +114,7 @@ Material:
     - _Cloud_Change: 0.005
     - _Cloud_Cover: 0.6
     - _Cloud_Density: 0.025
-    - _Cloud_Strength: 2
+    - _Cloud_Strength: 0.34
     - _Cull: 2
     - _Cutoff: 0.5
     - _DepthStrength: 0.5
@@ -151,7 +151,7 @@ Material:
     - _ReceiveShadows: 0
     - _ReflectionStrength: 0.7
     - _Rotation: 0
-    - _Shades: 5
+    - _Shades: 6
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
