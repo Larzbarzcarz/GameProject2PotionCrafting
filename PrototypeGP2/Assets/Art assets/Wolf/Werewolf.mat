@@ -118,7 +118,7 @@ Material:
     - _Metallic: 0
     - _MinimumDarkness: 0.2
     - _NormalEdgeStrength: 0.86
-    - _NormalThreshold: 1
+    - _NormalThreshold: 0.7
     - _OUTLINESENABLED: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.005
