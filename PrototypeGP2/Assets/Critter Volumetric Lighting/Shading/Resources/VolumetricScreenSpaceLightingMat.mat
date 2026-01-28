@@ -181,7 +181,7 @@ Material:
     - _pixelSizeInWorldUnits: 0.078125
     - _pixelUvLen: 0.0014285714
     - _planeHeightWorldUnits: 60
-    - _planeWidthWorldUnits: 13.176649
+    - _planeWidthWorldUnits: 13.170393
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Beam_Color: {r: 0, g: 0, b: 0, a: 0}
