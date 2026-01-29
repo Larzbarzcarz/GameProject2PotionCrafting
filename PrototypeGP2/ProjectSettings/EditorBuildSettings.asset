@@ -6,8 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Alpha scenes/Camera House scene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/Alpha scenes/AlphaScene.unity
+    guid: 98af3c8db3f0c0b44a38f23bb8ae2228
+  - enabled: 1
+    path: Assets/Scenes/Alpha scenes/Newcombatscene.unity
+    guid: b9e61c10ea04be844a8e9e48cc8b5781
   m_configObjects:
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 2e19cc2e646725343bf8d6440f6f6420, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
