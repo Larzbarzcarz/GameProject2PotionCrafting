@@ -29,6 +29,17 @@ public class DragManager : MonoBehaviour
         if (Input.GetMouseButtonUp(0)) Release();
     }
 
+    private void SetCamera()
+    {
+        if (cam != null)
+            return;
+        cam = Camera.main;
+        if (cam == null)
+        {
+            cam = FindFirstObjectByType<Camera>();
+        }
+    }
+
     void TryPick(Vector2 screenPos)
     {
         //Ray ray = cam.ScreenPointToRay(screenPos);
@@ -42,6 +53,10 @@ public class DragManager : MonoBehaviour
         //    }
 
         //}
+
+        SetCamera();
+        if (cam == null)
+            return;
 
         Ray ray = cam.ScreenPointToRay(screenPos);
 

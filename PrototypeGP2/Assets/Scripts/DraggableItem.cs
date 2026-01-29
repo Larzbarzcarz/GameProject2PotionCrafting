@@ -14,9 +14,25 @@ public class DraggableItem : MonoBehaviour
     private Ray ray;
 
 
+    private void Start()
+    {
+        SetCamera();
+    }
+
+    private void SetCamera()
+    {
+        if (cam != null)
+            return;
+
+        cam = Camera.main;
+        if (cam == null)
+        {
+            cam = FindFirstObjectByType<Camera>();
+        }
+    }
+
     void Awake()
     {
-        cam = Camera.main;
         rb = GetComponent<Rigidbody>();
         if (rb) rb.isKinematic = true;
     }
@@ -33,10 +49,14 @@ public class DraggableItem : MonoBehaviour
         if (!isDragging)
             return;
 
+        SetCamera();
+        if (cam == null)
+            return;
+
         Ray ray = cam.ScreenPointToRay(screenPos);
         this.ray = ray;
 
-        if (Physics.Raycast(ray, out RaycastHit hit, 200f, groundMask))
+        if (Physics.Raycast(ray, out RaycastHit hit, 200f, groundMask, QueryTriggerInteraction.Collide))
         {
             Debug.Log("GROUND HIT: " + hit.collider.name);
             Vector_attach(hit.point);
