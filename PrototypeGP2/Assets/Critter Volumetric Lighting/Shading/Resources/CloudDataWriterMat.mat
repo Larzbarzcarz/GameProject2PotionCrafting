@@ -146,7 +146,7 @@ Material:
     - _clipping: 0
     - _pixelInTextLen: 0.1
     m_Colors:
-    - _AnchorMid: {r: 19.709425, g: -14.580084, b: 19.709421, a: 0}
+    - _AnchorMid: {r: 64.03399, g: 34.2267, b: 78.806564, a: 0}
     - _AnchorOrigo: {r: -4.6521854, g: 8.8916235, b: 1.7332611, a: 0}
     - _AnchorPosition: {r: 13.126203, g: 21.220379, b: -23.203003, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}

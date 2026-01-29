@@ -18,7 +18,7 @@ public class EnemyHealthBar : MonoBehaviour
         }
     }
 
-    void Update()
+  public  void Update()
     {
 
         HealthBarText.text = _enemy.CurrentHealth.ToString() + "/" + _enemy.maxHealth.ToString();

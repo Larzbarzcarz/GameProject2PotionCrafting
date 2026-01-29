@@ -53,17 +53,17 @@ public class Brewing : MonoBehaviour
     }
 
 
-    //public void OnTriggerEnter(Collider other, InventoryObject inventoryObject)
-    //{
-    //    Debug.Log("now we are cooking");
-    //    var item = other.GetComponent<PickupItems>();
-    //    if (item)
-    //    {
-    //        inventory.AddItem(new Item(item.item), 1);
-    //        Destroy(other.gameObject);
+    public void OnTriggerEnter(Collider other, InventoryObject inventoryObject)
+    {
+        Debug.Log("now we are cooking");
+        var item = other.GetComponent<PickupItems>();
+        if (item)
+        {
+            inventory.AddItem(new Item(item.item), 1);
+            Destroy(other.gameObject);
 
-    //    }
-    //}
+        }
+    }
     
 
 

@@ -1,26 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-3358608335351037610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: 
-  Path: ../../../GP2/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 639044357010712010
-  FileSizes:
-  - Name: Desktop
-    Value: 724
-  Exists: 1
---- !u!114 &-3155318663545506127
+--- !u!114 &-9213586117008224628
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,31 +20,7 @@ MonoBehaviour:
   - Name: Desktop
     Value: 1074
   Exists: 1
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
-  m_Name: FMODStudioCache
-  m_EditorClassIdentifier: 
-  EditorBanks:
-  - {fileID: 2634433626260275553}
-  - {fileID: -3155318663545506127}
-  EditorEvents: []
-  EditorParameters: []
-  MasterBanks:
-  - {fileID: -3155318663545506127}
-  StringsBanks:
-  - {fileID: 2634433626260275553}
-  cacheVersion: 131857
-  cacheTime: 639048748220744907
-  SerializableEventsDict: []
---- !u!114 &2634433626260275553
+--- !u!114 &-7282675595552830385
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -84,7 +40,7 @@ MonoBehaviour:
   - Name: Desktop
     Value: 724
   Exists: 1
---- !u!114 &4702182736899920824
+--- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,14 +49,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
-  Path: ../../../GP2/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 639044357010690077
-  FileSizes:
-  - Name: Desktop
-    Value: 1074
-  Exists: 1
+  EditorBanks:
+  - {fileID: -7282675595552830385}
+  - {fileID: -9213586117008224628}
+  EditorEvents: []
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: -9213586117008224628}
+  StringsBanks:
+  - {fileID: -7282675595552830385}
+  cacheVersion: 131857
+  cacheTime: 639048748220744907
+  SerializableEventsDict: []

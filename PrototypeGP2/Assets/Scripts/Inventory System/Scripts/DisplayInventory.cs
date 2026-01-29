@@ -105,6 +105,7 @@ public class DisplayInventory : MonoBehaviour
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
             obj.GetComponentInChildren<TextMeshProUGUI>().text = slot.amount.ToString("n0");
             itemsDisplayed.Add(slot, obj);
+           
             var button = obj.GetComponent<Button>();
             Debug.Log("Button found: " + button);
             button.onClick.AddListener(() => OnclickSpawn(slot));
