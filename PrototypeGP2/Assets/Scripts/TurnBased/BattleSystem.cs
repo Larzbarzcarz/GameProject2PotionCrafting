@@ -28,9 +28,10 @@ public class BattleSystem : MonoBehaviour
     
     public BattleState state;
     public TextMeshProUGUI dialogeText;
-   public GameObject inventory;
-    
-    
+    public GameObject inventory;
+
+    [SerializeField] private int attackCost;
+    [SerializeField] private int defendCost;
     
     void Start()
      { 
@@ -126,6 +127,12 @@ public class BattleSystem : MonoBehaviour
         if (state != BattleState.MonsterTurn)
         return;
 
+        if (!monster.TrySpendStamina(attackCost))
+        {
+            dialogeText.text = "Not enough stamina!";
+            return;
+        }
+
         StartCoroutine(MonsterAttack());
     }
 
@@ -133,6 +140,13 @@ public class BattleSystem : MonoBehaviour
     {
         if (state != BattleState.MonsterTurn)
             return;
+
+        if (!monster.TrySpendStamina(defendCost))
+        {
+            dialogeText.text = "Not enough stamina!";
+            return;
+        }
+
         int defendChance = UnityEngine.Random.Range(0, 100);
         if (defendChance < 70)
         {
@@ -147,8 +161,6 @@ public class BattleSystem : MonoBehaviour
 
         state = BattleState.EnemyTurn;
         StartCoroutine(EnemyTurn());
-
-
     }
 
     void EndBattle()
@@ -179,5 +191,10 @@ public class BattleSystem : MonoBehaviour
         Debug.Log("current state: " + state);
         Debug.Log("Monster Health: " + monster.CurrentHealth);
         Debug.Log("Enemy Health: " + _enemy.CurrentHealth);
+    }
+
+    public void Runnaway()
+    {
+        SceneManager.LoadSceneAsync(0);
     }
 }

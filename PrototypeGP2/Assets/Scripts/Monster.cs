@@ -12,6 +12,9 @@ public class Monster : MonoBehaviour
     [SerializeField] public int     maxStamina;
     [SerializeField] public int     currentStamina;
 
+    public int MaxStamina => maxStamina;
+    public int CurrentStamina => currentStamina;
+
     public event Action<int, int> OnStaminaChanged;
 
     public void Awake()

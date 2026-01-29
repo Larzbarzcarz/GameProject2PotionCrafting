@@ -1506,6 +1506,8 @@ MonoBehaviour:
   state: 0
   dialogeText: {fileID: 1907740536}
   inventory: {fileID: 1644832231}
+  attackCost: 5
+  defendCost: 7
 --- !u!1 &1109335532
 GameObject:
   m_ObjectHideFlags: 0
@@ -3522,6 +3524,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 207518713}
     m_Modifications:
+    - target: {fileID: 770969932158476376, guid: 0106fc91d3997b549a289e5ccb079cd8, type: 3}
+      propertyPath: currentStamina
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8350907283794935305, guid: 0106fc91d3997b549a289e5ccb079cd8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.677094

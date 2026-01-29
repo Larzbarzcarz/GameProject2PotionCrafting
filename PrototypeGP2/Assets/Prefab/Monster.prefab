@@ -50,6 +50,8 @@ MonoBehaviour:
   Agility: 0
   maxHealth: 100
   CurrentHealth: 92
+  maxStamina: 100
+  currentStamina: 0
 --- !u!1001 &399825422201388583
 PrefabInstance:
   m_ObjectHideFlags: 0
