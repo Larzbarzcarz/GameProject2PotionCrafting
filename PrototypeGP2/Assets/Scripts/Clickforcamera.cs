@@ -7,9 +7,12 @@ public class Clickforcamera : MonoBehaviour
     public GameObject craftingCamera;
     public GameObject LabUi;
     public GameObject Return;
+    public GameObject Craft;
+    
     
     void Start()
     {
+        Craft.SetActive(false);
         Return.SetActive(false);
         mainCamera.SetActive(true);
         craftingCamera.SetActive(false);
@@ -17,6 +20,7 @@ public class Clickforcamera : MonoBehaviour
 
     public void SwitchToCrafting()
     {
+        Craft.SetActive(true);
         Return.SetActive(true);
         LabUi.SetActive(false);
         Debug.Log("Switching to crafting camera");
