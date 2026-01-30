@@ -12,6 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Alpha scenes/Newcombatscene.unity
     guid: b9e61c10ea04be844a8e9e48cc8b5781
   m_configObjects:
+    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: 90fa9048a9756d942834eeb3bb053a2c, type: 2}
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: c482af454de8f234e8c66a4a2590a47a, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 2e19cc2e646725343bf8d6440f6f6420, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

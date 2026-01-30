@@ -30,6 +30,7 @@ public class Clickforcamera : MonoBehaviour
 
     public void SwitchToMain()
     {
+        Craft.SetActive(false);
         Return.SetActive(false);
         LabUi.SetActive(true);
         Debug.Log("Switching to main camera");
