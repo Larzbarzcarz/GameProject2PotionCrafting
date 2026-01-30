@@ -742,11 +742,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1728288083142177786, guid: a5c2d0f5314074449902cff928a97b22, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 307.5
+      value: 133
       objectReference: {fileID: 0}
     - target: {fileID: 1728288083142177786, guid: a5c2d0f5314074449902cff928a97b22, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 402
+      value: 97
       objectReference: {fileID: 0}
     - target: {fileID: 1894269282665632589, guid: a5c2d0f5314074449902cff928a97b22, type: 3}
       propertyPath: m_LocalScale.x
@@ -766,11 +766,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1894269282665632589, guid: a5c2d0f5314074449902cff928a97b22, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -482.8
+      value: -118
       objectReference: {fileID: 0}
     - target: {fileID: 1894269282665632589, guid: a5c2d0f5314074449902cff928a97b22, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 415
+      value: 86.8
       objectReference: {fileID: 0}
     - target: {fileID: 4145487825838625577, guid: a5c2d0f5314074449902cff928a97b22, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3706,7 +3706,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 97
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -3732,13 +3732,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1932888324}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.28656954, y: 0.30611098, z: -0.07912419, w: 0.9043857}
-  m_LocalPosition: {x: -4.07, y: 4.5, z: -5.93}
+  m_LocalRotation: {x: 0.2840506, y: 0.31690603, z: -0.083087355, w: 0.9011006}
+  m_LocalPosition: {x: -1.82, y: 2.19, z: -2.95}
   m_LocalScale: {x: 1.1997238, y: 1.4329501, z: 1.6628174}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 34.526, y: 38.098, z: 2.249}
+  m_LocalEulerAnglesHint: {x: 34.373, y: 39.403, z: 2.103}
 --- !u!4 &1988945360 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2563496969622287784, guid: 6f16b0ced1fe5b24e9d7ea49b88ad413, type: 3}
