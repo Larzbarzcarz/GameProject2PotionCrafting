@@ -3275,6 +3275,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: a8ca9e30fd84d7f41abae0322779694f, type: 2}
   craftingRecipes: []
+  craftSound:
+    Guid:
+      Data1: -1249407799
+      Data2: 1257957129
+      Data3: -608489302
+      Data4: 331732578
+    Path: event:/potion-brew
 --- !u!1 &1684262437
 GameObject:
   m_ObjectHideFlags: 0
@@ -3373,6 +3380,13 @@ MonoBehaviour:
   inventory: {fileID: 11400000, guid: c6a3ffe4dd8a1fe4d8e43d67f2890c41, type: 2}
   craftingRecipes:
   - {fileID: 11400000, guid: 29387ad38dfd32b4097df458c5e5fbe6, type: 2}
+  craftSound:
+    Guid:
+      Data1: -1249407799
+      Data2: 1257957129
+      Data3: -608489302
+      Data4: 331732578
+    Path: event:/potion-brew
 --- !u!1 &1762327171
 GameObject:
   m_ObjectHideFlags: 0
