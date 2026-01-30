@@ -2,10 +2,13 @@ using System;
 using UnityEngine;
 using System.Collections.Generic;
 
+using FMODUnity;
+
 public class Brewing : MonoBehaviour
 {
     public InventoryObject inventory;
     public List<CraftingRecipe> craftingRecipes;
+    public EventReference craftSound;
 
     public void Craft(CraftingRecipe recipe)
     {
@@ -18,6 +21,11 @@ public class Brewing : MonoBehaviour
         //ConsumeIngredients(recipe);
         CreateResult(recipe);
 
+        if (!craftSound.IsNull)
+        {
+            RuntimeManager.PlayOneShot(craftSound, transform.position);
+        }
+        
         Debug.Log($"Crafted: {recipe.recipeName}");
     }
 

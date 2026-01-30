@@ -1,6 +1,60 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9213586117008224628
+--- !u!114 &-4674773010843097845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/potion-brew
+  m_EditorClassIdentifier: 
+  Path: event:/potion-brew
+  Guid:
+    Data1: -1249407799
+    Data2: 1257957129
+    Data3: -608489302
+    Data4: 331732578
+  Banks:
+  - {fileID: 6563056302048972068}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2000
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: 8467560609719976474}
+  - {fileID: 6563056302048972068}
+  EditorEvents:
+  - {fileID: -4674773010843097845}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: 6563056302048972068}
+  StringsBanks:
+  - {fileID: 8467560609719976474}
+  cacheVersion: 131857
+  cacheTime: 639053805523496927
+  SerializableEventsDict:
+  - key: event:/potion-brew
+    index: 0
+--- !u!114 &6563056302048972068
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -15,12 +69,12 @@ MonoBehaviour:
   Path: FMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639050194753998746
+  lastModified: 639053805523486882
   FileSizes:
   - Name: Desktop
-    Value: 1074
+    Value: 36576
   Exists: 1
---- !u!114 &-7282675595552830385
+--- !u!114 &8467560609719976474
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -35,32 +89,8 @@ MonoBehaviour:
   Path: FMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639050194754009430
+  lastModified: 639053805523496927
   FileSizes:
   - Name: Desktop
-    Value: 724
+    Value: 772
   Exists: 1
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
-  m_Name: FMODStudioCache
-  m_EditorClassIdentifier: 
-  EditorBanks:
-  - {fileID: -7282675595552830385}
-  - {fileID: -9213586117008224628}
-  EditorEvents: []
-  EditorParameters: []
-  MasterBanks:
-  - {fileID: -9213586117008224628}
-  StringsBanks:
-  - {fileID: -7282675595552830385}
-  cacheVersion: 131857
-  cacheTime: 639050194754009430
-  SerializableEventsDict: []
