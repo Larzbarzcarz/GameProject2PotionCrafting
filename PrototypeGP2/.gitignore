@@ -77,6 +77,6 @@ crashlytics-build.properties
 #FMOD stuff to ignore
 FMOD/.cache/
 FMOD/.unsaved/
-FMOD/Build/
+# FMOD/Build/
 FMOD/*.user
 
