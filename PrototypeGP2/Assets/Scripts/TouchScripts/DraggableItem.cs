@@ -6,7 +6,7 @@ public class DraggableItem : MonoBehaviour
     public float followSpeed;
     public LayerMask groundMask;
 
-    private Camera cam;
+    public Camera cam;
     private Rigidbody rb;
     private Vector3 grabOffset;
     private bool isDragging;
