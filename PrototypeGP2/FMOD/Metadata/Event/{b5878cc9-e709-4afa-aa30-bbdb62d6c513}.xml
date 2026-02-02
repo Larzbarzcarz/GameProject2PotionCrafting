@@ -99,7 +99,7 @@
 	<object class="MixerBusFader" id="{a490e485-af84-4345-820c-e02906aeafa4}" />
 	<object class="PitchShifterEffect" id="{42f17d8b-de0c-479d-a69b-1826556ab7c5}">
 		<property name="pitch">
-			<value>1</value>
+			<value>0.959999979</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{112b9bd9-2494-4515-9206-687ed24fa69f}</destination>
