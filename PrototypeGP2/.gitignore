@@ -77,6 +77,10 @@ crashlytics-build.properties
 #FMOD stuff to ignore
 FMOD/.cache/
 FMOD/.unsaved/
-# FMOD/Build/
 FMOD/*.user
+FMOD/.user/
+
+# Ensure built banks are tracked
+!Assets/StreamingAssets/**/*.bank
+!Assets/StreamingAssets/**/*.bank.meta
 
