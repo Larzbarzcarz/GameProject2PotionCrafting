@@ -79,6 +79,7 @@ FMOD/.cache/
 FMOD/.unsaved/
 FMOD/*.user
 FMOD/.user/
+Assets/Plugins/FMOD/Cache/
 
 # Ensure built banks are tracked
 !Assets/StreamingAssets/**/*.bank
