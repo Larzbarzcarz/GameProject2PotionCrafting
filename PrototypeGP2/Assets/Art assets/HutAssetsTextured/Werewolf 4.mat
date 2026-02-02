@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Werewolf
+  m_Name: Werewolf 4
   m_Shader: {fileID: -6465566751694194690, guid: 378227f8a69213e419dfb0d889d8dd2f, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -27,7 +27,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 6ab7014e6725061499534c4a05a33f7a, type: 3}
+        m_Texture: {fileID: 2800000, guid: f1ae69ef0d4e9e94fb065e5481896981, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -93,7 +93,7 @@ Material:
     - _AlphaToMask: 0
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
-    - _Brightness: 2.87
+    - _Brightness: -3.19
     - _BumpScale: 1
     - _CLOUDSENABLED: 0
     - _CastShadows: 1
@@ -116,9 +116,9 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
-    - _MinimumDarkness: -0.28
+    - _MinimumDarkness: 0.2
     - _NormalEdgeStrength: 0.86
-    - _NormalThreshold: 0.7
+    - _NormalThreshold: 1
     - _OUTLINESENABLED: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.005
