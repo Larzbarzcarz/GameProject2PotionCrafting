@@ -102,16 +102,16 @@ Material:
     - _AmbientStrength: 0.1
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
-    - _Brightness: -3.6
+    - _Brightness: -1
     - _BumpScale: 1
     - _CLOUDSENABLED: 1
     - _CastShadows: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
-    - _Cloud_Change: 0.005
-    - _Cloud_Cover: 0.6
-    - _Cloud_Density: 0.025
-    - _Cloud_Strength: 0.34
+    - _Cloud_Change: 0.01
+    - _Cloud_Cover: -0.08
+    - _Cloud_Density: 0.08
+    - _Cloud_Strength: 2
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
@@ -123,13 +123,13 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
-    - _MinimumDarkness: 0.2
+    - _MinimumDarkness: 0.53
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Shades: 6
+    - _Shades: 5
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -146,13 +146,13 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BlueHighlight: {r: 1, g: 1, b: 1, a: 0}
     - _BlueShadow: {r: 0, g: 0, b: 0, a: 0}
-    - _Cloud_Movement: {r: -0.25, g: 0.25, b: 0, a: 0}
+    - _Cloud_Movement: {r: -0.1, g: 0.1, b: 0, a: 0}
     - _Cloud_Step: {r: 13, g: 17, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GreenHighlight: {r: 0.8396226, g: 0.8303815, b: 0.6455589, a: 0}
     - _GreenShadow: {r: 0.3018868, g: 0.22756428, b: 0.13243146, a: 0}
-    - _RedHighlight: {r: 0.7752982, g: 0.9528302, b: 0.5977661, a: 0}
+    - _RedHighlight: {r: 0.22745094, g: 0.58431375, b: 0.43529412, a: 0}
     - _RedShadow: {r: 0.2517783, g: 0.3254902, b: 0.23529412, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
