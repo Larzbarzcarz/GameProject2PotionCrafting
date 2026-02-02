@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d798448000bc946b30dd4c5f6feb0a, type: 3}
   m_Name: Mushroom_Material
   m_EditorClassIdentifier: 
+  stableId: 8cfab49283444a6ba9231e9bdab1aa12
   Id: 5
   ItemName: Mushroom_Material
   itemSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}

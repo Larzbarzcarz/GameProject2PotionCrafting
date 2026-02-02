@@ -15,24 +15,4 @@ MonoBehaviour:
   savePath: /inventory.save
   database: {fileID: 11400000, guid: 5800c4f68444a954abad04ad86edd734, type: 2}
   Container:
-    Items:
-    - ID: 4
-      amount: 7
-      item:
-        Name: Batwing_Material
-        Id: 4
-    - ID: 5
-      amount: 1
-      item:
-        Name: Mushroom_Material
-        Id: 5
-    - ID: 3
-      amount: 6
-      item:
-        Name: TestPotionHeal
-        Id: 3
-    - ID: 3
-      amount: 6
-      item:
-        Name: TestPotionHeal
-        Id: 3
+    Items: []

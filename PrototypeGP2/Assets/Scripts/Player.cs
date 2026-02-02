@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
         var item = other.GetComponent<PickupItems>();
         if (item)
         {
-            inventory.AddItem(new Item(item.item), 1);
+            inventory.AddItem(new Item(item.item), 1, "");
             Destroy(other.gameObject);
             //inventory.Save();
             //Debug.Log("INVENTORY SAVED AUTOMATICALLY");

@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8248712299620634825}
   - component: {fileID: 4711509020444749235}
-  - component: {fileID: 8640380341081330888}
   - component: {fileID: -131010147706509916}
   - component: {fileID: 1631123999460458593}
+  - component: {fileID: 8236677054659225179}
   m_Layer: 6
   m_Name: Mushroom
   m_TagString: Untagged
@@ -49,27 +49,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 5f9b7a4ed3e80424c885b1e5ec75ce9e, type: 2}
---- !u!135 &8640380341081330888
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 925638476725726711}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-131010147706509916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,6 +66,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 128
+  cam: {fileID: 0}
 --- !u!54 &1631123999460458593
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -114,6 +94,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &8236677054659225179
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925638476725726711}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &6825985380058748196
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -128,11 +129,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5496000c01b3c9a458ac3361da9743a5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9289964
+      value: -0.079
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5496000c01b3c9a458ac3361da9743a5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.8222448
+      value: -0.014
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5496000c01b3c9a458ac3361da9743a5, type: 3}
       propertyPath: m_LocalRotation.w
