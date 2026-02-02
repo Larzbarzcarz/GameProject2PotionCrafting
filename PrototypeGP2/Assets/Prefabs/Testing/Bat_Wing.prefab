@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 1096776599240582843}
   - component: {fileID: 4292409463193852169}
   - component: {fileID: 8036147482970506555}
-  - component: {fileID: -2019500288975881339}
   - component: {fileID: 4488741347401510359}
+  - component: {fileID: -5642491542820318117}
   m_Layer: 6
   m_Name: Bat_Wing
   m_TagString: Untagged
@@ -70,23 +70,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 7d7e4e290ddcd544aa52f9b20f41c79e, type: 2}
---- !u!114 &-2019500288975881339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8370106416403302915}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb56fe0fd9ec3274b9897ecc952ca173, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ingredientID: 0
-  followSpeed: 20
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!54 &4488741347401510359
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -114,6 +97,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-5642491542820318117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8370106416403302915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b72a3e2921157842aa7253ad83cb391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 128
+  cam: {fileID: 0}
+  dragHeight: 0.3
+  dragDistanceFromCamera: 2
 --- !u!1001 &2981487514152668961
 PrefabInstance:
   m_ObjectHideFlags: 0
