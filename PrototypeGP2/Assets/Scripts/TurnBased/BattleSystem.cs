@@ -1,200 +1,317 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Threading.Tasks;
+
 using UnityEngine;
+
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+
 using TMPro;
-using UnityEngine.Serialization;
+ 
+public enum PlayerAction
 
-
-public enum BattleState
 {
-    Start,
-    MonsterTurn,
-    EnemyTurn,
-    Win,
-    Lose
+
+    None,
+
+    Attack,
+
+    Defend
+
 }
+ 
 public class BattleSystem : MonoBehaviour
+
 {
-    public GameObject MonsterPrefab;
-    public GameObject EnemyPrefab;
+
+    [Header("References")]
 
     public Monster monster;
-    public Enemy _enemy;
-    public Transform MonsterBattleStation;
-    public Transform EnemyBattleStation;
-    public bool isDefending = false;
-    
-    public BattleState state;
-    public TextMeshProUGUI dialogeText;
+
+    public Enemy enemy;
+
+    public TextMeshProUGUI dialogueText;
+
     public GameObject inventory;
+ 
+    [Header("Costs")]
 
-    [SerializeField] private int attackCost;
-    [SerializeField] private int defendCost;
-    
-    void Start()
-     { 
-         inventory.SetActive(false);
-         state = BattleState.Start;
-        StartCoroutine(SetupBattle());
-    }
+    [SerializeField] private int attackCost = 2;
 
-  
-    
-    IEnumerator SetupBattle()
-    {
-        GameObject MonsterGO = MonsterPrefab; 
-        //monster =  MonsterGO.GetComponent<Monster>();
+    [SerializeField] private int defendCost = 1;
+ 
+    private PlayerAction selectedAction = PlayerAction.None;
 
-        GameObject EnemyGO = EnemyPrefab;
-        //_enemy = EnemyGO.GetComponent<Enemy>();
+    private bool isDefending;
 
-        dialogeText.text = "A wild " + _enemy.enemyName + "approaches";
+    private bool battleOver;
+ 
+    private void Start()
 
-        yield return new WaitForSeconds(1f);
-
-        state = BattleState.MonsterTurn;
-        MonsterTurn();
-
-    }
-
-    IEnumerator MonsterAttack()
     {
 
-        int hitChance = UnityEngine.Random.Range(0, 100);
-        if (hitChance < 80)
-        {
-            _enemy.TakeDamage(2f);
-            Debug.Log("Dealing Damage");
-            dialogeText.text = "The attack hit"; 
-        }
-        else
-        {
-            dialogeText.text = "You missed";
-        }
-      
-            
-            yield return new WaitForSeconds(1f);
-
-            if (_enemy.isDead)
-            {
-                state = BattleState.Win;
-                EndBattle();
-            }
-            else
-            {
-                state = BattleState.EnemyTurn;
-                StartCoroutine(EnemyTurn());
-            }
-    }
-
-    IEnumerator EnemyTurn()
-    {
-        dialogeText.text = "Enemy +  Attacks!";
-        monster.TakeDamage(2f);
-        yield return new WaitForSeconds(1f);
-        float damage = 2f;
-        if (isDefending)
-        {
-            damage = 1f;
-            dialogeText.text = "You reduced damage";
-            isDefending = false;
-            yield return new WaitForSeconds(1f);
-        }
-        monster.TakeDamage(damage);
-
-        if (monster.CurrentHealth == 0)
-        {
-            state = BattleState.Lose;
-            EndBattle();
-        }
-        else
-        {
-            state = BattleState.MonsterTurn;
-            MonsterTurn();
-        }
-
-    }
-
-    void MonsterTurn()
-    {
-        dialogeText.text = "Select a action";
-    }
-
-    public void OnAttackButton()
-    {
-        if (state != BattleState.MonsterTurn)
-        return;
-
-        if (!monster.TrySpendStamina(attackCost))
-        {
-            dialogeText.text = "Not enough stamina!";
-            return;
-        }
-
-        StartCoroutine(MonsterAttack());
-    }
-
-    public void DefenseButton()
-    {
-        if (state != BattleState.MonsterTurn)
-            return;
-
-        if (!monster.TrySpendStamina(defendCost))
-        {
-            dialogeText.text = "Not enough stamina!";
-            return;
-        }
-
-        int defendChance = UnityEngine.Random.Range(0, 100);
-        if (defendChance < 70)
-        {
-            isDefending = true;
-            dialogeText.text = "You brace for impact";
-        }
-        else
-        {
-            dialogeText.text = "You failed to defend yourself";
-            monster.TakeDamage(2f);
-        }
-
-        state = BattleState.EnemyTurn;
-        StartCoroutine(EnemyTurn());
-    }
-
-    void EndBattle()
-    {
-        if (state == BattleState.Win)
-        {
-            dialogeText.text = "You Win!";
-        }
-        else if (state == BattleState.Lose)
-        {
-            dialogeText.text = "You lose";
-        }
-    }
-
-    public void ActivateInventory()
-    {
-        inventory.SetActive(true);
-        
-    }
-
-    public void DeactivateInventory()
-    {
         inventory.SetActive(false);
-    }
 
-    public void Update()
-    {
-        Debug.Log("current state: " + state);
-        Debug.Log("Monster Health: " + monster.CurrentHealth);
-        Debug.Log("Enemy Health: " + _enemy.CurrentHealth);
-    }
+        _ = StartBattleAsync();
 
-    public void Runnaway()
+    }
+ 
+    private async Task StartBattleAsync()
+
     {
+
+        dialogueText.text = $"A wild {enemy.enemyName} approaches!";
+
+        await Wait(1000);
+ 
+        await DoBattleLoop();
+
+        EndBattle();
+
+    }
+ 
+  
+
+    private async Task DoBattleLoop()
+
+    {
+
+        while (!battleOver)
+
+        {
+
+            await MonsterTurn();
+ 
+            if (enemy.isDead)
+
+            {
+
+                battleOver = true;
+
+                return;
+
+            }
+ 
+            await EnemyTurn();
+ 
+            if (monster.CurrentHealth <= 0)
+
+            {
+
+                battleOver = true;
+
+                return;
+
+            }
+
+        }
+
+    }
+ 
+    private async Task MonsterTurn()
+
+    {
+
+        dialogueText.text = "Choose an action";
+
+        selectedAction = PlayerAction.None;
+ 
+        await WaitUntilActionSelected();
+ 
+        switch (selectedAction)
+
+        {
+
+            case PlayerAction.Attack:
+
+                await MonsterAttack();
+
+                break;
+ 
+            case PlayerAction.Defend:
+
+                await MonsterDefend();
+
+                break;
+
+        }
+
+    }
+ 
+    private async Task MonsterAttack()
+
+    {
+
+        int hitChance = Random.Range(0, 100);
+ 
+        if (hitChance < 80)
+
+        {
+
+            enemy.TakeDamage(2f);
+
+            dialogueText.text = "The attack hit!";
+
+        }
+
+        else
+
+        {
+
+            dialogueText.text = "You missed!";
+
+        }
+ 
+        await Wait(1000);
+
+    }
+ 
+    private async Task MonsterDefend()
+
+    {
+
+        int defendChance = Random.Range(0, 100);
+ 
+        if (defendChance < 70)
+
+        {
+
+            isDefending = true;
+
+            dialogueText.text = "You brace for impact";
+
+        }
+
+        else
+
+        {
+
+            dialogueText.text = "You failed to defend!";
+
+            monster.TakeDamage(2f);
+
+        }
+ 
+        await Wait(1000);
+
+    }
+ 
+    private async Task EnemyTurn()
+
+    {
+
+        dialogueText.text = "Enemy attacks!";
+
+        await Wait(1000);
+ 
+        float damage = isDefending ? 1f : 2f;
+
+        monster.TakeDamage(damage);
+ 
+        if (isDefending)
+
+        {
+
+            dialogueText.text = "Damage reduced!";
+
+            isDefending = false;
+
+            await Wait(1000);
+
+        }
+
+    }
+ 
+    private void EndBattle()
+
+    {
+
+        if (enemy.isDead)
+
+        {
+
+            dialogueText.text = "You Win!";
+
+        }
+
+        else
+
+        {
+
+            dialogueText.text = "You Lose!";
+
+        }
+
+    }
+ 
+    #region UI
+ 
+    public void OnAttackButton()
+
+    {
+
+        if (selectedAction != PlayerAction.None) return;
+ 
+        if (!monster.TrySpendStamina(attackCost))
+
+        {
+
+            dialogueText.text = "Not enough stamina!";
+
+            return;
+
+        }
+ 
+        selectedAction = PlayerAction.Attack;
+
+    }
+ 
+    public void OnDefendButton()
+
+    {
+
+        if (selectedAction != PlayerAction.None) return;
+ 
+        if (!monster.TrySpendStamina(defendCost))
+
+        {
+
+            dialogueText.text = "Not enough stamina!";
+
+            return;
+
+        }
+ 
+        selectedAction = PlayerAction.Defend;
+
+    }
+ 
+    #endregion
+ 
+    #region Helpers
+ 
+    private async Task Wait(int ms) => await Task.Delay(ms);
+ 
+    private async Task WaitUntilActionSelected()
+
+    {
+
+        while (selectedAction == PlayerAction.None)
+
+        {
+
+            await Task.Yield();
+
+        }
+
+    }
+ 
+    public void RunAway()
+
+    {
+
         SceneManager.LoadSceneAsync(0);
+
     }
+ 
+    #endregion
+
 }

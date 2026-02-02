@@ -8,10 +8,11 @@ public class Clickforcamera : MonoBehaviour
     public GameObject LabUi;
     public GameObject Return;
     public GameObject Craft;
-    
+    public GameObject Materialing;
     
     void Start()
     {
+		Materialing.SetActive(false);
         Craft.SetActive(false);
         Return.SetActive(false);
         mainCamera.SetActive(true);
@@ -20,6 +21,7 @@ public class Clickforcamera : MonoBehaviour
 
     public void SwitchToCrafting()
     {
+		Materialing.SetActive(true);
         Craft.SetActive(true);
         Return.SetActive(true);
         LabUi.SetActive(false);
@@ -30,6 +32,7 @@ public class Clickforcamera : MonoBehaviour
 
     public void SwitchToMain()
     {
+		Materialing.SetActive(false);
         Craft.SetActive(false);
         Return.SetActive(false);
         LabUi.SetActive(true);

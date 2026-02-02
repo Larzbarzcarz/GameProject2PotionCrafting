@@ -6,7 +6,7 @@ public class DraggableItem : MonoBehaviour
     public float followSpeed;
     public LayerMask groundMask;
 
-    private Camera cam;
+    public Camera cam;
     private Rigidbody rb;
     private Vector3 grabOffset;
     private bool isDragging;
@@ -33,6 +33,8 @@ public class DraggableItem : MonoBehaviour
 
     void Awake()
     {
+        if (!cam)
+            Debug.LogError("Camera not assigned to DraggableItem");
         rb = GetComponent<Rigidbody>();
         if (rb) rb.isKinematic = true;
     }
@@ -40,7 +42,7 @@ public class DraggableItem : MonoBehaviour
     public void BeginDrag(Vector3 hitPoint)
     {
         isDragging = true;
-        dragY = transform.position.y;
+        //dragY = transform.position.y;
         grabOffset = transform.position - hitPoint;
     }
 
@@ -55,16 +57,19 @@ public class DraggableItem : MonoBehaviour
 
         Ray ray = cam.ScreenPointToRay(screenPos);
         this.ray = ray;
-
-        if (Physics.Raycast(ray, out RaycastHit hit, 200f, groundMask, QueryTriggerInteraction.Collide))
+        if (Physics.Raycast(ray, out RaycastHit hit, 500f, groundMask))
         {
-            Debug.Log("GROUND HIT: " + hit.collider.name);
-            Vector_attach(hit.point);
+            transform.position = hit.point + grabOffset;
         }
-        else
-        {
-            Debug.Log("NO GROUND HIT");
-        }
+        //if (Physics.Raycast(ray, out RaycastHit hit, 200f, groundMask, QueryTriggerInteraction.Collide))
+        //{
+            //Debug.Log("GROUND HIT: " + hit.collider.name);
+            //Vector_attach(hit.point);
+        //}
+        //else
+        //{
+            //Debug.Log("NO GROUND HIT");
+        //}
     }
 
     public void EndDrag()
@@ -75,9 +80,10 @@ public class DraggableItem : MonoBehaviour
     private void Vector_attach(Vector3 groundPoint)
     {
         Vector3 target = groundPoint + grabOffset;
-        target.y = dragY;
+        transform.position = target;
+        //target.y = dragY;
 
-        transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime * followSpeed);
+        //transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime * followSpeed);
     }
 
     private void OnDrawGizmos()
