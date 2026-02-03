@@ -18,7 +18,9 @@ public class DisplayInventory : MonoBehaviour
     public int Y_SpaceBetweenItems;
     public int numberOfColumns;
     public Camera mainCamera;
-
+    [SerializeField] private CauldronContents cauldron;
+    [SerializeField] private PotionVariantRegistry potionVariantRegistry;
+    [SerializeField] private PotionInfoUI potionInfoUI;
     private Dictionary<InventorySlot, GameObject> itemsDisplayed = new Dictionary<InventorySlot, GameObject>();
      private void Awake()
     {
@@ -28,45 +30,73 @@ public class DisplayInventory : MonoBehaviour
 
     private void Start()
     {
-        RebuildInventoryUI();
+        Refresh();
     }
 
-    #region UI
-
-    public void RebuildInventoryUI()
+    
+ 
+    public void Refresh()
     {
-       
-        foreach (Transform child in transform)
-        {
-            Destroy(child.gameObject);
-        }
+        ClearDisplay();
+        CreateDisplay();
+    }
 
-     
+    private void ClearDisplay()
+    {
+        foreach (var kv in itemsDisplayed)
+            if (kv.Value != null)
+                Destroy(kv.Value);
+
         itemsDisplayed.Clear();
+    }
 
-     
+    public void CreateDisplay()
+    {
         for (int i = 0; i < inventory.Container.Items.Count; i++)
         {
-            int index = i;
             InventorySlot slot = inventory.Container.Items[i];
+            InventorySlot capturedSlot = slot;
 
             var obj = Instantiate(inventoryPrefab, transform);
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
 
-            if (slot.item != null &&
-                inventory.database.GetItem.TryGetValue(slot.item.Id, out var itemData))
+        
+            var hover = obj.GetComponent<InventorySlotHoverUI>();
+            if (hover != null)
             {
-                obj.transform.GetChild(0).GetComponent<Image>().sprite =
-                    itemData.itemSprite;
+                hover.inventory = inventory;
+                hover.boundSlot = capturedSlot;
+                hover.infoUI = potionInfoUI;
             }
 
+           
+            if (!inventory.database.GetItemByStableId.TryGetValue(
+                    slot.item.StableId, out var itemSO))
+            {
+                Destroy(obj);
+                continue;
+            }
+
+         
+            Sprite icon = itemSO.itemSprite;
+            if (itemSO.itemType == ItemType.Potion &&
+                potionVariantRegistry != null &&
+                potionVariantRegistry.TryGet(slot.item.VariantKey, out var variant) &&
+                variant.icon != null)
+            {
+                icon = variant.icon;
+            }
+
+            obj.transform.GetChild(0).GetComponent<Image>().sprite = icon;
             obj.GetComponentInChildren<TextMeshProUGUI>().text =
                 slot.amount.ToString("n0");
 
+      
             Button button = obj.GetComponent<Button>();
-            button.onClick.AddListener(() => OnClickSpawn(index));
+            button.onClick.RemoveAllListeners();
+            button.onClick.AddListener(() => OnInventoryClick(capturedSlot));
 
-            itemsDisplayed.Add(slot, obj);
+            itemsDisplayed.Add(capturedSlot, obj);
         }
     }
 
@@ -79,59 +109,49 @@ public class DisplayInventory : MonoBehaviour
         );
     }
 
-    #endregion
+ 
 
-    #region Spawn Logic
-
-    public void OnClickSpawn(int index)
+    private void OnInventoryClick(InventorySlot slot)
     {
-        if (mainCamera == null)
-        {
-            Debug.LogError("Main Camera not assigned!");
-            return;
-        }
-
-        if (index < 0 || index >= inventory.Container.Items.Count)
-            return;
-
-        InventorySlot slot = inventory.Container.Items[index];
-
-        if (slot.item == null)
-            return;
-
-        if (!inventory.database.GetItem.TryGetValue(slot.item.Id, out var itemData))
-        {
-            Debug.LogError($"Item ID {slot.item.Id} not found in database!");
-            return;
-        }
-
-       
-        Vector3 spawnPosition = mainCamera.transform.position + mainCamera.transform.forward * 1.5f;
-
-
-        if (Input.touchCount > 0)
-        {
-            Vector2 touchPos = Input.GetTouch(0).position;
-            Ray ray = mainCamera.ScreenPointToRay(touchPos);
-            spawnPosition = ray.GetPoint(1.0f); 
-        }
-
-     
-        Instantiate(itemData.worldPrefab, spawnPosition, Quaternion.identity);
-
-    
-        slot.amount--;
-
         if (slot.amount <= 0)
-        {
-            inventory.Container.Items.RemoveAt(index);
-        }
+            return;
 
      
-        RebuildInventoryUI();
+        if (cauldron != null)
+        {
+            cauldron.AddIngredients(slot.item.StableId);
+        }
+
+      
+        SpawnWorldItem(slot);
+
+        slot.amount--;
+        if (slot.amount <= 0)
+            inventory.Container.Items.Remove(slot);
+
+        Refresh();
     }
 
-    #endregion
+    private void SpawnWorldItem(InventorySlot slot)
+    {
+        if (!inventory.database.GetItemByStableId.TryGetValue(
+                slot.item.StableId, out var itemSO))
+            return;
+
+        if (itemSO.worldPrefab == null)
+            return;
+
+        Vector3 spawnPos =
+            mainCamera.transform.position +
+            mainCamera.transform.forward * 1.5f;
+
+      
+        if (Input.touchCount > 0)
+        {
+            Ray ray = mainCamera.ScreenPointToRay(Input.GetTouch(0).position);
+            spawnPos = ray.GetPoint(1.0f);
+        }
+
+        Instantiate(itemSO.worldPrefab, spawnPos, Quaternion.identity);
+    }
 }
-
-
