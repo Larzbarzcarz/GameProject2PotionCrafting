@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8248712299620634825}
   - component: {fileID: 4711509020444749235}
   - component: {fileID: 8640380341081330888}
-  - component: {fileID: -131010147706509916}
   - component: {fileID: 1631123999460458593}
+  - component: {fileID: 5982918881340493076}
   m_Layer: 6
   m_Name: Mushroom
   m_TagString: Untagged
@@ -70,23 +70,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-131010147706509916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 925638476725726711}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb56fe0fd9ec3274b9897ecc952ca173, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ingredientID: 0
-  followSpeed: 20
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!54 &1631123999460458593
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -114,6 +97,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5982918881340493076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925638476725726711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b72a3e2921157842aa7253ad83cb391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 128
+  cam: {fileID: 0}
+  dragHeight: 0.3
+  dragDistanceFromCamera: 2
 --- !u!1001 &6825985380058748196
 PrefabInstance:
   m_ObjectHideFlags: 0

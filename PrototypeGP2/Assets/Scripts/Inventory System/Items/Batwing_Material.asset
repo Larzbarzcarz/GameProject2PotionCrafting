@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d798448000bc946b30dd4c5f6feb0a, type: 3}
   m_Name: Batwing_Material
   m_EditorClassIdentifier: 
-  Id: 4
+  Id: 3
   ItemName: Batwing_Material
-  itemSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  itemSprite: {fileID: -951022915, guid: 221b82e43c2ebd942939d635bc8f0ccf, type: 3}
   worldPrefab: {fileID: 8370106416403302915, guid: 8cf5a742291a6634f9b0898013ebb3a5, type: 3}
   itemType: 1
   description: Batwing test item
