@@ -146,9 +146,8 @@ public class BattleSystem : MonoBehaviour
         if (hitChance < 80)
 
         {
-            Debug.Log("Monster Attack");
-            monster.DealDamage();
-            enemy.TakeDamage(2f);
+            float damage = monster.DealDamage();
+            enemy.TakeDamage(damage);
             dialogueText.text = "The attack hit!";
 
         }
@@ -186,8 +185,9 @@ public class BattleSystem : MonoBehaviour
         {
 
             dialogueText.text = "You failed to defend!";
-
-            monster.TakeDamage(2f);
+            Enemy enemyStats = enemy as Enemy;
+            float damage = enemyStats != null ? enemyStats.CalculateDamage(EnemyAction.NormalAttack) : 2f;
+            monster.TakeDamage(damage);
 
         }
  
@@ -196,29 +196,52 @@ public class BattleSystem : MonoBehaviour
     }
  
     private async Task EnemyTurn()
-
     {
-
-        dialogueText.text = "Enemy attacks!";
-
-        await Wait(1000);
- 
-        float damage = isDefending ? 1f : 2f;
-
-        monster.TakeDamage(damage);
- 
-        if (isDefending)
-
+        Enemy enemyStats = enemy as Enemy;
+        if (enemyStats == null)
         {
-
-            dialogueText.text = "Damage reduced!";
-
-            isDefending = false;
-
+            dialogueText.text = "Enemy attacks!";
             await Wait(1000);
-
+            float damage = isDefending ? 1f : 2f;
+            monster.TakeDamage(damage);
+            if (isDefending)
+            {
+                dialogueText.text = "Damage reduced!";
+                isDefending = false;
+                await Wait(1000);
+            }
+            return;
         }
 
+        EnemyAction action = enemyStats.GetNextAction();
+
+        switch (action)
+        {
+            case EnemyAction.Buff:
+                enemyStats.ApplyBuff();
+                dialogueText.text = "Enemy is focusing...";
+                break;
+
+            case EnemyAction.NormalAttack:
+            case EnemyAction.StrongAttack:
+                dialogueText.text = action == EnemyAction.StrongAttack ? "Enemy strikes with power!" : "Enemy attacks!";
+                await Wait(1000);
+
+                float damage = enemyStats.CalculateDamage(action);
+                
+                if (isDefending)
+                {
+                    damage *= 0.5f; // Simple 50% reduction for now
+                    dialogueText.text = "Damage reduced!";
+                    isDefending = false;
+                    await Wait(1000);
+                }
+
+                monster.TakeDamage(damage);
+                break;
+        }
+
+        await Wait(1000);
     }
  
     private void EndBattle()
