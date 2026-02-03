@@ -2,103 +2,110 @@ using System;
 using System.Linq;
 using UnityEngine;
 
-public enum PotionEffectType { Heal, Damage, Mystery }
-
 public class PotionBrewingSystem : MonoBehaviour
 {
     [SerializeField] private InventoryObject inventory;
     [SerializeField] private CauldronContents cauldron;
     [SerializeField] private PotionNameRegistry nameRegistry;
-    [SerializeField] private ItemScriptableObject potionBaseSO;
     [SerializeField] private PotionVariantRegistry variantRegistry;
+    [SerializeField] private PotionRecipeSO recipeMap;
+    [SerializeField] private PotionBaseSO potionBaseSO;
     [SerializeField] private PotionIconLibrary iconLibrary;
-
-    [Header("Config")]
-    [SerializeField] private int minIngredients = 2;
 
     public bool TryBrew(out string brewedVariantKey, out PotionEffectType effectType)
     {
+        Debug.Log("=== BREW ATTEMPT ===");
+
         brewedVariantKey = "";
         effectType = default;
 
-        if (cauldron.Sequence.Count < minIngredients)
+        if (cauldron.Sequence.Count != 2)
+        {
+            Debug.Log($"[BREW] Failed: need exactly 2 ingredients, had {cauldron.Sequence.Count}");
             return false;
+        }
+
+        string firstId = cauldron.Sequence[0];
+        string secondId = cauldron.Sequence[1];
 
 
-        //var needed = cauldron.Sequence
-        //            .GroupBy(id => id)
-        //            .ToDictionary(g => g.Key, g => g.Count());
 
-        //foreach (var kv in needed)
-        //    if (!inventory.HasItem(kv.Key, kv.Value))
-        //        return false;
+        if (!inventory.HasItem(firstId, 1) || !inventory.HasItem(secondId, 1))
+        {
+            Debug.Log("[BREW] Failed: missing ingredients in inventory.");
+            return false;
+        }
 
-        //foreach (var kv in needed)
-        //    inventory.RemoveItem(kv.Key, kv.Value);
+        if (!inventory.database.GetItemByStableId.TryGetValue(firstId, out var firstSO) ||
+            !inventory.database.GetItemByStableId.TryGetValue(secondId, out var secondSO))
+        {
+            Debug.LogError("[BREW] Failed: ingredient stableId not found in database.");
+            return false;
+        }
 
-        brewedVariantKey = string.Join("_", cauldron.Sequence);
+        if (firstSO is not IngredientObject mainIng || secondSO is not IngredientObject baseIng)
+        {
+            Debug.LogError("[BREW] Failed: items are not IngredientObject.");
+            return false;
+        }
 
-        int seed = StableSeedFromString(brewedVariantKey);
-        Debug.Log($"[BREW] Key={brewedVariantKey}");
-        Debug.Log($"[BREW] Seed={seed}");
 
-        //val av effekt
-        int effectCount = Enum.GetValues(typeof(PotionEffectType)).Length;
-        effectType = (PotionEffectType)(Math.Abs(seed) % effectCount);
 
-        int n = cauldron.Sequence.Count; //stats baserat på seed och antal ingredienser
-        float t01 = (Math.Abs(seed) % 1000) / 1000; //^
+        var mainKey = mainIng.mainKeyword;
+        var baseKey = baseIng.baseKeyword;
 
-        float potencyBase = Mathf.Lerp(10f, 40f, t01);
-        float durationBase = Mathf.Lerp(2f, 8f, 1f - t01); //tweakbara basvärden
+        brewedVariantKey = $"{mainKey}_{baseKey}";
 
-        float potency = potencyBase + Mathf.Max(0, n - 2) * 6f;
-        float duration = durationBase + Mathf.Max(0, n - 2) * 1.25f; //ju fler ingredienser desto starkare potion
+
+        bool found = recipeMap.TryGet(mainKey, baseKey, out var entry);
+        if (!found)
+        {
+            Debug.Log($"[BREW] No recipe for {mainKey} + {baseKey}. Brewing failed potion.");
+            effectType = PotionEffectType.Fail;
+        }
+        else
+        {
+            effectType = entry.effectType;
+        }
 
         if (variantRegistry != null)
         {
-            var result = variantRegistry.GetOrCreate(brewedVariantKey);
-            result.seed = seed;
-            result.effect = effectType;
-            result.potency = potency;
-            result.duration = duration;
-
-            if (iconLibrary != null)
-            {
-                result.icon = iconLibrary.GetIcon(effectType);
-            }
+            var v = variantRegistry.GetOrCreate(brewedVariantKey);
+            v.effect = effectType;
+            v.icon = iconLibrary.GetIcon(effectType, potionBaseSO.itemSprite);
         }
 
-        Debug.Log($"[BREW] Effect roll={(int)effectType} ({effectType})");
+
+        inventory.RemoveItem(firstId, 1);
+        inventory.RemoveItem(secondId, 1);
 
         inventory.AddItem(new Item(potionBaseSO, brewedVariantKey), 1, brewedVariantKey);
 
-        //if (!nameRegistry.HasName(brewedVariantKey))
-        //    nameRegistry.SetName(brewedVariantKey, DefaultNameFor(effectType)); //använda för att sätta default namn på potion
+
+        //sets default name on potion to be main ingredient + Potion
+        if (nameRegistry != null && !nameRegistry.HasName(brewedVariantKey))
+        {
+            nameRegistry.SetName(brewedVariantKey, $"{mainKey} Potion");
+        }
+
+        if (found)
+        {
+            string playerName = nameRegistry != null
+                ? nameRegistry.GetName(brewedVariantKey, entry.effectType.ToString())
+                : entry.effectType.ToString();
+
+            Debug.Log($"[BREW] Brewed '{playerName}' ({entry.effectType})");
+            Debug.Log($"[BREW] Main={mainKey}, Base={baseKey}");
+            Debug.Log($"[BREW] Effect: {entry.effectDescription}");
+        }
+        else
+        {
+            Debug.Log($"[BREW] Brewed Failed Potion. Main={mainKey}, Base={baseKey}");
+        }
+
+        Debug.Log("=== BREW END ===");
 
         cauldron.Clear();
         return true;
-    }
-
-    private int StableSeedFromString(string s)
-    {
-        unchecked
-        {
-            int hash = 23;
-            for (int i = 0; i < s.Length; i++)
-                hash = hash * 31 + s[i];
-            return hash;
-        }
-    }
-
-    private string DefaultNameFor(PotionEffectType type)
-    {
-        return type switch
-        { 
-            PotionEffectType.Heal => "Healing Potion",
-            PotionEffectType.Damage => "Damage Potion",
-            PotionEffectType.Mystery => "Mystery Potion",
-            _ => "Failed Potion"
-        };
     }
 }

@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d798448000bc946b30dd4c5f6feb0a, type: 3}
   m_Name: Mushroom_Material
   m_EditorClassIdentifier: 
-  Id: 4
+  stableId: 51f0502ad1764fb9b4c64b55892902eb
+  Id: 5
   ItemName: Mushroom_Material
   itemSprite: {fileID: 2047017830, guid: e335320ec9b0dd24f986f374e5e89e63, type: 3}
   worldPrefab: {fileID: 925638476725726711, guid: 24c3975a837f3324685dd46a732f66d2, type: 3}
-  itemType: 1
-  description: Mushroom material for potions
+  itemType: 0
+  itemDescription: 
+  mainKeyword: 6
+  baseKeyword: 2

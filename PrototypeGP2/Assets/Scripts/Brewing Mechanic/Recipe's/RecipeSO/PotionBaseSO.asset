@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f6960332694b3e4eb609b2aab2b8fd6, type: 3}
-  m_Name: Potion Item
+  m_Script: {fileID: 11500000, guid: c0a7dd2b2481c8a4b95af14eec788695, type: 3}
+  m_Name: PotionBaseSO
   m_EditorClassIdentifier: 
-  stableId: 3ffa622f43f5419c9d776080ef40d649
+  stableId: 794b64ba0af3402997860be66f4d3a65
   Id: 0
-  ItemName: Potion
-  itemSprite: {fileID: 21300000, guid: 0750dd5033a190243988f2097c44b7d3, type: 3}
+  ItemName: 
+  itemSprite: {fileID: 0}
   worldPrefab: {fileID: 0}
-  itemType: 3
-  description: A brewed potion with mysterious effects.
+  itemType: 1
+  itemDescription: 

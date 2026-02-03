@@ -20,7 +20,6 @@ public class DisplayInventory : MonoBehaviour
     public Camera mainCamera;
     [SerializeField] private CauldronContents cauldron;
     [SerializeField] private PotionVariantRegistry potionVariantRegistry;
-    [SerializeField] private PotionInfoUI potionInfoUI;
     private Dictionary<InventorySlot, GameObject> itemsDisplayed = new Dictionary<InventorySlot, GameObject>();
      private void Awake()
     {
@@ -58,21 +57,13 @@ public class DisplayInventory : MonoBehaviour
             InventorySlot capturedSlot = slot;
 
             var obj = Instantiate(inventoryPrefab, transform);
-            obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
-
-        
-            var hover = obj.GetComponent<InventorySlotHoverUI>();
-            if (hover != null)
-            {
-                hover.inventory = inventory;
-                hover.boundSlot = capturedSlot;
-                hover.infoUI = potionInfoUI;
-            }
+            obj.GetComponent<RectTransform>().anchoredPosition = (Vector2)GetPosition(i);
 
            
             if (!inventory.database.GetItemByStableId.TryGetValue(
                     slot.item.StableId, out var itemSO))
             {
+                Debug.LogError($"[UI] Missing stableId in DB: {slot.item.StableId} ({slot.item.Name})");
                 Destroy(obj);
                 continue;
             }
@@ -100,7 +91,7 @@ public class DisplayInventory : MonoBehaviour
         }
     }
 
-    public Vector3 GetPosition(int i)
+    public Vector2 GetPosition(int i)
     {
         return new Vector3(
             X_Start + (X_SpaceBetweenItems * (i % numberOfColumns)),
@@ -123,7 +114,7 @@ public class DisplayInventory : MonoBehaviour
         }
 
       
-        SpawnWorldItem(slot);
+        //SpawnWorldItem(slot);
 
         slot.amount--;
         if (slot.amount <= 0)

@@ -4,10 +4,22 @@ using System.Collections.Generic;
 public class CauldronContents : MonoBehaviour
 {
     private List<string> sequence = new();
+    [SerializeField] private int maxIngredients = 2;
 
     public IReadOnlyList<string> Sequence => sequence;
 
-    public void AddIngredients(string stableId) => sequence.Add(stableId);
+    public bool AddIngredients(string stableId)
+    {
+        if (sequence.Count >= maxIngredients)
+        {
+            Debug.Log("[Cauldron] Full (2 ingredients already)!");
+            return false;
+        }
+
+        sequence.Add(stableId);
+        Debug.Log($"[Cauldron] Added: {stableId}.Count={sequence.Count}");
+        return true;
+    }
 
     public void Clear() => sequence.Clear();
 

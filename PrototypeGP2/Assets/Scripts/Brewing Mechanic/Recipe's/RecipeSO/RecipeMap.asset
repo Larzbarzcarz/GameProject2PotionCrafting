@@ -9,9 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a7e5e5c05ea3454d8d127b52d9a7de6, type: 3}
-  m_Name: PotionIconLibrary
+  m_Script: {fileID: 11500000, guid: 3f6960332694b3e4eb609b2aab2b8fd6, type: 3}
+  m_Name: RecipeMap
   m_EditorClassIdentifier: 
   entries:
-  - effect: 0
-    icon: {fileID: 21300000, guid: a8c618f9f3cbd2840bfedb92421ede4c, type: 3}
+  - mainKey: 7
+    baseKey: 2
+    effectType: 0
+    effectDescription: ....
+  - mainKey: 0
+    baseKey: 0
+    effectType: 1
+    effectDescription: Deals a large burst of damage.

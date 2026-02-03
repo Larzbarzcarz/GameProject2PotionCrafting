@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34d798448000bc946b30dd4c5f6feb0a, type: 3}
-  m_Name: Batwing_Material
+  m_Name: TestMineralIngredient
   m_EditorClassIdentifier: 
-  stableId: 72ca83a8e1e3442a8d7846642c7004ce
-  Id: 3
-  ItemName: Batwing_Material
-  itemSprite: {fileID: -951022915, guid: 221b82e43c2ebd942939d635bc8f0ccf, type: 3}
-  worldPrefab: {fileID: 8370106416403302915, guid: 8cf5a742291a6634f9b0898013ebb3a5, type: 3}
+  stableId: 6958794b4b1a4e16905be2e34327df48
+  Id: 0
+  ItemName: Crystal
+  itemSprite: {fileID: 21300000, guid: 10b84d153ebf6464ab0d9f19e6d803b6, type: 3}
+  worldPrefab: {fileID: 0}
   itemType: 0
   itemDescription: 
-  mainKeyword: 7
-  baseKeyword: 0
+  mainKeyword: 3
+  baseKeyword: 1

@@ -4,48 +4,43 @@ using UnityEngine;
 
 public class PotionNameRegistry : MonoBehaviour
 {
-    [Serializable] private class Entry {  public string key; public string name; }
-    [Serializable] private class SaveData { public List<Entry> entries = new(); }
+    [Serializable]
+    public class Entry
+    {
+        public string variantKey;
+        public string customName;
+    }
 
-    private Dictionary<string, string> names = new();
-    private const string PlayerPrefsKey = "PotionNames_v1";
+    [SerializeField] private List<Entry> entries = new List<Entry>();
+    private Dictionary<string, string> map;
 
-    private void Awake() => Load();
+    private void Awake()
+    {
+        map = new Dictionary<string, string>();
+        foreach (var e in entries)
+            if (!string.IsNullOrEmpty(e.variantKey))
+                map[e.variantKey] = e.customName;
+    }
 
-    public bool HasName(string variantKey) => names.ContainsKey(variantKey);
+    public bool HasName(string variantKey) => map != null && map.ContainsKey(variantKey);
 
     public string GetName(string variantKey, string fallback)
-        => names.TryGetValue(variantKey, out var n) ? n : fallback;
-
-    public void SetName(string variantKey, string newName)
     {
-        names[variantKey] = newName;
-        Save();
+        if (map != null && map.TryGetValue(variantKey, out var n) && !string.IsNullOrEmpty(n))
+            return n;
+        return fallback;
     }
 
-    public void Save()
+    public void SetName(string variantKey, string name)
     {
-        var data = new SaveData();
-        foreach (var kv in names)
-            data.entries.Add(new Entry { key = kv.Key, name = kv.Value });
+        if (map == null)
+            map = new Dictionary<string, string>();
+        map[variantKey] = name;
 
-        PlayerPrefs.SetString(PlayerPrefsKey, JsonUtility.ToJson(data));
-        PlayerPrefs.Save();
-    }
-
-    public void Load()
-    {
-        names.Clear();
-        if (!PlayerPrefs.HasKey(PlayerPrefsKey))
-            return;
-
-        var json = PlayerPrefs.GetString(PlayerPrefsKey);
-        var data = JsonUtility.FromJson<SaveData>(json);
-        if (data?.entries == null)
-            return;
-
-        foreach (var e in data.entries)
-            if (!string.IsNullOrEmpty(e.key))
-                names[e.key] = e.name ?? "";
+        int idx = entries.FindIndex(x => x.variantKey == variantKey);
+        if (idx >= 0)
+            entries[idx].customName = name;
+        else entries.Add(new Entry { variantKey = variantKey, customName = name });
     }
 }
+    

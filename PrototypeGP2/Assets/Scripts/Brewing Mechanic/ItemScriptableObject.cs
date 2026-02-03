@@ -13,8 +13,7 @@ public abstract class ItemScriptableObject : ScriptableObject
     public Sprite itemSprite;
     public GameObject worldPrefab;
     public ItemType itemType;
-    [TextArea(15, 20)]
-    public string description;
+    [TextArea] public string itemDescription;
 
 #if UNITY_EDITOR
     private void OnValidate()
@@ -29,9 +28,7 @@ public abstract class ItemScriptableObject : ScriptableObject
 }
 public enum ItemType
 {
-    Equipment,
     Ingredient,
-    Default,
     Potion
 }
 
