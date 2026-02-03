@@ -63,6 +63,7 @@ namespace CritterVolumetricLighting
 			_vLManager.cloudDataWriterMat.SetVector("_PlaneRight", -_vLManager.anchorTrans.right);
 			_vLManager.cloudDataWriterMat.SetVector("_CameraPos", _vLManager.mainCamera.transform.position);
 			_vLManager.cloudDataWriterMat.SetVector("_PlaneForward", -_vLManager.anchorTrans.forward);
+			
 			float cameraSunDot = Vector3.Dot(_vLManager.mainCamera.transform.forward, _vLManager.mainLightTrans.forward);
 			_vLManager.cloudDataWriterMat.SetFloat("_CloudCoverage", _vLManager.cloudCoverage);
 			
