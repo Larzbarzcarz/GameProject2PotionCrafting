@@ -61,4 +61,9 @@ public abstract class Combatant : MonoBehaviour
     {
         return strength;
     }
+
+    public virtual void Victory()
+    {
+        Debug.Log("Victory");
+    }
 }

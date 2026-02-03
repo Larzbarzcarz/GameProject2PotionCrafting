@@ -22,5 +22,10 @@ public class Enemy : Combatant
     {
         return strength; 
     }
+    public override void TakeDamage(float damage)
+    {
+      
+    }
+    
 }
 

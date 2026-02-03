@@ -146,9 +146,9 @@ public class BattleSystem : MonoBehaviour
         if (hitChance < 80)
 
         {
-
+            Debug.Log("Monster Attack");
+            monster.DealDamage();
             enemy.TakeDamage(2f);
-
             dialogueText.text = "The attack hit!";
 
         }
@@ -230,7 +230,7 @@ public class BattleSystem : MonoBehaviour
         {
 
             dialogueText.text = "You Win!";
-
+            monster.Victory();
         }
 
         else
