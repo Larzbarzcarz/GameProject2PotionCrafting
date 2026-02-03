@@ -27,7 +27,7 @@ public class Brewing : MonoBehaviour
 
         foreach (var ingredient in recipe.ingredients)
         {
-            int have = inventory.GetAmount(ingredient.item.Id);
+            int have = inventory.GetAmount(ingredient.item.StableId);
             if (have < ingredient.amount)
             {
                 int missing = ingredient.amount - have;
@@ -42,14 +42,14 @@ public class Brewing : MonoBehaviour
     {
         foreach (var ingredient in recipe.ingredients)
         {
-            inventory.RemoveItem(ingredient.item.Id, ingredient.amount);
+            inventory.RemoveItem(ingredient.item.StableId, ingredient.amount);
         }
     }
 
     private void CreateResult(CraftingRecipe recipe)
     {
         var item = new Item(recipe.result);
-        inventory.AddItem(item, recipe.resultAmount);
+        inventory.AddItem(item, recipe.resultAmount, "");
     }
 
 
@@ -59,7 +59,7 @@ public class Brewing : MonoBehaviour
         var item = other.GetComponent<PickupItems>();
         if (item)
         {
-            inventory.AddItem(new Item(item.item), 1);
+            inventory.AddItem(new Item(item.item), 1, "");
             Destroy(other.gameObject);
 
         }
