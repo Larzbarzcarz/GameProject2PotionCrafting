@@ -2056,9 +2056,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 585b6c64230d1974f944e2ed5573ccf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Spine: {fileID: 0}
-  Arms: {fileID: 0}
-  LeftShoulder: {fileID: 0}
+  Spine: {fileID: 8506118564842670974}
+  Arms: {fileID: 1630640942874652941}
+  LeftShoulder: {fileID: 3175170956547536231}
+  Mushroomneck: {fileID: 4268722526266937273}
+  MushroomLeftShoulder: {fileID: 2682387458445176927}
+  MushroomRightShoulder: {fileID: 5654285796848099820}
+  SecoundHead: {fileID: 8722081264352758269}
 --- !u!95 &2531068665410230053
 Animator:
   serializedVersion: 7
