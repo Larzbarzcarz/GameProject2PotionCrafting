@@ -887,6 +887,7 @@ GameObject:
   - component: {fileID: 8350907283794935305}
   - component: {fileID: 3277394799889370665}
   - component: {fileID: 7166161829432470495}
+  - component: {fileID: 2531068665410230053}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Untagged
@@ -929,7 +930,7 @@ MonoBehaviour:
   currentHealth: 0.03
   maxStamina: 10
   currentStamina: 0
-  currentState: 0
+  currentState: 1
 --- !u!114 &7166161829432470495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -944,6 +945,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Spine: {fileID: 0}
   Arms: {fileID: 0}
+  LeftShoulder: {fileID: 0}
+--- !u!95 &2531068665410230053
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9169885711413636052}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 6f16b0ced1fe5b24e9d7ea49b88ad413, type: 3}
+  m_Controller: {fileID: 9100000, guid: 8afde8d04b2ac35459800e9ffd2a8d48, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
+    are already bound by a Humanoid avatar. These transforms can only be changed
+    by Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:LeftFoot'\n\tTransform
+    'mixamorig:LeftHandThumb2'\n\tTransform 'mixamorig:LeftHandIndex1'\n\tTransform
+    'mixamorig:RightHandRing2'\n\tTransform 'mixamorig:Spine1'\n\tTransform 'mixamorig:LeftToeBase'\n\tTransform
+    'mixamorig:LeftHandThumb3'\n\tTransform 'mixamorig:RightArm'\n\tTransform 'mixamorig:LeftLeg'\n\tand
+    more ...\n\tFrom animation clip 'mixamo.com'\n\tFrom animation clip 'mixamo.com'\n\tFrom
+    animation clip 'mixamo.com'\n\tFrom animation clip 'mixamo.com'"
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1218140156820239229
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1016,7 +1047,8 @@ PrefabInstance:
         animation clip 'mixamo.com'\n\tFrom animation clip 'mixamo.com'\n\tFrom animation
         clip 'mixamo.com'"
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5866666021909216657, guid: 6f16b0ced1fe5b24e9d7ea49b88ad413, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -3480699329000672020, guid: 6f16b0ced1fe5b24e9d7ea49b88ad413, type: 3}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c991e76c8e347d488e807ea670b7675, type: 3}
   m_Name: TestPotionAttack
   m_EditorClassIdentifier: 
-  stableId: c045265e732247ed9d59bb1fed876b46
+  stableId: ccd1b24735214fed90e0447466bd4b14
   Id: 1
   ItemName: Test Potion Attack
   itemSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}

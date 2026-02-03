@@ -9,7 +9,7 @@ public class CombatantHealthbar : MonoBehaviour
     public Combatant target;
 
     [Header("UI")]
-    public Slider healthBarSlider;
+    public Slider healthSlider;
     public TextMeshProUGUI healthBarText;
 
     void Start()
@@ -17,22 +17,28 @@ public class CombatantHealthbar : MonoBehaviour
         if (target == null)
         {
             Debug.LogError("CombatantHealthbar: No target assigned!");
-            enabled = false;
+            target = GetComponentInParent<Combatant>();
             return;
         }
 
-        healthBarSlider.maxValue = target.MaxHealth;
-        UpdateHealthUI();
+        healthSlider.maxValue = target.MaxHealth;
+        UpdateUI();
     }
 
     void Update()
     {
-        UpdateHealthUI();
+        UpdateUI();
     }
 
-    void UpdateHealthUI()
+    void UpdateUI()
     {
-        healthBarSlider.value = target.CurrentHealth;
+        healthSlider.value = target.CurrentHealth;
         healthBarText.text = $"{target.CurrentHealth} / {target.MaxHealth}";
+    }
+    public void Bind(Combatant combatant)
+    {
+        target = combatant;
+        healthSlider.maxValue = target.MaxHealth;
+        UpdateUI();
     }
 }
