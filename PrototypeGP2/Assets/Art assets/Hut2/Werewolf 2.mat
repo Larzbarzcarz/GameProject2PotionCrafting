@@ -106,7 +106,7 @@ Material:
     - _Cull: 2
     - _Cutoff: 0.5
     - _DepthEdgeStrength: 0.5
-    - _DepthThreshold: 0.01
+    - _DepthThreshold: 1
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -116,7 +116,7 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
-    - _MinimumDarkness: 0.2
+    - _MinimumDarkness: 0.17
     - _NormalEdgeStrength: 0.86
     - _NormalThreshold: 0.22
     - _OUTLINESENABLED: 1
