@@ -13,7 +13,6 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _CLOUDSENABLED
-  - _REFLECTIONSON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -102,19 +101,19 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _AlphaToMask: 0
-    - _Bands: 5
+    - _Bands: 5.41
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
-    - _Brightness: -3.6
+    - _Brightness: -1
     - _BumpScale: 1
     - _CHILLFOAM: 0
     - _CLOUDSENABLED: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
-    - _Cloud_Change: 0.005
-    - _Cloud_Cover: 0.6
-    - _Cloud_Density: 0.025
-    - _Cloud_Strength: 0.34
+    - _Cloud_Change: 0.01
+    - _Cloud_Cover: -0.08
+    - _Cloud_Density: 0.08
+    - _Cloud_Strength: 2
     - _Cull: 2
     - _Cutoff: 0.5
     - _DepthStrength: 0.5
@@ -128,16 +127,16 @@ Material:
     - _DstBlendAlpha: 10
     - _EnvironmentReflections: 1
     - _Exposure: 1
-    - _FoamAmount: 1
-    - _FoamScale: 50
+    - _FoamAmount: 0.03
+    - _FoamScale: 41.64
     - _FoamSpeed: 0.01
     - _FoamStrength: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
-    - _MinimumDarkness: 0.2
-    - _MinimumTint: 0.1
+    - _MinimumDarkness: 0.53
+    - _MinimumTint: 0.95
     - _MinimumTransparency: 0.1
     - _OcclusionStrength: 1
     - _Opacity: 0.61
@@ -146,12 +145,12 @@ Material:
     - _ParticleThreshold: 0.01
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _REFLECTIONSON: 1
+    - _REFLECTIONSON: 0
     - _Ramp: 4
     - _ReceiveShadows: 0
     - _ReflectionStrength: 0.7
     - _Rotation: 0
-    - _Shades: 6
+    - _Shades: 5
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -159,15 +158,15 @@ Material:
     - _SrcBlendAlpha: 1
     - _Surface: 1
     - _TintBrightness: 0.2
-    - _TintStrength: 0.2
+    - _TintStrength: -0.1
     - _Transparency: 0.2
     - _WorkflowMode: 1
     - _ZWrite: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Cloud_Movement: {r: -0.25, g: 0.25, b: 0, a: 0}
+    - _Cloud_Movement: {r: -0.1, g: 0.1, b: 0, a: 0}
     - _Cloud_Step: {r: 13, g: 17, b: 0, a: 0}
-    - _Color: {r: 0.29803923, g: 0.8000001, b: 1, a: 1}
+    - _Color: {r: 0, g: 0.694, b: 0.13331081, a: 1}
     - _DistortionDirection: {r: 0.25, g: 0, b: 0, a: 0}
     - _DistortionStrength: {r: 0.05, g: 0.05, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

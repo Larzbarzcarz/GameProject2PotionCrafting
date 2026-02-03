@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
         GameOver,
         
     }
-    public Monster monster;
+    //public Monster monster;
     // public Enemy enemy;
 
 
