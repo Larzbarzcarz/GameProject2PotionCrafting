@@ -17,105 +17,121 @@ public class DisplayInventory : MonoBehaviour
     public int X_SpaceBetweenItems;
     public int Y_SpaceBetweenItems;
     public int numberOfColumns;
-    
-    Dictionary<InventorySlot, GameObject> itemsDisplayed = new Dictionary<InventorySlot, GameObject>();
+    public Camera mainCamera;
 
-    void Start()
+    private Dictionary<InventorySlot, GameObject> itemsDisplayed = new Dictionary<InventorySlot, GameObject>();
+     private void Awake()
     {
-        CreateDisplay();
+        if (mainCamera == null)
+            mainCamera = Camera.main;
     }
 
-    void Update()
+    private void Start()
     {
-        UpdateDisplay();
+        RebuildInventoryUI();
     }
 
-    public void UpdateDisplay()
+    #region UI
+
+    public void RebuildInventoryUI()
     {
-        
+       
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+     
+        itemsDisplayed.Clear();
+
+     
         for (int i = 0; i < inventory.Container.Items.Count; i++)
         {
+            int index = i;
             InventorySlot slot = inventory.Container.Items[i];
 
-            if (itemsDisplayed.ContainsKey(slot))
-            {
-                itemsDisplayed[slot].GetComponentInChildren<TextMeshProUGUI>().text = slot.amount.ToString("n0");
-            }
-            else
-            {
-                var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform);
-                if (!inventory.database.GetItem.ContainsKey(slot.item.Id))
-                {
-                    Debug.LogError(
-                        $"Item ID {slot.item.Id} not found in ItemDatabase! " +
-                        $"Check your ItemDatabaseObject asset."
-                    );
-                    continue;
-                }
-                obj.transform.GetChild(0).GetComponentInChildren<UnityEngine.UI.Image>().sprite = inventory.database.GetItem[slot.item.Id].itemSprite;
-                obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
-                obj.GetComponentInChildren<TextMeshProUGUI>().text = slot.amount.ToString("n0");
-                
-                itemsDisplayed.Add(slot, obj);
-                
-                //itemsDisplayed.Add(inventory.Container.Items[i], obj);
-                var button = obj.GetComponent<Button>();
-                Debug.Log("Button found: " + button);
-                button.onClick.AddListener(() => OnclickSpawn(slot));
-            }
-            
-        }
-    }
-
-    public void OnclickSpawn(InventorySlot slot)
-    {     Debug.Log("Inventory item clicked!");
-        if (slot.amount <= 0)
-            return;
-        
-        Vector3 spawnPosition = Camera.main.transform.position + Camera.main.transform.forward * 2f;
-        var itemData = inventory.database.GetItem[slot.item.Id];
-        if (itemData.worldPrefab == null)
-        {
-            Debug.LogError($"Item '{itemData.name}' has NO worldPrefab assigned!");
-            return;
-        }
-        Instantiate(itemData.worldPrefab, spawnPosition, Quaternion.identity);
-        slot.amount -= 1;
-
-        if (slot.amount <= 0)
-        {
-            inventory.Container.Items.Remove(slot);
-            Destroy(itemsDisplayed[slot]);
-            itemsDisplayed.Remove(slot);
-
-        }
-        
-    }
-
-    public void CreateDisplay()
-    {
-        for (int i = 0; i < inventory.Container.Items.Count; i++)
-        {
-            InventorySlot slot = inventory.Container.Items[i];
-
-            var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform);
-            InventorySlot capturedSlot = slot; 
-            obj.GetComponent<Button>().onClick.AddListener(() => OnclickSpawn(capturedSlot));
-            obj.transform.GetChild(0).GetComponentInChildren<UnityEngine.UI.Image>().sprite = inventory.database.GetItem[slot.item.Id].itemSprite;
+            var obj = Instantiate(inventoryPrefab, transform);
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
-            obj.GetComponentInChildren<TextMeshProUGUI>().text = slot.amount.ToString("n0");
+
+            if (slot.item != null &&
+                inventory.database.GetItem.TryGetValue(slot.item.Id, out var itemData))
+            {
+                obj.transform.GetChild(0).GetComponent<Image>().sprite =
+                    itemData.itemSprite;
+            }
+
+            obj.GetComponentInChildren<TextMeshProUGUI>().text =
+                slot.amount.ToString("n0");
+
+            Button button = obj.GetComponent<Button>();
+            button.onClick.AddListener(() => OnClickSpawn(index));
+
             itemsDisplayed.Add(slot, obj);
-           
-            var button = obj.GetComponent<Button>();
-            Debug.Log("Button found: " + button);
-            button.onClick.AddListener(() => OnclickSpawn(slot));
         }
     }
 
     public Vector3 GetPosition(int i)
     {
-        return new Vector3(X_Start + (X_SpaceBetweenItems * (i % numberOfColumns)), Y_Start + (-Y_SpaceBetweenItems * (i / numberOfColumns)), 0f);
+        return new Vector3(
+            X_Start + (X_SpaceBetweenItems * (i % numberOfColumns)),
+            Y_Start + (-Y_SpaceBetweenItems * (i / numberOfColumns)),
+            0f
+        );
     }
+
+    #endregion
+
+    #region Spawn Logic
+
+    public void OnClickSpawn(int index)
+    {
+        if (mainCamera == null)
+        {
+            Debug.LogError("Main Camera not assigned!");
+            return;
+        }
+
+        if (index < 0 || index >= inventory.Container.Items.Count)
+            return;
+
+        InventorySlot slot = inventory.Container.Items[index];
+
+        if (slot.item == null)
+            return;
+
+        if (!inventory.database.GetItem.TryGetValue(slot.item.Id, out var itemData))
+        {
+            Debug.LogError($"Item ID {slot.item.Id} not found in database!");
+            return;
+        }
+
+       
+        Vector3 spawnPosition = mainCamera.transform.position + mainCamera.transform.forward * 1.5f;
+
+
+        if (Input.touchCount > 0)
+        {
+            Vector2 touchPos = Input.GetTouch(0).position;
+            Ray ray = mainCamera.ScreenPointToRay(touchPos);
+            spawnPosition = ray.GetPoint(1.0f); 
+        }
+
+     
+        Instantiate(itemData.worldPrefab, spawnPosition, Quaternion.identity);
+
+    
+        slot.amount--;
+
+        if (slot.amount <= 0)
+        {
+            inventory.Container.Items.RemoveAt(index);
+        }
+
+     
+        RebuildInventoryUI();
+    }
+
+    #endregion
 }
 
 

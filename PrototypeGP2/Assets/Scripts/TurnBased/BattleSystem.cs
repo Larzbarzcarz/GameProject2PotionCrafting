@@ -22,11 +22,12 @@ public class BattleSystem : MonoBehaviour
 
 {
 
-    [Header("References")]
+    [Header("Combatants")] 
+    public Combatant monster;
 
-    public Monster monster;
+    public Combatant enemy;
 
-    public Enemy enemy;
+    
 
     public TextMeshProUGUI dialogueText;
 
@@ -58,7 +59,7 @@ public class BattleSystem : MonoBehaviour
 
     {
 
-        dialogueText.text = $"A wild {enemy.enemyName} approaches!";
+       
 
         await Wait(1000);
  
@@ -80,7 +81,7 @@ public class BattleSystem : MonoBehaviour
 
             await MonsterTurn();
  
-            if (enemy.isDead)
+            if (enemy.IsDead)
 
             {
 
@@ -139,7 +140,7 @@ public class BattleSystem : MonoBehaviour
     private async Task MonsterAttack()
 
     {
-
+        
         int hitChance = Random.Range(0, 100);
  
         if (hitChance < 80)
@@ -224,7 +225,7 @@ public class BattleSystem : MonoBehaviour
 
     {
 
-        if (enemy.isDead)
+        if (enemy.IsDead)
 
         {
 
@@ -247,6 +248,7 @@ public class BattleSystem : MonoBehaviour
     public void OnAttackButton()
 
     {
+        Debug.Log("Attacking");
 
         if (selectedAction != PlayerAction.None) return;
  
