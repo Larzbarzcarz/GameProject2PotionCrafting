@@ -14,33 +14,32 @@ public class InventoryObject : ScriptableObject
     public ItemDatabaseObject database;
     public Inventory Container;
 
-    public int GetAmount(int itemId)
+    public int GetAmount(string stableId)
     {
         for (int i = 0; i < Container.Items.Count; i++)
         {
-            if (Container.Items[i].item.Id == itemId)
+            if (Container.Items[i].item.StableId == stableId)
                 return Container.Items[i].amount;
         }
         return 0;
     }
 
-    public bool HasItem(int itemId, int amount)
-    {
-        return GetAmount(itemId) >= amount;
-    }
+    public bool HasItem(string stableId, int amount) => GetAmount(stableId) >= amount;
 
-    public bool RemoveItem(int itemId, int amount)
+    public bool RemoveItem(string stableId, int amount)
     {
         for(int i = 0;i < Container.Items.Count; i++)
         {
-            if (Container.Items[i].item.Id == itemId)
+            var slot = Container.Items[i];
+
+            if (slot.item.StableId == stableId)
             {
-                if (Container.Items[i].amount < amount)
+                if (slot.amount < amount)
                     return false;
 
-                Container.Items[i].amount -= amount;
+                slot.amount -= amount;
 
-                if (Container.Items[i].amount <= 0)
+                if (slot.amount <= 0)
                     Container.Items.RemoveAt(i);
 
                 return true;
@@ -49,48 +48,65 @@ public class InventoryObject : ScriptableObject
         return false;
     }
 
-    public void AddItem(Item _item, int _amount)
+    public void AddItem(Item _item, int _amount, string variantKey)
     {
+        _item.VariantKey = variantKey ?? "";
+
         for (int i = 0; i < Container.Items.Count; i++)
         {
-            if (Container.Items[i].item.Id == _item.Id)
+            var slot = Container.Items[i];
+
+            if (slot.item.StableId == _item.StableId && slot.item.VariantKey == _item.VariantKey)
             {
-                Container.Items[i].AddAmount(_amount);
+                slot.AddAmount(_amount);
                 return;
             }
         }
-        Container.Items.Add(new InventorySlot(_item.Id , _item, _amount));
+        Container.Items.Add(new InventorySlot(_item, _amount));
     }
 
     [ContextMenu("Save")]
     public void Save()
     {
-        //string saveData = JsonUtility.ToJson(this, true);
-        //BinaryFormatter bf = new BinaryFormatter();
-        //FileStream file = File.Create(string.Concat(Application.persistentDataPath, savePath));
-        //bf.Serialize(file, saveData);
-        //file.Close();
+        var data = new InventorySaveData();
 
-        IFormatter formatter = new BinaryFormatter();
-        Stream stream = new FileStream(string.Concat(Application.persistentDataPath, savePath), FileMode.Create, FileAccess.Write);
-        formatter.Serialize(stream, Container);
-        stream.Close();
+        foreach (var slot in Container.Items)
+        {
+            data.slots.Add(new InventorySaveData.SlotData
+            {
+                stableId = slot.item.StableId,
+                amount = slot.amount,
+                variantKey = ""
+            });
+        }
+
+        var json = JsonUtility.ToJson(data, true);
+        File.WriteAllText(Path.Combine(Application.persistentDataPath, savePath), json);
     }
 
     [ContextMenu("Load")]
     public void Load()
     {
-        if(File.Exists(string.Concat(Application.persistentDataPath, savePath)))
-        {
-            //BinaryFormatter bf = new BinaryFormatter();
-            //FileStream file = File.Open(string.Concat(Application.persistentDataPath, savePath), FileMode.Open);
-            //JsonUtility.FromJsonOverwrite(bf.Deserialize(file).ToString(), this);
-            //file.Close();
+        var path = Path.Combine(Application.persistentDataPath, savePath);
+        if (File.Exists(path))
+            return;
 
-            IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream(string.Concat(Application.persistentDataPath, savePath), FileMode.Open, FileAccess.Read);
-            Container = (Inventory)formatter.Deserialize(stream);
-            stream.Close();
+        var json = File.ReadAllText(path);
+        var data = JsonUtility.FromJson<InventorySaveData>(json);
+
+        Container = new Inventory();
+        foreach (var slot in data.slots)
+        {
+            if (!database.GetItemByStableId.ContainsKey(slot.stableId))
+            {
+                Debug.LogWarning($"Saved item '{slot.stableId}' is no longer in database.");
+                continue;
+            }
+
+            //återskapa item med stableid
+            var itemSO = database.GetItemByStableId[slot.stableId];
+            var item = new Item(itemSO);
+            Container.Items.Add(new InventorySlot(item, slot.amount));
         }
     }
 
@@ -109,18 +125,27 @@ public class Inventory
 [System.Serializable]
 public class InventorySlot
 {
-    public int ID;
     public int amount;
     public Item item;
-    public InventorySlot(int _id, Item _item, int _amount)
+    public InventorySlot(Item _item, int _amount)
     {
-        ID = _id;
         item   = _item;
         amount = _amount;
     }
 
-    public void AddAmount(int value)
+    public void AddAmount(int value) => amount += value;
+}
+
+[System.Serializable]
+public class InventorySaveData
+{
+    public List<SlotData> slots = new();
+
+    [System.Serializable]
+    public class SlotData
     {
-        amount += value;
+        public string stableId;
+        public int amount;
+        public string variantKey;
     }
 }
