@@ -4,7 +4,6 @@ using UnityEngine;
 public enum EnemyAction
 {
     NormalAttack,
-    StrongAttack,
     Buff
 }
 
@@ -16,7 +15,7 @@ public class Enemy : Combatant
         Dying,
         Dead
     }
-    
+
     public EnemyState currentState = EnemyState.Alive;
 
     [Header("Behavior")]
@@ -36,10 +35,12 @@ public class Enemy : Combatant
     {
         if (actionPattern == null || actionPattern.Count == 0)
         {
+            Debug.LogWarning($"Enemy on {gameObject.name} has no actionPattern assigned! Defaulting to NormalAttack.");
             return EnemyAction.NormalAttack;
         }
 
         EnemyAction action = actionPattern[currentPatternIndex];
+        Debug.Log($"Enemy on {gameObject.name} selecting action from pattern index {currentPatternIndex}: {action}");
         currentPatternIndex = (currentPatternIndex + 1) % actionPattern.Count;
         return action;
     }
@@ -54,32 +55,27 @@ public class Enemy : Combatant
         float baseDamage = strength;
         float multiplier = 1.0f;
 
-        if (actionType == EnemyAction.StrongAttack)
-        {
-            multiplier *= 1.5f; // Strong attack logic
-        }
-
         if (isBuffed)
         {
-            multiplier *= 1.3f; // 30% increase from buff
-            isBuffed = false;   // Buff consumed
+            multiplier *= 1.8f;
+            isBuffed = false;
         }
 
-        // Add variety (+/- 10%)
         float variance = Random.Range(0.9f, 1.1f);
-        
+
         return baseDamage * multiplier * variance;
     }
 
     public override float DealDamage()
     {
-        // Legacy support if something still calls this directly
         return CalculateDamage(EnemyAction.NormalAttack);
     }
     public override void TakeDamage(float damage)
     {
-      
+        Debug.Log($"Enemy taking {damage} damage. Current Health: {currentHealth} -> {currentHealth - damage}");
+        base.TakeDamage(damage);
+        if (currentHealth <= 0) Die();
     }
-    
+
 }
 

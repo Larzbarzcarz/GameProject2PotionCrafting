@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 using TMPro;
- 
+
 public enum PlayerAction
 
 {
@@ -17,34 +17,34 @@ public enum PlayerAction
     Defend
 
 }
- 
+
 public class BattleSystem : MonoBehaviour
 
 {
 
-    [Header("Combatants")] 
+    [Header("Combatants")]
     public Combatant monster;
 
     public Combatant enemy;
 
-    
+
 
     public TextMeshProUGUI dialogueText;
 
     public GameObject inventory;
- 
+
     [Header("Costs")]
 
     [SerializeField] private int attackCost = 2;
 
     [SerializeField] private int defendCost = 1;
- 
+
     private PlayerAction selectedAction = PlayerAction.None;
 
     private bool isDefending;
 
     private bool battleOver;
- 
+
     private void Start()
 
     {
@@ -54,49 +54,49 @@ public class BattleSystem : MonoBehaviour
         _ = StartBattleAsync();
 
     }
- 
+
     private async Task StartBattleAsync()
 
     {
 
-       
+
 
         await Wait(1000);
- 
+
         await DoBattleLoop();
 
         EndBattle();
 
     }
- 
-  
+
+
 
     private async Task DoBattleLoop()
 
     {
-
+        Debug.Log("--- Battle Loop Started ---");
         while (!battleOver)
 
         {
-
+            Debug.Log("--- Monster Turn ---");
             await MonsterTurn();
- 
+
             if (enemy.IsDead)
 
             {
-
+                Debug.Log("Enemy detected as dead. Ending loop.");
                 battleOver = true;
 
                 return;
 
             }
- 
+
+            Debug.Log("--- Enemy Turn ---");
             await EnemyTurn();
- 
-            if (monster.CurrentHealth <= 0)
 
+            if (monster.IsDead)
             {
-
+                Debug.Log("Monster detected as dead. Ending loop.");
                 battleOver = true;
 
                 return;
@@ -106,7 +106,7 @@ public class BattleSystem : MonoBehaviour
         }
 
     }
- 
+
     private async Task MonsterTurn()
 
     {
@@ -114,9 +114,9 @@ public class BattleSystem : MonoBehaviour
         dialogueText.text = "Choose an action";
 
         selectedAction = PlayerAction.None;
- 
+
         await WaitUntilActionSelected();
- 
+
         switch (selectedAction)
 
         {
@@ -126,7 +126,7 @@ public class BattleSystem : MonoBehaviour
                 await MonsterAttack();
 
                 break;
- 
+
             case PlayerAction.Defend:
 
                 await MonsterDefend();
@@ -136,17 +136,18 @@ public class BattleSystem : MonoBehaviour
         }
 
     }
- 
+
     private async Task MonsterAttack()
 
     {
-        
-        int hitChance = Random.Range(0, 100);
- 
-        if (hitChance < 80)
 
+        int hitChance = Random.Range(0, 100);
+        Debug.Log($"Monster Attack rolled: {hitChance} (Need < 80)");
+
+        if (hitChance < 80)
         {
             float damage = monster.DealDamage();
+            Debug.Log($"Monster Attack HIT for {damage} damage.");
             enemy.TakeDamage(damage);
             dialogueText.text = "The attack hit!";
 
@@ -155,21 +156,21 @@ public class BattleSystem : MonoBehaviour
         else
 
         {
-
+            Debug.Log("Monster Attack MISSED.");
             dialogueText.text = "You missed!";
 
         }
- 
+
         await Wait(1000);
 
     }
- 
+
     private async Task MonsterDefend()
 
     {
 
         int defendChance = Random.Range(0, 100);
- 
+
         if (defendChance < 70)
 
         {
@@ -190,16 +191,17 @@ public class BattleSystem : MonoBehaviour
             monster.TakeDamage(damage);
 
         }
- 
+
         await Wait(1000);
 
     }
- 
+
     private async Task EnemyTurn()
     {
         Enemy enemyStats = enemy as Enemy;
         if (enemyStats == null)
         {
+            Debug.Log("EnemyStats is null, performing default attack.");
             dialogueText.text = "Enemy attacks!";
             await Wait(1000);
             float damage = isDefending ? 1f : 2f;
@@ -214,6 +216,7 @@ public class BattleSystem : MonoBehaviour
         }
 
         EnemyAction action = enemyStats.GetNextAction();
+        Debug.Log($"Enemy selected action: {action}");
 
         switch (action)
         {
@@ -223,15 +226,17 @@ public class BattleSystem : MonoBehaviour
                 break;
 
             case EnemyAction.NormalAttack:
-            case EnemyAction.StrongAttack:
-                dialogueText.text = action == EnemyAction.StrongAttack ? "Enemy strikes with power!" : "Enemy attacks!";
+                bool wasBuffed = enemyStats.IsBuffed;
+                dialogueText.text = wasBuffed ? "Enemy strikes with power!" : "Enemy attacks!";
                 await Wait(1000);
 
                 float damage = enemyStats.CalculateDamage(action);
-                
+                Debug.Log($"Enemy calculated damage: {damage} (Was Buffed: {wasBuffed})");
+
                 if (isDefending)
                 {
-                    damage *= 0.5f; // Simple 50% reduction for now
+                    damage *= 0.5f;
+                    Debug.Log($"Damage reduced by defense to: {damage}");
                     dialogueText.text = "Damage reduced!";
                     isDefending = false;
                     await Wait(1000);
@@ -243,7 +248,7 @@ public class BattleSystem : MonoBehaviour
 
         await Wait(1000);
     }
- 
+
     private void EndBattle()
 
     {
@@ -265,16 +270,16 @@ public class BattleSystem : MonoBehaviour
         }
 
     }
- 
+
     #region UI
- 
+
     public void OnAttackButton()
 
     {
         Debug.Log("Attacking");
 
         if (selectedAction != PlayerAction.None) return;
- 
+
         if (!monster.TrySpendStamina(attackCost))
 
         {
@@ -284,17 +289,17 @@ public class BattleSystem : MonoBehaviour
             return;
 
         }
- 
+
         selectedAction = PlayerAction.Attack;
 
     }
- 
+
     public void OnDefendButton()
 
     {
 
         if (selectedAction != PlayerAction.None) return;
- 
+
         if (!monster.TrySpendStamina(defendCost))
 
         {
@@ -304,17 +309,32 @@ public class BattleSystem : MonoBehaviour
             return;
 
         }
- 
+
         selectedAction = PlayerAction.Defend;
 
     }
- 
+
+    // Aliases for scene compatibility
+    public void DefenseButton() => OnDefendButton();
+    public void Runnaway() => RunAway();
+
+    public void ActivateInventory()
+    {
+        if (inventory != null) inventory.SetActive(true);
+    }
+
+    public void DeactivateInventory()
+    {
+        if (inventory != null) inventory.SetActive(false);
+    }
+
+
     #endregion
- 
+
     #region Helpers
- 
+
     private async Task Wait(int ms) => await Task.Delay(ms);
- 
+
     private async Task WaitUntilActionSelected()
 
     {
@@ -328,7 +348,7 @@ public class BattleSystem : MonoBehaviour
         }
 
     }
- 
+
     public void RunAway()
 
     {
@@ -336,7 +356,7 @@ public class BattleSystem : MonoBehaviour
         SceneManager.LoadSceneAsync(0);
 
     }
- 
+
     #endregion
 
 }
