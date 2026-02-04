@@ -50,7 +50,7 @@ public class BattleSystem : MonoBehaviour
     {
 
         inventory.SetActive(false);
-
+        battleOver = false;
         _ = StartBattleAsync();
 
     }
@@ -110,7 +110,7 @@ public class BattleSystem : MonoBehaviour
     private async Task MonsterTurn()
 
     {
-
+        Debug.Log("Waiting for player input...");
         dialogueText.text = "Choose an action";
 
         selectedAction = PlayerAction.None;
@@ -241,7 +241,7 @@ public class BattleSystem : MonoBehaviour
                     isDefending = false;
                     await Wait(1000);
                 }
-
+                
                 monster.TakeDamage(damage);
                 break;
         }
@@ -276,6 +276,7 @@ public class BattleSystem : MonoBehaviour
     public void OnAttackButton()
 
     {
+        Debug.Log("Clicking");
         Debug.Log("Attacking");
 
         if (selectedAction != PlayerAction.None) return;

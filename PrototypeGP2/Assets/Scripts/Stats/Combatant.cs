@@ -34,12 +34,16 @@ public abstract class Combatant : MonoBehaviour
     }
 
     public virtual void TakeDamage(float damage)
-    {
+    {	
+Debug.Log($"{name} took {damage} damage. HP now: {currentHealth}");
         damage = Mathf.Max(0, damage);
         currentHealth -= damage;
 
         if (currentHealth <= 0)
             Die();
+
+		if (currentHealth < 100)
+			Dying();
     }
 
     protected virtual void Die()
@@ -66,4 +70,10 @@ public abstract class Combatant : MonoBehaviour
     {
         Debug.Log("Victory");
     }
+	
+	public virtual void Dying()
+{
+
+}
+	
 }

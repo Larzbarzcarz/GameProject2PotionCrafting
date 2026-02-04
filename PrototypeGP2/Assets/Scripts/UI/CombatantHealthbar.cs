@@ -30,12 +30,12 @@ public class CombatantHealthbar : MonoBehaviour
         }
     }
 
-    void Update()
+    public void Update()
     {
         UpdateUI();
     }
 
-    void UpdateUI()
+    public void UpdateUI()
     {
         if (target == null || healthSlider == null) return;
 

@@ -22,6 +22,7 @@ public class Enemy : Combatant
     public List<EnemyAction> actionPattern = new List<EnemyAction>();
     private int currentPatternIndex = 0;
     private bool isBuffed = false;
+	public Animator anim;
 
     public bool IsBuffed => isBuffed;
 

@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Alpha scenes/AlphaScene.unity
-    guid: 98af3c8db3f0c0b44a38f23bb8ae2228
+    path: Assets/Scenes/Beta/Beta Scene.unity
+    guid: d5e14b4a7caebb041aa9879973318db9
   - enabled: 1
-    path: Assets/Scenes/Alpha scenes/Newcombatscene.unity
-    guid: b9e61c10ea04be844a8e9e48cc8b5781
+    path: Assets/Scenes/Beta/BetaLevel1.unity
+    guid: c43fcd2c48c2b4b48aaceca0cbc26686
   m_configObjects:
     com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: 90fa9048a9756d942834eeb3bb053a2c, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: c482af454de8f234e8c66a4a2590a47a, type: 2}

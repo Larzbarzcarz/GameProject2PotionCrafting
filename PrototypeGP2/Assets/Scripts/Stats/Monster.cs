@@ -4,6 +4,7 @@ public class Monster : Combatant
 {
     public Animator Animator;
     bool victory = false;
+	bool dying = false;
 
     public bool Dead;
     public enum MonsterState
@@ -46,6 +47,12 @@ public class Monster : Combatant
         Animator.SetTrigger("Victory");
 
     }
+
+	public override void Dying()
+	{
+		//currentState = MonsterState.Dying;
+		//Animator.SetBool("Dying");
+}
 
 
 
