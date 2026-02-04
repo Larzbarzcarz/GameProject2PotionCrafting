@@ -12,6 +12,8 @@ public class TouchManager : MonoBehaviour
 
     private DragItem current;
 
+    //-----FMOD Integration-----
+    private MusicManager Sounds;
     void Awake()
     {
         if (!cam)
@@ -19,6 +21,9 @@ public class TouchManager : MonoBehaviour
 
         if (!cam)
             Debug.LogError("DragManager: No camera assigned");
+
+        //-----FMOD Integration-----
+        Sounds = FindFirstObjectByType<MusicManager>();
     }
 
     private void Update()
@@ -64,6 +69,12 @@ public class TouchManager : MonoBehaviour
             {
                 Debug.Log("Found DragItem: " + current.name);
                 current.BeginDrag(hit.point);
+
+                //-----FMOD Integration-----
+                Sounds.ChangeMusic(1);
+                Sounds.PlaySound(2);
+
+
             }
             else
             {

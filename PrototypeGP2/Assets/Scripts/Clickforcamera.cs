@@ -9,7 +9,9 @@ public class Clickforcamera : MonoBehaviour
     public GameObject Return;
     public GameObject Craft;
     public GameObject Materialing;
-    
+
+    //-----FMOD Integration-----
+    private MusicManager Sounds;
     void Start()
     {
 		Materialing.SetActive(false);
@@ -17,6 +19,9 @@ public class Clickforcamera : MonoBehaviour
         Return.SetActive(false);
         mainCamera.SetActive(true);
         craftingCamera.SetActive(false);
+
+        //-----FMOD Integration-----
+        Sounds = FindFirstObjectByType<MusicManager>();
     }
 
     public void SwitchToCrafting()
@@ -28,6 +33,9 @@ public class Clickforcamera : MonoBehaviour
         Debug.Log("Switching to crafting camera");
         mainCamera.SetActive(false);
         craftingCamera.SetActive(true);
+
+        //-----FMOD Integration-----
+        Sounds.PlaySound(0);
     }
 
     public void SwitchToMain()
@@ -39,10 +47,20 @@ public class Clickforcamera : MonoBehaviour
         Debug.Log("Switching to main camera");
         craftingCamera.SetActive(false);
         mainCamera.SetActive(true);
+
+        //-----FMOD Integration-----
+        Sounds.ChangeMusic(0);
+        Sounds.PlaySound(0);
     }
 
     public void SwitchToCombat()
     {
+        //-----FMOD Integration-----
+        Sounds.PlaySound(3);
+        Sounds.StopMusic();
+        //-----FMOD Integration-----
+
+
         SceneManager.LoadSceneAsync(1);
     }
 

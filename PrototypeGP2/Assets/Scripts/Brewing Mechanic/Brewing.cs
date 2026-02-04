@@ -8,7 +8,15 @@ public class Brewing : MonoBehaviour
 {
     public InventoryObject inventory;
     public List<CraftingRecipe> craftingRecipes;
-    public EventReference craftSound;
+
+    //-----FMOD Integration-----
+    private MusicManager Sounds;
+
+    private void Start()
+    {
+        //-----FMOD Integration-----
+        Sounds = FindFirstObjectByType<MusicManager>();
+    }
 
     public void Craft(CraftingRecipe recipe)
     {
@@ -21,12 +29,12 @@ public class Brewing : MonoBehaviour
         //ConsumeIngredients(recipe);
         CreateResult(recipe);
 
-        if (!craftSound.IsNull)
-        {
-            RuntimeManager.PlayOneShot(craftSound, transform.position);
-        }
-        
         Debug.Log($"Crafted: {recipe.recipeName}");
+
+        //-----FMOD Integration-----
+        Sounds.PlaySound(1);
+
+        Sounds.IntensityChange(6);
     }
 
     private bool CanCraft(CraftingRecipe recipe, out string missingItems)
