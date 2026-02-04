@@ -102,7 +102,7 @@ Material:
     - _AmbientStrength: 0.1
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
-    - _Brightness: -3.6
+    - _Brightness: -1
     - _BumpScale: 1
     - _CLOUDSENABLED: 1
     - _CastShadows: 1
@@ -111,7 +111,7 @@ Material:
     - _Cloud_Change: 0.01
     - _Cloud_Cover: -0.08
     - _Cloud_Density: 0.08
-    - _Cloud_Strength: 0.34
+    - _Cloud_Strength: 2
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
@@ -123,13 +123,13 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
-    - _MinimumDarkness: 0.2
+    - _MinimumDarkness: 0.53
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Shades: 6
+    - _Shades: 5
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
