@@ -9,7 +9,7 @@ public class ItemOnClick : MonoBehaviour
         var item = GetComponent<PickupItems>();
         if (item)
         {
-            inventory.AddItem(new Item(item.item), 1);
+            inventory.AddItem(new Item(item.item), 1, "");
             Destroy(gameObject);
 
         }
