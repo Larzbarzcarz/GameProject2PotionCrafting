@@ -1453,7 +1453,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Enemy's Turn
+  m_text: Your Turn
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1a33a0e7e5001a74c9f00ed0217d9704, type: 2}
   m_sharedMaterial: {fileID: 1034447501984583247, guid: 1a33a0e7e5001a74c9f00ed0217d9704, type: 2}
@@ -1836,7 +1836,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4409758393222399491
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2159,7 +2159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.48235294}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.6156863}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2265,14 +2265,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc9a7d6546e490f4abf78e96b67a7844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackButton: {fileID: 8857248436723165032}
-  defendButton: {fileID: 8899931303513138282}
-  inventoryButton: {fileID: 5231255134224163340}
-  heavyAttackButton: {fileID: 3143638255522397744}
-  lightAttackButton: {fileID: 5181163798859963161}
+  AttackButton: {fileID: 8857248436723165032}
+  DefendButton: {fileID: 8899931303513138282}
+  InventoryButton: {fileID: 5231255134224163340}
+  HeavyAttackButton: {fileID: 3143638255522397744}
+  LightAttackButton: {fileID: 5181163798859963161}
   actionText: {fileID: 3046423521196972930}
   _playersTurn: 1
-  showHeavyLight: 1
+  showHeavyLight: 0
   currentAction: 
 --- !u!1 &8201511033159131781
 GameObject:
@@ -2367,7 +2367,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2386445518466164878
 RectTransform:
   m_ObjectHideFlags: 0

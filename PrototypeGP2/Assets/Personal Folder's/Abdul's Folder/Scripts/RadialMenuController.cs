@@ -5,13 +5,13 @@ using TMPro; // TextMeshPro support
 public class RadialMenu : MonoBehaviour
 {
     [Header("Main Buttons")]
-    public Button attackButton;
-    public Button defendButton;
-    public Button inventoryButton;
+    public Button AttackButton;
+    public Button DefendButton;
+    public Button InventoryButton;
 
     [Header("Attack Sub Buttons")]
-    public Button heavyAttackButton;
-    public Button lightAttackButton;
+    public Button HeavyAttackButton;
+    public Button LightAttackButton;
 
     [Header("UI Text (TMP)")]
     public TMP_Text actionText; 
@@ -38,11 +38,11 @@ public class RadialMenu : MonoBehaviour
     private void Awake()
     {
         // Setup button listeners
-        attackButton.onClick.AddListener(OnAttackButton);
-        heavyAttackButton.onClick.AddListener(() => OnAttackChoice("Heavy Attack"));
-        lightAttackButton.onClick.AddListener(() => OnAttackChoice("Light Attack"));
-        defendButton.onClick.AddListener(OnDefend);
-        inventoryButton.onClick.AddListener(OnInventory);
+        AttackButton.onClick.AddListener(OnAttackButton);
+        HeavyAttackButton.onClick.AddListener(() => OnAttackChoice("Heavy Attack"));
+        LightAttackButton.onClick.AddListener(() => OnAttackChoice("Light Attack"));
+        DefendButton.onClick.AddListener(OnDefend);
+        InventoryButton.onClick.AddListener(OnInventory);
     }
 
     private void Start()
@@ -55,9 +55,9 @@ public class RadialMenu : MonoBehaviour
     private void Update()
     {
         // Enable/disable buttons based on turn
-        attackButton.interactable = playersTurn;
-        defendButton.interactable = playersTurn;
-        inventoryButton.interactable = playersTurn;
+        AttackButton.interactable = playersTurn;
+        DefendButton.interactable = playersTurn;
+        InventoryButton.interactable = playersTurn;
 
         // Example of turn-based logic placeholder
         if (playersTurn)
@@ -77,8 +77,8 @@ public class RadialMenu : MonoBehaviour
         if (!playersTurn) return;
 
         actionText.text = "Choose Attack";
-        heavyAttackButton.gameObject.SetActive(true);
-        lightAttackButton.gameObject.SetActive(true);
+        HeavyAttackButton.gameObject.SetActive(true);
+        LightAttackButton.gameObject.SetActive(true);
         showHeavyLight = true;
     }
 
@@ -132,17 +132,17 @@ public class RadialMenu : MonoBehaviour
     private void HideAttackSubButtons()
     {
         if (!runtimeStarted) return; // Only hide at runtime
-        heavyAttackButton.gameObject.SetActive(false);
-        lightAttackButton.gameObject.SetActive(false);
+        HeavyAttackButton.gameObject.SetActive(false);
+        LightAttackButton.gameObject.SetActive(false);
     }
 
     private void UpdateMenuVisuals()
     {
         // Update colors based on turn to make stuff transparent when not ur turn
         Color menuColor = playersTurn ? Color.white : new Color(0.7f, 0.7f, 0.7f, 0.5f);
-        attackButton.image.color = menuColor;
-        defendButton.image.color = menuColor;
-        inventoryButton.image.color = menuColor;
+        AttackButton.image.color = menuColor;
+        DefendButton.image.color = menuColor;
+        InventoryButton.image.color = menuColor;
 
         // Update dialogue text
         if (!playersTurn)
@@ -162,10 +162,10 @@ public class RadialMenu : MonoBehaviour
     private void OnValidate()
     {
         // Editor debug toggle for previewing buttons without goofyness
-        if (heavyAttackButton != null && lightAttackButton != null)
+        if (HeavyAttackButton != null && LightAttackButton != null)
         {
-            heavyAttackButton.gameObject.SetActive(showHeavyLight);
-            lightAttackButton.gameObject.SetActive(showHeavyLight);
+            HeavyAttackButton.gameObject.SetActive(showHeavyLight);
+            LightAttackButton.gameObject.SetActive(showHeavyLight);
         }
 
         UpdateMenuVisuals();
