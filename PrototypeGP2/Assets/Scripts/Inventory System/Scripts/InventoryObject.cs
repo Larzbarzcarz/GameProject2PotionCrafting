@@ -56,10 +56,7 @@ public class InventoryObject : ScriptableObject
         {
             var slot = Container.Items[i];
 
-            bool sameBase = slot.item.StableId == _item.StableId;
-            bool sameVariant = slot.item.VariantKey == _item.VariantKey;
-
-            if (sameBase && sameVariant)
+            if (slot.item.StableId == _item.StableId && slot.item.VariantKey == _item.VariantKey)
             {
                 slot.AddAmount(_amount);
                 return;

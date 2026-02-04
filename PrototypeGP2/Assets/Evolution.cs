@@ -6,6 +6,12 @@ public class Evolution : MonoBehaviour
     public GameObject Arms;
     
     public GameObject LeftShoulder;
+
+    public GameObject Mushroomneck;
+    public GameObject MushroomLeftShoulder;
+    public GameObject MushroomRightShoulder;
+
+    public GameObject SecoundHead;
     
     
     public void Awake()
@@ -13,6 +19,10 @@ public class Evolution : MonoBehaviour
         Spine.SetActive(false);
         Arms.SetActive(false);
         LeftShoulder.SetActive(false);
+        Mushroomneck.SetActive(false);
+        MushroomLeftShoulder.SetActive(false);
+        MushroomRightShoulder.SetActive(false);
+        SecoundHead.SetActive(false);
     }
 
     public void Evolve()
@@ -21,6 +31,10 @@ public class Evolution : MonoBehaviour
         Spine.SetActive(true);
         Arms.SetActive(true);
         LeftShoulder.SetActive(true);
+        Mushroomneck.SetActive(true);
+        MushroomLeftShoulder.SetActive(true);
+        MushroomRightShoulder.SetActive(true);
+        SecoundHead.SetActive(true);
     }
 
     public void Devolve()

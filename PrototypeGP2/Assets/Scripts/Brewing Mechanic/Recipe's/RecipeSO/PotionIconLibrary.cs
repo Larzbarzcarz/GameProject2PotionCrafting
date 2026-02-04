@@ -1,20 +1,24 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "PotionIconLibrary", menuName = "Potions/Icon Library")]
 public class PotionIconLibrary : ScriptableObject
 {
-    [Header("Potion Icons")]
-    public Sprite healIcon;
-    public Sprite damageIcon;
-    public Sprite mysteryIcon;
-
-    public Sprite GetIcon(PotionEffectType effect)
+    [Serializable]
+    public class Entry
     {
-        return effect switch
-        {
-            PotionEffectType.Heal => healIcon,
-            PotionEffectType.Damage => damageIcon,
-            PotionEffectType.Mystery => mysteryIcon
-        };
+        public PotionEffectType effect;
+        public Sprite icon;
+    }
+
+    public List<Entry> entries = new();
+
+    public Sprite GetIcon(PotionEffectType effect, Sprite fallback)
+    {
+        foreach (var e in entries)
+            if (e.effect == effect && e.icon != null)
+                return e.icon;
+        return fallback;
     }
 }
