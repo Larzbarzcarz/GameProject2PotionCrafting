@@ -48,6 +48,11 @@ public class InventoryObject : ScriptableObject
         return false;
     }
 
+    private void OnEnable()
+    {
+        if (Container == null)
+            Container = new Inventory();
+    }
     public void AddItem(Item _item, int _amount, string variantKey)
     {
         _item.VariantKey = variantKey ?? "";
@@ -76,20 +81,31 @@ public class InventoryObject : ScriptableObject
             {
                 stableId = slot.item.StableId,
                 amount = slot.amount,
-                variantKey = ""
+                variantKey = slot.item.VariantKey
             });
         }
 
         var json = JsonUtility.ToJson(data, true);
-        File.WriteAllText(Path.Combine(Application.persistentDataPath, savePath), json);
+        var fullPath = Path.Combine(Application.persistentDataPath, savePath);
+        var directory = Path.GetDirectoryName(fullPath);
+
+        if (!Directory.Exists(directory))
+            Directory.CreateDirectory(directory);
+
+        File.WriteAllText(fullPath, json);
     }
 
     [ContextMenu("Load")]
     public void Load()
     {
         var path = Path.Combine(Application.persistentDataPath, savePath);
-        if (File.Exists(path))
+        if (!File.Exists(path))
+        {
+            Debug.Log("No inventory save found. Creating new inventory.");
+            Container = new Inventory();
+            Save();
             return;
+        }
 
         var json = File.ReadAllText(path);
         var data = JsonUtility.FromJson<InventorySaveData>(json);
@@ -103,11 +119,13 @@ public class InventoryObject : ScriptableObject
                 continue;
             }
 
-            //återskapa item med stableid
+            //ï¿½terskapa item med stableid
             var itemSO = database.GetItemByStableId[slot.stableId];
             var item = new Item(itemSO);
+            item.VariantKey = slot.variantKey ?? "";
             Container.Items.Add(new InventorySlot(item, slot.amount));
         }
+        Debug.Log($"Inventory loaded. Slots: {Container.Items.Count}");
     }
 
     [ContextMenu("Clear")]

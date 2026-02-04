@@ -116,9 +116,11 @@ public class DisplayInventory : MonoBehaviour
       
         //SpawnWorldItem(slot);
 
-        slot.amount--;
-        if (slot.amount <= 0)
-            inventory.Container.Items.Remove(slot);
+
+        //Ingredients gets removed in PotionBrewingSystem -> Try Brew
+        //slot.amount--;
+        //if (slot.amount <= 0)
+        //    inventory.Container.Items.Remove(slot);
 
         Refresh();
     }

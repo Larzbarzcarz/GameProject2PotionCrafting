@@ -15,8 +15,19 @@ public class PotionRecipeSO : ScriptableObject
         public BaseKeyword baseKey;
 
         public PotionEffectType effectType;
+
+        //remember to add same variables to BrewResult.cs and PotionBrewSystem -> TryBrew();
+        [Header("Potion Effects")]
+        public bool     instant;
+        public int      turns;
+        public float    percentOfMaxHP;
+        public float    damage;
+        public float    defence;
+        public int      multiplier;
+
         [TextArea]
         public string effectDescription;
+        public Sprite icon;
     }
 
     public List<Entry> entries = new();
