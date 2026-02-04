@@ -73,6 +73,9 @@ public class Enemy : Combatant
     }
     public override void TakeDamage(float damage)
     {
+		
+		anim.SetTrigger("Damaged");
+		Debug.Log("Damaged animation playing" + transform);
         Debug.Log($"Enemy taking {damage} damage. Current Health: {currentHealth} -> {currentHealth - damage}");
         base.TakeDamage(damage);
         if (currentHealth <= 0) Die();
