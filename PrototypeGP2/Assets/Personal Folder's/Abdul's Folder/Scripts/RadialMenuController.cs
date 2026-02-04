@@ -30,7 +30,7 @@ public class RadialMenu : MonoBehaviour
     }
 
     [Header("Debug System")]
-    public bool showHeavyLight = false;   // Editor toggle
+    public bool showHeavyLight = false;   // Editor toggle for Debug
     public string currentAction = "";
 
     private bool runtimeStarted = false; // to know if we are in play mode
@@ -59,16 +59,18 @@ public class RadialMenu : MonoBehaviour
         DefendButton.interactable = playersTurn;
         InventoryButton.interactable = playersTurn;
 
-        // Example of turn-based logic placeholder
+      
         if (playersTurn)
         {
             // PUT TURN LOGIC HERE
             // Example: enable player input, highlight UI, etc.
+            // or do as you please with the turn logic if its somewhere else etc
         }
         else
         {
             // PUT TURN LOGIC HERE
             // Example: AI takes turn, disable player input, etc.
+            // or do as you please with the turn logic if its somewhere else etc
         }
     }
 
