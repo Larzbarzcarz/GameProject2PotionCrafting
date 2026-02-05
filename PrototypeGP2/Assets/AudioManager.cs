@@ -18,11 +18,16 @@ public class MusicManager : MonoBehaviour
 
     private void Start()
     {
-        BaseMusic = FMODUnity.RuntimeManager.CreateInstance(MusicLibrary[0]);
-        BreakingBad.SetActive(false);
-        BaseMusic.start();
-        currentIntensity = newIntensity;
+        if (BreakingBad != null)
+        {
+            BreakingBad.SetActive(false);
+        }
 
+        if (MusicLibrary.Length > 0) {
+        BaseMusic = FMODUnity.RuntimeManager.CreateInstance(MusicLibrary[0]);   
+        BaseMusic.start();
+        }
+        currentIntensity = newIntensity;
 
         //MusicLibrary[0] = EventReference.Find("event:/Music/Huldra");
 
@@ -31,20 +36,21 @@ public class MusicManager : MonoBehaviour
         //SFXLibary[2] = EventReference.Find("event:/SFX/Close_menu");
         //SFXLibary[3] = EventReference.Find("event:/SFX/Area_unlocked_omnious");
 
-        Debug.Log("help " + MusicLibrary[0]);
-        Debug.Log("helppppppppppppppppppppppppppppppppppppppppppppp ");
-        
+
     }
 
     public void PlaySound(int index)
     {
-        FMODUnity.RuntimeManager.PlayOneShot(SFXLibary[index], transform.position);
+        RuntimeManager.PlayOneShot(SFXLibary[index], transform.position);
     }
 
     public void StopMusic()
     {
+        if (MusicLibrary.Length > 0)
+        {
         BaseMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         BaseMusic.release();
+        }
     }
 
     public void ChangeMusic(int index)
@@ -58,17 +64,27 @@ public class MusicManager : MonoBehaviour
         if (index == 0)
         {
             IntensityChangeCoroutine();
-            Debug.Log(BreakingBad.activeSelf);
-            if (BreakingBad.activeSelf)
+            if (BreakingBad != null)
             {
-                BreakingBad.SetActive(false);
-                fadeCoroutine = StartCoroutine(InNFadeOutCoroutine(BaseMusic, 1f, 0));
+                if (BreakingBad.activeSelf)
+                {
+                    BreakingBad.SetActive(false);
+                    if (MusicLibrary.Length > 0)
+                    {
+                        fadeCoroutine = StartCoroutine(InNFadeOutCoroutine(BaseMusic, 1f, 0));
+                    }
+                }
             }
         }
         else if (index == 1)
         {
             BreakingBad.SetActive(true);
-            fadeCoroutine = StartCoroutine(InNFadeOutCoroutine(BaseMusic, 1f, 1));
+            if (MusicLibrary.Length > 0)
+            {
+                fadeCoroutine = StartCoroutine(InNFadeOutCoroutine(BaseMusic, 1f, 1));
+
+            }
+
         }
     }
 

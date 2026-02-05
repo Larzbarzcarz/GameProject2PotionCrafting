@@ -45,10 +45,13 @@ public class BattleSystem : MonoBehaviour
 
     private bool battleOver;
 
+    //-----Fmod Integration-----
+    private MusicManager Sounds;
+
     private void Start()
 
     {
-
+        Sounds = FindFirstObjectByType<MusicManager>();
         inventory.SetActive(false);
         battleOver = false;
         _ = StartBattleAsync();
@@ -150,6 +153,9 @@ public class BattleSystem : MonoBehaviour
             Debug.Log($"Monster Attack HIT for {damage} damage.");
             enemy.TakeDamage(damage);
             dialogueText.text = "The attack hit!";
+
+            //-----FMOD Integration-----
+            //----------------------------------------------------------------------------------------------
 
         }
 
@@ -276,6 +282,11 @@ public class BattleSystem : MonoBehaviour
     public void OnAttackButton()
 
     {
+        //-----FMOD Integration-----
+        Sounds.PlaySound(0);
+        //-----FMOD Integration-----
+
+
         Debug.Log("Clicking");
         Debug.Log("Attacking");
 
