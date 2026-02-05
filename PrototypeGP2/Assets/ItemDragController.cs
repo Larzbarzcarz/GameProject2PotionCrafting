@@ -25,15 +25,20 @@ public class ItemDragController : MonoBehaviour
             dragItem.EndDrag();
     }
 
-    void TryBeginDrag()
+	    void TryBeginDrag()
     {
-		Camera cam = dragItem.cam; 
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit))
-        {
-            if (hit.transform == transform)
-                dragItem.BeginDrag(hit.point);
+	
+		Camera cam = dragItem.cam;
+        if (cam !=  null)
+        { Debug.Log(cam.name);
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit hit))
+            {
+                if (hit.transform == transform)
+                    dragItem.BeginDrag(hit.point);
+            }
         }
+       
     }
 }
 

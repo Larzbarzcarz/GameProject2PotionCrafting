@@ -15,9 +15,6 @@ public class DragItem : MonoBehaviour
 
     void Awake()
     {
-        if (!cam)
-            cam = Camera.main;
-
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         rb.isKinematic = true;
@@ -27,8 +24,9 @@ public class DragItem : MonoBehaviour
 
     public void BeginDrag(Vector3 hitPoint)
     {
+        Debug.Log("Begin drag");
         dragging = true;
-
+        cam = Camera.main;
      
         dragPlane = new Plane(
             -cam.transform.forward,

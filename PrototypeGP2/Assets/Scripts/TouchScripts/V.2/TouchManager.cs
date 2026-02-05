@@ -12,17 +12,10 @@ public class TouchManager : MonoBehaviour
 
     private DragItem current;
 
-    void Awake()
-    {
-        if (!cam)
-            cam = Camera.main;
-
-        if (!cam)
-            Debug.LogError("DragManager: No camera assigned");
-    }
-
     private void Update()
     {
+        cam = Camera.main;
+        
         if (Input.touchCount == 1)
         {
             Touch touch = Input.GetTouch(0);
