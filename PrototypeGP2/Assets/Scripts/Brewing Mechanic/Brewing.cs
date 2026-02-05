@@ -2,10 +2,21 @@ using System;
 using UnityEngine;
 using System.Collections.Generic;
 
+using FMODUnity;
+
 public class Brewing : MonoBehaviour
 {
     public InventoryObject inventory;
     public List<CraftingRecipe> craftingRecipes;
+
+    //-----FMOD Integration-----
+    private MusicManager Sounds;
+
+    private void Start()
+    {
+        //-----FMOD Integration-----
+        Sounds = FindFirstObjectByType<MusicManager>();
+    }
 
     public void Craft(CraftingRecipe recipe)
     {
@@ -19,6 +30,11 @@ public class Brewing : MonoBehaviour
         CreateResult(recipe);
 
         Debug.Log($"Crafted: {recipe.recipeName}");
+
+        //-----FMOD Integration-----
+        Sounds.PlaySound(1);
+
+        Sounds.IntensityChange(6);
     }
 
     private bool CanCraft(CraftingRecipe recipe, out string missingItems)
