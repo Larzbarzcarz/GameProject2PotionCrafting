@@ -1,63 +1,41 @@
 using System.Threading.Tasks;
-
 using UnityEngine;
-
 using UnityEngine.SceneManagement;
-
 using TMPro;
 
 public enum PlayerAction
-
 {
-
     None,
-
     Attack,
-
     Defend
-
 }
 
 public class BattleSystem : MonoBehaviour
-
 {
-
     [Header("Combatants")]
     public Combatant monster;
-
     public Combatant enemy;
 
-
-
     public TextMeshProUGUI dialogueText;
-
     public GameObject inventory;
 
     [Header("Costs")]
-
     [SerializeField] private int attackCost = 2;
-
     [SerializeField] private int defendCost = 1;
 
     private PlayerAction selectedAction = PlayerAction.None;
-
     private bool isDefending;
-
     private bool battleOver;
 
     private void Start()
-
     {
-
         inventory.SetActive(false);
         battleOver = false;
         _ = StartBattleAsync();
-
     }
 
     private void Update()
     {
-        // Debug: F10 to Instant Win
         if (Input.GetKeyDown(KeyCode.F10))
         {
             Debug.Log("DEBUG: F10 Key Pressed in BattleSystem");
@@ -66,8 +44,6 @@ public class BattleSystem : MonoBehaviour
                 Debug.Log($"DEBUG: Dealing massive damage to {enemy.name}");
                 enemy.TakeDamage(999999f);
 
-                // If we are currently waiting for player input, force a "Defend" action 
-                // to break the await loop and let the system check the IsDead condition.
                 if (selectedAction == PlayerAction.None)
                 {
                     Debug.Log("DEBUG: Forcing 'Defend' action to advance turn.");
@@ -82,39 +58,25 @@ public class BattleSystem : MonoBehaviour
     }
 
     private async Task StartBattleAsync()
-
     {
-
-
-
         await Wait(1000);
-
         await DoBattleLoop();
-
         await EndBattle();
-
     }
 
-
-
     private async Task DoBattleLoop()
-
     {
         Debug.Log("--- Battle Loop Started ---");
         while (!battleOver)
-
         {
             Debug.Log("--- Monster Turn ---");
             await MonsterTurn();
 
             if (enemy.IsDead)
-
             {
                 Debug.Log("Enemy detected as dead. Ending loop.");
                 battleOver = true;
-
                 return;
-
             }
 
             Debug.Log("--- Enemy Turn ---");
@@ -124,17 +86,12 @@ public class BattleSystem : MonoBehaviour
             {
                 Debug.Log("Monster detected as dead. Ending loop.");
                 battleOver = true;
-
                 return;
-
             }
-
         }
-
     }
 
     private async Task MonsterTurn()
-
     {
         Debug.Log("Waiting for player input...");
         dialogueText.text = "Choose an action";
@@ -144,29 +101,19 @@ public class BattleSystem : MonoBehaviour
         await WaitUntilActionSelected();
 
         switch (selectedAction)
-
         {
-
             case PlayerAction.Attack:
-
                 await MonsterAttack();
-
                 break;
 
             case PlayerAction.Defend:
-
                 await MonsterDefend();
-
                 break;
-
         }
-
     }
 
     private async Task MonsterAttack()
-
     {
-
         int hitChance = Random.Range(0, 100);
         Debug.Log($"Monster Attack rolled: {hitChance} (Need < 80)");
 
@@ -176,50 +123,34 @@ public class BattleSystem : MonoBehaviour
             Debug.Log($"Monster Attack HIT for {damage} damage.");
             enemy.TakeDamage(damage);
             dialogueText.text = "The attack hit!";
-
         }
-
         else
-
         {
             Debug.Log("Monster Attack MISSED.");
             dialogueText.text = "You missed!";
-
         }
 
         await Wait(1000);
-
     }
 
     private async Task MonsterDefend()
-
     {
-
         int defendChance = Random.Range(0, 100);
 
         if (defendChance < 70)
-
         {
-
             isDefending = true;
-
             dialogueText.text = "You brace for impact";
-
         }
-
         else
-
         {
-
             dialogueText.text = "You failed to defend!";
             Enemy enemyStats = enemy as Enemy;
             float damage = enemyStats != null ? enemyStats.CalculateDamage(EnemyAction.NormalAttack) : 2f;
             monster.TakeDamage(damage);
-
         }
 
         await Wait(1000);
-
     }
 
     private async Task EnemyTurn()
@@ -292,7 +223,6 @@ public class BattleSystem : MonoBehaviour
             {
                 Debug.Log("Battle won, but EncounterManager is null or run is not active.");
                 dialogueText.text = "Victory! (Not in a run)";
-                // Enable a button to return?
             }
         }
         else
@@ -316,7 +246,6 @@ public class BattleSystem : MonoBehaviour
     #region UI
 
     public void OnAttackButton()
-
     {
         Debug.Log("Clicking");
         Debug.Log("Attacking");
@@ -324,40 +253,27 @@ public class BattleSystem : MonoBehaviour
         if (selectedAction != PlayerAction.None) return;
 
         if (!monster.TrySpendStamina(attackCost))
-
         {
-
             dialogueText.text = "Not enough stamina!";
-
             return;
-
         }
 
         selectedAction = PlayerAction.Attack;
-
     }
 
     public void OnDefendButton()
-
     {
-
         if (selectedAction != PlayerAction.None) return;
 
         if (!monster.TrySpendStamina(defendCost))
-
         {
-
             dialogueText.text = "Not enough stamina!";
-
             return;
-
         }
 
         selectedAction = PlayerAction.Defend;
-
     }
 
-    // Aliases for scene compatibility
     public void DefenseButton() => OnDefendButton();
     public void Runnaway() => RunAway();
 
@@ -371,7 +287,6 @@ public class BattleSystem : MonoBehaviour
         if (inventory != null) inventory.SetActive(false);
     }
 
-
     #endregion
 
     #region Helpers
@@ -379,27 +294,17 @@ public class BattleSystem : MonoBehaviour
     private async Task Wait(int ms) => await Task.Delay(ms);
 
     private async Task WaitUntilActionSelected()
-
     {
-
         while (selectedAction == PlayerAction.None)
-
         {
-
             await Task.Yield();
-
         }
-
     }
 
     public void RunAway()
-
     {
-
         SceneManager.LoadSceneAsync(0);
-
     }
 
     #endregion
-
 }

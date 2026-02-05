@@ -31,13 +31,11 @@ public class PotionSelectionUI : MonoBehaviour
 
     public void RefreshUI()
     {
-        // Clear children
         foreach (Transform child in potionContainer)
         {
             Destroy(child.gameObject);
         }
 
-        // Filter potions from inventory
         var potionsInInventory = playerInventory.Container.Items
             .Where(slot =>
             {
@@ -57,7 +55,6 @@ public class PotionSelectionUI : MonoBehaviour
             var btn = btnObj.GetComponent<Button>();
             btn.onClick.AddListener(() => TogglePotion(slot));
 
-            // Highlight if selected
             if (selectedPotions.Any(s => s.item.StableId == slot.item.StableId && s.item.VariantKey == slot.item.VariantKey))
             {
                 btn.image.color = Color.green;
@@ -65,12 +62,11 @@ public class PotionSelectionUI : MonoBehaviour
         }
 
         selectionCountText.text = $"Selected: {selectedPotions.Sum(s => s.amount)} / {MAX_POTIONS}";
-        startButton.interactable = true; // User requested to test connection even without potions
+        startButton.interactable = true;
     }
 
     private void Update()
     {
-        // Debug: F1 to add a random potion
         if (Input.GetKeyDown(KeyCode.F1))
         {
             Debug.Log("DEBUG: F1 Key Pressed in PotionSelectionUI");
@@ -118,8 +114,6 @@ public class PotionSelectionUI : MonoBehaviour
         {
             if (selectedPotions.Sum(s => s.amount) < MAX_POTIONS)
             {
-                // For simplicity, we take 1 unit of this potion. 
-                // In a more complex UI, we'd have a counter.
                 selectedPotions.Add(new InventorySlot(slot.item, 1));
             }
         }
@@ -130,7 +124,6 @@ public class PotionSelectionUI : MonoBehaviour
     {
         if (EncounterManager.Instance != null)
         {
-            // Auto-fill if empty
             if (selectedPotions.Count == 0)
             {
                 Debug.Log("Auto-selecting up to 5 random potions from inventory...");
@@ -144,7 +137,6 @@ public class PotionSelectionUI : MonoBehaviour
                         return false;
                     }).ToList();
 
-                // Shuffle or just take top 5
                 int countToTake = Mathf.Min(5, potionsInInventory.Count);
                 for (int i = 0; i < countToTake; i++)
                 {

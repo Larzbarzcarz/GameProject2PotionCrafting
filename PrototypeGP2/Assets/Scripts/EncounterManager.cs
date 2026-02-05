@@ -8,7 +8,7 @@ public class EncounterManager : MonoBehaviour
     public static EncounterManager Instance { get; private set; }
 
     [Header("Run Config")]
-    public string LabSceneName = "AlphaTouch";
+    public string LabSceneName = "Beta Scene";
     public string CombatSceneName = "BetaLevel1";
     public InventoryObject playerInventory;
     public ItemDatabaseObject database;
@@ -48,7 +48,7 @@ public class EncounterManager : MonoBehaviour
         if (pendingTreasureDisplay && scene.name == LabSceneName)
         {
             Debug.Log("Back in Lab with pending treasure. Showing UI...");
-            // Use Resources.FindObjectsOfTypeAll as UI might be inactive
+
             TreasureRoomUI treasureUI = null;
             var results = Resources.FindObjectsOfTypeAll<TreasureRoomUI>();
             if (results.Length > 0) treasureUI = results[0];
@@ -57,9 +57,6 @@ public class EncounterManager : MonoBehaviour
             {
                 treasureUI.ShowTreasure(sessionLoot);
                 pendingTreasureDisplay = false;
-
-                // Finalize loot addition here after UI is mocked? 
-                // No, loot was added in EndRun. UI is just visual confirmation now.
             }
             else
             {
@@ -76,7 +73,6 @@ public class EncounterManager : MonoBehaviour
         sessionLoot.Clear();
         carriedPotions = new List<InventorySlot>(selectedPotions);
 
-        // Remove potions from player inventory
         foreach (var slot in carriedPotions)
         {
             playerInventory.RemoveItem(slot.item.StableId, slot.amount);
@@ -109,7 +105,7 @@ public class EncounterManager : MonoBehaviour
             float roll = Random.value;
             if (roll < 0.2f)
             {
-                currentEncounterIndex = 4; // Treasure
+                currentEncounterIndex = 4;
                 LoadTreasureRoom();
             }
             else
@@ -120,7 +116,7 @@ public class EncounterManager : MonoBehaviour
         }
         else if (currentEncounterIndex == 3)
         {
-            currentEncounterIndex = 4; // Treasure
+            currentEncounterIndex = 4;
             LoadTreasureRoom();
         }
     }
@@ -157,15 +153,13 @@ public class EncounterManager : MonoBehaviour
     {
         if (won)
         {
-            pendingTreasureDisplay = true; // Flag to show UI in Lab
+            pendingTreasureDisplay = true;
 
-            // Add session loot to player inventory
             foreach (var item in sessionLoot)
             {
                 playerInventory.AddItem(item, 1, "");
             }
 
-            // Add remaining carried potions back
             foreach (var slot in carriedPotions)
             {
                 if (slot.amount > 0)
@@ -175,14 +169,21 @@ public class EncounterManager : MonoBehaviour
         else
         {
             pendingTreasureDisplay = false;
-            // If lost, loot and potions are gone
             sessionLoot.Clear();
             carriedPotions.Clear();
         }
 
         isRunActive = false;
         playerInventory.Save();
-        Debug.Log($"Run ended. Returning to lab: {LabSceneName}");
-        SceneManager.LoadScene(LabSceneName);
+        Debug.Log($"Run ended. Attempting to load Lab Scene: '{LabSceneName}'");
+
+        if (Application.CanStreamedLevelBeLoaded(LabSceneName))
+        {
+            SceneManager.LoadScene(LabSceneName);
+        }
+        else
+        {
+            Debug.LogError($"CRITICAL ERROR: Scene '{LabSceneName}' cannot be loaded! Check Build Settings (File > Build Profiles).");
+        }
     }
 }

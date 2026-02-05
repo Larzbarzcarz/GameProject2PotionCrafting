@@ -87,11 +87,18 @@ public class InventoryObject : ScriptableObject
 
         var json = JsonUtility.ToJson(data, true);
 
-        // Remove leading slash/backslash to ensure Path.Combine doesn't treat it as absolute
         string sanitizedPath = savePath.TrimStart('/', '\\');
         if (string.IsNullOrEmpty(sanitizedPath)) sanitizedPath = "inventory.save";
 
-        File.WriteAllText(Path.Combine(Application.persistentDataPath, sanitizedPath), json);
+        string fullPath = Path.Combine(Application.persistentDataPath, sanitizedPath);
+
+        string directory = Path.GetDirectoryName(fullPath);
+        if (!string.IsNullOrEmpty(directory) && !Directory.Exists(directory))
+        {
+            Directory.CreateDirectory(directory);
+        }
+
+        File.WriteAllText(fullPath, json);
     }
 
     [ContextMenu("Load")]
