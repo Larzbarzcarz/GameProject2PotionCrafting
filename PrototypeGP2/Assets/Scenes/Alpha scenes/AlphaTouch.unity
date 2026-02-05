@@ -4276,7 +4276,7 @@ MonoBehaviour:
       Data2: 1257957129
       Data3: -608489302
       Data4: 331732578
-    Path: event:/SoundEffects/potion-brew
+    Path: event:/potion-brew
   - Guid:
       Data1: 604618069
       Data2: 1297138813
@@ -6779,3 +6779,4 @@ SceneRoots:
   - {fileID: 1086653699}
   - {fileID: 180569599}
   - {fileID: 1729398237}
+  - {fileID: 1278847438}
