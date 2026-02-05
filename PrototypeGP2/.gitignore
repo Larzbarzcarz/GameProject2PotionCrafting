@@ -80,3 +80,7 @@ FMOD/.unsaved/
 FMOD/*.user
 FMOD/.user/
 Assets/Plugins/FMOD/Cache/
+
+# TextMeshPro Generated Assets (Problematic SDF Font)
+HomeVideo-Regular SDF.asset
+HomeVideo-Regular SDF.asset.meta

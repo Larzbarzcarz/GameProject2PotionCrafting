@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class PickupItems : MonoBehaviour
 {
+    public string stableId;
     public ItemScriptableObject item;
 }
