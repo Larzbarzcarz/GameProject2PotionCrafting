@@ -1,4 +1,4 @@
-using NUnit.Framework;
+ï»¿using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -81,14 +81,22 @@ public class InventoryObject : ScriptableObject
         }
 
         var json = JsonUtility.ToJson(data, true);
-        File.WriteAllText(Path.Combine(Application.persistentDataPath, savePath), json);
+        
+        // Remove leading slash/backslash to ensure Path.Combine doesn't treat it as absolute
+        string sanitizedPath = savePath.TrimStart('/', '\\');
+        if (string.IsNullOrEmpty(sanitizedPath)) sanitizedPath = "inventory.save";
+        
+        File.WriteAllText(Path.Combine(Application.persistentDataPath, sanitizedPath), json);
     }
 
     [ContextMenu("Load")]
     public void Load()
     {
-        var path = Path.Combine(Application.persistentDataPath, savePath);
-        if (File.Exists(path))
+        string sanitizedPath = savePath.TrimStart('/', '\\');
+        if (string.IsNullOrEmpty(sanitizedPath)) sanitizedPath = "inventory.save";
+
+        var path = Path.Combine(Application.persistentDataPath, sanitizedPath);
+        if (!File.Exists(path))
             return;
 
         var json = File.ReadAllText(path);
@@ -103,7 +111,7 @@ public class InventoryObject : ScriptableObject
                 continue;
             }
 
-            //återskapa item med stableid
+            //?terskapa item med stableid
             var itemSO = database.GetItemByStableId[slot.stableId];
             var item = new Item(itemSO);
             Container.Items.Add(new InventorySlot(item, slot.amount));

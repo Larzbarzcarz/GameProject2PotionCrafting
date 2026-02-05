@@ -41,9 +41,18 @@ public class Clickforcamera : MonoBehaviour
         mainCamera.SetActive(true);
     }
 
+    public PotionSelectionUI potionSelectionUI;
+
     public void SwitchToCombat()
     {
-        SceneManager.LoadSceneAsync(1);
+        if (potionSelectionUI != null)
+        {
+            potionSelectionUI.OpenSelection();
+        }
+        else
+        {
+            SceneManager.LoadSceneAsync(1);
+        }
     }
 
     

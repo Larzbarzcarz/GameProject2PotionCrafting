@@ -55,6 +55,32 @@ public class BattleSystem : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        // Debug: F10 to Instant Win
+        if (Input.GetKeyDown(KeyCode.F10))
+        {
+            Debug.Log("DEBUG: F10 Key Pressed in BattleSystem");
+            if (enemy != null)
+            {
+                Debug.Log($"DEBUG: Dealing massive damage to {enemy.name}");
+                enemy.TakeDamage(999999f);
+
+                // If we are currently waiting for player input, force a "Defend" action 
+                // to break the await loop and let the system check the IsDead condition.
+                if (selectedAction == PlayerAction.None)
+                {
+                    Debug.Log("DEBUG: Forcing 'Defend' action to advance turn.");
+                    selectedAction = PlayerAction.Defend;
+                }
+            }
+            else
+            {
+                Debug.LogWarning("DEBUG: No enemy found to attack!");
+            }
+        }
+    }
+
     private async Task StartBattleAsync()
 
     {
@@ -65,7 +91,7 @@ public class BattleSystem : MonoBehaviour
 
         await DoBattleLoop();
 
-        EndBattle();
+        await EndBattle();
 
     }
 
@@ -241,7 +267,7 @@ public class BattleSystem : MonoBehaviour
                     isDefending = false;
                     await Wait(1000);
                 }
-                
+
                 monster.TakeDamage(damage);
                 break;
         }
@@ -249,26 +275,42 @@ public class BattleSystem : MonoBehaviour
         await Wait(1000);
     }
 
-    private void EndBattle()
-
+    private async Task EndBattle()
     {
-
         if (enemy.IsDead)
-
         {
-
             dialogueText.text = "You Win!";
             monster.Victory();
+
+            if (EncounterManager.Instance != null && EncounterManager.Instance.isRunActive)
+            {
+                Debug.Log("Reporting victory to EncounterManager...");
+                await Wait(2000);
+                EncounterManager.Instance.OnBattleResult(true);
+            }
+            else
+            {
+                Debug.Log("Battle won, but EncounterManager is null or run is not active.");
+                dialogueText.text = "Victory! (Not in a run)";
+                // Enable a button to return?
+            }
         }
-
         else
-
         {
-
             dialogueText.text = "You Lose!";
 
+            if (EncounterManager.Instance != null && EncounterManager.Instance.isRunActive)
+            {
+                Debug.Log("Reporting defeat to EncounterManager...");
+                await Wait(2000);
+                EncounterManager.Instance.OnBattleResult(false);
+            }
+            else
+            {
+                Debug.Log("Battle lost, but EncounterManager is null or run is not active.");
+                dialogueText.text = "Game Over (Not in a run)";
+            }
         }
-
     }
 
     #region UI
