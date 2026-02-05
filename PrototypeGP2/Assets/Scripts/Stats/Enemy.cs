@@ -62,7 +62,7 @@ public class Enemy : Combatant
             isBuffed = false;
         }
 
-        float variance = Random.Range(0.9f, 1.1f);
+        float variance = UnityEngine.Random.Range(0.9f, 1.1f);
 
         return baseDamage * multiplier * variance;
     }
@@ -79,6 +79,15 @@ public class Enemy : Combatant
         Debug.Log($"Enemy taking {damage} damage. Current Health: {currentHealth} -> {currentHealth - damage}");
         base.TakeDamage(damage);
         if (currentHealth <= 0) Die();
+    }
+
+    public override void ResetHealth()
+    {
+        base.ResetHealth();
+        currentPatternIndex = 0;
+        isBuffed = false;
+        currentState = EnemyState.Alive;
+        Debug.Log($"[Enemy] Reset for new encounter. Pattern index: 0, Buffed: false");
     }
 
 }

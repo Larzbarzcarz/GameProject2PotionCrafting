@@ -16,12 +16,13 @@ public class CombatantHealthbar : MonoBehaviour
     {
         if (target == null)
         {
-            Debug.LogError("CombatantHealthbar: No target assigned!");
             target = GetComponentInParent<Combatant>();
-            return;
         }
 
-        healthSlider.maxValue = target.MaxHealth;
+        if (target != null && healthSlider != null)
+        {
+            healthSlider.maxValue = target.MaxHealth;
+        }
         UpdateUI();
     }
 
@@ -32,8 +33,19 @@ public class CombatantHealthbar : MonoBehaviour
 
     public void UpdateUI()
     {
+        if (target == null || healthSlider == null) return;
+        
+        if (healthSlider.maxValue != target.MaxHealth)
+        {
+            healthSlider.maxValue = target.MaxHealth;
+        }
+
         healthSlider.value = target.CurrentHealth;
-        healthBarText.text = $"{target.CurrentHealth} / {target.MaxHealth}";
+        
+        if (healthBarText != null)
+        {
+            healthBarText.text = $"{Mathf.Max(0, target.CurrentHealth):0} / {target.MaxHealth:0}";
+        }
     }
     public void Bind(Combatant combatant)
     {

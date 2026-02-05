@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 
 using UnityEngine;
@@ -44,6 +45,9 @@ public class BattleSystem : MonoBehaviour
     private bool isDefending;
 
     private bool battleOver;
+
+    public event Action OnBattleWon;
+    public event Action OnBattleLost;
 
     private void Start()
 
@@ -141,7 +145,7 @@ public class BattleSystem : MonoBehaviour
 
     {
 
-        int hitChance = Random.Range(0, 100);
+        int hitChance = UnityEngine.Random.Range(0, 100);
         Debug.Log($"Monster Attack rolled: {hitChance} (Need < 80)");
 
         if (hitChance < 80)
@@ -169,7 +173,7 @@ public class BattleSystem : MonoBehaviour
 
     {
 
-        int defendChance = Random.Range(0, 100);
+        int defendChance = UnityEngine.Random.Range(0, 100);
 
         if (defendChance < 70)
 
@@ -259,6 +263,7 @@ public class BattleSystem : MonoBehaviour
 
             dialogueText.text = "You Win!";
             monster.Victory();
+            OnBattleWon?.Invoke();
         }
 
         else
@@ -266,6 +271,7 @@ public class BattleSystem : MonoBehaviour
         {
 
             dialogueText.text = "You Lose!";
+            OnBattleLost?.Invoke();
 
         }
 
@@ -315,7 +321,6 @@ public class BattleSystem : MonoBehaviour
 
     }
 
-    // Aliases for scene compatibility
     public void DefenseButton() => OnDefendButton();
     public void Runnaway() => RunAway();
 
@@ -354,8 +359,33 @@ public class BattleSystem : MonoBehaviour
 
     {
 
+        ExpeditionData.FailExpedition();
         SceneManager.LoadSceneAsync(0);
 
+    }
+
+    public void ResetForNewEncounter()
+    {
+        Debug.Log("[BattleSystem] Resetting for new encounter...");
+        
+        // Reset battle state
+        battleOver = false;
+        selectedAction = PlayerAction.None;
+        isDefending = false;
+        
+        // Reset enemy health
+        if (enemy != null)
+        {
+            Enemy enemyComponent = enemy as Enemy;
+            if (enemyComponent != null)
+            {
+                enemyComponent.ResetHealth();
+            }
+        }
+        
+        // Start new battle loop
+        dialogueText.text = $"Encounter {ExpeditionData.CurrentEncounter}!";
+        _ = StartBattleAsync();
     }
 
     #endregion

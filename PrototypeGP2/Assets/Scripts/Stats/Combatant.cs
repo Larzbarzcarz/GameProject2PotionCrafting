@@ -46,6 +46,12 @@ Debug.Log($"{name} took {damage} damage. HP now: {currentHealth}");
 			Dying();
     }
 
+    public virtual void ResetHealth()
+    {
+        currentHealth = maxHealth;
+        Debug.Log($"{name} health reset to {maxHealth}");
+    }
+
     protected virtual void Die()
     {
         Debug.Log($"{name} died");

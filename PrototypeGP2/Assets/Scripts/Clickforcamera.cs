@@ -43,7 +43,16 @@ public class Clickforcamera : MonoBehaviour
 
     public void SwitchToCombat()
     {
-        SceneManager.LoadSceneAsync(1);
+        var potionSelection = FindObjectOfType<ExpeditionPotionSelection>(true);
+        if (potionSelection != null)
+        {
+            potionSelection.OpenSelection();
+        }
+        else
+        {
+            Debug.LogWarning("[Clickforcamera] No ExpeditionPotionSelection found! Loading combat directly.");
+            SceneManager.LoadSceneAsync(1);
+        }
     }
 
     
