@@ -1,29 +1,24 @@
 using FMODUnity;
 using System.Collections;
-using Unity.VisualScripting;
-using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
-    [SerializeField] private EventReference[] MusicLibrary;
-    [SerializeField] private EventReference[] SFXLibary;
-    [SerializeField] private GameObject BreakingBad;
+    public EventReference[] MusicLibrary;
+    public EventReference[] SFXLibary;
+    private Coroutine fadeCoroutine;
+    public GameObject BreakingBad;
+
     FMOD.Studio.EventInstance BaseMusic;
-    //FMOD.Studio.EventInstance BrewingMusic;
+
     private float currentIntensity = 0;
     public float newIntensity;
-    private Coroutine fadeCoroutine;
+    
 
 
     private void Start()
     {
-        BaseMusic = FMODUnity.RuntimeManager.CreateInstance(MusicLibrary[0]);
-        BreakingBad.SetActive(false);
-        BaseMusic.start();
-        currentIntensity = newIntensity;
-
-
+        //-----------------------I am trying to automate the fmod sound reference, but it is not working, so I will just assign them in the inspector for now.-----------------------//
         //MusicLibrary[0] = EventReference.Find("event:/Music/Huldra");
 
         //SFXLibary[0] = EventReference.Find("event:/SFX/Button_press_1_Confirm_Back");
@@ -31,14 +26,19 @@ public class MusicManager : MonoBehaviour
         //SFXLibary[2] = EventReference.Find("event:/SFX/Close_menu");
         //SFXLibary[3] = EventReference.Find("event:/SFX/Area_unlocked_omnious");
 
-        Debug.Log("help " + MusicLibrary[0]);
-        Debug.Log("helppppppppppppppppppppppppppppppppppppppppppppp ");
-        
+
+        BreakingBad = GameObject.Find("BrewMusic");
+        BreakingBad.SetActive(false);
+        BaseMusic = RuntimeManager.CreateInstance(MusicLibrary[0]);
+        BaseMusic.start();
+        currentIntensity = newIntensity;
+        BaseMusic.setParameterByName("Intensity", currentIntensity);
+
     }
 
     public void PlaySound(int index)
     {
-        FMODUnity.RuntimeManager.PlayOneShot(SFXLibary[index], transform.position);
+        RuntimeManager.PlayOneShot(SFXLibary[index], transform.position);
     }
 
     public void StopMusic()
@@ -62,13 +62,13 @@ public class MusicManager : MonoBehaviour
             if (BreakingBad.activeSelf)
             {
                 BreakingBad.SetActive(false);
-                fadeCoroutine = StartCoroutine(InNFadeOutCoroutine(BaseMusic, 1f, 0));
+                BaseMusic.setPaused(false); ;
             }
         }
         else if (index == 1)
         {
             BreakingBad.SetActive(true);
-            fadeCoroutine = StartCoroutine(InNFadeOutCoroutine(BaseMusic, 1f, 1));
+            BaseMusic.setPaused(true);
         }
     }
 
@@ -90,43 +90,4 @@ public class MusicManager : MonoBehaviour
     }
 
     #endregion Intensity
-
-    #region FadeInOut
-    private IEnumerator InNFadeOutCoroutine(FMOD.Studio.EventInstance music, float duration, int InOut)
-    {
-        if (InOut == 1) // Fade Out
-        {
-            float elapsed = 0f;
-
-            while (elapsed < duration)
-            {
-                elapsed += Time.deltaTime;
-                float newVolume = Mathf.Lerp(1f, 0f, elapsed / duration);
-                music.setVolume(newVolume);
-                yield return null;
-            }
-
-            music.setVolume(0f);
-            music.setPaused(true);
-        }
-        else // Fade In
-        {
-            StartCoroutine(IntensityChangeCoroutine());
-            music.setPaused(false);
-            float elapsed = 0f;
-
-            while (elapsed < duration)
-            {
-                elapsed += Time.deltaTime;
-                float newVolume = Mathf.Lerp(0f, 1f, elapsed / duration);
-                music.setVolume(newVolume);
-                yield return null;
-            }
-            
-            music.setVolume(1f);
-           
-        }
-        #endregion FadeInOut
-
-    }
 }
