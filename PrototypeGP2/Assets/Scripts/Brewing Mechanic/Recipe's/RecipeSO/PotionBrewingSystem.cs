@@ -72,7 +72,53 @@ public class PotionBrewingSystem : MonoBehaviour
         {
             var v = variantRegistry.GetOrCreate(brewedVariantKey);
             v.effect = effectType;
-            v.icon = iconLibrary.GetIcon(effectType, potionBaseSO.itemSprite);
+
+            Sprite chosen = potionBaseSO.itemSprite;
+
+            if (found && entry.icon != null)
+                chosen = entry.icon;
+            else if (iconLibrary != null)
+                chosen = iconLibrary.GetIcon(effectType, chosen);
+
+
+
+            v.icon = chosen;
+
+            Debug.Log($"[BREW] Icon chosen = {(chosen != null ? chosen.name : "NULL")}");
+
+            if (found)
+            {
+                string playerName = nameRegistry != null
+                        ? nameRegistry.GetName(brewedVariantKey, $"{mainKey} Potion")
+                        : $"{mainKey} Potion";
+
+                Debug.Log($"[BREW] Brewed '{playerName}' ({entry.effectType})");
+                Debug.Log($"[BREW] Main={mainKey}, Base={baseKey}");
+                Debug.Log($"[BREW] Effect: {entry.effectDescription}");
+                Debug.Log($"[BREW] Stats: instant={entry.instant}, " +
+                                        $"pctMaxHP={entry.percentOfMaxHP:P0}, " +
+                                        $"turns={entry.turns}, damage={entry.damage}, " +
+                                        $"defence={entry.defence}, " +
+                                        $"multiplier={entry.multiplier}");
+
+                v.instant           = entry.instant;
+                v.turns             = entry.turns;
+                v.percentOfMaxHP    = entry.percentOfMaxHP;
+                v.damage            = entry.damage;
+                v.defence           = entry.defence;
+                v.multiplier        = entry.multiplier;
+            }
+            else
+            {
+                Debug.Log($"[BREW] Brewed Failed Potion. Main={mainKey}, Base={baseKey}. [BREW] Failed potion has no effect.");
+
+                v.instant = false;
+                v.turns = 0;
+                v.percentOfMaxHP = 0;
+                v.damage = 0;
+                v.defence = 0;
+                v.multiplier = 0;
+            }
         }
 
 
@@ -84,24 +130,7 @@ public class PotionBrewingSystem : MonoBehaviour
 
         //sets default name on potion to be main ingredient + Potion
         if (nameRegistry != null && !nameRegistry.HasName(brewedVariantKey))
-        {
             nameRegistry.SetName(brewedVariantKey, $"{mainKey} Potion");
-        }
-
-        if (found)
-        {
-            string playerName = nameRegistry != null
-                ? nameRegistry.GetName(brewedVariantKey, entry.effectType.ToString())
-                : entry.effectType.ToString();
-
-            Debug.Log($"[BREW] Brewed '{playerName}' ({entry.effectType})");
-            Debug.Log($"[BREW] Main={mainKey}, Base={baseKey}");
-            Debug.Log($"[BREW] Effect: {entry.effectDescription}");
-        }
-        else
-        {
-            Debug.Log($"[BREW] Brewed Failed Potion. Main={mainKey}, Base={baseKey}");
-        }
 
         Debug.Log("=== BREW END ===");
 

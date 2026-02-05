@@ -28,7 +28,7 @@ public class InventoryObject : ScriptableObject
 
     public bool RemoveItem(string stableId, int amount)
     {
-        for(int i = 0;i < Container.Items.Count; i++)
+        for (int i = 0; i < Container.Items.Count; i++)
         {
             var slot = Container.Items[i];
 
@@ -48,6 +48,11 @@ public class InventoryObject : ScriptableObject
         return false;
     }
 
+    private void OnEnable()
+    {
+        if (Container == null)
+            Container = new Inventory();
+    }
     public void AddItem(Item _item, int _amount, string variantKey)
     {
         _item.VariantKey = variantKey ?? "";
@@ -76,16 +81,16 @@ public class InventoryObject : ScriptableObject
             {
                 stableId = slot.item.StableId,
                 amount = slot.amount,
-                variantKey = ""
+                variantKey = slot.item.VariantKey
             });
         }
 
         var json = JsonUtility.ToJson(data, true);
-        
+
         // Remove leading slash/backslash to ensure Path.Combine doesn't treat it as absolute
         string sanitizedPath = savePath.TrimStart('/', '\\');
         if (string.IsNullOrEmpty(sanitizedPath)) sanitizedPath = "inventory.save";
-        
+
         File.WriteAllText(Path.Combine(Application.persistentDataPath, sanitizedPath), json);
     }
 
@@ -111,11 +116,12 @@ public class InventoryObject : ScriptableObject
                 continue;
             }
 
-            //?terskapa item med stableid
             var itemSO = database.GetItemByStableId[slot.stableId];
             var item = new Item(itemSO);
+            item.VariantKey = slot.variantKey ?? "";
             Container.Items.Add(new InventorySlot(item, slot.amount));
         }
+        Debug.Log($"Inventory loaded. Slots: {Container.Items.Count}");
     }
 
     [ContextMenu("Clear")]
@@ -137,7 +143,7 @@ public class InventorySlot
     public Item item;
     public InventorySlot(Item _item, int _amount)
     {
-        item   = _item;
+        item = _item;
         amount = _amount;
     }
 
