@@ -31,7 +31,7 @@ public class CombatantHealthbar : MonoBehaviour
         UpdateUI();
     }
 
-    public void UpdateUI()
+    void UpdateUI()
     {
         if (target == null || healthSlider == null) return;
         
@@ -47,10 +47,14 @@ public class CombatantHealthbar : MonoBehaviour
             healthBarText.text = $"{Mathf.Max(0, target.CurrentHealth):0} / {target.MaxHealth:0}";
         }
     }
+
     public void Bind(Combatant combatant)
     {
         target = combatant;
-        healthSlider.maxValue = target.MaxHealth;
-        UpdateUI();
+        if (target != null && healthSlider != null)
+        {
+            healthSlider.maxValue = target.MaxHealth;
+            UpdateUI();
+        }
     }
 }

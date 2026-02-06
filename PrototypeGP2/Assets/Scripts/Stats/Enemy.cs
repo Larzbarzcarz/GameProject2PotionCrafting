@@ -1,11 +1,4 @@
-using System.Collections.Generic;
 using UnityEngine;
-
-public enum EnemyAction
-{
-    NormalAttack,
-    Buff
-}
 
 public class Enemy : Combatant
 {
@@ -15,17 +8,9 @@ public class Enemy : Combatant
         Dying,
         Dead
     }
-
+    
     public EnemyState currentState = EnemyState.Alive;
-
-    [Header("Behavior")]
-    public List<EnemyAction> actionPattern = new List<EnemyAction>();
-    private int currentPatternIndex = 0;
-    private bool isBuffed = false;
-	public Animator anim;
-
-    public bool IsBuffed => isBuffed;
-
+    
     protected override void Die()
     {
         currentState = EnemyState.Dead;
@@ -69,16 +54,11 @@ public class Enemy : Combatant
 
     public override float DealDamage()
     {
-        return CalculateDamage(EnemyAction.NormalAttack);
+        return strength; 
     }
     public override void TakeDamage(float damage)
     {
-		
-		anim.SetTrigger("Damaged");
-		Debug.Log("Damaged animation playing" + transform);
-        Debug.Log($"Enemy taking {damage} damage. Current Health: {currentHealth} -> {currentHealth - damage}");
-        base.TakeDamage(damage);
-        if (currentHealth <= 0) Die();
+      
     }
 
     public override void ResetHealth()
