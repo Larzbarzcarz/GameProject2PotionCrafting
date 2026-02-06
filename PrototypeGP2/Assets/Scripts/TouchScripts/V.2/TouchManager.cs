@@ -16,18 +16,14 @@ public class TouchManager : MonoBehaviour
     private MusicManager Sounds;
     void Awake()
     {
-        if (!cam)
-            cam = Camera.main;
-
-        if (!cam)
-            Debug.LogError("DragManager: No camera assigned");
-
         //-----FMOD Integration-----
         Sounds = FindFirstObjectByType<MusicManager>();
     }
 
     private void Update()
     {
+        cam = Camera.main;
+        
         if (Input.touchCount == 1)
         {
             Touch touch = Input.GetTouch(0);

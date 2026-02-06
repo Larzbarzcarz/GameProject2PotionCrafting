@@ -34,4 +34,19 @@ public class CauldronContents : MonoBehaviour
         sequence.RemoveAt(last);
         return true;
     }
+	
+	private void OnTriggerEnter(Collider other)
+{
+    var pickup = other.GetComponent<PickupItems>();
+    if (pickup == null)
+        return;
+
+    Debug.Log($"[Cauldron] Item entered: {pickup.stableId}");
+
+    if (AddIngredients(pickup.stableId))
+    {
+        
+    }
+}
+
 }

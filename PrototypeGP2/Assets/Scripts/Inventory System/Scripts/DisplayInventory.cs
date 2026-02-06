@@ -17,14 +17,16 @@ public class DisplayInventory : MonoBehaviour
     public int X_SpaceBetweenItems;
     public int Y_SpaceBetweenItems;
     public int numberOfColumns;
-    public Camera mainCamera;
+    [SerializeField] public Camera craftingCamera;
     [SerializeField] private CauldronContents cauldron;
     [SerializeField] private PotionVariantRegistry potionVariantRegistry;
     private Dictionary<InventorySlot, GameObject> itemsDisplayed = new Dictionary<InventorySlot, GameObject>();
+    [SerializeField] private Transform cauldronSpawnPoint;
+    [SerializeField] private Vector3 spawnOffset = new Vector3(0f, -0.08f, 0f);
      private void Awake()
     {
-        if (mainCamera == null)
-            mainCamera = Camera.main;
+        if (craftingCamera == null)
+            craftingCamera = Camera.main;
     }
 
     private void Start()
@@ -104,20 +106,17 @@ public class DisplayInventory : MonoBehaviour
 
     private void OnInventoryClick(InventorySlot slot)
     {
+        Debug.Log("camera selected" + craftingCamera.gameObject);
         if (slot.amount <= 0)
             return;
+        
+        
+        SpawnWorldItem(slot);
 
-     
-        if (cauldron != null)
-        {
-            cauldron.AddIngredients(slot.item.StableId);
-        }
 
-      
-        //SpawnWorldItem(slot);
-
+        //Ingredients gets removed in PotionBrewingSystem -> Try Brew
         slot.amount--;
-        if (slot.amount <= 0)
+        if (slot.amount <= 0) 
             inventory.Container.Items.Remove(slot);
 
         Refresh();
@@ -132,17 +131,19 @@ public class DisplayInventory : MonoBehaviour
         if (itemSO.worldPrefab == null)
             return;
 
-        Vector3 spawnPos =
-            mainCamera.transform.position +
-            mainCamera.transform.forward * 1.5f;
-
-      
-        if (Input.touchCount > 0)
+        if (!cauldronSpawnPoint)
         {
-            Ray ray = mainCamera.ScreenPointToRay(Input.GetTouch(0).position);
-            spawnPos = ray.GetPoint(1.0f);
+            Debug.LogError("Cauldron spawn point missing!");
+            return;
         }
 
-        Instantiate(itemSO.worldPrefab, spawnPos, Quaternion.identity);
+        Instantiate(
+            itemSO.worldPrefab,
+            cauldronSpawnPoint.position + spawnOffset,
+            cauldronSpawnPoint.rotation
+        );
     }
+
+
+    
 }
