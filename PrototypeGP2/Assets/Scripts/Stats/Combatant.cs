@@ -23,7 +23,9 @@ public abstract class Combatant : MonoBehaviour
     public int MaxStamina => maxStamina;
     public int CurrentStamina => currentStamina;
 
-    public bool IsDead => currentHealth <= 0;
+  
+    
+    public bool isDead => currentHealth <= 0;
 
     public event Action<int, int> OnStaminaChanged;
 

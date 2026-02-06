@@ -15,6 +15,12 @@ public class DragItem : MonoBehaviour
 
     void Awake()
     {
+        
+        //GameObject gameObject = GameObject.FindGameObjectWithTag("Craft");
+        //cam  = gameObject.GetComponent<Camera>();
+        if (!cam)
+            cam = Camera.main;
+
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         rb.isKinematic = true;
@@ -26,7 +32,8 @@ public class DragItem : MonoBehaviour
     {
         Debug.Log("Begin drag");
         dragging = true;
-        cam = Camera.main;
+		cam = Camera.main;
+        
      
         dragPlane = new Plane(
             -cam.transform.forward,

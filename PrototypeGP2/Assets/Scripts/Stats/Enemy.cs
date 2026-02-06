@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Enemy : Combatant
 {
+    public bool isDead = false;
     public enum EnemyState
     {
         Alive,
@@ -13,6 +14,7 @@ public class Enemy : Combatant
     
     protected override void Die()
     {
+        isDead = true;
         currentState = EnemyState.Dead;
         Debug.Log("Enemy defeated!");
     
@@ -22,10 +24,7 @@ public class Enemy : Combatant
     {
         return strength; 
     }
-    public override void TakeDamage(float damage)
-    {
-      
-    }
+   
     
 }
 

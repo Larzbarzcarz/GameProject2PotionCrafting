@@ -12,9 +12,20 @@ public class TouchManager : MonoBehaviour
 
     private DragItem current;
 
+    void Awake()
+    {
+        GameObject gameObject = GameObject.FindGameObjectWithTag("Craft");
+        cam = Camera.main;
+        if (!cam)
+            cam = Camera.main;
+
+        if (!cam)
+            Debug.LogError("DragManager: No camera assigned");
+    }
+
     private void Update()
     {
-        cam = Camera.main;
+      cam = Camera.main;
         
         if (Input.touchCount == 1)
         {
@@ -46,8 +57,10 @@ public class TouchManager : MonoBehaviour
     }
 
     void TryPick(Vector2 screenPos)
-    {
+    { 	
+
         Ray ray = cam.ScreenPointToRay(screenPos);
+Debug.DrawRay(ray.origin, ray.direction * 5f, Color.red, 1f);
         if (Physics.Raycast(ray, out RaycastHit hit, 1000f, draggableMask))
         {
             Debug.Log("Ray hit: " + hit.collider.name);

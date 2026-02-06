@@ -13,8 +13,10 @@ public enum PlayerAction
 public class BattleSystem : MonoBehaviour
 {
     [Header("References")] 
-    public Combatant Monster;
-    public Combatant Enemy:
+    public Combatant monster;
+    public Combatant enemy;
+
+   
     public TextMeshProUGUI dialogueText;
     public GameObject inventory;
  
@@ -34,7 +36,7 @@ public class BattleSystem : MonoBehaviour
  
     private async Task StartBattleAsync()
     {
-        dialogueText.text = $"A wild {enemy.enemyName} approaches!";
+      
         await Wait(1000);
  
         await DoBattleLoop();
