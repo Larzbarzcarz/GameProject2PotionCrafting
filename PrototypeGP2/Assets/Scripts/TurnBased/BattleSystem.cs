@@ -15,7 +15,8 @@ public class BattleSystem : MonoBehaviour
     [Header("References")] 
     public Combatant monster;
     public Combatant enemy;
-
+    public RandomMonsterSpawn monsterSpawner;
+    public Transform enemySpawnPoint;
    
     public TextMeshProUGUI dialogueText;
     public GameObject inventory;
@@ -31,9 +32,18 @@ public class BattleSystem : MonoBehaviour
     private void Start()
     {
         inventory.SetActive(false);
+
+        enemy = monsterSpawner.SpawnMonster(enemySpawnPoint.position);
+
+        if (enemy == null)
+        {
+            Debug.LogError("Enemy failed to spawn!");
+            return;
+        }
+
         _ = StartBattleAsync();
     }
- 
+
     private async Task StartBattleAsync()
     {
       
@@ -43,9 +53,7 @@ public class BattleSystem : MonoBehaviour
         EndBattle();
     }
  
-    /// <summary>
-    /// Single source of truth for battle flow
-    /// </summary>
+    
     private async Task DoBattleLoop()
     {
         while (!battleOver)
