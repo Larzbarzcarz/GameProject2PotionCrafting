@@ -43,8 +43,8 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6196367670168700049}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: 4c58898d8cc1a7544934d88e86de082b, type: 3}
+  m_Controller: {fileID: 9100000, guid: 7be780c935995d54697f2a8e0b8402da, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -72,7 +72,7 @@ MonoBehaviour:
   strength: 3
   agility: 4.01
   maxHealth: 20
-  currentHealth: 0
+  currentHealth: 37.37
   maxStamina: 10
   currentStamina: 50
   isDead: 0
