@@ -2,63 +2,72 @@ using UnityEngine;
 
 public class RandomMonsterSpawn : MonoBehaviour
 {
-    public enum MonsterType { Wolf, Tree, Slime, Bat }
+    public enum MonsterType { Tree, Slime, Bat }
 
     [Header("References")]
     public Transform player;
 
     [Header("Monster Prefabs")]
-    public GameObject wolfPrefab;
     public GameObject treePrefab;
     public GameObject slimePrefab;
     public GameObject batPrefab;
 
-    public Combatant SpawnMonster(Vector3 spawnPosition)
+    private System.Collections.Generic.List<MonsterType> usedTypes = new System.Collections.Generic.List<MonsterType>();
+
+    public void ResetHistory()
     {
-        if (player == null)
+        usedTypes.Clear();
+    }
+
+    public Combatant SpawnUniqueMonster(Vector3 spawnPosition)
+    {
+        if (player == null) return null;
+
+        var allTypes = System.Enum.GetValues(typeof(MonsterType));
+        System.Collections.Generic.List<MonsterType> available = new System.Collections.Generic.List<MonsterType>();
+
+        foreach (MonsterType t in allTypes)
         {
-            Debug.LogError("Player reference NOT assigned on RandomMonsterSpawn!");
-            return null;
+            if (!usedTypes.Contains(t)) available.Add(t);
         }
 
-        MonsterType type = (MonsterType)Random.Range(
-            0,
-            System.Enum.GetValues(typeof(MonsterType)).Length
-        );
+        if (available.Count == 0)
+        {
+            Debug.Log("All monster types seen! Resetting history.");
+            usedTypes.Clear();
+            foreach (MonsterType t in allTypes) available.Add(t);
+        }
 
+        MonsterType selectedType = available[Random.Range(0, available.Count)];
+        usedTypes.Add(selectedType);
+
+        return SpawnSpecificMonster(selectedType, spawnPosition);
+    }
+
+    private Combatant SpawnSpecificMonster(MonsterType type, Vector3 spawnPosition)
+    {
         GameObject prefabToSpawn = type switch
         {
-            MonsterType.Wolf => wolfPrefab,
             MonsterType.Tree => treePrefab,
             MonsterType.Slime => slimePrefab,
             MonsterType.Bat => batPrefab,
             _ => null
         };
 
-        if (prefabToSpawn == null)
-        {
-            Debug.LogError("No prefab assigned for " + type);
-            return null;
-        }
+        if (prefabToSpawn == null) return null;
 
         Quaternion rotation = GetEnemyRotation(spawnPosition);
-
-        GameObject enemyObj = Instantiate(
-            prefabToSpawn,
-            spawnPosition,
-            rotation
-        );
-
+        GameObject enemyObj = Instantiate(prefabToSpawn, spawnPosition, rotation);
+        
         Combatant combatant = enemyObj.GetComponentInChildren<Combatant>();
-
-        if (combatant == null)
-        {
-            Debug.LogError("Spawned enemy has NO Combatant component!");
-            return null;
-        }
-
-        Debug.Log("Spawned enemy: " + enemyObj.name);
+        if (combatant != null) Debug.Log($"Spawned unique enemy: {type}");
+        
         return combatant;
+    }
+
+    public Combatant SpawnMonster(Vector3 spawnPosition)
+    {
+        return SpawnUniqueMonster(spawnPosition);
     }
 
     private Quaternion GetEnemyRotation(Vector3 spawnPosition)
