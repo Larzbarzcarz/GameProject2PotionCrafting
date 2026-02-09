@@ -312,14 +312,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8023d3ec99bcd6458538d7a68835355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackButton: {fileID: 1283593564}
-  defendButton: {fileID: 297582109}
-  monster: {fileID: 1331085480}
-  enemy: {fileID: 2078391943}
-  dialogueText: {fileID: 1428702216}
-  inventory: {fileID: 609668074}
-  attackCost: 2
-  defendCost: 1
 --- !u!4 &242423505
 Transform:
   m_ObjectHideFlags: 0
@@ -361,17 +353,6 @@ MonoBehaviour:
     Probability: 1
     Scale: 0.3
     NormalOffset: 0.1
---- !u!114 &297582109 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5433387946586313757, guid: e800ff9673759554a9d02f698d4684e5, type: 3}
-  m_PrefabInstance: {fileID: 1805496136}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &441697146
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,48 +609,6 @@ MonoBehaviour:
     Settings: []
   PositionVariance: 0.5
   ScaleVariance: 0.2
---- !u!84 &561587523
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 6
-  m_Width: 531
-  m_Height: 360
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthStencilFormat: 94
-  m_ColorFormat: 4
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_UseDynamicScaleExplicit: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_EnableRandomWrite: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 0
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
-  m_ShadowSamplingMode: 2
---- !u!1 &609668074 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5755548100110950129, guid: d1275c567e92afe49811ad1e9b7de294, type: 3}
-  m_PrefabInstance: {fileID: 2056323690}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &753467688 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6325175250034344936, guid: e800ff9673759554a9d02f698d4684e5, type: 3}
@@ -710,6 +649,162 @@ MonoBehaviour:
   target: {fileID: 1331085480}
   healthSlider: {fileID: 1783940382}
   healthBarText: {fileID: 1555662768}
+--- !u!1 &860947272
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 860947273}
+  - component: {fileID: 860947274}
+  m_Layer: 0
+  m_Name: FMODEvents
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &860947273
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860947272}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -9.413489, y: -3.9959717, z: -7.4954414}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1186164612}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &860947274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860947272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34ed37da2fe6f2a4e9ea53fcd87011da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <baseMusic>k__BackingField:
+    Guid:
+      Data1: -1422102794
+      Data2: 1210234444
+      Data3: 1973179068
+      Data4: 629224298
+    Path: event:/Music/Huldra
+  <CookMusic>k__BackingField:
+    Guid:
+      Data1: -1797935575
+      Data2: 1338453798
+      Data3: -517059959
+      Data4: 407163356
+    Path: event:/Music/BrewingPotionsLoop
+  <CombatMusic>k__BackingField:
+    Guid:
+      Data1: 867533195
+      Data2: 1205667836
+      Data3: 1145389231
+      Data4: 773461330
+    Path: event:/Music/Alternative_fight_draft1
+  <buttonPress>k__BackingField:
+    Guid:
+      Data1: 388538626
+      Data2: 1299739339
+      Data3: 1312484521
+      Data4: 135698658
+    Path: event:/SFX/Button_press_1_Confirm_Back
+  <Cooking>k__BackingField:
+    Guid:
+      Data1: -1249407799
+      Data2: 1257957129
+      Data3: -608489302
+      Data4: 331732578
+    Path: event:/SFX/potion-brew
+  <expeditionStart>k__BackingField:
+    Guid:
+      Data1: -1058478570
+      Data2: 1339503843
+      Data3: -1086953312
+      Data4: 1749209727
+    Path: event:/SFX/Area_unlocked_omnious
+  <playerAttack1>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <playerAttack2>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <playerHurt>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <playerDead>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <playerSpecial>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <enemyAttack1>k__BackingField:
+    Guid:
+      Data1: 1589108361
+      Data2: 1220236658
+      Data3: -1646264445
+      Data4: -1655142830
+    Path: event:/SFX/Combat/Blob_Attack_1
+  <enemyAttack2>k__BackingField:
+    Guid:
+      Data1: -1117006985
+      Data2: 1112115274
+      Data3: 1585115060
+      Data4: 2081989149
+    Path: event:/SFX/Combat/Blob_Attack_2
+  <enemyHurt>k__BackingField:
+    Guid:
+      Data1: 218610581
+      Data2: 1314505230
+      Data3: 896524966
+      Data4: -978500638
+    Path: event:/SFX/Combat/Blob_Taking_damage_1
+  <enemyDead>k__BackingField:
+    Guid:
+      Data1: -1869565458
+      Data2: 1326506744
+      Data3: 1869607866
+      Data4: 377204413
+    Path: event:/SFX/Combat/Blob_death
+  <enemySpecial>k__BackingField:
+    Guid:
+      Data1: 140078068
+      Data2: 1271005709
+      Data3: 500892046
+      Data4: 1974351928
+    Path: event:/SFX/Combat/Blob_Scream
 --- !u!1 &1019977549 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 351375873539728617, guid: 09320be44594daf4ea99fcc794b861f3, type: 3}
@@ -765,16 +860,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 829d296122e83094daa360d2a776d7f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MusicLibrary: []
-  SFXLibary:
-  - Guid:
-      Data1: 388538626
-      Data2: 1299739339
-      Data3: 1312484521
-      Data4: 135698658
-    Path: event:/SoundEffects/Button_press_1_Confirm_Back
-  BreakingBad: {fileID: 0}
-  newIntensity: 1
+  masterBusPath: bus:/
+  musicBusPath: bus:/Music
+  sfxBusPath: bus:/SFX
 --- !u!4 &1186164612
 Transform:
   m_ObjectHideFlags: 0
@@ -787,7 +875,8 @@ Transform:
   m_LocalPosition: {x: 9.413489, y: 3.9959717, z: 7.4954414}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 860947273}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1195472264
@@ -800,7 +889,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1813454538314249935, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalScale.x
-      value: 9.528501
+      value: 13.978723
       objectReference: {fileID: 0}
     - target: {fileID: 2255326839739188927, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_Name
@@ -808,7 +897,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2475294716756555193, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0011282186
+      value: -0.0011277319
       objectReference: {fileID: 0}
     - target: {fileID: 2475294716756555193, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -889,7 +978,7 @@ PrefabInstance:
     - target: {fileID: 9205371885998440386, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 561587523}
+      objectReference: {fileID: 1491220618}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -904,17 +993,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1283593564 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1994092563130766395, guid: e800ff9673759554a9d02f698d4684e5, type: 3}
-  m_PrefabInstance: {fileID: 1805496136}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1284707922
@@ -1037,17 +1115,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f05e0b25b4a53f04ca90112316e7881c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1428702216 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5668015799585670346, guid: e800ff9673759554a9d02f698d4684e5, type: 3}
-  m_PrefabInstance: {fileID: 1805496136}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1470889598
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1116,6 +1183,43 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1019977551}
   m_SourcePrefab: {fileID: 100100000, guid: 09320be44594daf4ea99fcc794b861f3, type: 3}
+--- !u!84 &1491220618
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 6
+  m_Width: 779
+  m_Height: 360
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthStencilFormat: 94
+  m_ColorFormat: 4
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_UseDynamicScaleExplicit: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_EnableRandomWrite: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 0
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
+  m_ShadowSamplingMode: 2
 --- !u!1 &1493814084 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7565766123575238790, guid: 31887cc17bb6ec74099bbf2dcaf4b0e6, type: 3}
@@ -1846,4 +1950,3 @@ SceneRoots:
   - {fileID: 1805496136}
   - {fileID: 2056323690}
   - {fileID: 1186164612}
-  - {fileID: 1006055364}

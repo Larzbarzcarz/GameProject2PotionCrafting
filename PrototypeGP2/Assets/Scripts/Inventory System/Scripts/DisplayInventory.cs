@@ -1,9 +1,9 @@
+using FMOD;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
-using TMPro;
-
 using UnityEngine.UI;
 using Button = UnityEngine.UI.Button;
 
@@ -23,7 +23,8 @@ public class DisplayInventory : MonoBehaviour
     private Dictionary<InventorySlot, GameObject> itemsDisplayed = new Dictionary<InventorySlot, GameObject>();
     [SerializeField] private Transform cauldronSpawnPoint;
     [SerializeField] private Vector3 spawnOffset = new Vector3(0f, -0.08f, 0f);
-     private void Awake()
+
+    private void Awake()
     {
         if (craftingCamera == null)
             craftingCamera = Camera.main;
@@ -65,7 +66,7 @@ public class DisplayInventory : MonoBehaviour
             if (!inventory.database.GetItemByStableId.TryGetValue(
                     slot.item.StableId, out var itemSO))
             {
-                Debug.LogError($"[UI] Missing stableId in DB: {slot.item.StableId} ({slot.item.Name})");
+                //Debug.LogError($"[UI] Missing stableId in DB: {slot.item.StableId} ({slot.item.Name})");
                 Destroy(obj);
                 continue;
             }
@@ -106,7 +107,7 @@ public class DisplayInventory : MonoBehaviour
 
     private void OnInventoryClick(InventorySlot slot)
     {
-        Debug.Log("camera selected" + craftingCamera.gameObject);
+        //Debug.Log("camera selected" + craftingCamera.gameObject);
         if (slot.amount <= 0)
             return;
         
@@ -133,7 +134,7 @@ public class DisplayInventory : MonoBehaviour
 
         if (!cauldronSpawnPoint)
         {
-            Debug.LogError("Cauldron spawn point missing!");
+            //Debug.LogError("Cauldron spawn point missing!");
             return;
         }
 
@@ -145,5 +146,5 @@ public class DisplayInventory : MonoBehaviour
     }
 
 
-    
+
 }

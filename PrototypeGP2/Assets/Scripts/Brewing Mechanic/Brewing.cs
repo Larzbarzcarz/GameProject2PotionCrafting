@@ -1,22 +1,13 @@
-using System;
-using UnityEngine;
-using System.Collections.Generic;
-
+using _Project._Scripts.Sound_and_Music;
 using FMODUnity;
+using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class Brewing : MonoBehaviour
 {
     public InventoryObject inventory;
     public List<CraftingRecipe> craftingRecipes;
-
-    //-----FMOD Integration-----
-    private MusicManager Sounds;
-
-    private void Start()
-    {
-        //-----FMOD Integration-----
-        Sounds = FindFirstObjectByType<MusicManager>();
-    }
 
     public void Craft(CraftingRecipe recipe)
     {
@@ -32,9 +23,8 @@ public class Brewing : MonoBehaviour
         Debug.Log($"Crafted: {recipe.recipeName}");
 
         //-----FMOD Integration-----
-        Sounds.PlaySound(1);
-
-        Sounds.IntensityChange(6);
+        AudioManager.Instance.PlayMusic(FMODEvents.instance.Cooking);
+        AudioManager.Instance.HuldraIntensity(0.3f);
     }
 
     private bool CanCraft(CraftingRecipe recipe, out string missingItems)

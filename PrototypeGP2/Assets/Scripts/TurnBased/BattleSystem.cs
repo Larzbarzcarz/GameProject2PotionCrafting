@@ -1,210 +1,210 @@
-using System.Threading.Tasks;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using TMPro;
+//using System.Threading.Tasks;
+//using UnityEngine;
+//using UnityEngine.SceneManagement;
+//using TMPro;
  
-public enum PlayerAction
-{
-    None,
-    Attack,
-    Defend
-}
+//public enum PlayerAction
+//{
+//    None,
+//    Attack,
+//    Defend
+//}
  
-public class BattleSystem : MonoBehaviour
-{
-    [Header("References")] 
-    public Combatant Monster;
-    public Combatant Enemy:
-    public TextMeshProUGUI dialogueText;
-    public GameObject inventory;
+//public class BattleSystem : MonoBehaviour
+//{
+//    [Header("References")] 
+//    public Combatant Monster;
+//    public Combatant Enemy;
+//    public TextMeshProUGUI dialogueText;
+//    public GameObject inventory;
  
-    [Header("Costs")]
-    [SerializeField] private int attackCost = 2;
-    [SerializeField] private int defendCost = 1;
+//    [Header("Costs")]
+//    [SerializeField] private int attackCost = 2;
+//    [SerializeField] private int defendCost = 1;
  
-    private PlayerAction selectedAction = PlayerAction.None;
-    private bool isDefending;
-    private bool battleOver;
+//    private PlayerAction selectedAction = PlayerAction.None;
+//    private bool isDefending;
+//    private bool battleOver;
 
-    //-----Fmod Integration-----
-    private MusicManager Sounds;
+//    //-----Fmod Integration-----
+//    private MusicManager Sounds;
 
-    private void Start()
-    {
-        Sounds = FindFirstObjectByType<MusicManager>();
-        inventory.SetActive(false);
-        _ = StartBattleAsync();
-    }
+//    private void Start()
+//    {
+//        Sounds = FindFirstObjectByType<MusicManager>();
+//        inventory.SetActive(false);
+//        _ = StartBattleAsync();
+//    }
  
-    private async Task StartBattleAsync()
-    {
-        dialogueText.text = $"A wild {enemy.enemyName} approaches!";
-        await Wait(1000);
+//    private async Task StartBattleAsync()
+//    {
+//        dialogueText.text = $"A wild {enemy.enemyName} approaches!";
+//        await Wait(1000);
  
-        await DoBattleLoop();
-        EndBattle();
-    }
+//        await DoBattleLoop();
+//        EndBattle();
+//    }
  
-    /// <summary>
-    /// Single source of truth for battle flow
-    /// </summary>
-    private async Task DoBattleLoop()
-    {
-        while (!battleOver)
-        {
-            await MonsterTurn();
+//    /// <summary>
+//    /// Single source of truth for battle flow
+//    /// </summary>
+//    private async Task DoBattleLoop()
+//    {
+//        while (!battleOver)
+//        {
+//            await MonsterTurn();
  
-            if (enemy.isDead)
-            {
-                battleOver = true;
-                return;
-            }
+//            if (enemy.isDead)
+//            {
+//                battleOver = true;
+//                return;
+//            }
  
-            await EnemyTurn();
+//            await EnemyTurn();
  
-            if (monster.CurrentHealth <= 0)
-            {
-                battleOver = true;
-                return;
-            }
-        }
-    }
+//            if (monster.CurrentHealth <= 0)
+//            {
+//                battleOver = true;
+//                return;
+//            }
+//        }
+//    }
  
-    private async Task MonsterTurn()
-    {
-        dialogueText.text = "Choose an action";
-        selectedAction = PlayerAction.None;
+//    private async Task MonsterTurn()
+//    {
+//        dialogueText.text = "Choose an action";
+//        selectedAction = PlayerAction.None;
  
-        await WaitUntilActionSelected();
+//        await WaitUntilActionSelected();
  
-        switch (selectedAction)
-        {
-            case PlayerAction.Attack:
-                await MonsterAttack();
-                break;
+//        switch (selectedAction)
+//        {
+//            case PlayerAction.Attack:
+//                await MonsterAttack();
+//                break;
  
-            case PlayerAction.Defend:
-                await MonsterDefend();
-                break;
-        }
-    }
+//            case PlayerAction.Defend:
+//                await MonsterDefend();
+//                break;
+//        }
+//    }
  
-    private async Task MonsterAttack()
-    {
-        int hitChance = Random.Range(0, 100);
+//    private async Task MonsterAttack()
+//    {
+//        int hitChance = Random.Range(0, 100);
  
-        if (hitChance < 80)
-        {
-            enemy.TakeDamage(2f);
-            dialogueText.text = "The attack hit!";
+//        if (hitChance < 80)
+//        {
+//            enemy.TakeDamage(2f);
+//            dialogueText.text = "The attack hit!";
 
-            //-----FMOD Integration-----
-            //----------------------------------------------------------------------------------------------
+//            //-----FMOD Integration-----
+//            //----------------------------------------------------------------------------------------------
 
-        }
-        else
-        {
-            dialogueText.text = "You missed!";
-        }
+//        }
+//        else
+//        {
+//            dialogueText.text = "You missed!";
+//        }
  
-        await Wait(1000);
-    }
+//        await Wait(1000);
+//    }
  
-    private async Task MonsterDefend()
-    {
-        int defendChance = Random.Range(0, 100);
+//    private async Task MonsterDefend()
+//    {
+//        int defendChance = Random.Range(0, 100);
  
-        if (defendChance < 70)
-        {
-            isDefending = true;
-            dialogueText.text = "You brace for impact";
-        }
-        else
-        {
-            dialogueText.text = "You failed to defend!";
-            monster.TakeDamage(2f);
-        }
+//        if (defendChance < 70)
+//        {
+//            isDefending = true;
+//            dialogueText.text = "You brace for impact";
+//        }
+//        else
+//        {
+//            dialogueText.text = "You failed to defend!";
+//            monster.TakeDamage(2f);
+//        }
  
-        await Wait(1000);
-    }
+//        await Wait(1000);
+//    }
  
-    private async Task EnemyTurn()
-    {
-        dialogueText.text = "Enemy attacks!";
-        await Wait(1000);
+//    private async Task EnemyTurn()
+//    {
+//        dialogueText.text = "Enemy attacks!";
+//        await Wait(1000);
  
-        float damage = isDefending ? 1f : 2f;
-        monster.TakeDamage(damage);
+//        float damage = isDefending ? 1f : 2f;
+//        monster.TakeDamage(damage);
  
-        if (isDefending)
-        {
-            dialogueText.text = "Damage reduced!";
-            isDefending = false;
-            await Wait(1000);
-        }
-    }
+//        if (isDefending)
+//        {
+//            dialogueText.text = "Damage reduced!";
+//            isDefending = false;
+//            await Wait(1000);
+//        }
+//    }
  
-    private void EndBattle()
-    {
-        if (enemy.isDead)
-        {
-            dialogueText.text = "You Win!";
-        }
-        else
-        {
-            dialogueText.text = "You Lose!";
-        }
-    }
+//    private void EndBattle()
+//    {
+//        if (enemy.isDead)
+//        {
+//            dialogueText.text = "You Win!";
+//        }
+//        else
+//        {
+//            dialogueText.text = "You Lose!";
+//        }
+//    }
  
-    #region UI
+//    #region UI
  
-    public void OnAttackButton()
-    {
-        //-----FMOD Integration-----
-        Sounds.PlaySound(0);
+//    public void OnAttackButton()
+//    {
+//        //-----FMOD Integration-----
+//        Sounds.PlaySound(0);
 
-        if (selectedAction != PlayerAction.None) return;
+//        if (selectedAction != PlayerAction.None) return;
  
-        if (!monster.TrySpendStamina(attackCost))
-        {
-            dialogueText.text = "Not enough stamina!";
-            return;
-        }
+//        if (!monster.TrySpendStamina(attackCost))
+//        {
+//            dialogueText.text = "Not enough stamina!";
+//            return;
+//        }
  
-        selectedAction = PlayerAction.Attack;
-    }
+//        selectedAction = PlayerAction.Attack;
+//    }
  
-    public void OnDefendButton()
-    {
-        if (selectedAction != PlayerAction.None) return;
+//    public void OnDefendButton()
+//    {
+//        if (selectedAction != PlayerAction.None) return;
  
-        if (!monster.TrySpendStamina(defendCost))
-        {
-            dialogueText.text = "Not enough stamina!";
-            return;
-        }
+//        if (!monster.TrySpendStamina(defendCost))
+//        {
+//            dialogueText.text = "Not enough stamina!";
+//            return;
+//        }
  
-        selectedAction = PlayerAction.Defend;
-    }
+//        selectedAction = PlayerAction.Defend;
+//    }
  
-    #endregion
+//    #endregion
  
-    #region Helpers
+//    #region Helpers
  
-    private async Task Wait(int ms) => await Task.Delay(ms);
+//    private async Task Wait(int ms) => await Task.Delay(ms);
  
-    private async Task WaitUntilActionSelected()
-    {
-        while (selectedAction == PlayerAction.None)
-        {
-            await Task.Yield();
-        }
-    }
+//    private async Task WaitUntilActionSelected()
+//    {
+//        while (selectedAction == PlayerAction.None)
+//        {
+//            await Task.Yield();
+//        }
+//    }
  
-    public void RunAway()
-    {
-        SceneManager.LoadSceneAsync(0);
-    }
+//    public void RunAway()
+//    {
+//        SceneManager.LoadSceneAsync(0);
+//    }
  
-    #endregion
-}
+//    #endregion
+//}

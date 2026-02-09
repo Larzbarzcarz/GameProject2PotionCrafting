@@ -1,3 +1,4 @@
+using _Project._Scripts.Sound_and_Music;
 using UnityEngine;
 
 using UnityEngine.EventSystems;
@@ -11,14 +12,6 @@ public class TouchManager : MonoBehaviour
     public LayerMask draggableMask;
 
     private DragItem current;
-
-    //-----FMOD Integration-----
-    private MusicManager Sounds;
-    void Awake()
-    {
-        //-----FMOD Integration-----
-        Sounds = FindFirstObjectByType<MusicManager>();
-    }
 
     private void Update()
     {
@@ -67,8 +60,8 @@ public class TouchManager : MonoBehaviour
                 current.BeginDrag(hit.point);
 
                 //-----FMOD Integration-----
-                Sounds.ChangeMusic(1);
-                Sounds.PlaySound(2);
+                AudioManager.Instance.PlayOneShot(FMODEvents.instance.buttonPress);
+                AudioManager.Instance.PlayMusic(FMODEvents.instance.CookMusic);
 
 
             }

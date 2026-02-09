@@ -5,7 +5,7 @@
 			<value>BrewingPotionsLoop</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{ff9a84b4-5df3-496c-bf70-c7ea04c5472a}</destination>
@@ -30,9 +30,6 @@
 		</relationship>
 		<relationship name="timeline">
 			<destination>{2770a0ce-79e8-41f7-9df9-c4882355c559}</destination>
-		</relationship>
-		<relationship name="parameters">
-			<destination>{debe16ea-08c2-4838-95cc-f81528b24c7f}</destination>
 		</relationship>
 		<relationship name="banks">
 			<destination>{7bbcb2d0-272e-4d3a-a0d7-b99027d10cdd}</destination>
@@ -80,12 +77,10 @@
 			<destination>{5e7d931b-88d1-4ae3-962b-61141ede2112}</destination>
 		</relationship>
 	</object>
-	<object class="ParameterProxy" id="{debe16ea-08c2-4838-95cc-f81528b24c7f}">
-		<relationship name="preset">
-			<destination>{92609804-4646-4e26-af6d-0a57a3613079}</destination>
-		</relationship>
-	</object>
 	<object class="EventMixerMaster" id="{05cb19a6-5934-4bf7-b21a-d97338a2dfa2}">
+		<relationship name="modulators">
+			<destination>{29f700c9-93da-4a37-8bda-bcba2a439dda}</destination>
+		</relationship>
 		<relationship name="effectChain">
 			<destination>{db654771-ef28-4825-9fa7-a0f474005a4d}</destination>
 		</relationship>
@@ -146,10 +141,20 @@
 			<destination>{4a9107e2-3129-4dbf-b2e6-d0f0bee43926}</destination>
 		</relationship>
 	</object>
+	<object class="ADSRModulator" id="{29f700c9-93da-4a37-8bda-bcba2a439dda}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>volume</value>
+		</property>
+		<property name="initialValue">
+			<value>-80</value>
+		</property>
+		<property name="finalValue">
+			<value>-80</value>
+		</property>
+	</object>
 	<object class="MixerBusEffectChain" id="{db654771-ef28-4825-9fa7-a0f474005a4d}">
 		<relationship name="effects">
 			<destination>{4614bffd-e454-4c39-bb1c-e508a3c06540}</destination>
-			<destination>{a5084541-781d-4e45-bc2b-7ea909eb56cf}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{9b3e89f6-43b3-40bd-94e1-a48cf4c96609}" />
@@ -169,7 +174,6 @@
 	</object>
 	<object class="MixerBusPanner" id="{9d99a2ed-e7a6-47e1-9bba-03c4c0306d41}" />
 	<object class="MixerBusFader" id="{4614bffd-e454-4c39-bb1c-e508a3c06540}" />
-	<object class="SpatialiserEffect" id="{a5084541-781d-4e45-bc2b-7ea909eb56cf}" />
 	<object class="AutomationCurve" id="{3242f13d-ba48-4a47-ba95-1e682adca1d3}">
 		<relationship name="parameter">
 			<destination>{92609804-4646-4e26-af6d-0a57a3613079}</destination>
@@ -186,7 +190,7 @@
 			<value>0</value>
 		</property>
 		<property name="value">
-			<value>0</value>
+			<value>-4.5</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{2d6f7570-6343-41be-b4f8-0365d7321cca}">
@@ -194,7 +198,7 @@
 			<value>1</value>
 		</property>
 		<property name="value">
-			<value>0</value>
+			<value>-4.5</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{80cea1e9-e79c-4ccb-9965-f562a703ae6f}">
@@ -202,7 +206,7 @@
 			<value>0.01</value>
 		</property>
 		<property name="value">
-			<value>-21</value>
+			<value>-27.4285717</value>
 		</property>
 	</object>
 </objects>

@@ -1,3 +1,4 @@
+using _Project._Scripts.Sound_and_Music;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,9 +10,6 @@ public class Clickforcamera : MonoBehaviour
     public GameObject Return;
     public GameObject Craft;
     public GameObject Materialing;
-
-    //-----FMOD Integration-----
-    private MusicManager Sounds;
     void Start()
     {
 		Materialing.SetActive(false);
@@ -21,7 +19,7 @@ public class Clickforcamera : MonoBehaviour
         craftingCamera.SetActive(false);
 
         //-----FMOD Integration-----
-        Sounds = FindFirstObjectByType<MusicManager>();
+        AudioManager.Instance.PlayMusic(FMODEvents.instance.baseMusic);
     }
 
     public void SwitchToCrafting()
@@ -35,7 +33,7 @@ public class Clickforcamera : MonoBehaviour
         craftingCamera.SetActive(true);
 
         //-----FMOD Integration-----
-        Sounds.PlaySound(0);
+        AudioManager.Instance.PlayOneShot(FMODEvents.instance.buttonPress);
     }
 
     public void SwitchToMain()
@@ -49,18 +47,15 @@ public class Clickforcamera : MonoBehaviour
         mainCamera.SetActive(true);
 
         //-----FMOD Integration-----
-        Sounds.ChangeMusic(0);
-        Sounds.PlaySound(0);
+        AudioManager.Instance.PlayMusic(FMODEvents.instance.baseMusic);
+        AudioManager.Instance.PlayOneShot(FMODEvents.instance.buttonPress);
     }
 
     public void SwitchToCombat()
     {
         //-----FMOD Integration-----
-        Sounds.PlaySound(3);
-        Sounds.StopMusic();
+        AudioManager.Instance.PlayOneShot(FMODEvents.instance.expeditionStart);
         //-----FMOD Integration-----
-
-
         SceneManager.LoadSceneAsync(1);
     }
 
