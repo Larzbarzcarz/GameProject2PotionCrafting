@@ -25,11 +25,17 @@ public class TouchManager : MonoBehaviour
 
     private void Update()
     {
+if (Input.touchCount > 0)
+{
+    Debug.Log("Touch detected");
+}
       cam = Camera.main;
         
         if (Input.touchCount == 1)
         {
             Touch touch = Input.GetTouch(0);
+			  if (EventSystem.current.IsPointerOverGameObject(touch.fingerId))
+                return;		
 
             switch (touch.phase)
             {
