@@ -42,5 +42,10 @@ public class PotionNameRegistry : MonoBehaviour
             entries[idx].customName = name;
         else entries.Add(new Entry { variantKey = variantKey, customName = name });
     }
+
+    public void RenamePotion(string variantKey, string newName)
+    {
+        SetName(variantKey, newName);
+    }
 }
     

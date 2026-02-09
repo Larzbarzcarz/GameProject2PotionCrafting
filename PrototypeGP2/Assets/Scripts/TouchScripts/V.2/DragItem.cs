@@ -4,19 +4,23 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class DragItem : MonoBehaviour
 {
-    public LayerMask groundMask;
     public Camera cam;
-    
+    public float dragHeight = 0.9f;
+    public float planeDistance = 0.6f; 
+
     private Rigidbody rb;
+    private bool dragging;
     private Vector3 grabOffset;
-    private bool dragging = false;
-    private Ray ray;
-    public float dragHeight = 0.3f;
-    public float dragDistanceFromCamera = 2f;
+    private Plane dragPlane;
+
     void Awake()
     {
+        
+        //GameObject gameObject = GameObject.FindGameObjectWithTag("Craft");
+        //cam  = gameObject.GetComponent<Camera>();
         if (!cam)
             cam = Camera.main;
+
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         rb.isKinematic = true;
@@ -26,45 +30,45 @@ public class DragItem : MonoBehaviour
 
     public void BeginDrag(Vector3 hitPoint)
     {
-        Debug.Log("BEGIN DRAG");
+        Debug.Log("Begin drag");
         dragging = true;
-      
+		cam = Camera.main;
+        
+     
+        dragPlane = new Plane(
+            -cam.transform.forward,
+            cam.transform.position + cam.transform.forward * planeDistance
+        );
+
         grabOffset = transform.position - hitPoint;
     }
 
-   
     public void Drag(Vector2 screenPos)
     {
-        if (!dragging || cam == null || rb == null) return;
-
-      
-        Vector3 screenPosWithZ = new Vector3(screenPos.x, screenPos.y, dragDistanceFromCamera);
-        Vector3 worldPos = cam.ScreenToWorldPoint(screenPosWithZ);
-
-   
-        Vector3 target = worldPos + grabOffset;
-
-     
-        target += Vector3.up * dragHeight;
-
-        rb.MovePosition(target);
+ 		 if (rb == null)
+    {
+        Debug.LogWarning("Rigidbody is missing, cannot drag!");
+        return;
     }
+        if (!dragging) return;
 
+        Ray ray = cam.ScreenPointToRay(screenPos);
+
+        if (dragPlane.Raycast(ray, out float enter))
+        {
+            Vector3 worldPos = ray.GetPoint(enter);
+            Vector3 target = worldPos + grabOffset;
+            target.y += dragHeight;
+
+            rb.MovePosition(target);
+        }
+    }
 
     public void EndDrag()
     {
         dragging = false;
-        rb.isKinematic = true;
-        rb.useGravity = false;
+        //rb.isKinematic = false;
+        //rb.useGravity = true;
     }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawRay(ray);
-        }
-  
-    
 }
-
 
