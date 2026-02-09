@@ -55,6 +55,16 @@ public class BattleSystem : MonoBehaviour
         {
             FillPotionsDebug();
         }
+
+        // debug suicide button
+        if (Input.GetKeyDown(KeyCode.End))
+        {
+            if (monster != null && !monster.isDead)
+            {
+                Debug.Log("DEBUG SUICIDE");
+                monster.TakeDamage(9999f);
+            }
+        }
     }
 
     private void FillPotionsDebug()

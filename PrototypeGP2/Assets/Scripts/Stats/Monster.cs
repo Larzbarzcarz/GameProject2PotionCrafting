@@ -60,15 +60,15 @@ public class Monster : Combatant
 
     public void ResetAnimator()
     {
-        Debug.Log("rebinding");
+        Debug.Log("[Monster] ResetAnimator triggered. Rebinding...");
         victory = false;
         if (Animator != null)
         {
-            Animator.Rebind();s
+            Animator.Rebind();
             Animator.Update(0f);
             
             var state = Animator.GetCurrentAnimatorStateInfo(0);
-            Debug.Log($"[Monster] Post-Rebind state Hash: {state.fullPathHash}");
+            Debug.Log($"[Monster] Post-Rebind state hash: {state.fullPathHash}. (If this is still a walking animation, check if 'Walking' is your Animator's default state!)");
         }
     }
 
