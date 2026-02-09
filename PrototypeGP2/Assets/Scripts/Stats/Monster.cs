@@ -41,18 +41,42 @@ public class Monster : Combatant
         base.TakeDamage(damage);
     }
 
+    private void Update()
+    {
+        // debugging victory animation
+        if (victory && Animator != null && Time.frameCount % 60 == 0)
+        {
+            var state = Animator.GetCurrentAnimatorStateInfo(0);
+            Debug.Log($"[MONSTER DEBUG] checking victory mode - animator state hash: {state.fullPathHash} - loop: {state.loop}");
+        }
+    }
+
     public override void Victory()
     {
+        Debug.Log("victory called, triggering dance?");
         victory = true;
-        Animator.SetTrigger("Victory");
+        if (Animator != null) Animator.SetTrigger("Victory");
+    }
 
+    public void ResetAnimator()
+    {
+        Debug.Log("rebinding");
+        victory = false;
+        if (Animator != null)
+        {
+            Animator.Rebind();s
+            Animator.Update(0f);
+            
+            var state = Animator.GetCurrentAnimatorStateInfo(0);
+            Debug.Log($"[Monster] Post-Rebind state Hash: {state.fullPathHash}");
+        }
     }
 
 	public override void Dying()
 	{
 		//currentState = MonsterState.Dying;
 		//Animator.SetBool("Dying");
-}
+    }
 
 
 

@@ -20,6 +20,7 @@ public class BattleSystem : MonoBehaviour
    
     public TextMeshProUGUI dialogueText;
     public GameObject inventory;
+    [SerializeField] private DisplayInventory displayInventory;
  
     [Header("Costs")]
     [SerializeField] private int attackCost = 2;
@@ -29,19 +30,144 @@ public class BattleSystem : MonoBehaviour
     private bool isDefending;
     private bool battleOver;
  
+    public event System.Action OnBattleWon;
+    public event System.Action OnBattleLost;
+
     private void Start()
     {
         inventory.SetActive(false);
+    }
 
-        enemy = monsterSpawner.SpawnMonster(enemySpawnPoint.position);
-
-        if (enemy == null)
+    private void Update()
+    {
+        // debug instakill button
+        if (Input.GetKeyDown(KeyCode.Insert))
         {
-            Debug.LogError("Enemy failed to spawn!");
+            if (enemy != null && !enemy.isDead)
+            {
+                Debug.Log("DEBUG INSTA KILL");
+                enemy.TakeDamage(9999f);
+            }
+        }
+
+        // debug fill pocket with potions
+        if (Input.GetKeyDown(KeyCode.Home))
+        {
+            FillPotionsDebug();
+        }
+    }
+
+    private void FillPotionsDebug()
+    {
+        if (displayInventory == null || displayInventory.inventory == null || displayInventory.inventory.database == null)
+        {
+            Debug.LogWarning("[DEBUG] DisplayInventory reference missing! Searching in scene...");
+            displayInventory = FindObjectOfType<DisplayInventory>();
+        }
+
+        if (displayInventory == null || displayInventory.inventory == null || displayInventory.inventory.database == null)
+        {
+            Debug.LogError("DisplayInventory or InventoryObject or Database missing for Potion Refill!");
             return;
         }
 
+        var database = displayInventory.inventory.database;
+        var potions = new System.Collections.Generic.List<ItemScriptableObject>();
+
+        foreach (var item in database.Items)
+        {
+            if (item != null && item.itemType == ItemType.Potion)
+            {
+                potions.Add(item);
+            }
+        }
+
+        if (potions.Count == 0)
+        {
+            Debug.LogWarning("No potions found in database!");
+            return;
+        }
+
+        for (int i = 0; i < 5; i++)
+        {
+            var randomPotion = potions[Random.Range(0, potions.Count)];
+            displayInventory.inventory.AddItem(new Item(randomPotion), 1, "");
+        }
+
+        displayInventory.Refresh();
+        Debug.Log("DEBUG FILL POCKET");
+    }
+
+    public void BeginBattle()
+    {
+        battleOver = false;
+        
+        if (enemy == null && monsterSpawner != null)
+        {
+             if (enemySpawnPoint == null)
+             {
+                 Debug.LogError("[BattleSystem] enemySpawnPoint is MISSING in BeginBattle!");
+                 return;
+             }
+
+             enemy = monsterSpawner.SpawnUniqueMonster(enemySpawnPoint.position);
+        }
+
+        if (enemy == null)
+        {
+             Debug.LogError("[BattleSystem] Enemy failed to spawn/reference in BeginBattle!");
+        }
+        else
+        {
+            BindHealthBars();
+        }
+
         _ = StartBattleAsync();
+    }
+
+    public void ResetForNewEncounter()
+    {
+        if (enemy != null)
+        {
+            Debug.Log("[BattleSystem] Destroying old enemy...");
+            Destroy(enemy.gameObject);
+            enemy = null;
+        }
+
+        if (monster != null)
+        {
+            monster.ResetAnimator();
+        }
+
+        if (monsterSpawner == null)
+        {
+            Debug.LogError("[BattleSystem] MonsterSpawner is NULL in ResetForNewEncounter!");
+            return;
+        }
+
+        if (enemySpawnPoint == null)
+        {
+            Debug.LogError("[BattleSystem] enemySpawnPoint is NULL or was DESTROYED! Make sure it's not a child of an enemy.");
+            return;
+        }
+
+        Debug.Log("[BattleSystem] Spawning new enemy for encounter...");
+        enemy = monsterSpawner.SpawnUniqueMonster(enemySpawnPoint.position);
+        
+        if (enemy != null)
+        {
+            BindHealthBars();
+        }
+    }
+
+    private void BindHealthBars()
+    {
+        var healthbars = FindObjectsOfType<CombatantHealthbar>();
+        foreach (var hb in healthbars)
+        {
+            if (hb.name.Contains("Monster") || hb.name.Contains("Player")) hb.Bind(monster);
+            if (hb.name.Contains("Enemy") || hb.name.Contains("Target")) hb.Bind(enemy);
+        }
     }
 
     private async Task StartBattleAsync()
@@ -151,10 +277,13 @@ public class BattleSystem : MonoBehaviour
         if (enemy.isDead)
         {
             dialogueText.text = "You Win!";
+            if (monster != null) monster.Victory();
+            OnBattleWon?.Invoke();
         }
         else
         {
             dialogueText.text = "You Lose!";
+            OnBattleLost?.Invoke();
         }
     }
  
@@ -196,6 +325,7 @@ public class BattleSystem : MonoBehaviour
     {
         while (selectedAction == PlayerAction.None)
         {
+            if (enemy != null && enemy.isDead) return;
             await Task.Yield();
         }
     }
