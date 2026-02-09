@@ -12,6 +12,9 @@ public class TouchManager : MonoBehaviour
 
     private DragItem current;
 
+    [Header("Potion Throw")]
+    public PotionThrowController potionThrow;
+
     void Awake()
     {
         GameObject gameObject = GameObject.FindGameObjectWithTag("Craft");
@@ -37,6 +40,28 @@ if (Input.touchCount > 0)
 			  if (EventSystem.current.IsPointerOverGameObject(touch.fingerId))
                 return;		
 
+            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(touch.fingerId))
+                return;
+
+            if (potionThrow != null && potionThrow.HasPotionSelected())
+            {
+                if (touch.phase == TouchPhase.Moved ||
+                    touch.phase == TouchPhase.Stationary)
+                {
+                    potionThrow.UpdateAim(touch.position);
+                }
+
+                if (touch.phase == TouchPhase.Ended ||
+                    touch.phase == TouchPhase.Canceled)
+                {
+                    potionThrow.TryThrow(touch.position);
+                }
+
+                return;
+            }
+
+
+
             switch (touch.phase)
             {
                 case TouchPhase.Began:
@@ -56,6 +81,20 @@ if (Input.touchCount > 0)
         }
 
 #if UNITY_EDITOR
+        if (EventSystem.current != null &&
+            EventSystem.current.IsPointerOverGameObject())
+            return;
+        if (potionThrow != null && potionThrow.HasPotionSelected())
+        {
+            if (Input.GetMouseButton(0))
+                potionThrow.UpdateAim(Input.mousePosition);
+
+            if (Input.GetMouseButtonUp(0))
+                potionThrow.TryThrow(Input.mousePosition);
+
+            return;
+        }
+
     if (Input.GetMouseButtonDown(0)) TryPick(Input.mousePosition);
     if (Input.GetMouseButton(0)) current?.Drag(Input.mousePosition);
     if (Input.GetMouseButtonUp(0)) Release();
