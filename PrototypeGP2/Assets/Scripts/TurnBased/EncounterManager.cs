@@ -53,6 +53,12 @@ public class EncounterManager : MonoBehaviour
     private void StartEncounter()
     {
         Debug.Log($"[EncounterManager] Starting encounter {ExpeditionData.CurrentEncounterIndex}/{ExpeditionData.TotalEncounters}");
+
+        // Notify mutations of battle start
+        if (MutationManager.Instance != null)
+        {
+            MutationManager.Instance.OnBattleStart();
+        }
         
         if (battleSystem != null)
         {
@@ -64,6 +70,12 @@ public class EncounterManager : MonoBehaviour
     private void HandleBattleWon()
     {
         Debug.Log("[EncounterManager] Battle Won!");
+
+        // Notify mutations of victory (for Helpful Infection)
+        if (MutationManager.Instance != null)
+        {
+            MutationManager.Instance.OnBattleEnd(true, battleSystem);
+        }
 
         if (ExpeditionData.CurrentEncounterIndex < ExpeditionData.TotalEncounters)
         {
@@ -87,6 +99,13 @@ public class EncounterManager : MonoBehaviour
     private void HandleBattleLost()
     {
         Debug.Log("[EncounterManager] Battle Lost.");
+
+        // Notify mutations of defeat
+        if (MutationManager.Instance != null)
+        {
+            MutationManager.Instance.OnBattleEnd(false, battleSystem);
+        }
+
         if (defeatPanel != null) defeatPanel.SetActive(true);
         ExpeditionData.EndExpedition();
     }

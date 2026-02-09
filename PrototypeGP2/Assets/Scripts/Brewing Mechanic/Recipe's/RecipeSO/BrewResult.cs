@@ -8,7 +8,9 @@ public class BrewResult
     public PotionEffectType effect;
     public Sprite           icon;
 
-    //remember to add same variables to PotionRecipeSO.cs and PotionBrewSystem -> TryBrew();
+    // Keywords from the ingredients used to brew this potion
+    public MainKeyword mainKeyword;
+    public BaseKeyword baseKeyword;
     public bool     instant;
     public int      turns;
     public float    percentOfMaxHP;

@@ -83,8 +83,8 @@ public class PotionBrewingSystem : MonoBehaviour
 
 
             v.icon = chosen;
-
-            Debug.Log($"[BREW] Icon chosen = {(chosen != null ? chosen.name : "NULL")}");
+            v.mainKeyword = mainKey;
+            v.baseKeyword = baseKey;
 
             if (found)
             {

@@ -36,19 +36,15 @@ public class Monster : Combatant
 
     public override void TakeDamage(float damage)
     {
-        Debug.Log("Taking damage");
+        // Apply mutation effects (e.g., Carapace damage reduction)
+        if (MutationManager.Instance != null)
+        {
+            damage = MutationManager.Instance.ProcessIncomingDamage(damage, null);
+        }
+
+        Debug.Log($"Taking damage: {damage}");
         Animator.SetTrigger("Damaged");
         base.TakeDamage(damage);
-    }
-
-    private void Update()
-    {
-        // debugging victory animation
-        if (victory && Animator != null && Time.frameCount % 60 == 0)
-        {
-            var state = Animator.GetCurrentAnimatorStateInfo(0);
-            Debug.Log($"[MONSTER DEBUG] checking victory mode - animator state hash: {state.fullPathHash} - loop: {state.loop}");
-        }
     }
 
     public override void Victory()
@@ -64,7 +60,7 @@ public class Monster : Combatant
         victory = false;
         if (Animator != null)
         {
-            Animator.Rebind();s
+            Animator.Rebind();
             Animator.Update(0f);
             
             var state = Animator.GetCurrentAnimatorStateInfo(0);

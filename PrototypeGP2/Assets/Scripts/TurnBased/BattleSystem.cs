@@ -20,7 +20,10 @@ public class BattleSystem : MonoBehaviour
    
     public TextMeshProUGUI dialogueText;
     public GameObject inventory;
+    [SerializeField] private InventoryObject playerInventory;
+    public InventoryObject PlayerInventory => playerInventory;
     [SerializeField] private DisplayInventory displayInventory;
+    [SerializeField] private PotionVariantRegistry potionVariantRegistry;
  
     [Header("Costs")]
     [SerializeField] private int attackCost = 2;
@@ -36,42 +39,51 @@ public class BattleSystem : MonoBehaviour
     private void Start()
     {
         inventory.SetActive(false);
+
+        if (playerInventory == null && displayInventory != null)
+            playerInventory = displayInventory.inventory;
     }
 
     private void Update()
     {
-        // debug instakill button
         if (Input.GetKeyDown(KeyCode.Insert))
         {
             if (enemy != null && !enemy.isDead)
             {
-                Debug.Log("DEBUG INSTA KILL");
                 enemy.TakeDamage(9999f);
             }
         }
 
-        // debug fill pocket with potions
         if (Input.GetKeyDown(KeyCode.Home))
         {
             FillPotionsDebug();
+        }
+
+        if (Input.GetKeyDown(KeyCode.PageDown))
+        {
+            ConsumeRandomPotionDebug();
+        }
+
+        if (Input.GetKeyDown(KeyCode.PageUp))
+        {
+            MutationData.LogStatus();
+        }
+
+        if (Input.GetKeyDown(KeyCode.End))
+        {
+            MutationData.Reset();
         }
     }
 
     private void FillPotionsDebug()
     {
-        if (displayInventory == null || displayInventory.inventory == null || displayInventory.inventory.database == null)
+        if (playerInventory == null || playerInventory.database == null)
         {
-            Debug.LogWarning("[DEBUG] DisplayInventory reference missing! Searching in scene...");
-            displayInventory = FindObjectOfType<DisplayInventory>();
-        }
-
-        if (displayInventory == null || displayInventory.inventory == null || displayInventory.inventory.database == null)
-        {
-            Debug.LogError("DisplayInventory or InventoryObject or Database missing for Potion Refill!");
+            Debug.LogError("[DEBUG] PlayerInventory or Database missing for Potion Refill!");
             return;
         }
 
-        var database = displayInventory.inventory.database;
+        var database = playerInventory.database;
         var potions = new System.Collections.Generic.List<ItemScriptableObject>();
 
         foreach (var item in database.Items)
@@ -90,12 +102,111 @@ public class BattleSystem : MonoBehaviour
 
         for (int i = 0; i < 5; i++)
         {
-            var randomPotion = potions[Random.Range(0, potions.Count)];
-            displayInventory.inventory.AddItem(new Item(randomPotion), 1, "");
+            var randomPotionSO = potions[Random.Range(0, potions.Count)];
+            
+            string randomMain = ((MainKeyword)Random.Range(0, System.Enum.GetValues(typeof(MainKeyword)).Length)).ToString();
+            string randomBase = ((BaseKeyword)Random.Range(0, System.Enum.GetValues(typeof(BaseKeyword)).Length)).ToString();
+            string vKey = $"{randomMain}_{randomBase}";
+
+            playerInventory.AddItem(new Item(randomPotionSO, vKey), 1, vKey);
         }
 
-        displayInventory.Refresh();
-        Debug.Log("DEBUG FILL POCKET");
+        if (displayInventory != null) displayInventory.Refresh();
+    }
+
+    private void ConsumeRandomPotionDebug()
+    {
+        if (playerInventory == null)
+        {
+            Debug.LogWarning("[DEBUG] playerInventory missing for potion consumption!");
+            return;
+        }
+
+        var inv = playerInventory;
+        InventorySlot potionSlot = null;
+
+        foreach (var slot in inv.Container.Items)
+        {
+            if (inv.database.GetItemByStableId.TryGetValue(slot.item.StableId, out var itemSO))
+            {
+                if (itemSO.itemType == ItemType.Potion && slot.amount > 0)
+                {
+                    potionSlot = slot;
+                    break;
+                }
+            }
+        }
+
+        if (potionSlot == null)
+        {
+            Debug.LogWarning("[DEBUG] No potions in inventory to consume!");
+            return;
+        }
+
+        string variantKey = potionSlot.item.VariantKey;
+        string potionName = potionSlot.item.Name;
+ 
+        if (MutationRegistry.Instance != null)
+        {
+            MutationRegistry.Instance.OnPotionConsumed(variantKey);
+        }
+        if (MutationManager.Instance != null)
+        {
+            MutationManager.Instance.RecordPotionConsumption(potionSlot.item);
+        }
+        
+        // Try to get BaseKeyword from variant registry first
+        BaseKeyword baseKeyword;
+        bool foundKeyword = false;
+
+        if (potionVariantRegistry != null && potionVariantRegistry.TryGet(variantKey, out var brewResult))
+        {
+            baseKeyword = brewResult.baseKeyword;
+            foundKeyword = true;
+            Debug.Log($"[DEBUG] Found BaseKeyword from registry: {baseKeyword}");
+        }
+        else if (!string.IsNullOrEmpty(variantKey) && variantKey.Contains("_"))
+        {
+            // Parse from variantKey format "MainKeyword_BaseKeyword"
+            string[] parts = variantKey.Split('_');
+            if (parts.Length >= 2 && System.Enum.TryParse(parts[1], out baseKeyword))
+            {
+                foundKeyword = true;
+                Debug.Log($"[DEBUG] Parsed BaseKeyword from variantKey: {baseKeyword}");
+            }
+            else
+            {
+                Debug.LogWarning($"[DEBUG] Could not parse BaseKeyword from variantKey: {variantKey}");
+                baseKeyword = default;
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"[DEBUG] No variantKey or registry entry for potion: {potionName}");
+            baseKeyword = default;
+        }
+
+        if (foundKeyword)
+        {
+            if (MutationRegistry.Instance != null)
+            {
+                MutationRegistry.Instance.OnPotionConsumed(baseKeyword);
+            }
+            else
+            {
+                MutationData.IncrementKeyword(baseKeyword, out int newTier);
+            }
+        }
+
+        // Remove potion from inventory
+        potionSlot.amount--;
+        if (potionSlot.amount <= 0)
+        {
+            inv.Container.Items.Remove(potionSlot);
+        }
+
+        if (displayInventory != null) displayInventory.Refresh();
+        Debug.Log($"[DEBUG] Potion consumed. Remaining in inventory: {inv.Container.Items.Count} slots");
     }
 
     public void BeginBattle()
@@ -151,7 +262,6 @@ public class BattleSystem : MonoBehaviour
             return;
         }
 
-        Debug.Log("[BattleSystem] Spawning new enemy for encounter...");
         enemy = monsterSpawner.SpawnUniqueMonster(enemySpawnPoint.position);
         
         if (enemy != null)
@@ -204,6 +314,13 @@ public class BattleSystem : MonoBehaviour
  
     private async Task MonsterTurn()
     {
+        if (MutationManager.Instance != null && MutationManager.Instance.ShouldMonsterSkipTurn())
+        {
+            dialogueText.text = "You are stunned!";
+            await Wait(1000);
+            return;
+        }
+
         dialogueText.text = "Choose an action";
         selectedAction = PlayerAction.None;
  
@@ -227,8 +344,20 @@ public class BattleSystem : MonoBehaviour
  
         if (hitChance < 80)
         {
-            enemy.TakeDamage(2f);
-            dialogueText.text = "The attack hit!";
+            float damage = 10f; 
+
+            if (MutationManager.Instance != null)
+            {
+                damage = MutationManager.Instance.ProcessOutgoingDamage(damage, enemy);
+            }
+
+            enemy.TakeDamage(damage);
+            dialogueText.text = "Powerful strike!";
+
+            if (MutationManager.Instance != null)
+            {
+                MutationManager.Instance.OnAfterMonsterAttack(this, enemy, damage);
+            }
         }
         else
         {
@@ -250,7 +379,7 @@ public class BattleSystem : MonoBehaviour
         else
         {
             dialogueText.text = "You failed to defend!";
-            monster.TakeDamage(2f);
+            monster.TakeDamage(8f); // Buffed from 2f
         }
  
         await Wait(1000);
@@ -261,7 +390,7 @@ public class BattleSystem : MonoBehaviour
         dialogueText.text = "Enemy attacks!";
         await Wait(1000);
  
-        float damage = isDefending ? 1f : 2f;
+        float damage = isDefending ? 4f : 12f; // Buffed from 1f/2f to 4f/12f
         monster.TakeDamage(damage);
  
         if (isDefending)
