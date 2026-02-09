@@ -36,7 +36,6 @@ public class Monster : Combatant
 
     public override void TakeDamage(float damage)
     {
-        // Apply mutation effects (e.g., Carapace damage reduction)
         if (MutationManager.Instance != null)
         {
             damage = MutationManager.Instance.ProcessIncomingDamage(damage, null);

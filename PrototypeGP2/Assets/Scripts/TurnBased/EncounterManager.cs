@@ -54,7 +54,6 @@ public class EncounterManager : MonoBehaviour
     {
         Debug.Log($"[EncounterManager] Starting encounter {ExpeditionData.CurrentEncounterIndex}/{ExpeditionData.TotalEncounters}");
 
-        // Notify mutations of battle start
         if (MutationManager.Instance != null)
         {
             MutationManager.Instance.OnBattleStart();
@@ -71,7 +70,6 @@ public class EncounterManager : MonoBehaviour
     {
         Debug.Log("[EncounterManager] Battle Won!");
 
-        // Notify mutations of victory (for Helpful Infection)
         if (MutationManager.Instance != null)
         {
             MutationManager.Instance.OnBattleEnd(true, battleSystem);
@@ -100,7 +98,6 @@ public class EncounterManager : MonoBehaviour
     {
         Debug.Log("[EncounterManager] Battle Lost.");
 
-        // Notify mutations of defeat
         if (MutationManager.Instance != null)
         {
             MutationManager.Instance.OnBattleEnd(false, battleSystem);
