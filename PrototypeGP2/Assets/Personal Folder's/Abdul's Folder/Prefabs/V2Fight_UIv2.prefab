@@ -1793,7 +1793,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4145487825838625577}
   m_Layer: 0
-  m_Name: Fight_UIv2
+  m_Name: V2Fight_UIv2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
