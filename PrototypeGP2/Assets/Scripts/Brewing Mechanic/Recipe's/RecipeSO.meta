@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:PrototypeGP2/Assets/Personal Folder's/Qvintus Folder.meta
+guid: 5e7623a0cea19154fb5ce3c16dcd05e5
+========
 guid: 2661a393829719b419f940d1935497c4
+>>>>>>>> 427bea48138c73531744766d4b37285df01c2c07:PrototypeGP2/Assets/Scripts/Brewing Mechanic/Recipe's/RecipeSO.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

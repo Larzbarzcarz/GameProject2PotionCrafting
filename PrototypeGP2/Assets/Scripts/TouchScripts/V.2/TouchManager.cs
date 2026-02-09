@@ -1,3 +1,4 @@
+using _Project._Scripts.Sound_and_Music;
 using UnityEngine;
 
 using UnityEngine.EventSystems;
@@ -76,6 +77,12 @@ Debug.DrawRay(ray.origin, ray.direction * 5f, Color.red, 1f);
             {
                 Debug.Log("Found DragItem: " + current.name);
                 current.BeginDrag(hit.point);
+
+                //-----FMOD Integration-----
+                AudioManager.Instance.PlayOneShot(FMODEvents.instance.buttonPress);
+                AudioManager.Instance.PlayMusic(FMODEvents.instance.CookMusic);
+
+
             }
             else
             {
