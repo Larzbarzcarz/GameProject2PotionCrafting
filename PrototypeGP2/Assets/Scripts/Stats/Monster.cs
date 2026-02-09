@@ -64,7 +64,7 @@ public class Monster : Combatant
         victory = false;
         if (Animator != null)
         {
-            Animator.Rebind();s
+            Animator.Rebind();
             Animator.Update(0f);
             
             var state = Animator.GetCurrentAnimatorStateInfo(0);
