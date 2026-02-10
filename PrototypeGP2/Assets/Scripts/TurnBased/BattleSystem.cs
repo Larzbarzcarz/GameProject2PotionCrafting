@@ -22,7 +22,7 @@ public class BattleSystem : MonoBehaviour
     public GameObject inventory;
     [SerializeField] private InventoryObject playerInventory;
     public InventoryObject PlayerInventory => playerInventory;
-    [SerializeField] private DisplayInventory displayInventory;
+    [SerializeField] private PotionDisplayInventory displayInventory;
     [SerializeField] private PotionVariantRegistry potionVariantRegistry;
     [SerializeField] private BattlePotionPanel battlePotionPanel;
  

@@ -16,6 +16,17 @@ using UnityEngine.UI;
 /// </summary>
 public class PotionSelectionPanel : MonoBehaviour
 {
+    private void Awake()
+    {
+        Debug.Log($"[PotionSelectionPanel] Awake called. Active: {gameObject.activeSelf}", gameObject);
+        // Force-hide on Awake to guarantee it starts hidden
+        gameObject.SetActive(false);
+    }
+
+    private void OnEnable()
+    {
+        Debug.Log($"[PotionSelectionPanel] OnEnable called. Stack trace:\n{System.Environment.StackTrace}", gameObject);
+    }
     [Header("Data")]
     [SerializeField] private InventoryObject   labInventory;
     [SerializeField] private ItemDatabaseObject database;
