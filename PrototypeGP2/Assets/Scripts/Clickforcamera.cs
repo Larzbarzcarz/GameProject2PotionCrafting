@@ -19,7 +19,7 @@ public class Clickforcamera : MonoBehaviour
         craftingCamera.SetActive(false);
 
         //-----FMOD Integration-----
-        AudioManager.Instance.PlayMusic(FMODEvents.instance.baseMusic);
+        //AudioManager.Instance.PlayMusic(FMODEvents.instance.baseMusic);
     }
 
     public void SwitchToCrafting()
@@ -33,7 +33,7 @@ public class Clickforcamera : MonoBehaviour
         craftingCamera.SetActive(true);
 
         //-----FMOD Integration-----
-        AudioManager.Instance.PlayOneShot(FMODEvents.instance.buttonPress);
+        //AudioManager.Instance.PlayOneShot(FMODEvents.instance.buttonPress);
     }
 
     public void SwitchToMain()
@@ -47,14 +47,14 @@ public class Clickforcamera : MonoBehaviour
         mainCamera.SetActive(true);
 
         //-----FMOD Integration-----
-        AudioManager.Instance.PlayMusic(FMODEvents.instance.baseMusic);
-        AudioManager.Instance.PlayOneShot(FMODEvents.instance.buttonPress);
+        //AudioManager.Instance.PlayMusic(FMODEvents.instance.baseMusic);
+        //AudioManager.Instance.PlayOneShot(FMODEvents.instance.buttonPress);
     }
 
     public void SwitchToCombat()
     {
         //-----FMOD Integration-----
-        AudioManager.Instance.PlayOneShot(FMODEvents.instance.expeditionStart);
+        //AudioManager.Instance.PlayOneShot(FMODEvents.instance.expeditionStart);
         //-----FMOD Integration-----
         SceneManager.LoadSceneAsync(1);
     }
