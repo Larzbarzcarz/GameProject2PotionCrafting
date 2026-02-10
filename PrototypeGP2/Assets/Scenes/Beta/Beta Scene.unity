@@ -3167,7 +3167,7 @@ PrefabInstance:
     - target: {fileID: 9205371885998440386, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 844072439}
+      objectReference: {fileID: 1984845904}
     - target: {fileID: 9205371885998440386, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: orthographic size
       value: 2.7
@@ -4256,43 +4256,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!84 &844072439
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 6
-  m_Width: 620
-  m_Height: 286
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthStencilFormat: 94
-  m_ColorFormat: 4
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_UseDynamicScaleExplicit: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_EnableRandomWrite: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 0
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
-  m_ShadowSamplingMode: 2
 --- !u!1 &855371679
 GameObject:
   m_ObjectHideFlags: 0
@@ -8942,41 +8905,62 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
-  <enemyAttack1>k__BackingField:
+  <blobAttack1>k__BackingField:
     Guid:
       Data1: 1589108361
       Data2: 1220236658
       Data3: -1646264445
       Data4: -1655142830
-    Path: event:/SFX/Combat/Blob_Attack_1
-  <enemyAttack2>k__BackingField:
+    Path: event:/SFX/Combat/SlimeMonster/Blob_Attack_1
+  <blobAttack2>k__BackingField:
     Guid:
       Data1: -1117006985
       Data2: 1112115274
       Data3: 1585115060
       Data4: 2081989149
-    Path: event:/SFX/Combat/Blob_Attack_2
-  <enemyHurt>k__BackingField:
-    Guid:
-      Data1: 218610581
-      Data2: 1314505230
-      Data3: 896524966
-      Data4: -978500638
-    Path: event:/SFX/Combat/Blob_Taking_damage_1
-  <enemyDead>k__BackingField:
+    Path: event:/SFX/Combat/SlimeMonster/Blob_Attack_2
+  <blobHurt>k__BackingField:
     Guid:
       Data1: -1869565458
       Data2: 1326506744
       Data3: 1869607866
       Data4: 377204413
-    Path: event:/SFX/Combat/Blob_death
-  <enemySpecial>k__BackingField:
+    Path: event:/SFX/Combat/SlimeMonster/Blob_death
+  <blobDead>k__BackingField:
     Guid:
       Data1: 140078068
       Data2: 1271005709
       Data3: 500892046
       Data4: 1974351928
-    Path: event:/SFX/Combat/Blob_Scream
+    Path: event:/SFX/Combat/SlimeMonster/Blob_Scream
+  <blobSpecial>k__BackingField:
+    Guid:
+      Data1: 218610581
+      Data2: 1314505230
+      Data3: 896524966
+      Data4: -978500638
+    Path: event:/SFX/Combat/SlimeMonster/Blob_Taking_damage_1
+  <treeAttack1>k__BackingField:
+    Guid:
+      Data1: -2119560884
+      Data2: 1169816226
+      Data3: -1303168623
+      Data4: -1614265848
+    Path: event:/SFX/Combat/TreeMonster/Tree_Attack_1
+  <treeDead>k__BackingField:
+    Guid:
+      Data1: 1595007792
+      Data2: 1149318927
+      Data3: 750539184
+      Data4: 760376142
+    Path: event:/SFX/Combat/TreeMonster/Tree_Death_1
+  <treeHurt>k__BackingField:
+    Guid:
+      Data1: 1960544622
+      Data2: 1217024127
+      Data3: -154890583
+      Data4: 824299586
+    Path: event:/SFX/Combat/TreeMonster/Tree_taking_damage_1
 --- !u!1 &1762327171
 GameObject:
   m_ObjectHideFlags: 0
@@ -9950,6 +9934,43 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 553f7d8c5a719314a91a66bb0fa6a830, type: 3}
+--- !u!84 &1984845904
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 6
+  m_Width: 620
+  m_Height: 286
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthStencilFormat: 94
+  m_ColorFormat: 4
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_UseDynamicScaleExplicit: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_EnableRandomWrite: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 0
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
+  m_ShadowSamplingMode: 2
 --- !u!4 &1988945360 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2563496969622287784, guid: 6f16b0ced1fe5b24e9d7ea49b88ad413, type: 3}

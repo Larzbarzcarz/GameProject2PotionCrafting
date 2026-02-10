@@ -26,12 +26,18 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference playerDead { get; private set; }
     [field: SerializeField] public EventReference playerSpecial { get; private set; }
 
-    [field: Header("Enemy SFX")]
-    [field: SerializeField] public EventReference enemyAttack1 { get; private set; }
-    [field: SerializeField] public EventReference enemyAttack2 { get; private set; }
-    [field: SerializeField] public EventReference enemyHurt { get; private set; }
-    [field: SerializeField] public EventReference enemyDead { get; private set; }
-    [field: SerializeField] public EventReference enemySpecial { get; private set; }
+    [field: Header("BlobE SFX")]
+    [field: SerializeField] public EventReference blobAttack1 { get; private set; }
+    [field: SerializeField] public EventReference blobAttack2 { get; private set; }
+    [field: SerializeField] public EventReference blobHurt { get; private set; }
+    [field: SerializeField] public EventReference blobDead { get; private set; }
+    [field: SerializeField] public EventReference blobSpecial { get; private set; }
+    [field: Header("TreeE SFX")]
+    [field: SerializeField] public EventReference treeAttack1 { get; private set; }
+    [field: SerializeField] public EventReference treeDead { get; private set; }
+    [field: SerializeField] public EventReference treeHurt { get; private set; }
+
+
 
 
     public static FMODEvents instance { get; private set; }
