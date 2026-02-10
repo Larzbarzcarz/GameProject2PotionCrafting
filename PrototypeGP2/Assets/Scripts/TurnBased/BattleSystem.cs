@@ -8,7 +8,8 @@ public enum PlayerAction
 {
     None,
     Attack,
-    Defend
+    Defend,
+    Potion
 }
  
 public class BattleSystem : MonoBehaviour
@@ -18,6 +19,7 @@ public class BattleSystem : MonoBehaviour
     public Combatant enemy;
     public RandomMonsterSpawn monsterSpawner;
     public Transform enemySpawnPoint;
+    public PotionVariantRegistry variantRegistry;
    
     public TextMeshProUGUI dialogueText;
     public GameObject inventory;
@@ -26,8 +28,10 @@ public class BattleSystem : MonoBehaviour
     [Header("Costs")]
     [SerializeField] private int attackCost = 2;
     [SerializeField] private int defendCost = 1;
+    [SerializeField] private int potionCost = 1;
  
     private PlayerAction selectedAction = PlayerAction.None;
+    private Item selectedPotion = null;
     private bool isDefending;
     private bool battleOver;
  
@@ -43,6 +47,7 @@ public class BattleSystem : MonoBehaviour
     private void Start()
     {
         inventory.SetActive(false);
+        if (variantRegistry == null) variantRegistry = FindObjectOfType<PotionVariantRegistry>();
     }
 
     private void Update()
@@ -154,6 +159,7 @@ public class BattleSystem : MonoBehaviour
         if (monster != null)
         {
             monster.ResetAnimator();
+            monster.ResetHealth(); // Clear effects as well
         }
 
         if (monsterSpawner == null)
@@ -201,15 +207,35 @@ public class BattleSystem : MonoBehaviour
     {
         while (!battleOver)
         {
-            await MonsterTurn();
+            monster.ProcessTurnEffects();
+            if (monster.isDead) { battleOver = true; return; }
+            if (monster.isStunned)
+            {
+                dialogueText.text = "Monster is stunned!";
+                await Wait(1000);
+            }
+            else
+            {
+                await MonsterTurn();
+            }
  
             if (enemy.isDead)
             {
                 battleOver = true;
                 return;
             }
- 
-            await EnemyTurn();
+
+            enemy.ProcessTurnEffects();
+            if (enemy.isDead) { battleOver = true; return; }
+            if (enemy.isStunned)
+            {
+                dialogueText.text = "Enemy is stunned!";
+                await Wait(1000);
+            }
+            else
+            {
+                await EnemyTurn();
+            }
  
             if (monster.CurrentHealth <= 0)
             {
@@ -223,6 +249,7 @@ public class BattleSystem : MonoBehaviour
     {
         dialogueText.text = "Choose an action";
         selectedAction = PlayerAction.None;
+        selectedPotion = null;
  
         await WaitUntilActionSelected();
  
@@ -234,6 +261,9 @@ public class BattleSystem : MonoBehaviour
  
             case PlayerAction.Defend:
                 await MonsterDefend();
+                break;
+            case PlayerAction.Potion:
+                await ExecutePotionUsage();
                 break;
         }
     }
@@ -262,12 +292,10 @@ public class BattleSystem : MonoBehaviour
             ClawImage.SetActive(true);
             await Wait(500);
             ClawImage.SetActive(false);
-            //-----fmod implementation-----
 
             int randomAttack = Random.Range(2, 4);
             enemy.TakeDamage(randomAttack);
             dialogueText.text = "The attack hit!";
-
         }
         else
         {
@@ -294,6 +322,51 @@ public class BattleSystem : MonoBehaviour
  
         await Wait(1000);
     }
+
+    private async Task ExecutePotionUsage()
+    {
+        if (selectedPotion == null) return;
+
+        if (variantRegistry.TryGet(selectedPotion.VariantKey, out var result))
+        {
+            dialogueText.text = $"Using {selectedPotion.Name}!";
+            ApplyPotionResult(result);
+            MutationManager.Instance?.RecordPotionConsumption(selectedPotion);
+        }
+        else
+        {
+            dialogueText.text = "The potion has no effect...";
+        }
+
+        await Wait(1000);
+    }
+
+    private void ApplyPotionResult(BrewResult result)
+    {
+        Combatant target = result.effect == PotionEffectType.Damage ? enemy : monster;
+
+        // Instant effects
+        if (result.instant)
+        {
+            if (result.percentOfMaxHP > 0) target.Heal(target.MaxHealth * result.percentOfMaxHP);
+            if (result.damage > 0) target.TakeDamage(result.damage);
+            if (result.multiplier > 0) target.HealStamina(result.multiplier * 2);
+        }
+
+        // Over-time effects
+        if (result.turns > 0)
+        {
+            if (result.percentOfMaxHP > 0) target.ApplyStatusEffect(StatusEffectType.Regen, result.turns, result.percentOfMaxHP / result.turns);
+            if (result.damage > 0) target.ApplyStatusEffect(StatusEffectType.Poison, result.turns, result.damage / result.turns);
+            if (result.multiplier > 0) target.ApplyStatusEffect(StatusEffectType.StaminaRegen, result.turns, result.multiplier);
+        }
+
+        // Special: Stun
+        if (result.effect == PotionEffectType.Utility && result.turns > 0)
+        {
+            enemy.ApplyStatusEffect(StatusEffectType.Stun, result.turns, 0);
+        }
+    }
  
     private async Task EnemyTurn()
     {
@@ -303,12 +376,11 @@ public class BattleSystem : MonoBehaviour
         float damage = isDefending ? 1f : 2f;
         monster.TakeDamage(damage);
 
-        //-----fmod implementation-----
-        enemy.DealDamage(); // This will trigger the enemy's attack sound
+        enemy.DealDamage(); 
 
         await Wait(600);
 
-        int randomHurt = Random.Range(1, 3);
+        // int randomHurt = Random.Range(1, 3);
         /*switch (randomHurt)
         {
             case 1:
@@ -372,6 +444,21 @@ public class BattleSystem : MonoBehaviour
  
         selectedAction = PlayerAction.Defend;
     }
+
+    public void OnPotionSelected(Item potion)
+    {
+        if (selectedAction != PlayerAction.None) return;
+
+        if (!monster.TrySpendStamina(potionCost))
+        {
+            dialogueText.text = "Not enough stamina to use a potion!";
+            return;
+        }
+
+        selectedPotion = potion;
+        selectedAction = PlayerAction.Potion;
+        InventoryInactive();
+    }
  
     #endregion
  
@@ -394,12 +481,12 @@ public class BattleSystem : MonoBehaviour
     }
  
     #endregion
-
+ 
     public void InventoryActive()
     {
         inventory.SetActive(true);
     }
-
+ 
     public void InventoryInactive()
     {
         inventory.SetActive(false);

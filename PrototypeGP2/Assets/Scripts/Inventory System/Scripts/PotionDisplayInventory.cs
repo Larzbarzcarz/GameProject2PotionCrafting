@@ -20,6 +20,7 @@ public class PotionDisplayInventory : MonoBehaviour
     [SerializeField] public Camera craftingCamera;
     [SerializeField] private CauldronContents cauldron;
     [SerializeField] private PotionVariantRegistry potionVariantRegistry;
+    [SerializeField] private BattleSystem battleSystem;
     private Dictionary<InventorySlot, GameObject> itemsDisplayed = new Dictionary<InventorySlot, GameObject>();
     [SerializeField] private Transform cauldronSpawnPoint;
     [SerializeField] private Vector3 spawnOffset = new Vector3(0f, -0.08f, 0f);
@@ -30,6 +31,9 @@ public class PotionDisplayInventory : MonoBehaviour
     {
         if (craftingCamera == null)
             craftingCamera = Camera.main;
+        
+        if (battleSystem == null)
+            battleSystem = FindObjectOfType<BattleSystem>();
     }
 
     private void Start()
@@ -109,15 +113,23 @@ public class PotionDisplayInventory : MonoBehaviour
 
     private void OnInventoryClick(InventorySlot slot)
     {
-        //Debug.Log("camera selected" + craftingCamera.gameObject);
         if (slot.amount <= 0)
             return;
-        
+
+        if (battleSystem != null && battleSystem.isActiveAndEnabled && battleSystem.inventory.activeInHierarchy)
+        {
+            battleSystem.OnPotionSelected(slot.item);
+            
+            slot.amount--;
+            if (slot.amount <= 0)
+                inventory.Container.Items.Remove(slot);
+
+            Refresh();
+            return;
+        }
         
         SpawnWorldItem(slot);
 
-
-        //Ingredients gets removed in PotionBrewingSystem -> Try Brew
         slot.amount--;
         if (slot.amount <= 0) 
             inventory.Container.Items.Remove(slot);
@@ -136,7 +148,6 @@ public class PotionDisplayInventory : MonoBehaviour
 
         if (!cauldronSpawnPoint)
         {
-            //Debug.LogError("Cauldron spawn point missing!");
             return;
         }
 

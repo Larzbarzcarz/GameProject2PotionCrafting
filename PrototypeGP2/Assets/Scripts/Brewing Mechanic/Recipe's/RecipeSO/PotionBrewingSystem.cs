@@ -60,8 +60,9 @@ public class PotionBrewingSystem : MonoBehaviour
         bool found = recipeMap.TryGet(mainKey, baseKey, out var entry);
         if (!found)
         {
-            Debug.Log($"[BREW] No recipe for {mainKey} + {baseKey}. Brewing failed potion.");
-            effectType = PotionEffectType.Fail;
+            Debug.Log($"[BREW] No explicit recipe for {mainKey} + {baseKey}. Applying default mapping.");
+            ApplyDefaultRecipe(mainKey, baseKey, out effectType, out entry);
+            found = true; // Use the default entry
         }
         else
         {
@@ -108,17 +109,6 @@ public class PotionBrewingSystem : MonoBehaviour
                 v.defence           = entry.defence;
                 v.multiplier        = entry.multiplier;
             }
-            else
-            {
-                Debug.Log($"[BREW] Brewed Failed Potion. Main={mainKey}, Base={baseKey}. [BREW] Failed potion has no effect.");
-
-                v.instant = false;
-                v.turns = 0;
-                v.percentOfMaxHP = 0;
-                v.damage = 0;
-                v.defence = 0;
-                v.multiplier = 0;
-            }
         }
 
 
@@ -136,5 +126,55 @@ public class PotionBrewingSystem : MonoBehaviour
 
         cauldron.Clear();
         return true;
+    }
+
+    private void ApplyDefaultRecipe(MainKeyword main, BaseKeyword baseKey, out PotionEffectType type, out PotionRecipeSO.Entry entry)
+    {
+        type = PotionEffectType.Fail;
+        entry = new PotionRecipeSO.Entry();
+        entry.mainKey = main;
+        entry.baseKey = baseKey;
+
+        // Simplified mapping based on user request
+        if (main == MainKeyword.Blood)
+        {
+            if (baseKey == BaseKeyword.Fungus) { type = PotionEffectType.Heal; entry.instant = true; entry.percentOfMaxHP = 0.2f; entry.effectDescription = "Heals 20% max HP instantly"; }
+            else if (baseKey == BaseKeyword.Mineral) { type = PotionEffectType.Heal; entry.turns = 4; entry.percentOfMaxHP = 0.5f; entry.effectDescription = "Heals 50% max HP over 4 turns"; }
+            else if (baseKey == BaseKeyword.Animal) { type = PotionEffectType.Damage; entry.instant = true; entry.damage = 10f; entry.effectDescription = "Deals a large burst of damage"; }
+            else { type = PotionEffectType.Heal; entry.instant = true; entry.percentOfMaxHP = 0.1f; entry.effectDescription = "Heals 10% max HP instantly"; }
+        }
+        else if (main == MainKeyword.Poision)
+        {
+            if (baseKey == BaseKeyword.Animal) { type = PotionEffectType.Damage; entry.turns = 3; entry.damage = 15f; entry.effectDescription = "Deals 15 damage over 3 turns"; }
+            else if (baseKey == BaseKeyword.Fungus) { type = PotionEffectType.Heal; entry.instant = true; entry.percentOfMaxHP = 0.2f; entry.effectDescription = "Neutralizing draft"; }
+            else { type = PotionEffectType.Damage; entry.turns = 3; entry.damage = 9f; entry.effectDescription = "Deals 9 damage over 3 turns"; }
+        }
+        else if (main == MainKeyword.Rodent)
+        {
+            if (baseKey == BaseKeyword.Cursed) { type = PotionEffectType.Utility; entry.turns = 2; entry.effectDescription = "Stuns the target for 2 turns"; }
+            else if (baseKey == BaseKeyword.Mineral) { type = PotionEffectType.Damage; entry.turns = 3; entry.damage = 6f; entry.effectDescription = "Rodent infestation damage"; }
+            else { type = PotionEffectType.Damage; entry.instant = true; entry.damage = 4f; entry.effectDescription = "Rodent bite"; }
+        }
+        else if (main == MainKeyword.Stone)
+        {
+            if (baseKey == BaseKeyword.Animal) { type = PotionEffectType.Utility; entry.turns = 1; entry.effectDescription = "Stuns the target for 1 turn"; }
+            else { type = PotionEffectType.Damage; entry.instant = true; entry.damage = 5f; entry.effectDescription = "Deals small physical damage"; }
+        }
+        else if (main == MainKeyword.Wing)
+        {
+            if (baseKey == BaseKeyword.Fungus) { type = PotionEffectType.Special; entry.instant = true; entry.multiplier = 5; entry.effectDescription = "Recovers 5 stamina instantly"; }
+            else { type = PotionEffectType.Special; entry.turns = 3; entry.multiplier = 2; entry.effectDescription = "Gradual stamina recovery"; }
+        }
+        else if (main == MainKeyword.Crystalline)
+        {
+            type = PotionEffectType.Heal; entry.instant = true; entry.percentOfMaxHP = 0.15f; entry.effectDescription = "Focusing potion";
+        }
+        else
+        {
+            // Generic fallback for Soothing/Rancid/Others
+            type = PotionEffectType.Heal; entry.instant = true; entry.percentOfMaxHP = 0.1f; entry.effectDescription = "Basic soothing potion";
+        }
+
+        entry.effectType = type;
     }
 }
