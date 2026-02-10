@@ -18,6 +18,8 @@ public class PotionThrowController : MonoBehaviour
     private GameObject ghost;
     public InventoryObject inventory;
 
+    public Ray _ray;
+
     private void Awake()
     {
         if (!cam) cam = Camera.main;
@@ -59,6 +61,7 @@ public class PotionThrowController : MonoBehaviour
         if (!HasPotionSelected() || cam == null) return;
 
         Ray ray = cam.ScreenPointToRay(screenPos);
+        _ray = ray;
         if (Physics.Raycast(ray, out RaycastHit hit, 1000f, enemyMask))
         {
             var target = hit.collider.GetComponentInParent<IPotionTarget>();
@@ -83,20 +86,20 @@ public class PotionThrowController : MonoBehaviour
             Debug.Log("Throw missed (raycast hit nothing on enemyMask).");
         }
 
-        CancelThrowMode();
+        //CancelThrowMode();
     }
 
-    public void CancelThrowMode()
-    {
-        throwMode = false;
-        selectedPotion = null;
+    //public void CancelThrowMode()
+    //{
+    //    throwMode = false;
+    //    selectedPotion = null;
 
-        if (ghost != null)
-        {
-            Destroy(ghost);
-            ghost = null;
-        }
-    }
+    //    if (ghost != null)
+    //    {
+    //        Destroy(ghost);
+    //        ghost = null;
+    //    }
+    //}
 
     private void SpawnGhostIfNeeded()
     {
@@ -105,6 +108,14 @@ public class PotionThrowController : MonoBehaviour
         if (ghost != null)
             Destroy(ghost);
 
-        ghost = Instantiate(potionGhostPrefab);
+        //Vector3 pos = cam.ScreenToWorldPoint(Input.GetTouch(0).position);
+        //ghost = Instantiate(potionGhostPrefab, pos, Quaternion.identity);
+    }
+
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(_ray);
     }
 }
