@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3382917827802948213}
   - component: {fileID: 8979087349407697168}
   - component: {fileID: 5089308793943952777}
+  - component: {fileID: 2711234052385305271}
   m_Layer: 0
   m_Name: Bat
   m_TagString: Untagged
@@ -77,6 +78,19 @@ MonoBehaviour:
   currentStamina: 50
   isDead: 0
   currentState: 0
+--- !u!114 &2711234052385305271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6196367670168700049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 421f14cf65e4a544e9b7815e585ecfef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemy: 2
 --- !u!1001 &9054435625707006485
 PrefabInstance:
   m_ObjectHideFlags: 0

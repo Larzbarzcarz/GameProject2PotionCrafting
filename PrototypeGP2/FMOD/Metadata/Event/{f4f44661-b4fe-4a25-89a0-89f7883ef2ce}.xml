@@ -5,7 +5,7 @@
 			<value>Treemonster_hit</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{b3b900ba-984d-4009-ba25-d37f1ee5a324}</destination>
@@ -97,6 +97,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{ef9b2b50-0682-4f86-9ab3-6f9a728e8609}">
+		<property name="volume">
+			<value>2.5</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
@@ -113,7 +116,6 @@
 	<object class="MixerBusEffectChain" id="{4205b775-3e96-48a8-82fc-77b4cdeaa6dd}">
 		<relationship name="effects">
 			<destination>{86c9884d-fdb0-4879-8808-428d69f69fb2}</destination>
-			<destination>{3b0c0c36-a290-4c29-9a49-1ca7e66ed7e7}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{782d23ef-e527-4917-a7ee-0c3baa361887}" />
@@ -125,6 +127,5 @@
 	</object>
 	<object class="MixerBusPanner" id="{4beba95e-e54d-40c9-8edd-6203f3717920}" />
 	<object class="MixerBusFader" id="{86c9884d-fdb0-4879-8808-428d69f69fb2}" />
-	<object class="SpatialiserEffect" id="{3b0c0c36-a290-4c29-9a49-1ca7e66ed7e7}" />
 	<object class="MixerBusFader" id="{cee49b81-bb69-4d45-afa3-8d5efe65e9a9}" />
 </objects>

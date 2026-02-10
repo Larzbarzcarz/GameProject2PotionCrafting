@@ -5,7 +5,7 @@
 			<value>Tree_taking_damage_1</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{b3b900ba-984d-4009-ba25-d37f1ee5a324}</destination>
@@ -97,6 +97,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{61ba52f6-5ecc-465a-a1cc-a75673630ff2}">
+		<property name="volume">
+			<value>2.5</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
@@ -113,7 +116,6 @@
 	<object class="MixerBusEffectChain" id="{09f4c9a2-71e3-4d30-85c6-10324378bc17}">
 		<relationship name="effects">
 			<destination>{7d8e8201-8eb3-41a6-86c8-d637c78642cc}</destination>
-			<destination>{4d08a18a-f643-483e-9566-52e4b536ccd8}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{51d104a3-d407-463f-b664-b50f781f173d}" />
@@ -125,6 +127,5 @@
 	</object>
 	<object class="MixerBusPanner" id="{31535dca-dcae-4b36-8b07-ba25a903b598}" />
 	<object class="MixerBusFader" id="{7d8e8201-8eb3-41a6-86c8-d637c78642cc}" />
-	<object class="SpatialiserEffect" id="{4d08a18a-f643-483e-9566-52e4b536ccd8}" />
 	<object class="MixerBusFader" id="{a80db45d-6ec6-490d-8171-0bdc509b0e4a}" />
 </objects>

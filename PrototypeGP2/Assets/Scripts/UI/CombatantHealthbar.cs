@@ -16,7 +16,7 @@ public class CombatantHealthbar : MonoBehaviour
     void Start()
     {
         //-----FMOD Implementation-----//
-        AudioManager.Instance.PlayMusic(FMODEvents.instance.CombatMusic);
+        AudioManager.Instance.PlayMusic(FMODEvents.instance.combatMusic);
         //-----FMOD Implementation-----//
 
         if (target == null)

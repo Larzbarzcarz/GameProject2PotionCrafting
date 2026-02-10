@@ -5,10 +5,10 @@
 			<value>Area_unlocked_normalwav</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{da836d3d-275c-4c7d-9e80-921f7c7b6273}</destination>
+			<destination>{b8f000fd-f5b2-49ef-9c32-afc988426c55}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{21562d59-0625-4c6e-a715-3f435f792306}</destination>
@@ -113,7 +113,6 @@
 	<object class="MixerBusEffectChain" id="{cbcfa488-0952-49e9-ad35-594f9f17e5bc}">
 		<relationship name="effects">
 			<destination>{2e8598e2-db2b-4f24-ae82-c60bf67d00c1}</destination>
-			<destination>{63fe9956-6b2a-4b8c-990a-be4d317306d2}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{50c53d00-32d6-47ba-818e-1f38dec1a3c9}" />
@@ -125,6 +124,5 @@
 	</object>
 	<object class="MixerBusPanner" id="{f8271642-3cf2-4a34-a576-5b9e06467bf5}" />
 	<object class="MixerBusFader" id="{2e8598e2-db2b-4f24-ae82-c60bf67d00c1}" />
-	<object class="SpatialiserEffect" id="{63fe9956-6b2a-4b8c-990a-be4d317306d2}" />
 	<object class="MixerBusFader" id="{813774aa-2349-4c8b-9bb6-83f21364a414}" />
 </objects>

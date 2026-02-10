@@ -3,6 +3,16 @@ using UnityEngine;
 public class Enemy : Combatant
 {
     public bool isDead = false;
+
+    //-----fmod implementation-----
+    private MonsterSound monsterSounds;
+    //-----fmod implementation-----
+
+    public void Start()
+    {
+        monsterSounds = GetComponent<MonsterSound>();
+    }
+
     public enum EnemyState
     {
         Alive,
@@ -24,11 +34,15 @@ public class Enemy : Combatant
         isDead = true;
         currentState = EnemyState.Dead;
         Debug.Log("enemy defeated?");
-    
+
+        monsterSounds.PlayMonsterSoundDead();
+
     }
 
     public override float DealDamage()
     {
+        monsterSounds.PlayMonsterSoundHit();
+
         return strength; 
     }
    

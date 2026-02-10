@@ -5,7 +5,7 @@
 			<value>Blob_Attack_2</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{457038bd-5cfe-4ac8-9e87-05d9c5974d22}</destination>
@@ -97,6 +97,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{666c05ec-0fdb-4824-94df-9c64f4f18e54}">
+		<property name="volume">
+			<value>3.5</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
@@ -113,7 +116,6 @@
 	<object class="MixerBusEffectChain" id="{24d830dc-a541-42d3-afe2-685973c34f00}">
 		<relationship name="effects">
 			<destination>{f08014f1-c724-41df-a5ac-53fde0e10346}</destination>
-			<destination>{8c89016a-aaa5-4997-aaa9-abae7624e9a1}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{f2dcccdf-e2e6-40c9-b7cd-53dc778bf941}" />
@@ -125,6 +127,5 @@
 	</object>
 	<object class="MixerBusPanner" id="{b7442b67-673f-46e9-89a8-d52adcea552c}" />
 	<object class="MixerBusFader" id="{f08014f1-c724-41df-a5ac-53fde0e10346}" />
-	<object class="SpatialiserEffect" id="{8c89016a-aaa5-4997-aaa9-abae7624e9a1}" />
 	<object class="MixerBusFader" id="{de1b3bb7-0d16-4538-82fb-833d97c483f0}" />
 </objects>

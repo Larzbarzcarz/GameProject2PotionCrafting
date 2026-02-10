@@ -2878,6 +2878,54 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9609d54654ba88f4f863344a25bbba6b, type: 3}
+--- !u!1 &508337291
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 508337293}
+  - component: {fileID: 508337292}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &508337292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508337291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 829d296122e83094daa360d2a776d7f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masterBusPath: bus:/
+  musicBusPath: bus:/Music
+  sfxBusPath: bus:/SFX
+--- !u!4 &508337293
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508337291}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2270.3032, y: 562.9475, z: -125.48416}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 664141653}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &552919993
 GameObject:
   m_ObjectHideFlags: 0
@@ -3072,11 +3120,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1798342755243477739, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: orthographic size
-      value: 2.6848316
+      value: 2.681119
       objectReference: {fileID: 0}
     - target: {fileID: 1813454538314249935, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalScale.x
-      value: 9.404494
+      value: 11.706294
       objectReference: {fileID: 0}
     - target: {fileID: 1813454538314249935, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalScale.y
@@ -3092,11 +3140,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2475294716756555193, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.00000056055154
+      value: 0.0000006977495
       objectReference: {fileID: 0}
     - target: {fileID: 2475294716756555193, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.005442095
+      value: -0.0002858162
       objectReference: {fileID: 0}
     - target: {fileID: 3132409262940554809, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3204,15 +3252,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8788124287499514057, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.9011383
+      value: -3.9042947
       objectReference: {fileID: 0}
     - target: {fileID: 8788124287499514057, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.5647874
+      value: 3.5726552
       objectReference: {fileID: 0}
     - target: {fileID: 8788124287499514057, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.9011376
+      value: -3.9042938
       objectReference: {fileID: 0}
     - target: {fileID: 8788124287499514057, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3237,7 +3285,7 @@ PrefabInstance:
     - target: {fileID: 9205371885998440386, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 1604184371}
+      objectReference: {fileID: 814975136}
     - target: {fileID: 9205371885998440386, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: orthographic size
       value: 2.7
@@ -3589,6 +3637,260 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68a84250e76e65544b3e0e7adc7f5b67, type: 3}
+--- !u!1 &664141652
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 664141653}
+  - component: {fileID: 664141654}
+  m_Layer: 0
+  m_Name: FMODEvents
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &664141653
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664141652}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 508337293}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &664141654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664141652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34ed37da2fe6f2a4e9ea53fcd87011da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <baseMusic>k__BackingField:
+    Guid:
+      Data1: -1422102794
+      Data2: 1210234444
+      Data3: 1973179068
+      Data4: 629224298
+    Path: event:/Music/Huldra
+  <cookMusic>k__BackingField:
+    Guid:
+      Data1: -1797935575
+      Data2: 1338453798
+      Data3: -517059959
+      Data4: 407163356
+    Path: event:/Music/BrewingPotionsLoop
+  <combatMusic>k__BackingField:
+    Guid:
+      Data1: -485333003
+      Data2: 1182018709
+      Data3: 1595123897
+      Data4: 1322678148
+    Path: event:/Music/Fight now my creature
+  <victoryMusic>k__BackingField:
+    Guid:
+      Data1: -1356334978
+      Data2: 1194243025
+      Data3: 903337384
+      Data4: -751598848
+    Path: event:/Music/Victory_song
+  <buttonPress>k__BackingField:
+    Guid:
+      Data1: -1356334978
+      Data2: 1194243025
+      Data3: 903337384
+      Data4: -751598848
+    Path: event:/Music/Victory_song
+  <Cooking>k__BackingField:
+    Guid:
+      Data1: 1595007792
+      Data2: 1149318927
+      Data3: 750539184
+      Data4: 760376142
+    Path: event:/SFX/Combat/TreeMonster/Tree_Death_1
+  <expeditionStart>k__BackingField:
+    Guid:
+      Data1: 1589108361
+      Data2: 1220236658
+      Data3: -1646264445
+      Data4: -1655142830
+    Path: event:/SFX/Combat/SlimeMonster/Blob_Attack_1
+  <victory>k__BackingField:
+    Guid:
+      Data1: 608321447
+      Data2: 1324271298
+      Data3: 50212024
+      Data4: -997229316
+    Path: event:/SFX/Transitions&Buttons/Victory_1
+  <playerAttack1>k__BackingField:
+    Guid:
+      Data1: 1297119950
+      Data2: 1089457960
+      Data3: -913391180
+      Data4: -131973161
+    Path: event:/SFX/Combat/Wolf/Attack_1
+  <playerAttack2>k__BackingField:
+    Guid:
+      Data1: 547267808
+      Data2: 1254636883
+      Data3: -123121782
+      Data4: -34756242
+    Path: event:/SFX/Combat/Wolf/Attack_2
+  <playerAttack3>k__BackingField:
+    Guid:
+      Data1: 1945714074
+      Data2: 1248564603
+      Data3: -1770843228
+      Data4: 727737363
+    Path: event:/SFX/Combat/Wolf/Attack_3
+  <playerHurt1>k__BackingField:
+    Guid:
+      Data1: -1738671415
+      Data2: 1332472616
+      Data3: -177755479
+      Data4: -208291998
+    Path: event:/SFX/Combat/Wolf/Hurt_1
+  <playerHurt2>k__BackingField:
+    Guid:
+      Data1: 144203028
+      Data2: 1269559942
+      Data3: -335062604
+      Data4: 1511748186
+    Path: event:/SFX/Combat/Wolf/Hurt_2
+  <playerHurt3>k__BackingField:
+    Guid:
+      Data1: 1898723512
+      Data2: 1253141372
+      Data3: -1997117263
+      Data4: -507745426
+    Path: event:/SFX/Combat/Wolf/Hurt_3
+  <playerDead>k__BackingField:
+    Guid:
+      Data1: 1305301940
+      Data2: 1338819212
+      Data3: -78772312
+      Data4: 805809367
+    Path: event:/SFX/Combat/Wolf/Death_1
+  <playerIdle>k__BackingField:
+    Guid:
+      Data1: 2105806105
+      Data2: 1132676710
+      Data3: -66405220
+      Data4: 1294433606
+    Path: event:/SFX/Combat/Wolf/Breathing_Idle
+  <blobAttack1>k__BackingField:
+    Guid:
+      Data1: 1589108361
+      Data2: 1220236658
+      Data3: -1646264445
+      Data4: -1655142830
+    Path: event:/SFX/Combat/SlimeMonster/Blob_Attack_1
+  <blobAttack2>k__BackingField:
+    Guid:
+      Data1: -1117006985
+      Data2: 1112115274
+      Data3: 1585115060
+      Data4: 2081989149
+    Path: event:/SFX/Combat/SlimeMonster/Blob_Attack_2
+  <blobHurt>k__BackingField:
+    Guid:
+      Data1: 218610581
+      Data2: 1314505230
+      Data3: 896524966
+      Data4: -978500638
+    Path: event:/SFX/Combat/SlimeMonster/Blob_Taking_damage_1
+  <blobDead>k__BackingField:
+    Guid:
+      Data1: -1869565458
+      Data2: 1326506744
+      Data3: 1869607866
+      Data4: 377204413
+    Path: event:/SFX/Combat/SlimeMonster/Blob_death
+  <blobSpecial>k__BackingField:
+    Guid:
+      Data1: 140078068
+      Data2: 1271005709
+      Data3: 500892046
+      Data4: 1974351928
+    Path: event:/SFX/Combat/SlimeMonster/Blob_Scream
+  <treeAttack>k__BackingField:
+    Guid:
+      Data1: -2119560884
+      Data2: 1169816226
+      Data3: -1303168623
+      Data4: -1614265848
+    Path: event:/SFX/Combat/TreeMonster/Tree_Attack_1
+  <treeImpact>k__BackingField:
+    Guid:
+      Data1: -185317791
+      Data2: 1243985150
+      Data3: -141975415
+      Data4: -822985080
+    Path: event:/SFX/Combat/TreeMonster/Treemonster_hit
+  <treeDead>k__BackingField:
+    Guid:
+      Data1: 1595007792
+      Data2: 1149318927
+      Data3: 750539184
+      Data4: 760376142
+    Path: event:/SFX/Combat/TreeMonster/Tree_Death_1
+  <treeHurt>k__BackingField:
+    Guid:
+      Data1: 1960544622
+      Data2: 1217024127
+      Data3: -154890583
+      Data4: 824299586
+    Path: event:/SFX/Combat/TreeMonster/Tree_taking_damage_1
+  <batAttack>k__BackingField:
+    Guid:
+      Data1: 88974686
+      Data2: 1082963136
+      Data3: 460892812
+      Data4: 49675680
+    Path: event:/SFX/Combat/Bat/Batnoises_1
+  <batIdle>k__BackingField:
+    Guid:
+      Data1: 886414073
+      Data2: 1109097995
+      Data3: 1057886855
+      Data4: -2094138245
+    Path: event:/SFX/Combat/Bat/idle_with_with batnoise_1
+  <batDead>k__BackingField:
+    Guid:
+      Data1: -1476591917
+      Data2: 1120384475
+      Data3: -298795881
+      Data4: -970977776
+    Path: event:/SFX/Combat/Bat/Bat_Death
+  <batHurt>k__BackingField:
+    Guid:
+      Data1: 871145015
+      Data2: 1157553466
+      Data3: 20065723
+      Data4: 812093424
+    Path: event:/SFX/Combat/Bat/Batnoises_2
+  <batNoise>k__BackingField:
+    Guid:
+      Data1: 38646648
+      Data2: 1205736674
+      Data3: 269319568
+      Data4: 100574040
+    Path: event:/SFX/Combat/Bat/Batnoises_3
 --- !u!1 &693824603
 GameObject:
   m_ObjectHideFlags: 0
@@ -4158,6 +4460,43 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 3
   m_TargetDisplay: 0
+--- !u!84 &814975136
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 6
+  m_Width: 620
+  m_Height: 286
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthStencilFormat: 94
+  m_ColorFormat: 4
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_UseDynamicScaleExplicit: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_EnableRandomWrite: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 0
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
+  m_ShadowSamplingMode: 2
 --- !u!1 &823766300
 GameObject:
   m_ObjectHideFlags: 0
@@ -7753,43 +8092,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee04fae635dfeb6438ac6ca39865ae57, type: 3}
---- !u!84 &1604184371
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 6
-  m_Width: 620
-  m_Height: 356
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthStencilFormat: 94
-  m_ColorFormat: 4
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_UseDynamicScaleExplicit: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_EnableRandomWrite: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 0
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
-  m_ShadowSamplingMode: 2
 --- !u!1 &1614165353
 GameObject:
   m_ObjectHideFlags: 0
@@ -12847,3 +13149,4 @@ SceneRoots:
   - {fileID: 857270605}
   - {fileID: 1262272155}
   - {fileID: 1268475861}
+  - {fileID: 508337293}

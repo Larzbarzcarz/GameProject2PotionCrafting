@@ -5,7 +5,7 @@
 			<value>Bat_Death</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{dcf7ca68-975e-4dee-9ef9-b7204949367c}</destination>
@@ -97,6 +97,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{f3981ad0-4f4b-4148-becc-345874ee610f}">
+		<property name="volume">
+			<value>5.5</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
@@ -113,7 +116,6 @@
 	<object class="MixerBusEffectChain" id="{3ac76abc-3a83-4ebd-b804-1ed09eb04140}">
 		<relationship name="effects">
 			<destination>{2500c77c-1f3d-4673-850a-fa658a4f00a1}</destination>
-			<destination>{311b5aa5-244f-4737-b06b-9bfa3527cc53}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{4fddea1c-fd2e-4e01-a8ce-ce78743717fc}" />
@@ -125,6 +127,5 @@
 	</object>
 	<object class="MixerBusPanner" id="{dd7ec29a-3fec-4f95-95a4-38452524438c}" />
 	<object class="MixerBusFader" id="{2500c77c-1f3d-4673-850a-fa658a4f00a1}" />
-	<object class="SpatialiserEffect" id="{311b5aa5-244f-4737-b06b-9bfa3527cc53}" />
 	<object class="MixerBusFader" id="{284181d3-0cd9-44b9-ba40-ed92821de177}" />
 </objects>
