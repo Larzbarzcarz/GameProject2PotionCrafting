@@ -13,7 +13,7 @@ public class CombatantHealthbar : MonoBehaviour
     public Slider healthSlider;
     public TextMeshProUGUI healthBarText;
 
-    void Start()
+    void Awake()
     {
         //-----FMOD Implementation-----//
         AudioManager.Instance.PlayMusic(FMODEvents.instance.combatMusic);
