@@ -1,7 +1,8 @@
+using _Project._Scripts.Sound_and_Music;
 using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;
  
 public enum PlayerAction
 {
@@ -32,6 +33,12 @@ public class BattleSystem : MonoBehaviour
  
     public event System.Action OnBattleWon;
     public event System.Action OnBattleLost;
+    [Header("Inventory")]
+    public InventoryObject PlayerInventory;
+
+    //-----UI-----
+    [Header("UI Elements")]
+    public GameObject ClawImage;
 
     private void Start()
     {
@@ -235,10 +242,32 @@ public class BattleSystem : MonoBehaviour
     {
         int hitChance = Random.Range(0, 100);
  
-        if (hitChance < 80)
+        if (hitChance < 100)
         {
-            enemy.TakeDamage(2f);
+            //-----fmod implementation-----
+            /*int randomAttackSound = Random.Range(1, 3);
+            switch (randomAttackSound)
+            {
+                case 1:
+                    AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.playerAttack1, monster.transform.position);
+                    break;
+                case 2:
+                    AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.playerAttack2, monster.transform.position);
+                    break;
+                case 3:
+                    AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.playerAttack3, monster.transform.position);
+                    break;
+            }*/
+
+            ClawImage.SetActive(true);
+            await Wait(500);
+            ClawImage.SetActive(false);
+            //-----fmod implementation-----
+
+            int randomAttack = Random.Range(2, 4);
+            enemy.TakeDamage(randomAttack);
             dialogueText.text = "The attack hit!";
+
         }
         else
         {
@@ -273,7 +302,26 @@ public class BattleSystem : MonoBehaviour
  
         float damage = isDefending ? 1f : 2f;
         monster.TakeDamage(damage);
- 
+
+        //-----fmod implementation-----
+        enemy.DealDamage(); // This will trigger the enemy's attack sound
+
+        await Wait(600);
+
+        int randomHurt = Random.Range(1, 3);
+        /*switch (randomHurt)
+        {
+            case 1:
+                AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.playerHurt1, monster.transform.position);
+                break;
+            case 2:
+                AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.playerHurt2, monster.transform.position);
+                break;
+            case 3:
+                AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.playerHurt3, monster.transform.position);
+                break;
+        }*/
+
         if (isDefending)
         {
             dialogueText.text = "Damage reduced!";
