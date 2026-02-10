@@ -467,7 +467,9 @@ MonoBehaviour:
   enemySpawnPoint: {fileID: 2003461622}
   dialogueText: {fileID: 1587546308}
   inventory: {fileID: 1144880541}
+  playerInventory: {fileID: 0}
   displayInventory: {fileID: 0}
+  potionVariantRegistry: {fileID: 0}
   attackCost: 2
   defendCost: 1
 --- !u!4 &242423505
@@ -1311,7 +1313,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 719, y: 1122.5669}
+  m_AnchoredPosition: {x: 415, y: 1122.5669}
   m_SizeDelta: {x: 170.382, y: 43.639}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1078502471
@@ -1700,7 +1702,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1813454538314249935, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalScale.x
-      value: 7.429
+      value: 10.300111
       objectReference: {fileID: 0}
     - target: {fileID: 2255326839739188927, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_Name
@@ -1708,7 +1710,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2475294716756555193, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0011273762
+      value: -0.0011274907
       objectReference: {fileID: 0}
     - target: {fileID: 2475294716756555193, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1789,7 +1791,7 @@ PrefabInstance:
     - target: {fileID: 9205371885998440386, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 2140430831}
+      objectReference: {fileID: 1717572461}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2187,6 +2189,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -434.06
       objectReference: {fileID: 0}
+    - target: {fileID: 881112806529998154, guid: 694e8656d94824e4bb4e3b773a7ea22a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1250
+      objectReference: {fileID: 0}
     - target: {fileID: 4145487825838625577, guid: 694e8656d94824e4bb4e3b773a7ea22a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2241,11 +2247,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4899450910987220144, guid: 694e8656d94824e4bb4e3b773a7ea22a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 222
+      value: 267
       objectReference: {fileID: 0}
     - target: {fileID: 4899450910987220144, guid: 694e8656d94824e4bb4e3b773a7ea22a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -320
+      value: -296
       objectReference: {fileID: 0}
     - target: {fileID: 5231255134224163340, guid: 694e8656d94824e4bb4e3b773a7ea22a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -2275,6 +2281,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 5476982308302677808, guid: 694e8656d94824e4bb4e3b773a7ea22a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 978
+      objectReference: {fileID: 0}
+    - target: {fileID: 5476982308302677808, guid: 694e8656d94824e4bb4e3b773a7ea22a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -679
+      objectReference: {fileID: 0}
+    - target: {fileID: 5476982308302677808, guid: 694e8656d94824e4bb4e3b773a7ea22a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -3153
+      objectReference: {fileID: 0}
     - target: {fileID: 5755548100110950129, guid: 694e8656d94824e4bb4e3b773a7ea22a, type: 3}
       propertyPath: m_Name
       value: V2Fight_UIv2
@@ -2290,6 +2308,14 @@ PrefabInstance:
     - target: {fileID: 5904907665234535277, guid: 694e8656d94824e4bb4e3b773a7ea22a, type: 3}
       propertyPath: m_fontSizeBase
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6832722394976821204, guid: 694e8656d94824e4bb4e3b773a7ea22a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 505
+      objectReference: {fileID: 0}
+    - target: {fileID: 6832722394976821204, guid: 694e8656d94824e4bb4e3b773a7ea22a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1276
       objectReference: {fileID: 0}
     - target: {fileID: 6846727486666314585, guid: 694e8656d94824e4bb4e3b773a7ea22a, type: 3}
       propertyPath: m_LocalScale.x
@@ -2709,6 +2735,43 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8350907283794935305, guid: 0106fc91d3997b549a289e5ccb079cd8, type: 3}
   m_PrefabInstance: {fileID: 151152197}
   m_PrefabAsset: {fileID: 0}
+--- !u!84 &1717572461
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 6
+  m_Width: 574
+  m_Height: 360
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthStencilFormat: 94
+  m_ColorFormat: 4
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_UseDynamicScaleExplicit: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_EnableRandomWrite: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 0
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
+  m_ShadowSamplingMode: 2
 --- !u!1001 &1805496136
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3579,43 +3642,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!84 &2140430831
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 6
-  m_Width: 414
-  m_Height: 360
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthStencilFormat: 94
-  m_ColorFormat: 4
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_UseDynamicScaleExplicit: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_EnableRandomWrite: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 0
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
-  m_ShadowSamplingMode: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

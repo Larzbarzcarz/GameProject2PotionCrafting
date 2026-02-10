@@ -24,6 +24,8 @@ public class PotionDisplayInventory : MonoBehaviour
     [SerializeField] private Transform cauldronSpawnPoint;
     [SerializeField] private Vector3 spawnOffset = new Vector3(0f, -0.08f, 0f);
 
+    public UIinventory Inventory;
+
     private void Awake()
     {
         if (craftingCamera == null)
