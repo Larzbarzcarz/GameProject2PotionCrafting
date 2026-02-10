@@ -344,6 +344,7 @@ public class BattleSystem : MonoBehaviour
         {
             dialogueText.text = "You Lose!";
             OnBattleLost?.Invoke();
+            AudioManager.Instance.PlayOneShot(FMODEvents.instance.loss);
         }
     }
  
