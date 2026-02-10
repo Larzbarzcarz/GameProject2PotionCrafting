@@ -524,7 +524,7 @@ MonoBehaviour:
   m_Name: FMODStudioSettings
   m_EditorClassIdentifier: 
   switchSettingsMigration: 1
-  HasSourceProject: 0
+  HasSourceProject: 1
   HasPlatforms: 1
   sourceProjectPath: 
   sourceBankPath: Assets/StreamingAssets
@@ -537,7 +537,7 @@ MonoBehaviour:
   EncryptionKey: 
   ImportType: 0
   TargetAssetPath: FMODBanks
-  TargetBankFolder: FMODBanks
+  TargetBankFolder: 
   EventLinkage: 0
   SerializeGUIDsOnly: 0
   LoggingLevel: 2
@@ -553,7 +553,7 @@ MonoBehaviour:
   - Master
   Banks:
   - Music
-  - SFX
+  - SoundEffects
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0

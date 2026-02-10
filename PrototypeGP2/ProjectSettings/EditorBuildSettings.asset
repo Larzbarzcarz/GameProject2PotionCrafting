@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Beta/Beta Scene.unity
+    path: Assets/Scenes/Beta/Beta Scene Art.unity
     guid: d5e14b4a7caebb041aa9879973318db9
   - enabled: 1
-    path: Assets/Scenes/Beta/BetaLevel1.unity
+    path: Assets/Scenes/Beta/BetaLevel1Art.unity
     guid: c43fcd2c48c2b4b48aaceca0cbc26686
   m_configObjects:
     com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: 90fa9048a9756d942834eeb3bb053a2c, type: 2}

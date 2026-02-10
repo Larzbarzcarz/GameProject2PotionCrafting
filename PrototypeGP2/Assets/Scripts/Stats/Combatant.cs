@@ -23,7 +23,9 @@ public abstract class Combatant : MonoBehaviour
     public int MaxStamina => maxStamina;
     public int CurrentStamina => currentStamina;
 
-    public bool IsDead => currentHealth <= 0;
+  
+    
+    public bool isDead => currentHealth <= 0;
 
     public event Action<int, int> OnStaminaChanged;
 
@@ -58,7 +60,15 @@ Debug.Log($"{name} took {damage} damage. HP now: {currentHealth}");
 
         currentStamina -= cost;
         OnStaminaChanged?.Invoke(currentStamina, maxStamina);
+        OnStaminaChanged?.Invoke(currentStamina, maxStamina);
         return true;
+    }
+
+    public virtual void ResetHealth()
+    {
+        currentHealth = maxHealth;
+        currentStamina = maxStamina;
+        Debug.Log($"{name} reset to full health/stamina.");
     }
 
     public virtual float DealDamage()
@@ -69,6 +79,11 @@ Debug.Log($"{name} took {damage} damage. HP now: {currentHealth}");
     public virtual void Victory()
     {
         Debug.Log("Victory");
+    }
+
+    public virtual void ResetAnimator()
+    {
+        // WIP
     }
 	
 	public virtual void Dying()
