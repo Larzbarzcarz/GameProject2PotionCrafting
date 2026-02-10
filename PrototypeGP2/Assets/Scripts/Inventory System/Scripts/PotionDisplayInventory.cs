@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Button = UnityEngine.UI.Button;
 
-public class DisplayInventory : MonoBehaviour
+public class PotionDisplayInventory : MonoBehaviour
 {
     public InventoryObject inventory;
     public GameObject inventoryPrefab;
@@ -23,6 +23,8 @@ public class DisplayInventory : MonoBehaviour
     private Dictionary<InventorySlot, GameObject> itemsDisplayed = new Dictionary<InventorySlot, GameObject>();
     [SerializeField] private Transform cauldronSpawnPoint;
     [SerializeField] private Vector3 spawnOffset = new Vector3(0f, -0.08f, 0f);
+
+    public UIinventory Inventory;
 
     private void Awake()
     {

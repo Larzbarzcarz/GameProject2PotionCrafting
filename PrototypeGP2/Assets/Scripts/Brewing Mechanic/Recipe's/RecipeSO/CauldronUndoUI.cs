@@ -4,7 +4,7 @@ public class CauldronUndoUI : MonoBehaviour
 {
     [SerializeField] private CauldronContents cauldron;
     [SerializeField] private InventoryObject inventory;
-    [SerializeField] private DisplayInventory inventoryUI;
+    [SerializeField] private PotionDisplayInventory inventoryUI;
 
     // stack -> last in first out
     public void UndoLast()

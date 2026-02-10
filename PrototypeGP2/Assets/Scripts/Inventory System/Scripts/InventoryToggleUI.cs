@@ -5,7 +5,7 @@ using UnityEngine;
 public class InventoryToggleUI : MonoBehaviour
 {
     [SerializeField] private GameObject inventoryPanel;
-    [SerializeField] private DisplayInventory displayInventory;
+    [SerializeField] private PotionDisplayInventory displayInventory;
 
     public void ToggleInventory()
     {
