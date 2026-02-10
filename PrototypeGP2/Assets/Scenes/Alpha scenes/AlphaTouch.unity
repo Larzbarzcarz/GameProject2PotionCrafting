@@ -1298,6 +1298,7 @@ GameObject:
   - component: {fileID: 419754186}
   - component: {fileID: 419754185}
   - component: {fileID: 419754184}
+  - component: {fileID: 419754187}
   m_Layer: 0
   m_Name: CameraCrafting
   m_TagString: Untagged
@@ -1423,6 +1424,37 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &419754187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 419754182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: MainCamera
+  EventReference:
+    Guid:
+      Data1: -1797935575
+      Data2: 1338453798
+      Data3: -517059959
+      Data4: 407163356
+    Path: event:/Music/BrewingPotionsLoop
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &449748855
 GameObject:
   m_ObjectHideFlags: 0
@@ -2643,7 +2675,6 @@ MonoBehaviour:
   mainCamera: {fileID: 419754186}
   cauldron: {fileID: 0}
   potionVariantRegistry: {fileID: 0}
-  potionInfoUI: {fileID: 0}
 --- !u!114 &964421690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3174,6 +3205,84 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 385d3dbca3d0f9346bd9d9e20472690d, type: 3}
+--- !u!1 &1278847436
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1278847438}
+  - component: {fileID: 1278847437}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1278847437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278847436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 829d296122e83094daa360d2a776d7f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MusicLibrary:
+  - Guid:
+      Data1: -1422102794
+      Data2: 1210234444
+      Data3: 1973179068
+      Data4: 629224298
+    Path: event:/Music/Huldra
+  SFXLibary:
+  - Guid:
+      Data1: 388538626
+      Data2: 1299739339
+      Data3: 1312484521
+      Data4: 135698658
+    Path: event:/SoundEffects/Button_press_1_Confirm_Back
+  - Guid:
+      Data1: -1249407799
+      Data2: 1257957129
+      Data3: -608489302
+      Data4: 331732578
+    Path: event:/SoundEffects/potion-brew
+  - Guid:
+      Data1: 604618069
+      Data2: 1297138813
+      Data3: -1345196381
+      Data4: 1334627394
+    Path: event:/SoundEffects/Close_menu
+  - Guid:
+      Data1: -1058478570
+      Data2: 1339503843
+      Data3: -1086953312
+      Data4: 1749209727
+    Path: event:/SoundEffects/Area_unlocked_omnious
+  BreakingBad: {fileID: 1722174943}
+  newIntensity: 3
+--- !u!4 &1278847438
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278847436}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.8931931, y: 1.100598, z: 2.492774}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1386184497 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8370106416403302915, guid: 8cf5a742291a6634f9b0898013ebb3a5, type: 3}
@@ -4206,6 +4315,71 @@ MonoBehaviour:
   inventory: {fileID: 11400000, guid: c6a3ffe4dd8a1fe4d8e43d67f2890c41, type: 2}
   craftingRecipes:
   - {fileID: 11400000, guid: 29387ad38dfd32b4097df458c5e5fbe6, type: 2}
+--- !u!1 &1722174943
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1722174945}
+  - component: {fileID: 1722174944}
+  m_Layer: 0
+  m_Name: BrewMusic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1722174944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722174943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1797935575
+      Data2: 1338453798
+      Data3: -517059959
+      Data4: 407163356
+    Path: event:/Music/BrewingPotionsLoop
+  Event: 
+  EventPlayTrigger: 11
+  EventStopTrigger: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params:
+  - Name: AudioVolume
+    Value: 0.28
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!4 &1722174945
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722174943}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.8931931, y: 1.100598, z: 2.492774}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1762327171
 GameObject:
   m_ObjectHideFlags: 0
@@ -5073,3 +5247,5 @@ SceneRoots:
   - {fileID: 83633317}
   - {fileID: 180815930}
   - {fileID: 1414002568}
+  - {fileID: 1278847438}
+  - {fileID: 1722174945}

@@ -346,4 +346,14 @@ public class BattleSystem : MonoBehaviour
     }
  
     #endregion
+
+    public void InventoryActive()
+    {
+        inventory.SetActive(true);
+    }
+
+    public void InventoryInactive()
+    {
+        inventory.SetActive(false);
+    }
 }

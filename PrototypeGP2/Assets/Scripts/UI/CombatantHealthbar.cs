@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using _Project._Scripts.Sound_and_Music;
 
 
 public class CombatantHealthbar : MonoBehaviour
@@ -12,8 +13,12 @@ public class CombatantHealthbar : MonoBehaviour
     public Slider healthSlider;
     public TextMeshProUGUI healthBarText;
 
-    void Start()
+    void Awake()
     {
+        //-----FMOD Implementation-----//
+        AudioManager.Instance.PlayMusic(FMODEvents.instance.CombatMusic);
+        //-----FMOD Implementation-----//
+
         if (target == null)
         {
             target = GetComponentInParent<Combatant>();

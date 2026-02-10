@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: f299f9ba092cece43847524c3d346b6a
+<<<<<<<< HEAD:PrototypeGP2/Assets/Settings/Build Profiles/New Android™ Profile 1.asset.meta
+guid: b6f747c53370fcb44a6de852e819d371
+========
+guid: 9988f7f130b53864499e20e404a165e3
+>>>>>>>> 427bea48138c73531744766d4b37285df01c2c07:PrototypeGP2/Assets/Scripts/Brewing Mechanic/Recipe's/RecipeSO/Potion Item.asset.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000
