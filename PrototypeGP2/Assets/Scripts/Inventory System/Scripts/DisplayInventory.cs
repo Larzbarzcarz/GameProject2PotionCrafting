@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Button = UnityEngine.UI.Button;
 
-public class DisplayInventory : MonoBehaviour
+public class PotionDisplayInventory : MonoBehaviour
 {
     public InventoryObject inventory;
     public GameObject inventoryPrefab;
