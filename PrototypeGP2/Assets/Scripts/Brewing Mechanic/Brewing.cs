@@ -1,6 +1,8 @@
+using _Project._Scripts.Sound_and_Music;
+using FMODUnity;
 using System;
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class Brewing : MonoBehaviour
 {
@@ -19,6 +21,10 @@ public class Brewing : MonoBehaviour
         CreateResult(recipe);
 
         Debug.Log($"Crafted: {recipe.recipeName}");
+
+        //-----FMOD Integration-----
+        AudioManager.Instance.PlayMusic(FMODEvents.instance.Cooking);
+        AudioManager.Instance.HuldraIntensity(0.3f);
     }
 
     private bool CanCraft(CraftingRecipe recipe, out string missingItems)

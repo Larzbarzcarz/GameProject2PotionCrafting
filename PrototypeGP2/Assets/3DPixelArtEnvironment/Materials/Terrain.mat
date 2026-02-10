@@ -152,7 +152,7 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GreenHighlight: {r: 0.31955323, g: 0.36915195, b: 0.4056604, a: 0}
     - _GreenShadow: {r: 0.3018868, g: 0.22756428, b: 0.13243146, a: 0}
-    - _RedHighlight: {r: 0.22745094, g: 0.58431375, b: 0.43529412, a: 0}
+    - _RedHighlight: {r: 0, g: 0.32835722, b: 0.4056604, a: 0}
     - _RedShadow: {r: 0.2517783, g: 0.3254902, b: 0.23529412, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
