@@ -10,6 +10,10 @@ public class Clickforcamera : MonoBehaviour
     public GameObject Return;
     public GameObject Craft;
     public GameObject Materialing;
+
+    [Header("Battle Prep")]
+    [SerializeField] private PotionSelectionPanel potionSelectionPanel;
+    [SerializeField] private InventoryObject labInventory;
     void Start()
     {
 		Materialing.SetActive(false);
@@ -56,7 +60,34 @@ public class Clickforcamera : MonoBehaviour
         //-----FMOD Integration-----
         AudioManager.Instance.PlayOneShot(FMODEvents.instance.expeditionStart);
         //-----FMOD Integration-----
-        SceneManager.LoadSceneAsync(1);
+
+        // Count how many potions are in the lab inventory
+        int potionCount = 0;
+        if (labInventory != null && labInventory.database != null)
+        {
+            foreach (var slot in labInventory.Container.Items)
+            {
+                if (labInventory.database.GetItemByStableId.TryGetValue(
+                        slot.item.StableId, out var itemSO)
+                    && itemSO.itemType == ItemType.Potion
+                    && slot.amount > 0)
+                {
+                    potionCount += slot.amount;
+                }
+            }
+        }
+
+        if (potionCount == 0 || potionSelectionPanel == null)
+        {
+            // No potions — go straight to battle
+            BattleInventoryData.ClearAll();
+            SceneManager.LoadSceneAsync(1);
+        }
+        else
+        {
+            // Open the selection panel; its Go button will load the scene
+            potionSelectionPanel.Open();
+        }
     }
 
     

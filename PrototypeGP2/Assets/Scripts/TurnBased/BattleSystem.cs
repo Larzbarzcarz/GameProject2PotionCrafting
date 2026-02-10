@@ -24,6 +24,7 @@ public class BattleSystem : MonoBehaviour
     public InventoryObject PlayerInventory => playerInventory;
     [SerializeField] private DisplayInventory displayInventory;
     [SerializeField] private PotionVariantRegistry potionVariantRegistry;
+    [SerializeField] private BattlePotionPanel battlePotionPanel;
  
     [Header("Costs")]
     [SerializeField] private int attackCost = 2;
@@ -444,6 +445,12 @@ public class BattleSystem : MonoBehaviour
         selectedAction = PlayerAction.Defend;
     }
  
+    public void OnInventoryButton()
+    {
+        if (battlePotionPanel != null)
+            battlePotionPanel.Toggle();
+    }
+
     #endregion
  
     #region Helpers
