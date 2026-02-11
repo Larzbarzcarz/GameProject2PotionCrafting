@@ -21,7 +21,7 @@ public class BattleSystem : MonoBehaviour
    
     public TextMeshProUGUI dialogueText;
     public GameObject inventory;
-    [SerializeField] private PotionDisplayInventory displayInventory;
+    [SerializeField] private InventoryUI  displayInventory;
  
     [Header("Costs")]
     [SerializeField] private int attackCost = 2;
@@ -79,7 +79,7 @@ public class BattleSystem : MonoBehaviour
         if (displayInventory == null || displayInventory.inventory == null || displayInventory.inventory.database == null)
         {
             Debug.LogWarning("[DEBUG] DisplayInventory reference missing! Searching in scene...");
-            displayInventory = FindObjectOfType<PotionDisplayInventory>();
+            displayInventory = FindObjectOfType<InventoryUI>();
         }
 
         if (displayInventory == null || displayInventory.inventory == null || displayInventory.inventory.database == null)
