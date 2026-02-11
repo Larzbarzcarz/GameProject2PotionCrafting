@@ -13,6 +13,7 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference baseMusic { get; private set; }
     [field: SerializeField] public EventReference CookMusic { get; private set; }
     [field: SerializeField] public EventReference CombatMusic { get; private set; }
+    [field: SerializeField] public EventReference mainMenu { get; private set; }
 
     [field: Header("Menu SFX")]
     [field: SerializeField] public EventReference buttonPress { get; private set; }
