@@ -19,15 +19,16 @@ MonoBehaviour:
     Data3: -1590546295
     Data4: 1134614059
   Banks:
-  - {fileID: 4756686098099799799}
+  - {fileID: 433147247188699970}
   IsStream: 1
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 1
-  Parameters: []
+  Parameters:
+  - {fileID: -1148182746441158762}
   MinDistance: 1
   MaxDistance: 20
   Length: 120422
---- !u!114 &-8386727001924344817
+--- !u!114 &-7967101207311770774
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -37,23 +38,68 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundEffects/Error_1
+  m_Name: event:/SFX/Area_unlocked_normalwav
   m_EditorClassIdentifier: 
-  Path: event:/SoundEffects/Error_1
+  Path: event:/SFX/Area_unlocked_normalwav
   Guid:
-    Data1: 1571948300
-    Data2: 1247981125
-    Data3: -457974339
-    Data4: 465714915
+    Data1: -961828434
+    Data2: 1236583444
+    Data3: 1731479172
+    Data4: 1826496496
   Banks:
-  - {fileID: -2795444459813231911}
+  - {fileID: -7936970506884308019}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 2000
+  Length: 8125
+--- !u!114 &-7936970506884308019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/SFX.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/StreamingAssets/FMODBanks/Desktop/SFX.bank
+  Name: SFX
+  StudioPath: bank:/SFX
+  lastModified: 639064019659031664
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-6620117567718270732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Area_unlocked_omnious
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Area_unlocked_omnious
+  Guid:
+    Data1: -1058478570
+    Data2: 1339503843
+    Data3: -1086953312
+    Data4: 1749209727
+  Banks:
+  - {fileID: -7936970506884308019}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 6125
 --- !u!114 &-4787935135876141583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,14 +119,39 @@ MonoBehaviour:
     Data3: 1548957075
     Data4: 693489264
   Banks:
-  - {fileID: 4756686098099799799}
+  - {fileID: 433147247188699970}
   IsStream: 1
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 1
-  Parameters: []
+  Parameters:
+  - {fileID: 4120326024080061523}
   MinDistance: 1
   MaxDistance: 20
   Length: 70729
+--- !u!114 &-4316584218257937698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BrewingPotionsLoop/AudioVolume
+  m_EditorClassIdentifier: 
+  Name: AudioVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2569903215
+    data2: 3956595975
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-4233301175337601919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,15 +171,43 @@ MonoBehaviour:
     Data3: -517059959
     Data4: 407163356
   Banks:
-  - {fileID: 4756686098099799799}
+  - {fileID: 433147247188699970}
   IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -4316584218257937698}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 58818
+--- !u!114 &-4219306442567585048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Close_menu
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Close_menu
+  Guid:
+    Data1: 604618069
+    Data2: 1297138813
+    Data3: -1345196381
+    Data4: 1334627394
+  Banks:
+  - {fileID: -7936970506884308019}
+  IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 58818
---- !u!114 &-2795444459813231911
+  Length: 1500
+--- !u!114 &-3955490859833847045
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,17 +217,35 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/SoundEffects.bank
+  m_Name: bank:/Master.bank
   m_EditorClassIdentifier: 
-  Path: FMOD/Build/Desktop/SoundEffects.bank
-  Name: SoundEffects
-  StudioPath: bank:/SoundEffects
-  lastModified: 639064050515092229
-  FileSizes:
-  - Name: Desktop
-    Value: 378240
+  Path: Assets/StreamingAssets/FMODBanks/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 639064019657830831
+  FileSizes: []
   Exists: 1
---- !u!114 &-2183292920251802743
+--- !u!114 &-3408439762666903726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/StreamingAssets/FMODBanks/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 639064019657945942
+  FileSizes:
+  - Name: 
+    Value: 2038
+  Exists: 1
+--- !u!114 &-3126702871345580455
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,24 +255,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundEffects/Area_unlocked_omnious
+  m_Name: event:/SFX/Combat/Blob_Attack_2
   m_EditorClassIdentifier: 
-  Path: event:/SoundEffects/Area_unlocked_omnious
+  Path: event:/SFX/Combat/Blob_Attack_2
   Guid:
-    Data1: -1058478570
-    Data2: 1339503843
-    Data3: -1086953312
-    Data4: 1749209727
+    Data1: -1117006985
+    Data2: 1112115274
+    Data3: 1585115060
+    Data4: 2081989149
   Banks:
-  - {fileID: -2795444459813231911}
+  - {fileID: -7936970506884308019}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 6125
---- !u!114 &-400229417871521920
+  Length: 2869
+--- !u!114 &-1629869256260295857
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,23 +282,47 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundEffects/Open_menu
+  m_Name: event:/SFX/Recipe_unlocked
   m_EditorClassIdentifier: 
-  Path: event:/SoundEffects/Open_menu
+  Path: event:/SFX/Recipe_unlocked
   Guid:
-    Data1: -908453579
-    Data2: 1341743158
-    Data3: 1990645404
-    Data4: 709752449
+    Data1: 1661341654
+    Data2: 1335446835
+    Data3: -1639231091
+    Data4: 1851679402
   Banks:
-  - {fileID: -2795444459813231911}
+  - {fileID: -7936970506884308019}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 3500
+  Length: 6000
+--- !u!114 &-1148182746441158762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: "parameter:/Wild and epic (Douglas Dahlstro\u0308m)/AudioVolume"
+  m_EditorClassIdentifier: 
+  Name: AudioVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2569903215
+    data2: 3956595975
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,64 +336,82 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 8129403119546439747}
-  - {fileID: 7360157589443125696}
-  - {fileID: 4756686098099799799}
-  - {fileID: -2795444459813231911}
+  - {fileID: -3408439762666903726}
+  - {fileID: -3955490859833847045}
+  - {fileID: 433147247188699970}
+  - {fileID: -7936970506884308019}
   EditorEvents:
-  - {fileID: 4242242160641765996}
   - {fileID: -8793090164576727332}
   - {fileID: -4787935135876141583}
   - {fileID: -4233301175337601919}
   - {fileID: 2390787050348838632}
   - {fileID: 6694896232860913536}
   - {fileID: 791986775500228348}
-  - {fileID: 2790815018711258896}
-  - {fileID: 7442917777569962590}
-  - {fileID: -8386727001924344817}
-  - {fileID: -2183292920251802743}
-  - {fileID: -400229417871521920}
-  - {fileID: 6932185781656430157}
-  - {fileID: 6929070591589367238}
-  - {fileID: 3474802240888692090}
+  - {fileID: 4119007517963155708}
+  - {fileID: 5937396922057095511}
+  - {fileID: 3250545937740947060}
+  - {fileID: 6192199516749671455}
+  - {fileID: 1357314033643831689}
+  - {fileID: -6620117567718270732}
+  - {fileID: 4179022568633637253}
+  - {fileID: -4219306442567585048}
+  - {fileID: -3126702871345580455}
+  - {fileID: 7925241551234816834}
+  - {fileID: 6124223951813973756}
+  - {fileID: -7967101207311770774}
+  - {fileID: -1629869256260295857}
+  - {fileID: 2607173944277341513}
+  - {fileID: 7362025265523251492}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 7360157589443125696}
+  - {fileID: -3955490859833847045}
   StringsBanks:
-  - {fileID: 8129403119546439747}
+  - {fileID: -3408439762666903726}
   cacheVersion: 131857
-  cacheTime: 639064050515092229
+  cacheTime: 639064135402827439
   SerializableEventsDict:
-  - key: event:/potion-brew
-    index: 0
   - key: "event:/Music/Wild and epic (Douglas Dahlstro\u0308m)"
-    index: 1
+    index: 0
   - key: event:/Music/Battle_Draft_1
-    index: 2
+    index: 1
   - key: event:/Music/BrewingPotionsLoop
-    index: 3
+    index: 2
   - key: event:/Music/MENU_1
-    index: 4
+    index: 3
   - key: event:/Music/Brewing POTIONS
-    index: 5
+    index: 4
   - key: event:/Music/Huldra
+    index: 5
+  - key: event:/SFX/potion-brew
     index: 6
-  - key: event:/SoundEffects/Button_press_1_Confirm_Back
+  - key: event:/Music/Alternative_fight_draft1
     index: 7
-  - key: event:/SoundEffects/Confirm_1
+  - key: event:/SFX/Button_press_1_Confirm_Back
     index: 8
-  - key: event:/SoundEffects/Error_1
+  - key: event:/SFX/Confirm_1
     index: 9
-  - key: event:/SoundEffects/Area_unlocked_omnious
+  - key: event:/SFX/Error_1
     index: 10
-  - key: event:/SoundEffects/Open_menu
+  - key: event:/SFX/Area_unlocked_omnious
     index: 11
-  - key: event:/SoundEffects/Close_menu
+  - key: event:/SFX/Open_menu
     index: 12
-  - key: event:/SoundEffects/Area_unlocked_normalwav
+  - key: event:/SFX/Close_menu
     index: 13
-  - key: event:/SoundEffects/Recipe_unlocked
+  - key: event:/SFX/Combat/Blob_Attack_2
     index: 14
+  - key: event:/SFX/Combat/Blob_Attack_1
+    index: 15
+  - key: event:/SFX/Combat/Blob_Taking_damage_1
+    index: 16
+  - key: event:/SFX/Area_unlocked_normalwav
+    index: 17
+  - key: event:/SFX/Recipe_unlocked
+    index: 18
+  - key: event:/SFX/Combat/Blob_death
+    index: 19
+  - key: event:/SFX/Combat/Blob_Scream
+    index: 20
 --- !u!114 &357808423848295969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,6 +436,24 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &433147247188699970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Music.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/StreamingAssets/FMODBanks/Desktop/Music.bank
+  Name: Music
+  StudioPath: bank:/Music
+  lastModified: 639064135402827439
+  FileSizes: []
+  Exists: 1
 --- !u!114 &791986775500228348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,7 +473,7 @@ MonoBehaviour:
     Data3: 1973179068
     Data4: 629224298
   Banks:
-  - {fileID: 4756686098099799799}
+  - {fileID: 433147247188699970}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -306,6 +483,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 101876
+--- !u!114 &1357314033643831689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Error_1
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Error_1
+  Guid:
+    Data1: 1571948300
+    Data2: 1247981125
+    Data3: -457974339
+    Data4: 465714915
+  Banks:
+  - {fileID: -7936970506884308019}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2000
 --- !u!114 &1484579588343311159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,15 +553,15 @@ MonoBehaviour:
     Data3: -1336963910
     Data4: 1174947339
   Banks:
-  - {fileID: 4756686098099799799}
+  - {fileID: 433147247188699970}
   IsStream: 1
-  Is3D: 1
-  IsOneShot: 1
+  Is3D: 0
+  IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
   Length: 56161
---- !u!114 &2790815018711258896
+--- !u!114 &2607173944277341513
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -367,16 +571,43 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundEffects/Button_press_1_Confirm_Back
+  m_Name: event:/SFX/Combat/Blob_death
   m_EditorClassIdentifier: 
-  Path: event:/SoundEffects/Button_press_1_Confirm_Back
+  Path: event:/SFX/Combat/Blob_death
+  Guid:
+    Data1: -1869565458
+    Data2: 1326506744
+    Data3: 1869607866
+    Data4: 377204413
+  Banks:
+  - {fileID: -7936970506884308019}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 5125
+--- !u!114 &3250545937740947060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Button_press_1_Confirm_Back
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Button_press_1_Confirm_Back
   Guid:
     Data1: 388538626
     Data2: 1299739339
     Data3: 1312484521
     Data4: 135698658
   Banks:
-  - {fileID: -2795444459813231911}
+  - {fileID: -7936970506884308019}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -384,7 +615,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 539
---- !u!114 &3474802240888692090
+--- !u!114 &4119007517963155708
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -394,43 +625,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundEffects/Recipe_unlocked
+  m_Name: event:/SFX/potion-brew
   m_EditorClassIdentifier: 
-  Path: event:/SoundEffects/Recipe_unlocked
-  Guid:
-    Data1: 1661341654
-    Data2: 1335446835
-    Data3: -1639231091
-    Data4: 1851679402
-  Banks:
-  - {fileID: -2795444459813231911}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 6000
---- !u!114 &4242242160641765996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/potion-brew
-  m_EditorClassIdentifier: 
-  Path: event:/potion-brew
+  Path: event:/SFX/potion-brew
   Guid:
     Data1: -1249407799
     Data2: 1257957129
     Data3: -608489302
     Data4: 331732578
   Banks:
-  - {fileID: 7360157589443125696}
+  - {fileID: -3955490859833847045}
+  - {fileID: 433147247188699970}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -438,7 +643,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2000
---- !u!114 &4756686098099799799
+--- !u!114 &4120326024080061523
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -447,17 +652,154 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Music.bank
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Battle_Draft_1/AudioVolume
   m_EditorClassIdentifier: 
-  Path: FMOD/Build/Desktop/Music.bank
-  Name: Music
-  StudioPath: bank:/Music
-  lastModified: 639064050515028803
-  FileSizes:
-  - Name: Desktop
-    Value: 13956384
+  Name: AudioVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2569903215
+    data2: 3956595975
+  Type: 0
+  IsGlobal: 0
+  Labels: []
   Exists: 1
+--- !u!114 &4179022568633637253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Open_menu
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Open_menu
+  Guid:
+    Data1: -908453579
+    Data2: 1341743158
+    Data3: 1990645404
+    Data4: 709752449
+  Banks:
+  - {fileID: -7936970506884308019}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3500
+--- !u!114 &4359229380675289347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Alternative_fight_draft1/AudioVolume
+  m_EditorClassIdentifier: 
+  Name: AudioVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2569903215
+    data2: 3956595975
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &5937396922057095511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Alternative_fight_draft1
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Alternative_fight_draft1
+  Guid:
+    Data1: 867533195
+    Data2: 1205667836
+    Data3: 1145389231
+    Data4: 773461330
+  Banks:
+  - {fileID: 433147247188699970}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 4359229380675289347}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 50704
+--- !u!114 &6124223951813973756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Combat/Blob_Taking_damage_1
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Combat/Blob_Taking_damage_1
+  Guid:
+    Data1: 218610581
+    Data2: 1314505230
+    Data3: 896524966
+    Data4: -978500638
+  Banks:
+  - {fileID: -7936970506884308019}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 5125
+--- !u!114 &6192199516749671455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Confirm_1
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Confirm_1
+  Guid:
+    Data1: 1707517698
+    Data2: 1135337281
+    Data3: 572027026
+    Data4: 609511985
+  Banks:
+  - {fileID: -7936970506884308019}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3278
 --- !u!114 &6694896232860913536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -477,15 +819,15 @@ MonoBehaviour:
     Data3: -1875238250
     Data4: -186099557
   Banks:
-  - {fileID: 4756686098099799799}
+  - {fileID: 433147247188699970}
   IsStream: 1
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
   Length: 54700
---- !u!114 &6929070591589367238
+--- !u!114 &7362025265523251492
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -495,24 +837,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundEffects/Area_unlocked_normalwav
+  m_Name: event:/SFX/Combat/Blob_Scream
   m_EditorClassIdentifier: 
-  Path: event:/SoundEffects/Area_unlocked_normalwav
+  Path: event:/SFX/Combat/Blob_Scream
   Guid:
-    Data1: -961828434
-    Data2: 1236583444
-    Data3: 1731479172
-    Data4: 1826496496
+    Data1: 140078068
+    Data2: 1271005709
+    Data3: 500892046
+    Data4: 1974351928
   Banks:
-  - {fileID: -2795444459813231911}
+  - {fileID: -7936970506884308019}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 8125
---- !u!114 &6932185781656430157
+  Length: 1750
+--- !u!114 &7925241551234816834
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -522,87 +864,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundEffects/Close_menu
+  m_Name: event:/SFX/Combat/Blob_Attack_1
   m_EditorClassIdentifier: 
-  Path: event:/SoundEffects/Close_menu
+  Path: event:/SFX/Combat/Blob_Attack_1
   Guid:
-    Data1: 604618069
-    Data2: 1297138813
-    Data3: -1345196381
-    Data4: 1334627394
+    Data1: 1589108361
+    Data2: 1220236658
+    Data3: -1646264445
+    Data4: -1655142830
   Banks:
-  - {fileID: -2795444459813231911}
+  - {fileID: -7936970506884308019}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 1500
---- !u!114 &7360157589443125696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: FMOD/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 639064050513964798
-  FileSizes:
-  - Name: Desktop
-    Value: 36576
-  Exists: 1
---- !u!114 &7442917777569962590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SoundEffects/Confirm_1
-  m_EditorClassIdentifier: 
-  Path: event:/SoundEffects/Confirm_1
-  Guid:
-    Data1: 1707517698
-    Data2: 1135337281
-    Data3: 572027026
-    Data4: 609511985
-  Banks:
-  - {fileID: -2795444459813231911}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 3278
---- !u!114 &8129403119546439747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: 
-  Path: FMOD/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 639064050513969827
-  FileSizes:
-  - Name: Desktop
-    Value: 1722
-  Exists: 1
+  Length: 965
