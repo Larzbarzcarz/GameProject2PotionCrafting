@@ -368,8 +368,8 @@ public class BattleSystem : MonoBehaviour
             dialogueText.text = "You Win!";
             if (monster != null) monster.Victory();
             OnBattleWon?.Invoke();
-            AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.victory, monster.transform.position);
-            AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.victoryMusic, monster.transform.position);
+            //AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.victory, monster.transform.position);
+            //AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.victoryMusic, monster.transform.position);
             
         }
         else
