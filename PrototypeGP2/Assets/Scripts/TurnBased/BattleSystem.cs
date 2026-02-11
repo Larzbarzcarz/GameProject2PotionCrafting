@@ -40,6 +40,37 @@ public class BattleSystem : MonoBehaviour
     [Header("UI Elements")]
     public GameObject ClawImage;
 
+    [Header("Spawn")] public Transform WolfSpawnPoint;
+    public Vector3 spawnOffset;
+
+    public void SpawnInventoryItem(ItemScriptableObject itemSO)
+    {
+        if (itemSO == null)
+        {
+            Debug.LogWarning("Item is null");
+            return;
+        }
+
+        if (itemSO.worldPrefab == null)
+        {
+            Debug.LogWarning("World prefab missing on: " + itemSO.name);
+            return;
+        }
+
+        if (WolfSpawnPoint == null)
+        {
+            Debug.LogWarning("Spawn point missing");
+            return;
+        }
+
+        Instantiate(
+            itemSO.worldPrefab,
+            WolfSpawnPoint.position + spawnOffset,
+            WolfSpawnPoint.rotation
+        );
+
+        Debug.Log("Spawned: " + itemSO.name);
+    }
     private void Start()
     {
         inventory.SetActive(false);

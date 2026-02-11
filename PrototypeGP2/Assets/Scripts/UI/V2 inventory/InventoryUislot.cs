@@ -11,12 +11,12 @@ public class InventorySlotUI : MonoBehaviour, IPointerClickHandler
     
     private ItemScriptableObject currentItem;
     private int currentAmount;
-
+    public System.Action<ItemScriptableObject> OnItemClicked;
     public void OnPointerClick(PointerEventData eventData)
     {
         if (currentItem == null) return;
 
-        Debug.Log("Tapped: " + currentItem.ItemName);
+        OnItemClicked?.Invoke(currentItem);
     }
     public void Clear()
     {
