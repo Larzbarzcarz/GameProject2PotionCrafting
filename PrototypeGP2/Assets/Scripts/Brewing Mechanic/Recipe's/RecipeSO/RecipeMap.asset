@@ -9,18 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f6960332694b3e4eb609b2aab2b8fd6, type: 3}
+  m_Script: {fileID: 11500000, guid: d7501cbcaa008954c956cd392b727cef, type: 3}
   m_Name: RecipeMap
   m_EditorClassIdentifier: 
   entries:
-  - mainKey: 7
-    baseKey: 2
+  - mainKey: 0
+    baseKey: 0
     effectType: 0
-    instant: 1
+    instant: 0
     turns: 0
-    percentOfMaxHP: 0.2
+    percentOfMaxHP: 0
     damage: 0
     defence: 0
     multiplier: 0
-    effectDescription: Heal 20% of HP instantly.
-    icon: {fileID: 21300000, guid: 814c5a9badcfbba4bb941ec111008c50, type: 3}
+    effectDescription: 
+    icon: {fileID: 0}
