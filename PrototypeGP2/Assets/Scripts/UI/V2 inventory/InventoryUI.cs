@@ -8,12 +8,23 @@ public class InventoryUI : MonoBehaviour
 {
     public InventoryObject inventory;
     public List<InventorySlotUI> slots;
+    public BattleSystem battleSystem;
 
     private void OnEnable()
     {
         Refresh();
     }
-
+    private void HandleItemClicked(ItemScriptableObject item)
+    {
+        battleSystem.SpawnInventoryItem(item);
+    }
+    private void Start()
+    {
+        foreach (var slot in slots)
+        {
+            slot.OnItemClicked += HandleItemClicked;
+        }
+    }
     public void Refresh()
     {
     
