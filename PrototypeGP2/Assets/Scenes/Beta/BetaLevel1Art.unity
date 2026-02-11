@@ -149,7 +149,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1712068894}
-  wolfPrefab: {fileID: 9169885711413636052, guid: 0106fc91d3997b549a289e5ccb079cd8, type: 3}
   treePrefab: {fileID: 3709276600878417392, guid: 461e79e5dbdd9ed428ade63f56f77eac, type: 3}
   slimePrefab: {fileID: 6851702979573640606, guid: aabada8e00015f24f92bebdcb679e40b, type: 3}
   batPrefab: {fileID: 6196367670168700049, guid: 2ef26d4af7465bc46a050fdbb166c8dd, type: 3}
@@ -295,8 +294,11 @@ MonoBehaviour:
   enemySpawnPoint: {fileID: 77442978}
   dialogueText: {fileID: 1428702216}
   inventory: {fileID: 609668074}
+  displayInventory: {fileID: 0}
   attackCost: 2
   defendCost: 1
+  PlayerInventory: {fileID: 0}
+  ClawImage: {fileID: 0}
 --- !u!4 &242423505
 Transform:
   m_ObjectHideFlags: 0
@@ -935,7 +937,7 @@ PrefabInstance:
     - target: {fileID: 9205371885998440386, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 1340966339}
+      objectReference: {fileID: 1746984297}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1126,43 +1128,6 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 2531068665410230053, guid: 0106fc91d3997b549a289e5ccb079cd8, type: 3}
   m_PrefabInstance: {fileID: 151152197}
   m_PrefabAsset: {fileID: 0}
---- !u!84 &1340966339
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 6
-  m_Width: 779
-  m_Height: 360
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthStencilFormat: 94
-  m_ColorFormat: 4
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_UseDynamicScaleExplicit: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_EnableRandomWrite: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 0
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
-  m_ShadowSamplingMode: 2
 --- !u!114 &1428702216 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5668015799585670346, guid: e800ff9673759554a9d02f698d4684e5, type: 3}
@@ -1222,6 +1187,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 4de67fe1cd6ae9b4cb68757e0e7b6e53, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: fa6e1da1a171d344889e81db62d3416b, type: 2}
     - target: {fileID: 919132149155446097, guid: 4de67fe1cd6ae9b4cb68757e0e7b6e53, type: 3}
       propertyPath: m_Name
       value: Tree11
@@ -1290,6 +1259,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 995ea5d175d9d9f4481a9a339736a9ef, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: fa6e1da1a171d344889e81db62d3416b, type: 2}
     - target: {fileID: 919132149155446097, guid: 995ea5d175d9d9f4481a9a339736a9ef, type: 3}
       propertyPath: m_Name
       value: Tree5
@@ -1509,6 +1482,43 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8350907283794935305, guid: 0106fc91d3997b549a289e5ccb079cd8, type: 3}
   m_PrefabInstance: {fileID: 151152197}
   m_PrefabAsset: {fileID: 0}
+--- !u!84 &1746984297
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 6
+  m_Width: 779
+  m_Height: 360
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthStencilFormat: 94
+  m_ColorFormat: 4
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_UseDynamicScaleExplicit: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_EnableRandomWrite: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 0
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
+  m_ShadowSamplingMode: 2
 --- !u!114 &1783940382 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6090005718225572196, guid: e800ff9673759554a9d02f698d4684e5, type: 3}
@@ -2121,6 +2131,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 62.837
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 1c416947e5a62484dbb9666cdb6217f1, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: fa6e1da1a171d344889e81db62d3416b, type: 2}
     - target: {fileID: 919132149155446097, guid: 1c416947e5a62484dbb9666cdb6217f1, type: 3}
       propertyPath: m_Name
       value: Tree3

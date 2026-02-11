@@ -1745,7 +1745,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 4c0f48036544de947b322eef9550a5b7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.409185
+      value: 3.433
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4c0f48036544de947b322eef9550a5b7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2667,7 +2667,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 16743add2d8479c4d9535863fe2a3570, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2705,13 +2705,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 469933155}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.66, y: -12.1, z: 13.8}
-  m_LocalScale: {x: 22.519238, y: 1, z: 16.283318}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: -0, y: -0, z: 0.70710576, w: 0.70710784}
+  m_LocalPosition: {x: 4.36, y: 0.83, z: -0.78}
+  m_LocalScale: {x: 0.12, y: 0.12, z: 0.12}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &483850421
 GameObject:
   m_ObjectHideFlags: 0
@@ -3072,11 +3072,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1798342755243477739, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: orthographic size
-      value: 2.6848316
+      value: 2.681119
       objectReference: {fileID: 0}
     - target: {fileID: 1813454538314249935, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalScale.x
-      value: 9.404494
+      value: 11.706294
       objectReference: {fileID: 0}
     - target: {fileID: 1813454538314249935, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalScale.y
@@ -3092,11 +3092,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2475294716756555193, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.00000056055154
+      value: 0.0000006977495
       objectReference: {fileID: 0}
     - target: {fileID: 2475294716756555193, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.005442095
+      value: -0.0002858162
       objectReference: {fileID: 0}
     - target: {fileID: 3132409262940554809, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3204,15 +3204,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8788124287499514057, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.9011383
+      value: -3.9042947
       objectReference: {fileID: 0}
     - target: {fileID: 8788124287499514057, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.5647874
+      value: 3.5726552
       objectReference: {fileID: 0}
     - target: {fileID: 8788124287499514057, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.9011376
+      value: -3.9042938
       objectReference: {fileID: 0}
     - target: {fileID: 8788124287499514057, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3237,7 +3237,7 @@ PrefabInstance:
     - target: {fileID: 9205371885998440386, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 1604184371}
+      objectReference: {fileID: 2124864703}
     - target: {fileID: 9205371885998440386, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: orthographic size
       value: 2.7
@@ -4710,6 +4710,7 @@ MonoBehaviour:
   potionVariantRegistry: {fileID: 1507625907}
   cauldronSpawnPoint: {fileID: 1684262438}
   spawnOffset: {x: 1.04, y: -0.91, z: 1.48}
+  Inventory: {fileID: 0}
 --- !u!114 &964421690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7753,43 +7754,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee04fae635dfeb6438ac6ca39865ae57, type: 3}
---- !u!84 &1604184371
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 6
-  m_Width: 620
-  m_Height: 356
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthStencilFormat: 94
-  m_ColorFormat: 4
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_UseDynamicScaleExplicit: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_EnableRandomWrite: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 0
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
-  m_ShadowSamplingMode: 2
 --- !u!1 &1614165353
 GameObject:
   m_ObjectHideFlags: 0
@@ -10791,6 +10755,43 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!84 &2124864703
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 6
+  m_Width: 620
+  m_Height: 286
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthStencilFormat: 94
+  m_ColorFormat: 4
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_UseDynamicScaleExplicit: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_EnableRandomWrite: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 0
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
+  m_ShadowSamplingMode: 2
 --- !u!1 &412951470062591461
 GameObject:
   m_ObjectHideFlags: 0
