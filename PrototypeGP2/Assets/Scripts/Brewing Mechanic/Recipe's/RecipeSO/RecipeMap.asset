@@ -9,14 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1045cafc6098cd844a65f668f1aea7df, type: 3}
+  m_Script: {fileID: 11500000, guid: d7501cbcaa008954c956cd392b727cef, type: 3}
   m_Name: RecipeMap
   m_EditorClassIdentifier: 
-  stableId: 091d6696e5ae4e01aa1dee2250d8a9ab
-  Id: 0
-  ItemName: 
-  itemSprite: {fileID: 0}
-  worldPrefab: {fileID: 0}
-  itemType: 1
-  itemDescription: 
-  recipe: {fileID: 0}
+  entries:
+  - mainKey: 0
+    baseKey: 0
+    effectType: 0
+    instant: 0
+    turns: 0
+    percentOfMaxHP: 0
+    damage: 0
+    defence: 0
+    multiplier: 0
+    effectDescription: 
+    icon: {fileID: 0}
