@@ -36,11 +36,13 @@ public enum ItemType
 public class Item
 {
     public string Name;
+    public Sprite icon;
     public string StableId;
     public string VariantKey;
     public Item(ItemScriptableObject item, string variantKey = "")
     {
         Name = item.name;
+        icon = item.itemSprite;
         StableId = item.StableId;
         VariantKey = variantKey ?? "";
     }

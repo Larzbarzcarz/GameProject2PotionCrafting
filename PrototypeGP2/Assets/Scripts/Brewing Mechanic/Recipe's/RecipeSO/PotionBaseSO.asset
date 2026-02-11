@@ -9,13 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0a7dd2b2481c8a4b95af14eec788695, type: 3}
+  m_Script: {fileID: 11500000, guid: 1045cafc6098cd844a65f668f1aea7df, type: 3}
   m_Name: PotionBaseSO
   m_EditorClassIdentifier: 
-  stableId: 794b64ba0af3402997860be66f4d3a65
+  stableId: ee9b645aa8584e19a32bff011f81373f
   Id: 0
   ItemName: 
   itemSprite: {fileID: 0}
   worldPrefab: {fileID: 0}
   itemType: 1
   itemDescription: 
+  recipe: {fileID: 0}

@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a7e5e5c05ea3454d8d127b52d9a7de6, type: 3}
+  m_Script: {fileID: 11500000, guid: 09972bcf35a1f784e8d00dca8216e4eb, type: 3}
   m_Name: PotionIconLibrary
   m_EditorClassIdentifier: 
-  entries:
-  - effect: 0
-    icon: {fileID: 21300000, guid: a8c618f9f3cbd2840bfedb92421ede4c, type: 3}
+  entries: []

@@ -21,7 +21,7 @@ public class BattleSystem : MonoBehaviour
    
     public TextMeshProUGUI dialogueText;
     public GameObject inventory;
-    [SerializeField] private PotionDisplayInventory displayInventory;
+    [SerializeField] private InventoryUI  displayInventory;
  
     [Header("Costs")]
     [SerializeField] private int attackCost = 2;
@@ -33,12 +33,44 @@ public class BattleSystem : MonoBehaviour
  
     public event System.Action OnBattleWon;
     public event System.Action OnBattleLost;
-
+    [Header("Inventory")]
+    public InventoryObject PlayerInventory;
 
     //-----UI-----
     [Header("UI Elements")]
     public GameObject ClawImage;
 
+    [Header("Spawn")] public Transform WolfSpawnPoint;
+    public Vector3 spawnOffset;
+
+    public void SpawnInventoryItem(ItemScriptableObject itemSO)
+    {
+        if (itemSO == null)
+        {
+            Debug.LogWarning("Item is null");
+            return;
+        }
+
+        if (itemSO.worldPrefab == null)
+        {
+            Debug.LogWarning("World prefab missing on: " + itemSO.name);
+            return;
+        }
+
+        if (WolfSpawnPoint == null)
+        {
+            Debug.LogWarning("Spawn point missing");
+            return;
+        }
+
+        Instantiate(
+            itemSO.worldPrefab,
+            WolfSpawnPoint.position + spawnOffset,
+            WolfSpawnPoint.rotation
+        );
+
+        Debug.Log("Spawned: " + itemSO.name);
+    }
     private void Start()
     {
         inventory.SetActive(false);
@@ -78,7 +110,7 @@ public class BattleSystem : MonoBehaviour
         if (displayInventory == null || displayInventory.inventory == null || displayInventory.inventory.database == null)
         {
             Debug.LogWarning("[DEBUG] DisplayInventory reference missing! Searching in scene...");
-            displayInventory = FindObjectOfType<PotionDisplayInventory>();
+            displayInventory = FindObjectOfType<InventoryUI>();
         }
 
         if (displayInventory == null || displayInventory.inventory == null || displayInventory.inventory.database == null)
@@ -244,7 +276,7 @@ public class BattleSystem : MonoBehaviour
         if (hitChance < 100)
         {
             //-----fmod implementation-----
-            int randomAttackSound = Random.Range(1, 3);
+            /*int randomAttackSound = Random.Range(1, 3);
             switch (randomAttackSound)
             {
                 case 1:
@@ -256,7 +288,7 @@ public class BattleSystem : MonoBehaviour
                 case 3:
                     AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.playerAttack3, monster.transform.position);
                     break;
-            }
+            }*/
 
             ClawImage.SetActive(true);
             await Wait(500);
@@ -308,7 +340,7 @@ public class BattleSystem : MonoBehaviour
         await Wait(600);
 
         int randomHurt = Random.Range(1, 3);
-        switch (randomHurt)
+        /*switch (randomHurt)
         {
             case 1:
                 AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.playerHurt1, monster.transform.position);
@@ -319,7 +351,7 @@ public class BattleSystem : MonoBehaviour
             case 3:
                 AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.playerHurt3, monster.transform.position);
                 break;
-        }
+        }*/
 
         if (isDefending)
         {
