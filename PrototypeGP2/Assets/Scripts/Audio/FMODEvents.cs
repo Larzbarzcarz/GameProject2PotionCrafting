@@ -20,6 +20,7 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference Cooking { get; private set; }
     [field: SerializeField] public EventReference expeditionStart { get; private set; }
     [field: SerializeField] public EventReference victory { get; private set; }
+    [field: SerializeField] public EventReference loss { get; private set; }
 
     [field: Header("Player SFX")]
     [field: SerializeField] public EventReference playerAttack1 { get; private set; }
