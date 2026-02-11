@@ -17,7 +17,7 @@ public class Mainmenu : MonoBehaviour
 	public void StartGame()
     {
         Debug.Log("This would start the game");
-		 SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
+		 SceneManager.LoadSceneAsync(0, LoadSceneMode.Single);
 	}
 
 	public void ExitGame()
