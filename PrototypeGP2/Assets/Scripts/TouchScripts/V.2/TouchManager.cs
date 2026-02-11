@@ -12,7 +12,9 @@ public class TouchManager : MonoBehaviour
     public LayerMask draggableMask;
 
     private DragItem current;
-
+    [Header("Potion Throw")]
+    public PotionThrowController potionThrow;
+    
     void Awake()
     {
         GameObject gameObject = GameObject.FindGameObjectWithTag("Craft");

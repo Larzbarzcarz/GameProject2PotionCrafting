@@ -3,7 +3,7 @@ using UnityEngine;
 
 
 
-public abstract class Combatant : MonoBehaviour
+public abstract class Combatant : MonoBehaviour, IPotionTarget
 {
     [Header("Base Stats")]
     [SerializeField] protected float speed;
@@ -34,7 +34,28 @@ public abstract class Combatant : MonoBehaviour
         currentHealth = maxHealth;
         currentStamina = maxStamina;
     }
+    
+        public void ApplyPotion(PotionBaseSO potion)
+        {
+            if (potion == null || potion.recipe == null) return;
+            if (potion.recipe.entries == null || potion.recipe.entries.Count == 0) return;
 
+            var e = potion.recipe.entries[0];
+
+            switch (e.effectType)
+            {
+                case PotionEffectType.Damage:
+                    TakeDamage(e.damage);
+                    Debug.Log($"Enemy takes {e.damage} dmg from {potion.ItemName}");
+                    break;
+
+                case PotionEffectType.Heal:
+                    float healAmount = maxHealth * e.percentOfMaxHP;
+                    currentHealth = Mathf.Min(maxHealth, currentHealth + healAmount);
+                    Debug.Log($"Healed {healAmount} ({e.percentOfMaxHP:P0} maxHP) from {potion.ItemName}. HP now: {currentHealth}");
+                    break;
+            }
+        }
     public virtual void TakeDamage(float damage)
     {	
 Debug.Log($"{name} took {damage} damage. HP now: {currentHealth}");

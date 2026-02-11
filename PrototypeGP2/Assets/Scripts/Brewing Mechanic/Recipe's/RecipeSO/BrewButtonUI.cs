@@ -3,7 +3,7 @@ using UnityEngine;
 public class BrewButtonUI : MonoBehaviour
 {
     [SerializeField] private PotionBrewingSystem brewer;
-    [SerializeField] private PotionDisplayInventory inventoryUI;
+    [SerializeField] private InventoryUI inventoryUI;
     [SerializeField] private PotionRenameUI renameUI;
 
     public void Brew()
