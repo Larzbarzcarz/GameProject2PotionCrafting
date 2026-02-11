@@ -34,6 +34,7 @@ public class Clickforcamera : MonoBehaviour
 
         //-----FMOD Integration-----
         AudioManager.Instance.PlayOneShot(FMODEvents.instance.buttonPress);
+        AudioManager.Instance.PlayMusic(FMODEvents.instance.cookMusic);
     }
 
     public void SwitchToMain()

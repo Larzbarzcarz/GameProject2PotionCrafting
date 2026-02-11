@@ -80,7 +80,7 @@ Debug.DrawRay(ray.origin, ray.direction * 5f, Color.red, 1f);
 
                 //-----FMOD Integration-----
                 AudioManager.Instance.PlayOneShot(FMODEvents.instance.buttonPress);
-                AudioManager.Instance.PlayMusic(FMODEvents.instance.cookMusic);
+                
 
 
             }

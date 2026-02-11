@@ -3285,7 +3285,7 @@ PrefabInstance:
     - target: {fileID: 9205371885998440386, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 814975136}
+      objectReference: {fileID: 1226258023}
     - target: {fileID: 9205371885998440386, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: orthographic size
       value: 2.7
@@ -3711,25 +3711,25 @@ MonoBehaviour:
     Path: event:/Music/Victory_song
   <buttonPress>k__BackingField:
     Guid:
-      Data1: -1356334978
-      Data2: 1194243025
-      Data3: 903337384
-      Data4: -751598848
-    Path: event:/Music/Victory_song
+      Data1: 388538626
+      Data2: 1299739339
+      Data3: 1312484521
+      Data4: 135698658
+    Path: event:/SFX/Transitions&Buttons/Button_press_1_Confirm_Back
   <Cooking>k__BackingField:
     Guid:
-      Data1: 1595007792
-      Data2: 1149318927
-      Data3: 750539184
-      Data4: 760376142
-    Path: event:/SFX/Combat/TreeMonster/Tree_Death_1
+      Data1: -1249407799
+      Data2: 1257957129
+      Data3: -608489302
+      Data4: 331732578
+    Path: event:/SFX/Transitions&Buttons/potion-brew
   <expeditionStart>k__BackingField:
     Guid:
-      Data1: 1589108361
-      Data2: 1220236658
-      Data3: -1646264445
-      Data4: -1655142830
-    Path: event:/SFX/Combat/SlimeMonster/Blob_Attack_1
+      Data1: -1058478570
+      Data2: 1339503843
+      Data3: -1086953312
+      Data4: 1749209727
+    Path: event:/SFX/Transitions&Buttons/Area_unlocked_omnious
   <victory>k__BackingField:
     Guid:
       Data1: 608321447
@@ -3737,6 +3737,13 @@ MonoBehaviour:
       Data3: 50212024
       Data4: -997229316
     Path: event:/SFX/Transitions&Buttons/Victory_1
+  <loss>k__BackingField:
+    Guid:
+      Data1: 1762265248
+      Data2: 1304171386
+      Data3: -446495809
+      Data4: 38442444
+    Path: event:/SFX/Transitions&Buttons/Loss
   <playerAttack1>k__BackingField:
     Guid:
       Data1: 1297119950
@@ -3858,11 +3865,11 @@ MonoBehaviour:
     Path: event:/SFX/Combat/TreeMonster/Tree_taking_damage_1
   <batAttack>k__BackingField:
     Guid:
-      Data1: 88974686
-      Data2: 1082963136
-      Data3: 460892812
-      Data4: 49675680
-    Path: event:/SFX/Combat/Bat/Batnoises_1
+      Data1: 871145015
+      Data2: 1157553466
+      Data3: 20065723
+      Data4: 812093424
+    Path: event:/SFX/Combat/Bat/Batnoises_2
   <batIdle>k__BackingField:
     Guid:
       Data1: 886414073
@@ -3879,18 +3886,18 @@ MonoBehaviour:
     Path: event:/SFX/Combat/Bat/Bat_Death
   <batHurt>k__BackingField:
     Guid:
-      Data1: 871145015
-      Data2: 1157553466
-      Data3: 20065723
-      Data4: 812093424
-    Path: event:/SFX/Combat/Bat/Batnoises_2
-  <batNoise>k__BackingField:
-    Guid:
       Data1: 38646648
       Data2: 1205736674
       Data3: 269319568
       Data4: 100574040
     Path: event:/SFX/Combat/Bat/Batnoises_3
+  <batNoise>k__BackingField:
+    Guid:
+      Data1: 88974686
+      Data2: 1082963136
+      Data3: 460892812
+      Data4: 49675680
+    Path: event:/SFX/Combat/Bat/Batnoises_1
 --- !u!1 &693824603
 GameObject:
   m_ObjectHideFlags: 0
@@ -4460,43 +4467,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 3
   m_TargetDisplay: 0
---- !u!84 &814975136
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 6
-  m_Width: 620
-  m_Height: 286
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthStencilFormat: 94
-  m_ColorFormat: 4
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_UseDynamicScaleExplicit: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_EnableRandomWrite: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 0
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
-  m_ShadowSamplingMode: 2
 --- !u!1 &823766300
 GameObject:
   m_ObjectHideFlags: 0
@@ -6416,6 +6386,43 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -6803169544883306252, guid: 6f16b0ced1fe5b24e9d7ea49b88ad413, type: 3}
   m_PrefabInstance: {fileID: 1477559565}
   m_PrefabAsset: {fileID: 0}
+--- !u!84 &1226258023
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 6
+  m_Width: 620
+  m_Height: 286
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthStencilFormat: 94
+  m_ColorFormat: 4
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_UseDynamicScaleExplicit: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_EnableRandomWrite: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 0
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
+  m_ShadowSamplingMode: 2
 --- !u!1001 &1262272155
 PrefabInstance:
   m_ObjectHideFlags: 0
