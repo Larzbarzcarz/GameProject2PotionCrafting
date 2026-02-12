@@ -340,7 +340,7 @@ public class BattleSystem : MonoBehaviour
         await Wait(600);
 
         int randomHurt = Random.Range(1, 3);
-        /*switch (randomHurt)
+        switch (randomHurt)
         {
             case 1:
                 AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.playerHurt1, monster.transform.position);
@@ -351,7 +351,7 @@ public class BattleSystem : MonoBehaviour
             case 3:
                 AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.playerHurt3, monster.transform.position);
                 break;
-        }*/
+        }
 
         if (isDefending)
         {
@@ -368,8 +368,8 @@ public class BattleSystem : MonoBehaviour
             dialogueText.text = "You Win!";
             if (monster != null) monster.Victory();
             OnBattleWon?.Invoke();
-            //AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.victory, monster.transform.position);
-            //AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.victoryMusic, monster.transform.position);
+            AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.victory, monster.transform.position);
+            AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.victoryMusic, monster.transform.position);
             
         }
         else
