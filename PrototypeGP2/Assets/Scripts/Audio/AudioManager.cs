@@ -30,7 +30,8 @@ namespace _Project._Scripts.Sound_and_Music
         // --- Huldra-specific fields ---
         private EventInstance _huldraInstance;
         private bool _huldraPaused = false;
-        private const string HuldraPath = "event:/Music/Huldra";
+      	[SerializeField] private EventReference huldraMusic;
+
         private float Intecity;
 
         private void Awake()
@@ -138,7 +139,7 @@ namespace _Project._Scripts.Sound_and_Music
             if (music.IsNull) return;
 
             // If switching to Huldra, stop any non-Huldra music
-            if (music.Path == HuldraPath)
+           if (music.Guid == huldraMusic.Guid)
             {
                 // Stop currently playing non-Huldra music
                 if (_currentMusicInstance.isValid())
@@ -201,7 +202,7 @@ namespace _Project._Scripts.Sound_and_Music
         public void HuldraIntensity(float intecityInc)
         {
             Intecity += intecityInc;
-            _huldraInstance.setParameterByName("Intensity", intecityInc);
+            _huldraInstance.setParameterByName("Intensity", Intecity);
         }
     }
 }
