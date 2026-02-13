@@ -276,7 +276,7 @@ public class BattleSystem : MonoBehaviour
         if (hitChance < 100)
         {
             //-----fmod implementation-----
-            /*int randomAttackSound = Random.Range(1, 3);
+            int randomAttackSound = Random.Range(1, 3);
             switch (randomAttackSound)
             {
                 case 1:
@@ -288,7 +288,7 @@ public class BattleSystem : MonoBehaviour
                 case 3:
                     AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.playerAttack3, monster.transform.position);
                     break;
-            }*/
+            }
 
             ClawImage.SetActive(true);
             await Wait(500);

@@ -23,8 +23,8 @@ public class InventorySlotUI : MonoBehaviour, IPointerClickHandler
         currentItem = null;
         currentAmount = 0;
         
-        itemIcon.sprite = null;
-        itemIcon.color = Color.clear;
+        //itemIcon.sprite = null;
+        //itemIcon.color = Color.clear;
 
         if (label != null)
             label.text = "";
