@@ -10,6 +10,9 @@ public class Clickforcamera : MonoBehaviour
     public GameObject Return;
     public GameObject Craft;
     public GameObject Materialing;
+
+    public GameObject CraftingInventory;
+    public GameObject CraftingButton;
     void Start()
     {
 		Materialing.SetActive(false);
@@ -60,5 +63,17 @@ public class Clickforcamera : MonoBehaviour
         SceneManager.LoadSceneAsync(2);
     }
 
-    
+    public void CloseInventory()
+    {
+        CraftingInventory.SetActive(false);
+        CraftingButton.SetActive(false);
+    }
+
+    public void OpenInventory()
+    {
+        CraftingButton.SetActive(true);
+        CraftingInventory.SetActive(true);
+    }
+
+
 }

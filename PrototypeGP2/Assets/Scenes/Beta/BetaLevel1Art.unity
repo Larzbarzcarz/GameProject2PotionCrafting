@@ -183,7 +183,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &97989693
 Transform:
   m_ObjectHideFlags: 0
@@ -217,11 +217,11 @@ MonoBehaviour:
   sfxBusPath: bus:/SFX
   huldraMusic:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1422102794
+      Data2: 1210234444
+      Data3: 1973179068
+      Data4: 629224298
+    Path: event:/Music/Huldra
 --- !u!1 &104259164
 GameObject:
   m_ObjectHideFlags: 0
@@ -1423,6 +1423,43 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 768867506}
   m_CullTransparentMesh: 1
+--- !u!84 &769692858
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 6
+  m_Width: 460
+  m_Height: 360
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthStencilFormat: 94
+  m_ColorFormat: 4
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_UseDynamicScaleExplicit: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_EnableRandomWrite: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 0
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
+  m_ShadowSamplingMode: 2
 --- !u!114 &797176929 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 930072424383759654, guid: 461e79e5dbdd9ed428ade63f56f77eac, type: 3}
@@ -2303,43 +2340,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 0}
   label: {fileID: 0}
---- !u!84 &1183014527
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 6
-  m_Width: 469
-  m_Height: 360
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthStencilFormat: 94
-  m_ColorFormat: 4
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_UseDynamicScaleExplicit: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_EnableRandomWrite: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 0
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
-  m_ShadowSamplingMode: 2
 --- !u!1001 &1195472264
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2350,7 +2350,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1813454538314249935, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalScale.x
-      value: 8.415944
+      value: 8.254444
       objectReference: {fileID: 0}
     - target: {fileID: 2255326839739188927, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_Name
@@ -2358,7 +2358,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2475294716756555193, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0011276628
+      value: -0.0011279173
       objectReference: {fileID: 0}
     - target: {fileID: 2475294716756555193, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2439,7 +2439,7 @@ PrefabInstance:
     - target: {fileID: 9205371885998440386, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 1183014527}
+      objectReference: {fileID: 769692858}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4438,8 +4438,8 @@ MonoBehaviour:
   intermissionPanel: {fileID: 0}
   defeatPanel: {fileID: 612816136}
   combatUI: {fileID: 0}
-  itemDatabase: {fileID: 0}
-  playerInventory: {fileID: 0}
+  itemDatabase: {fileID: 11400000, guid: 5800c4f68444a954abad04ad86edd734, type: 2}
+  playerInventory: {fileID: 11400000, guid: a8ca9e30fd84d7f41abae0322779694f, type: 2}
   expeditionRewardUI: {fileID: 0}
 --- !u!4 &2079450802
 Transform:

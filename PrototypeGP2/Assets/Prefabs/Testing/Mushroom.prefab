@@ -145,7 +145,6 @@ MonoBehaviour:
     icon: {fileID: 2047017830, guid: e335320ec9b0dd24f986f374e5e89e63, type: 3}
     StableId: 3
     VariantKey: 
-  spriteImage: {fileID: 0}
 --- !u!1001 &8165865367931099533
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8036147482970506555}
   - component: {fileID: 4488741347401510359}
   - component: {fileID: -5642491542820318117}
-  - component: {fileID: 4671930890142291471}
+  - component: {fileID: 7453425560734684508}
   m_Layer: 6
   m_Name: Bat_Wing
   m_TagString: Untagged
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 8370106416403302915}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.006488951, y: 0.0023537888, z: -0.00032560294}
+  m_LocalPosition: {x: 0.0062284693, y: 0.07400362, z: -0.00024471432}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -114,7 +114,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   dragHeight: 0.3
   planeDistance: 0.4
---- !u!114 &4671930890142291471
+--- !u!114 &7453425560734684508
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,10 +123,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8370106416403302915}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bafdc4e9d043f44eb03ffae08264f1b, type: 3}
+  m_Script: {fileID: 11500000, guid: 991c4f9b3d8eb5845af783aadf8e5b4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  item:
+    Name: Batwing
+    icon: {fileID: -951022915, guid: 221b82e43c2ebd942939d635bc8f0ccf, type: 3}
+    StableId: 2
+    VariantKey: 
 --- !u!1001 &4971747196657447938
 PrefabInstance:
   m_ObjectHideFlags: 0
