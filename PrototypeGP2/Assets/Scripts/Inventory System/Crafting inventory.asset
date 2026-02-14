@@ -15,4 +15,10 @@ MonoBehaviour:
   savePath: Saves/inventory.save
   database: {fileID: 11400000, guid: 5800c4f68444a954abad04ad86edd734, type: 2}
   Container:
-    Items: []
+    Items:
+    - amount: 21
+      item:
+        Name: PotionBaseSO
+        icon: {fileID: 21300000, guid: bc0d88600f19f754586e2615e6a3a469, type: 3}
+        StableId: ee9b645aa8584e19a32bff011f81373f
+        VariantKey: 
