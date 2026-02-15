@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: PotionBaseSO
   m_EditorClassIdentifier: 
   stableId: ee9b645aa8584e19a32bff011f81373f
-  Id: 0
+  Id: 1
   ItemName: 
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 663615239, guid: 00ce17808fa02b84db5dcf4ca0d21aa6, type: 3}
   worldPrefab: {fileID: 0}
   itemType: 1
   itemDescription: 
-  recipe: {fileID: 0}
+  recipe: {fileID: 11400000, guid: a262bf12515b56a42a6969f8fa22fbb5, type: 2}

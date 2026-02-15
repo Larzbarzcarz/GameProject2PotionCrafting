@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0a7dd2b2481c8a4b95af14eec788695, type: 3}
-  m_Name: Potion_Heal20
+  m_Script: {fileID: 11500000, guid: 1045cafc6098cd844a65f668f1aea7df, type: 3}
+  m_Name: HealPotion
   m_EditorClassIdentifier: 
-  stableId: 174576dddf4b4af791ea8f599d822d93
-  Id: 4
-  ItemName: health_potion
-  itemSprite: {fileID: 2047017830, guid: e335320ec9b0dd24f986f374e5e89e63, type: 3}
+  stableId: 40f085b7c80844adb3ed49300ae418ac
+  Id: 1
+  ItemName: HealPotion
+  itemSprite: {fileID: 1665235537, guid: 00f6d20a427afd840a1df95f82d0a0c2, type: 3}
   worldPrefab: {fileID: 0}
   itemType: 1
   itemDescription: 
-  recipe: {fileID: 11400000, guid: fdbf276c155706e488e8ff4a9b3f9576, type: 2}
+  recipe: {fileID: 11400000, guid: a262bf12515b56a42a6969f8fa22fbb5, type: 2}
