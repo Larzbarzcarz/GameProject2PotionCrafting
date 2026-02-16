@@ -14,6 +14,7 @@ public class Clickforcamera : MonoBehaviour
     public GameObject CraftingInventory;
     public GameObject CraftingButton;
 	public GameObject Recipes;
+	public GameObject Results;
     void Start()
     {
 		Materialing.SetActive(false);
@@ -22,6 +23,7 @@ public class Clickforcamera : MonoBehaviour
         mainCamera.SetActive(true);
         craftingCamera.SetActive(false);
 		Recipes.SetActive(false);
+		Results.SetActive(false);
 
         //-----FMOD Integration-----
         AudioManager.Instance.PlayMusic(FMODEvents.instance.baseMusic);
@@ -36,7 +38,7 @@ public class Clickforcamera : MonoBehaviour
         Debug.Log("Switching to crafting camera");
         mainCamera.SetActive(false);
         craftingCamera.SetActive(true);
-
+		Results.SetActive(true);
         //-----FMOD Integration-----
         AudioManager.Instance.PlayOneShot(FMODEvents.instance.buttonPress);
         AudioManager.Instance.PlayMusic(FMODEvents.instance.cookMusic);
@@ -75,6 +77,7 @@ public class Clickforcamera : MonoBehaviour
     {
         CraftingButton.SetActive(true);
         CraftingInventory.SetActive(true);
+		Results.SetActive(true);
     }
 	public void OpenRecipes()
 	{	
@@ -83,6 +86,10 @@ public class Clickforcamera : MonoBehaviour
 	public void CloseRecipes()
 	{	
 			Recipes.SetActive(false);
+	}
+	public void ResultsClose()
+	{
+	Results.SetActive(false);
 	}
 
 
