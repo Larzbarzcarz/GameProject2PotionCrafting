@@ -24,3 +24,14 @@ MonoBehaviour:
     multiplier: 30
     effectDescription: Healing potion
     icon: {fileID: 663615239, guid: 00ce17808fa02b84db5dcf4ca0d21aa6, type: 3}
+  - mainKey: 6
+    baseKey: 0
+    effectType: 1
+    instant: 1
+    turns: 0
+    percentOfMaxHP: 0
+    damage: 30.01
+    defence: 0.48
+    multiplier: 30
+    effectDescription: Damage
+    icon: {fileID: 2043313906, guid: 5932f02365d3223419ac22e39c9adf74, type: 3}

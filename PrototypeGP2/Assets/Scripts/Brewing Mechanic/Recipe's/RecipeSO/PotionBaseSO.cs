@@ -5,7 +5,7 @@ public class PotionBaseSO : ItemScriptableObject
 {
     public PotionRecipeSO recipe;
 
-    public void Awake()
+    public void OnEnable()
     {
         itemType = ItemType.Potion;
     }

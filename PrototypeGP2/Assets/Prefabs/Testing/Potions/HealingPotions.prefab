@@ -1,0 +1,205 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6470966607666153277
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7461426197225686691}
+  m_Layer: 0
+  m_Name: HealingPotions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7461426197225686691
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6470966607666153277}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.6002948, y: 1.2264585, z: 2.8528605}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6619050043486983195}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &5616175166728061974
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7461426197225686691}
+    m_Modifications:
+    - target: {fileID: 1597440298695331853, guid: 756e2862bd9243543af9ac0ded468f0e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5099502
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597440298695331853, guid: 756e2862bd9243543af9ac0ded468f0e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.011819601
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597440298695331853, guid: 756e2862bd9243543af9ac0ded468f0e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.048439145
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597440298695331853, guid: 756e2862bd9243543af9ac0ded468f0e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.0000808239
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597440298695331853, guid: 756e2862bd9243543af9ac0ded468f0e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.609651
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597440298695331853, guid: 756e2862bd9243543af9ac0ded468f0e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.60443157
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597440298695331853, guid: 756e2862bd9243543af9ac0ded468f0e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.3620791
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597440298695331853, guid: 756e2862bd9243543af9ac0ded468f0e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.36316228
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597440298695331853, guid: 756e2862bd9243543af9ac0ded468f0e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 208.294
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597440298695331853, guid: 756e2862bd9243543af9ac0ded468f0e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90.46301
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597440298695331853, guid: 756e2862bd9243543af9ac0ded468f0e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90.361
+      objectReference: {fileID: 0}
+    - target: {fileID: 2116955503292664503, guid: 756e2862bd9243543af9ac0ded468f0e, type: 3}
+      propertyPath: m_Name
+      value: HealingPotion
+      objectReference: {fileID: 0}
+    - target: {fileID: 2116955503292664503, guid: 756e2862bd9243543af9ac0ded468f0e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3461995056338841909, guid: 756e2862bd9243543af9ac0ded468f0e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2116955503292664503, guid: 756e2862bd9243543af9ac0ded468f0e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5597312244048514788}
+    - targetCorrespondingSourceObject: {fileID: 2116955503292664503, guid: 756e2862bd9243543af9ac0ded468f0e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1419441650897941364}
+    - targetCorrespondingSourceObject: {fileID: 2116955503292664503, guid: 756e2862bd9243543af9ac0ded468f0e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1552038728748178619}
+    - targetCorrespondingSourceObject: {fileID: 2116955503292664503, guid: 756e2862bd9243543af9ac0ded468f0e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3849957083654569883}
+  m_SourcePrefab: {fileID: 100100000, guid: 756e2862bd9243543af9ac0ded468f0e, type: 3}
+--- !u!1 &5805217291807428257 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2116955503292664503, guid: 756e2862bd9243543af9ac0ded468f0e, type: 3}
+  m_PrefabInstance: {fileID: 5616175166728061974}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &5597312244048514788
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805217291807428257}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.1118897, y: 0.11764783, z: 0.18644132}
+  m_Center: {x: -2.2825682e-11, y: -0.00000012295229, z: -0.007605193}
+--- !u!54 &1419441650897941364
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805217291807428257}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &1552038728748178619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805217291807428257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b72a3e2921157842aa7253ad83cb391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  dragHeight: 0.9
+  planeDistance: 0.6
+--- !u!114 &3849957083654569883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805217291807428257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 991c4f9b3d8eb5845af783aadf8e5b4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    Name: HealingPotion
+    icon: {fileID: 663615239, guid: 00ce17808fa02b84db5dcf4ca0d21aa6, type: 3}
+    StableId: 
+    VariantKey: 
+--- !u!4 &6619050043486983195 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1597440298695331853, guid: 756e2862bd9243543af9ac0ded468f0e, type: 3}
+  m_PrefabInstance: {fileID: 5616175166728061974}
+  m_PrefabAsset: {fileID: 0}
