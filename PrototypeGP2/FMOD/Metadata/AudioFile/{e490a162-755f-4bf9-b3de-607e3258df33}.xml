@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{e490a162-755f-4bf9-b3de-607e3258df33}">
+		<property name="assetPath">
+			<value>Claw_1.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.73958333333333337</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{66375007-d343-47d5-a170-0910f3effa0c}</destination>
+		</relationship>
+	</object>
+</objects>

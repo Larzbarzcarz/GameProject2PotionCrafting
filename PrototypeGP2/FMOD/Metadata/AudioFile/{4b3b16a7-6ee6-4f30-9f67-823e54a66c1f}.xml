@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{4b3b16a7-6ee6-4f30-9f67-823e54a66c1f}">
+		<property name="assetPath">
+			<value>Batnoises_2.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.3125</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{66375007-d343-47d5-a170-0910f3effa0c}</destination>
+		</relationship>
+	</object>
+</objects>

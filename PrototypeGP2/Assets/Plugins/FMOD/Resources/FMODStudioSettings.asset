@@ -524,10 +524,10 @@ MonoBehaviour:
   m_Name: FMODStudioSettings
   m_EditorClassIdentifier: 
   switchSettingsMigration: 1
-  HasSourceProject: 1
-  HasPlatforms: 1
-  sourceProjectPath: FMOD/GP2.fspro
-  sourceBankPath: FMOD/Build
+  HasSourceProject: 0
+  HasPlatforms: 0
+  sourceProjectPath: 
+  sourceBankPath: Assets/StreamingAssets/Desktop
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
@@ -551,7 +551,9 @@ MonoBehaviour:
   Plugins: []
   MasterBanks:
   - Master
-  Banks: []
+  Banks:
+  - Music
+  - SFX
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
@@ -567,17 +569,17 @@ MonoBehaviour:
   HideSetupWizard: 1
   LastEventReferenceScanVersion: 131857
   Platforms:
-  - {fileID: -4740350750459167656}
-  - {fileID: 2784012158880352072}
+  - {fileID: -7556703288515094838}
   - {fileID: -7264296675019136782}
+  - {fileID: -4740350750459167656}
+  - {fileID: -2031510960611766991}
   - {fileID: -1758906734713668671}
   - {fileID: -1537230776579100691}
+  - {fileID: -1481720607951606296}
   - {fileID: 558888526765819537}
-  - {fileID: -2031510960611766991}
+  - {fileID: 2784012158880352072}
   - {fileID: 3765971341775954296}
   - {fileID: 5602744179368068766}
-  - {fileID: -7556703288515094838}
-  - {fileID: -1481720607951606296}
   - {fileID: 7591702530250689438}
   MigratedPlatforms: 0a00000000000000150000000b00000009000000050000001200000008000000060000000c0000000200000001000000
 --- !u!114 &558888526765819537
@@ -723,15 +725,15 @@ MonoBehaviour:
     HasValue: 0
   displaySortOrder: 0
   childIdentifiers:
+  - 46fbfdf3fc43db0458918377fd40293e
   - 2fea114e74ecf3c4f920e1d5cc1c4c40
+  - fd7c55dab0fce234b8c25f6ffca523c1
   - c88d16e5272a4e241b0ef0ac2e53b73d
   - 2c5177b11d81d824dbb064f9ac8527da
+  - de700ef3f37a49b58a57ae3addf01ad9
   - e7a046c753c3c3d4aacc91f6597f310d
-  - fd7c55dab0fce234b8c25f6ffca523c1
   - 52eb9df5db46521439908db3a29a1bbb
   - 0f8eb3f400726694eb47beb1a9f94ce8
-  - 46fbfdf3fc43db0458918377fd40293e
-  - de700ef3f37a49b58a57ae3addf01ad9
   - b7716510a1f36934c87976f3a81dbf3d
   codecChannels:
     Value: []

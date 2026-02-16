@@ -5,19 +5,30 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "item", menuName = "ScriptableObjects/Item", order = 1)]
 public abstract class ItemScriptableObject : ScriptableObject
 {
+    [SerializeField, HideInInspector] private string stableId;
+    public string StableId => stableId;
+
     public int Id;
     public string ItemName;
     public Sprite itemSprite;
     public GameObject worldPrefab;
     public ItemType itemType;
-    [TextArea(15, 20)]
-    public string description;
+    [TextArea] public string itemDescription;
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        if (string.IsNullOrEmpty(stableId))
+        {
+            stableId = System.Guid.NewGuid().ToString("N");
+            UnityEditor.EditorUtility.SetDirty(this);
+        }
+    }
+#endif
 }
 public enum ItemType
 {
-    Equipment,
     Ingredient,
-    Default,
     Potion
 }
 
@@ -25,10 +36,14 @@ public enum ItemType
 public class Item
 {
     public string Name;
-    public int Id;
-    public Item(ItemScriptableObject item)
+    public Sprite icon;
+    public string StableId;
+    public string VariantKey;
+    public Item(ItemScriptableObject item, string variantKey = "")
     {
         Name = item.name;
-        Id = item.Id;
+        icon = item.itemSprite;
+        StableId = item.StableId;
+        VariantKey = variantKey ?? "";
     }
 }

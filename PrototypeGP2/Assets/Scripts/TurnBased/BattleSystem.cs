@@ -1,200 +1,442 @@
-using System.Collections;
-using System.Collections.Generic;
+using _Project._Scripts.Sound_and_Music;
+using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using TMPro;
-using UnityEngine.Serialization;
-
-
-public enum BattleState
+ 
+public enum PlayerAction
 {
-    Start,
-    MonsterTurn,
-    EnemyTurn,
-    Win,
-    Lose
+    None,
+    Attack,
+    Defend
 }
+ 
 public class BattleSystem : MonoBehaviour
 {
-    public GameObject MonsterPrefab;
-    public GameObject EnemyPrefab;
-
-    public Monster monster;
-    public Enemy _enemy;
-    public Transform MonsterBattleStation;
-    public Transform EnemyBattleStation;
-    public bool isDefending = false;
-    
-    public BattleState state;
-    public TextMeshProUGUI dialogeText;
+    [Header("References")] 
+    public Combatant monster;
+    public Combatant enemy;
+    public RandomMonsterSpawn monsterSpawner;
+    public Transform enemySpawnPoint;
+   
+    public TextMeshProUGUI dialogueText;
     public GameObject inventory;
+    [SerializeField] private InventoryUI  displayInventory;
+ 
+    [Header("Costs")]
+    [SerializeField] private int attackCost = 2;
+    [SerializeField] private int defendCost = 1;
+ 
+    private PlayerAction selectedAction = PlayerAction.None;
+    private bool isDefending;
+    private bool battleOver;
+ 
+    public event System.Action OnBattleWon;
+    public event System.Action OnBattleLost;
+    [Header("Inventory")]
+    public InventoryObject PlayerInventory;
 
-    [SerializeField] private int attackCost;
-    [SerializeField] private int defendCost;
-    
-    void Start()
-     { 
-         inventory.SetActive(false);
-         state = BattleState.Start;
-        StartCoroutine(SetupBattle());
-    }
+    //-----UI-----
+    [Header("UI Elements")]
+    public GameObject ClawImage;
 
-  
-    
-    IEnumerator SetupBattle()
+    [Header("Spawn")] public Transform WolfSpawnPoint;
+    public Vector3 spawnOffset;
+
+    public void SpawnInventoryItem(ItemScriptableObject itemSO)
     {
-        GameObject MonsterGO = MonsterPrefab; 
-        //monster =  MonsterGO.GetComponent<Monster>();
-
-        GameObject EnemyGO = EnemyPrefab;
-        //_enemy = EnemyGO.GetComponent<Enemy>();
-
-        dialogeText.text = "A wild " + _enemy.enemyName + "approaches";
-
-        yield return new WaitForSeconds(1f);
-
-        state = BattleState.MonsterTurn;
-        MonsterTurn();
-
-    }
-
-    IEnumerator MonsterAttack()
-    {
-
-        int hitChance = UnityEngine.Random.Range(0, 100);
-        if (hitChance < 80)
+        if (itemSO == null)
         {
-            _enemy.TakeDamage(2f);
-            Debug.Log("Dealing Damage");
-            dialogeText.text = "The attack hit"; 
-        }
-        else
-        {
-            dialogeText.text = "You missed";
-        }
-      
-            
-            yield return new WaitForSeconds(1f);
-
-            if (_enemy.isDead)
-            {
-                state = BattleState.Win;
-                EndBattle();
-            }
-            else
-            {
-                state = BattleState.EnemyTurn;
-                StartCoroutine(EnemyTurn());
-            }
-    }
-
-    IEnumerator EnemyTurn()
-    {
-        dialogeText.text = "Enemy +  Attacks!";
-        monster.TakeDamage(2f);
-        yield return new WaitForSeconds(1f);
-        float damage = 2f;
-        if (isDefending)
-        {
-            damage = 1f;
-            dialogeText.text = "You reduced damage";
-            isDefending = false;
-            yield return new WaitForSeconds(1f);
-        }
-        monster.TakeDamage(damage);
-
-        if (monster.CurrentHealth == 0)
-        {
-            state = BattleState.Lose;
-            EndBattle();
-        }
-        else
-        {
-            state = BattleState.MonsterTurn;
-            MonsterTurn();
-        }
-
-    }
-
-    void MonsterTurn()
-    {
-        dialogeText.text = "Select a action";
-    }
-
-    public void OnAttackButton()
-    {
-        if (state != BattleState.MonsterTurn)
-        return;
-
-        if (!monster.TrySpendStamina(attackCost))
-        {
-            dialogeText.text = "Not enough stamina!";
+            Debug.LogWarning("Item is null");
             return;
         }
 
-        StartCoroutine(MonsterAttack());
-    }
-
-    public void DefenseButton()
-    {
-        if (state != BattleState.MonsterTurn)
-            return;
-
-        if (!monster.TrySpendStamina(defendCost))
+        if (itemSO.worldPrefab == null)
         {
-            dialogeText.text = "Not enough stamina!";
+            Debug.LogWarning("World prefab missing on: " + itemSO.name);
             return;
         }
 
-        int defendChance = UnityEngine.Random.Range(0, 100);
-        if (defendChance < 70)
+        if (WolfSpawnPoint == null)
         {
-            isDefending = true;
-            dialogeText.text = "You brace for impact";
-        }
-        else
-        {
-            dialogeText.text = "You failed to defend yourself";
-            monster.TakeDamage(2f);
+            Debug.LogWarning("Spawn point missing");
+            return;
         }
 
-        state = BattleState.EnemyTurn;
-        StartCoroutine(EnemyTurn());
+        Instantiate(
+            itemSO.worldPrefab,
+            WolfSpawnPoint.position + spawnOffset,
+            WolfSpawnPoint.rotation
+        );
+
+        Debug.Log("Spawned: " + itemSO.name);
     }
-
-    void EndBattle()
-    {
-        if (state == BattleState.Win)
-        {
-            dialogeText.text = "You Win!";
-        }
-        else if (state == BattleState.Lose)
-        {
-            dialogeText.text = "You lose";
-        }
-    }
-
-    public void ActivateInventory()
-    {
-        inventory.SetActive(true);
-        
-    }
-
-    public void DeactivateInventory()
+    private void Start()
     {
         inventory.SetActive(false);
     }
 
-    public void Update()
+    private void Update()
     {
-        Debug.Log("current state: " + state);
-        Debug.Log("Monster Health: " + monster.CurrentHealth);
-        Debug.Log("Enemy Health: " + _enemy.CurrentHealth);
+        // debug instakill button
+        if (Input.GetKeyDown(KeyCode.Insert))
+        {
+            if (enemy != null && !enemy.isDead)
+            {
+                Debug.Log("DEBUG INSTA KILL");
+                enemy.TakeDamage(9999f);
+            }
+        }
+
+        // debug fill pocket with potions
+        if (Input.GetKeyDown(KeyCode.Home))
+        {
+            FillPotionsDebug();
+        }
+
+        // debug suicide button
+        if (Input.GetKeyDown(KeyCode.End))
+        {
+            if (monster != null && !monster.isDead)
+            {
+                Debug.Log("DEBUG SUICIDE");
+                monster.TakeDamage(9999f);
+            }
+        }
     }
 
-    public void Runnaway()
+    private void FillPotionsDebug()
+    {
+        if (displayInventory == null || displayInventory.inventory == null || displayInventory.inventory.database == null)
+        {
+            Debug.LogWarning("[DEBUG] DisplayInventory reference missing! Searching in scene...");
+            displayInventory = FindObjectOfType<InventoryUI>();
+        }
+
+        if (displayInventory == null || displayInventory.inventory == null || displayInventory.inventory.database == null)
+        {
+            Debug.LogError("DisplayInventory or InventoryObject or Database missing for Potion Refill!");
+            return;
+        }
+
+        var database = displayInventory.inventory.database;
+        var potions = new System.Collections.Generic.List<ItemScriptableObject>();
+
+        foreach (var item in database.Items)
+        {
+            if (item != null && item.itemType == ItemType.Potion)
+            {
+                potions.Add(item);
+            }
+        }
+
+        if (potions.Count == 0)
+        {
+            Debug.LogWarning("No potions found in database!");
+            return;
+        }
+
+        for (int i = 0; i < 5; i++)
+        {
+            var randomPotion = potions[Random.Range(0, potions.Count)];
+            displayInventory.inventory.AddItem(new Item(randomPotion), 1, "");
+        }
+
+        displayInventory.Refresh();
+        Debug.Log("DEBUG FILL POCKET");
+    }
+
+    public void BeginBattle()
+    {
+        battleOver = false;
+        
+        if (enemy == null && monsterSpawner != null)
+        {
+             if (enemySpawnPoint == null)
+             {
+                 Debug.LogError("[BattleSystem] enemySpawnPoint is MISSING in BeginBattle!");
+                 return;
+             }
+
+             enemy = monsterSpawner.SpawnUniqueMonster(enemySpawnPoint.position);
+        }
+
+        if (enemy == null)
+        {
+             Debug.LogError("[BattleSystem] Enemy failed to spawn/reference in BeginBattle!");
+        }
+        else
+        {
+            BindHealthBars();
+        }
+
+        _ = StartBattleAsync();
+    }
+
+    public void ResetForNewEncounter()
+    {
+        if (enemy != null)
+        {
+            Debug.Log("[BattleSystem] Destroying old enemy...");
+            Destroy(enemy.gameObject);
+            enemy = null;
+        }
+
+        if (monster != null)
+        {
+            monster.ResetAnimator();
+        }
+
+        if (monsterSpawner == null)
+        {
+            Debug.LogError("[BattleSystem] MonsterSpawner is NULL in ResetForNewEncounter!");
+            return;
+        }
+
+        if (enemySpawnPoint == null)
+        {
+            Debug.LogError("[BattleSystem] enemySpawnPoint is NULL or was DESTROYED! Make sure it's not a child of an enemy.");
+            return;
+        }
+
+        Debug.Log("[BattleSystem] Spawning new enemy for encounter...");
+        enemy = monsterSpawner.SpawnUniqueMonster(enemySpawnPoint.position);
+        
+        if (enemy != null)
+        {
+            BindHealthBars();
+        }
+    }
+
+    private void BindHealthBars()
+    {
+        var healthbars = FindObjectsOfType<CombatantHealthbar>();
+        foreach (var hb in healthbars)
+        {
+            if (hb.name.Contains("Monster") || hb.name.Contains("Player")) hb.Bind(monster);
+            if (hb.name.Contains("Enemy") || hb.name.Contains("Target")) hb.Bind(enemy);
+        }
+    }
+
+    private async Task StartBattleAsync()
+    {
+      
+        await Wait(1000);
+ 
+        await DoBattleLoop();
+        EndBattle();
+    }
+ 
+    
+    private async Task DoBattleLoop()
+    {
+        while (!battleOver)
+        {
+            await MonsterTurn();
+ 
+            if (enemy.isDead)
+            {
+                battleOver = true;
+                return;
+            }
+ 
+            await EnemyTurn();
+ 
+            if (monster.CurrentHealth <= 0)
+            {
+                battleOver = true;
+                return;
+            }
+        }
+    }
+ 
+    private async Task MonsterTurn()
+    {
+        dialogueText.text = "Choose an action";
+        selectedAction = PlayerAction.None;
+ 
+        await WaitUntilActionSelected();
+ 
+        switch (selectedAction)
+        {
+            case PlayerAction.Attack:
+                await MonsterAttack();
+                break;
+ 
+            case PlayerAction.Defend:
+                await MonsterDefend();
+                break;
+        }
+    }
+ 
+    private async Task MonsterAttack()
+    {
+        int hitChance = Random.Range(0, 100);
+ 
+        if (hitChance < 100)
+        {
+            //-----fmod implementation-----
+            int randomAttackSound = Random.Range(1, 3);
+            switch (randomAttackSound)
+            {
+                case 1:
+                    AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.playerAttack1, monster.transform.position);
+                    break;
+                case 2:
+                    AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.playerAttack2, monster.transform.position);
+                    break;
+                case 3:
+                    AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.playerAttack3, monster.transform.position);
+                    break;
+            }
+
+            ClawImage.SetActive(true);
+            await Wait(500);
+            ClawImage.SetActive(false);
+            //-----fmod implementation-----
+
+            int randomAttack = Random.Range(2, 4);
+            enemy.TakeDamage(randomAttack);
+            dialogueText.text = "The attack hit!";
+
+        }
+        else
+        {
+            dialogueText.text = "You missed!";
+        }
+ 
+        await Wait(1000);
+    }
+ 
+    private async Task MonsterDefend()
+    {
+        int defendChance = Random.Range(0, 100);
+ 
+        if (defendChance < 70)
+        {
+            isDefending = true;
+            dialogueText.text = "You brace for impact";
+        }
+        else
+        {
+            dialogueText.text = "You failed to defend!";
+            monster.TakeDamage(2f);
+        }
+ 
+        await Wait(1000);
+    }
+ 
+    private async Task EnemyTurn()
+    {
+        dialogueText.text = "Enemy attacks!";
+        await Wait(1000);
+ 
+        float damage = isDefending ? 1f : 2f;
+        monster.TakeDamage(damage);
+
+        //-----fmod implementation-----
+        enemy.DealDamage(); // This will trigger the enemy's attack sound
+
+        await Wait(600);
+
+        int randomHurt = Random.Range(1, 3);
+        switch (randomHurt)
+        {
+            case 1:
+                AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.playerHurt1, monster.transform.position);
+                break;
+            case 2:
+                AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.playerHurt2, monster.transform.position);
+                break;
+            case 3:
+                AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.playerHurt3, monster.transform.position);
+                break;
+        }
+
+        if (isDefending)
+        {
+            dialogueText.text = "Damage reduced!";
+            isDefending = false;
+            await Wait(1000);
+        }
+    }
+ 
+    private void EndBattle()
+    {
+        if (enemy.isDead)
+        {
+            dialogueText.text = "You Win!";
+            if (monster != null) monster.Victory();
+            OnBattleWon?.Invoke();
+            AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.victory, monster.transform.position);
+            AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.victoryMusic, monster.transform.position);
+            
+        }
+        else
+        {
+            dialogueText.text = "You Lose!";
+            OnBattleLost?.Invoke();
+            AudioManager.Instance.PlayOneShot(FMODEvents.instance.loss);
+        }
+    }
+ 
+    #region UI
+ 
+    public void OnAttackButton()
+    {
+        if (selectedAction != PlayerAction.None) return;
+ 
+        if (!monster.TrySpendStamina(attackCost))
+        {
+            dialogueText.text = "Not enough stamina!";
+            return;
+        }
+ 
+        selectedAction = PlayerAction.Attack;
+    }
+ 
+    public void OnDefendButton()
+    {
+        if (selectedAction != PlayerAction.None) return;
+ 
+        if (!monster.TrySpendStamina(defendCost))
+        {
+            dialogueText.text = "Not enough stamina!";
+            return;
+        }
+ 
+        selectedAction = PlayerAction.Defend;
+    }
+ 
+    #endregion
+ 
+    #region Helpers
+ 
+    private async Task Wait(int ms) => await Task.Delay(ms);
+ 
+    private async Task WaitUntilActionSelected()
+    {
+        while (selectedAction == PlayerAction.None)
+        {
+            if (enemy != null && enemy.isDead) return;
+            await Task.Yield();
+        }
+    }
+ 
+    public void RunAway()
     {
         SceneManager.LoadSceneAsync(0);
+    }
+ 
+    #endregion
+
+    public void InventoryActive()
+    {
+        inventory.SetActive(true);
+    }
+
+    public void InventoryInactive()
+    {
+        inventory.SetActive(false);
     }
 }

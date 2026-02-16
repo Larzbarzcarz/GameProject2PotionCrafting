@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{c821d910-730f-4539-9054-1227010f8f3f}">
+		<property name="name">
+			<value>Keep at 0 for smooth loop</value>
+		</property>
+		<relationship name="folder">
+			<destination>{dd9570b9-3bf5-4b0e-b2f6-5cf55ac94f62}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{8754743a-c6f3-4f95-aaab-97d5bca365ce}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{8754743a-c6f3-4f95-aaab-97d5bca365ce}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

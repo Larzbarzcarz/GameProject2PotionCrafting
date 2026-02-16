@@ -12,27 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35ad88c2b8104374fb1185c1e35e8e6a, type: 3}
   m_Name: Player Inventory
   m_EditorClassIdentifier: 
-  savePath: /inventory.save
+  savePath: Saves/inventory.save
   database: {fileID: 11400000, guid: 5800c4f68444a954abad04ad86edd734, type: 2}
   Container:
     Items:
-    - ID: 4
-      amount: 7
+    - amount: 99
       item:
         Name: Batwing_Material
-        Id: 4
-    - ID: 5
-      amount: 1
+        icon: {fileID: -951022915, guid: 221b82e43c2ebd942939d635bc8f0ccf, type: 3}
+        StableId: 72ca83a8e1e3442a8d7846642c7004ce
+        VariantKey: 
+    - amount: 95
       item:
         Name: Mushroom_Material
-        Id: 5
-    - ID: 3
-      amount: 6
-      item:
-        Name: TestPotionHeal
-        Id: 3
-    - ID: 3
-      amount: 6
-      item:
-        Name: TestPotionHeal
-        Id: 3
+        icon: {fileID: 2047017830, guid: e335320ec9b0dd24f986f374e5e89e63, type: 3}
+        StableId: 51f0502ad1764fb9b4c64b55892902eb
+        VariantKey: 

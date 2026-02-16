@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d798448000bc946b30dd4c5f6feb0a, type: 3}
   m_Name: TestIngredient
   m_EditorClassIdentifier: 
+  stableId: 4c593506a847492db0c26437b4a2ff5e
   Id: 0
   ItemName: Test Ingredient
   itemSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
