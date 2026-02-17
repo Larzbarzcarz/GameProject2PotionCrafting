@@ -35,16 +35,16 @@ public class MutationRegistry : MonoBehaviour
     public void OnPotionConsumed(BaseKeyword baseKeyword)
     {
         int previousCount = MutationData.GetCount(baseKeyword);
-        
+
         bool tierUnlocked = MutationData.IncrementKeyword(baseKeyword, out int newTier);
-        
+
         int newCount = MutationData.GetCount(baseKeyword);
         Debug.Log($"[MutationRegistry] Consumed potion with BaseKeyword: {baseKeyword}. Count: {previousCount} -> {newCount}");
 
         if (tierUnlocked)
         {
             Debug.Log($"[MutationRegistry] *** TIER {newTier} MUTATION UNLOCKED: {baseKeyword}! ***");
-            
+
             if (MutationManager.Instance != null)
             {
                 MutationManager.Instance.RefreshEffects();
@@ -63,7 +63,7 @@ public class MutationRegistry : MonoBehaviour
             return false;
 
         string baseKeywordStr = parts[1];
-        
+
         if (Enum.TryParse(baseKeywordStr, out baseKeyword))
         {
             return true;

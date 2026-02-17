@@ -61,11 +61,25 @@ public class PotionThrowController : MonoBehaviour
         Ray ray = cam.ScreenPointToRay(screenPos);
         if (Physics.Raycast(ray, out RaycastHit hit, 1000f, enemyMask))
         {
-            var target = hit.collider.GetComponentInParent<IPotionTarget>();
+            var target = hit.collider.GetComponentInParent<Combatant>();
             if (target != null)
             {
-                Debug.Log($"Potion hit target: {hit.collider.name}");
-                target.ApplyPotion(selectedPotion);
+                Debug.Log($"Potion hit target: {target.name}");
+
+                if (selectedPotion.recipe != null && selectedPotion.recipe.entries.Count > 0)
+                {
+                    var entry = selectedPotion.recipe.entries[0];
+                    // create temporary PotionData from the SO recipe to use with new system
+                    var tempPotionData = new PotionData(entry.mainKey, entry.baseKey);
+                    tempPotionData.playerName = selectedPotion.ItemName;
+
+                    // apply effect (casterMonster is null here as we don't have reference, SwapHp might fail)
+                    PotionEffectApplier.Apply(tempPotionData, target, null);
+                }
+                else
+                {
+                    Debug.LogWarning("[THROW] Selected potion has no recipe entries!");
+                }
 
                 if (inventory != null)
                 {
@@ -75,7 +89,7 @@ public class PotionThrowController : MonoBehaviour
             }
             else
             {
-                Debug.Log("Hit enemy layer object but no IPotionTarget found in parent");
+                Debug.Log("Hit enemy layer object but no Combatant found in parent");
             }
         }
         else

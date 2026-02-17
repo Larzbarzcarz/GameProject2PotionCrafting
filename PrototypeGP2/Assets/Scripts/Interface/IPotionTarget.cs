@@ -1,7 +1,8 @@
 
 using UnityEngine;
 
-public interface IPotionTarget
-{
-    void ApplyPotion(PotionBaseSO potion);
-}
+// OLD interface — replaced by PotionEffectApplier static class
+// public interface IPotionTarget
+// {
+//     void ApplyPotion(PotionBaseSO potion);
+// }

@@ -7,7 +7,7 @@ public class EncounterManager : MonoBehaviour
 {
     [Header("Configuration")]
     [SerializeField] private int labSceneIndex = 0;
-    
+
     [Header("References")]
     [SerializeField] private BattleSystem battleSystem;
     [SerializeField] private GameObject victoryPanel;
@@ -31,18 +31,28 @@ public class EncounterManager : MonoBehaviour
             }
         }
 
+        // auto-fill pocket from stash when entering combat scene
+        if (ItemManager.Instance != null)
+        {
+            ItemManager.Instance.FillPocketFromStash();
+        }
+        else
+        {
+            Debug.LogWarning("[EncounterManager] ItemManager not found! Pocket will be empty.");
+        }
+
         if (battleSystem != null)
         {
             battleSystem.OnBattleWon += HandleBattleWon;
             battleSystem.OnBattleLost += HandleBattleLost;
-            
+
             StartEncounter();
         }
         else
         {
             Debug.LogError("[EncounterManager] BattleSystem reference is missing!");
         }
-        
+
         if (victoryPanel) victoryPanel.SetActive(false);
         if (intermissionPanel) intermissionPanel.SetActive(false);
         if (defeatPanel) defeatPanel.SetActive(false);
@@ -60,7 +70,7 @@ public class EncounterManager : MonoBehaviour
     private void StartEncounter()
     {
         Debug.Log($"[EncounterManager] Starting encounter {ExpeditionData.CurrentEncounterIndex}/{ExpeditionData.TotalEncounters}");
-        
+
         if (combatUI != null) combatUI.SetActive(true);
 
         if (battleSystem != null)
@@ -81,19 +91,19 @@ public class EncounterManager : MonoBehaviour
 
         if (ExpeditionData.CurrentEncounterIndex < ExpeditionData.TotalEncounters)
         {
-            if (intermissionPanel != null) 
+            if (intermissionPanel != null)
             {
                 intermissionPanel.SetActive(true);
             }
             else
             {
                 Debug.Log("[EncounterManager] No Intermission Panel. Auto-continuing in 2 seconds...");
-                Invoke(nameof(StartNextEncounter), 2.0f); 
+                Invoke(nameof(StartNextEncounter), 2.0f);
             }
         }
         else
         {
-            // Expedition Complete - Grant Rewards
+            // expedition complete - grant rewards
             GrantRewards();
 
             if (combatUI != null) combatUI.SetActive(false);
@@ -111,7 +121,7 @@ public class EncounterManager : MonoBehaviour
         }
 
         List<Item> rewards = GenerateRewards();
-        
+
         // Add to inventory
         foreach (var reward in rewards)
         {
@@ -141,15 +151,15 @@ public class EncounterManager : MonoBehaviour
 
         if (allIngredients.Count == 0) return generatedRewards;
 
-        // Separate by rarity
+        // separate by rarity
         List<IngredientObject> common = allIngredients.FindAll(x => x.rarity == Rarity.Common);
         List<IngredientObject> rare = allIngredients.FindAll(x => x.rarity == Rarity.Rare);
         List<IngredientObject> legendary = allIngredients.FindAll(x => x.rarity == Rarity.Legendary);
 
-        // Fallback if rarity not fully assigned yet
+        // fallback if rarity not fully assigned yet
         if (common.Count == 0 && rare.Count == 0 && legendary.Count == 0)
         {
-            common = allIngredients; // Treat all as common if none are assigned
+            common = allIngredients; // treat all as common if none are assigned
         }
 
         for (int i = 0; i < 10; i++)
@@ -170,21 +180,21 @@ public class EncounterManager : MonoBehaviour
                 chosen = legendary[Random.Range(0, legendary.Count)];
             }
 
-            // Fallbacks
+            // fallbacks
             if (chosen == null)
             {
                 if (common.Count > 0) chosen = common[Random.Range(0, common.Count)];
                 else if (rare.Count > 0) chosen = rare[Random.Range(0, rare.Count)];
                 else if (legendary.Count > 0) chosen = legendary[Random.Range(0, legendary.Count)];
             }
-            
+
             if (chosen != null)
             {
                 generatedRewards.Add(new Item(chosen));
             }
         }
 
-        // Sort by Rarity for display niceness? (Optional)
+        // sort by rarity for display niceness? (optional)
         return generatedRewards;
     }
 
