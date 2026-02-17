@@ -36,7 +36,7 @@ Material:
     - _Color: {r: 0.14360619, g: 1, b: 0, a: 1}
     - _ColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
     - _SideColor: {r: 0.972549, g: 0, b: 0.06898662, a: 0}
-    - _TopColor: {r: 0.5188679, g: 0.0049817623, b: 0, a: 0}
+    - _TopColor: {r: 1, g: 0.007575758, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &371692062639317180
