@@ -62,6 +62,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -83,9 +85,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!135 &2845736883934688383
 SphereCollider:
@@ -199,6 +203,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6ee860949d57a584da9d6d7cc0de8aa9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6540657323946112249}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6ee860949d57a584da9d6d7cc0de8aa9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4137415388118020844}
   m_SourcePrefab: {fileID: 100100000, guid: 6ee860949d57a584da9d6d7cc0de8aa9, type: 3}
 --- !u!1 &3601529243478804720 stripped
 GameObject:
@@ -220,7 +227,7 @@ MonoBehaviour:
   item:
     Name: DamagePotion
     icon: {fileID: 2043313906, guid: 5932f02365d3223419ac22e39c9adf74, type: 3}
-    StableId: 
+    StableId: 1
     VariantKey: 
 --- !u!114 &3047760956696836040
 MonoBehaviour:
@@ -234,8 +241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 052c7dcecab187a40841b54dbfc066e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stableId: 
-  item: {fileID: 11400000, guid: 8aeee6f2736bd2b4180d663674b51e4c, type: 2}
+  stableId: 1
+  item: {fileID: 11400000, guid: 757b5ec64df085a459137b152009259a, type: 2}
 --- !u!54 &3864402368660787274
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -243,10 +250,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3601529243478804720}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -278,12 +285,27 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.111889765, y: 0.11764787, z: 0.18644136}
   m_Center: {x: -0.0000000071205766, y: -0.000000005226863, z: -0.0076052537}
+--- !u!114 &4137415388118020844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3601529243478804720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b72a3e2921157842aa7253ad83cb391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  dragHeight: 0.9
+  planeDistance: 0.6
 --- !u!4 &4229130118113268298 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6ee860949d57a584da9d6d7cc0de8aa9, type: 3}

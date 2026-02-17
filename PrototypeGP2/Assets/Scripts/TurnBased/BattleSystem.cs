@@ -74,7 +74,7 @@ public class BattleSystem : MonoBehaviour
             Quaternion.identity
         );
 
-        Debug.Log("Spawned: " + itemSO.name);
+        Debug.Log("Spawned near orthographic camera: " + itemSO.name);
     }
     private void Start()
     {
