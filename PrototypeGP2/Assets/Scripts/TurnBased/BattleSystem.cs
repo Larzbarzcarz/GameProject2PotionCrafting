@@ -18,6 +18,7 @@ public class BattleSystem : MonoBehaviour
     public Combatant enemy;
     public RandomMonsterSpawn monsterSpawner;
     public Transform enemySpawnPoint;
+
    
     public TextMeshProUGUI dialogueText;
     public GameObject inventory;
@@ -40,8 +41,9 @@ public class BattleSystem : MonoBehaviour
     [Header("UI Elements")]
     public GameObject ClawImage;
 
-    [Header("Spawn")] public Transform WolfSpawnPoint;
-    public Vector3 spawnOffset;
+    [Header("Spawn")] 
+    public Camera BattleCamera;
+   
 
     public void SpawnInventoryItem(ItemScriptableObject itemSO)
     {
@@ -56,17 +58,20 @@ public class BattleSystem : MonoBehaviour
             Debug.LogWarning("World prefab missing on: " + itemSO.name);
             return;
         }
+        if (BattleCamera == null)
+            BattleCamera = Camera.main;
 
-        if (WolfSpawnPoint == null)
-        {
-            Debug.LogWarning("Spawn point missing");
-            return;
-        }
+        float spawnDistance = 1f;
+        Vector3 spawnPosition = BattleCamera.transform.position + BattleCamera.transform.forward * spawnDistance;
+
+        spawnPosition += new Vector3(0, -0.5f, 0);
+        
+        
 
         Instantiate(
             itemSO.worldPrefab,
-            WolfSpawnPoint.position + spawnOffset,
-            WolfSpawnPoint.rotation
+            spawnPosition,
+            Quaternion.identity
         );
 
         Debug.Log("Spawned: " + itemSO.name);
