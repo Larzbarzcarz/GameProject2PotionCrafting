@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:PrototypeGP2/Assets/Scripts/Inventory System/Items/Leech_Material.asset.meta
+guid: 2ba13fdb3b734f743a1a5e37bf43d918
+========
+guid: a9cedd7a408b39c4bbbcdb5ecfbd3030
+>>>>>>>> parent of 32a3e09 (Fixed the stupid ingredients):PrototypeGP2/Assets/Scripts/Inventory System/Items/PlankIngredient.asset.meta
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
