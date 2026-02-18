@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:PrototypeGP2/Assets/Scripts/Inventory System/Items/Leech_Material.asset.meta
 guid: 2ba13fdb3b734f743a1a5e37bf43d918
-========
-guid: a104e0517dd32854d9c59fdc0eb0fbff
->>>>>>>> UI/UX:PrototypeGP2/Assets/Scripts/Inventory System/Items/WoodIngredient.asset.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000
