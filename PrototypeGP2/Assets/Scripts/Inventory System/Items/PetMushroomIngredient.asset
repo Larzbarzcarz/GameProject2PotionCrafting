@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34d798448000bc946b30dd4c5f6feb0a, type: 3}
-  m_Name: PlankIngredient
+  m_Name: PetMushroomIngredient
   m_EditorClassIdentifier: 
-  stableId: e111eb14e5654119b0e3228e3b55215d
-  Id: 12
-  ItemName: Haunted Bark
-  itemSprite: {fileID: 21300000, guid: d9fadc64245affd4b90ec434323d533f, type: 3}
-  worldPrefab: {fileID: 9110552635079468995, guid: 7b1b9e87e54603e46addbc2caebd3d70, type: 3}
+  stableId: 9fcd005d67204f0d8e1c43ef40d26e86
+  Id: 26
+  ItemName: Petrified Mushroom
+  itemSprite: {fileID: 21300000, guid: 71239d650e646894b8b3f34e4d1afa4c, type: 3}
+  worldPrefab: {fileID: 9110552635079468995, guid: 40d0a4323b4e7d44d87ba587288112bd, type: 3}
   itemType: 0
   itemDescription: 
-  mainKeyword: 1
-  baseKeyword: 3
+  mainKeyword: 6
+  baseKeyword: 2
   rarity: 0

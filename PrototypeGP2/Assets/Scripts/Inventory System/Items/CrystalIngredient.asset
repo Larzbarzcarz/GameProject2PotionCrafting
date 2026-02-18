@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d798448000bc946b30dd4c5f6feb0a, type: 3}
   m_Name: CrystalIngredient
   m_EditorClassIdentifier: 
-  stableId: e111eb14e5654119b0e3228e3b55215d
-  Id: 9
+  stableId: 993da272ca864a65bdc7ac7e0d602431
+  Id: 22
   ItemName: Crystal
   itemSprite: {fileID: 21300000, guid: 6e46f2fe3c7322b41b013c23b5c71a9a, type: 3}
   worldPrefab: {fileID: 9110552635079468995, guid: d79b26bf3646c0043adc59db90193d3a, type: 3}

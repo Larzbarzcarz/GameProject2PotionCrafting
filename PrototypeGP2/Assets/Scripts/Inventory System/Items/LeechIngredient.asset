@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d798448000bc946b30dd4c5f6feb0a, type: 3}
   m_Name: LeechIngredient
   m_EditorClassIdentifier: 
-  stableId: e111eb14e5654119b0e3228e3b55215d
-  Id: 11
+  stableId: 7054510725a747c59eef2a73307ce25d
+  Id: 25
   ItemName: Void Leech
   itemSprite: {fileID: 21300000, guid: 4a00b9260e23db34c918c92d8d6c6f0a, type: 3}
   worldPrefab: {fileID: 9110552635079468995, guid: e44ef46c1ed28d0429167e6f4236a890, type: 3}

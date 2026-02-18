@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d798448000bc946b30dd4c5f6feb0a, type: 3}
   m_Name: AshIngredient
   m_EditorClassIdentifier: 
-  stableId: e111eb14e5654119b0e3228e3b55215d
-  Id: 6
+  stableId: b50630a12a9444f081a45d6309dd4bad
+  Id: 20
   ItemName: Tomb Ash
   itemSprite: {fileID: 21300000, guid: a7397be00d313c442a766c8b81938603, type: 3}
   worldPrefab: {fileID: 9110552635079468995, guid: b46ef0c15c014e64fbec0d110b3cecd7, type: 3}
   itemType: 0
   itemDescription: 
-  mainKeyword: 4
+  mainKeyword: 6
   baseKeyword: 3
   rarity: 0

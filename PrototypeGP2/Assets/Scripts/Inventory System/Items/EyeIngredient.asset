@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d798448000bc946b30dd4c5f6feb0a, type: 3}
   m_Name: EyeIngredient
   m_EditorClassIdentifier: 
-  stableId: e111eb14e5654119b0e3228e3b55215d
-  Id: 10
+  stableId: 5263f733dd42413ab99b5f5d0f00103c
+  Id: 24
   ItemName: Shivering Eyeball
   itemSprite: {fileID: 21300000, guid: 77066b1a147a804429036da26bb2a73f, type: 3}
   worldPrefab: {fileID: 9110552635079468995, guid: 1195a0b8f1fd5494d8a12fa4f40cd44c, type: 3}
