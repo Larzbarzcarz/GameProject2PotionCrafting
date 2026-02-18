@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34d798448000bc946b30dd4c5f6feb0a, type: 3}
-  m_Name: RatIngredient
+  m_Name: LeechIngredient
   m_EditorClassIdentifier: 
-  stableId: 0c2d3fbba3b64f40b1652ad65b2c710b
-  Id: 28
-  ItemName: Dungeon Rat
-  itemSprite: {fileID: 21300000, guid: fae12a2dea231f146aca27828c286e0e, type: 3}
-  worldPrefab: {fileID: 9110552635079468995, guid: 92d08ef460431b344988537f75c687fe, type: 3}
+  stableId: 7054510725a747c59eef2a73307ce25d
+  Id: 25
+  ItemName: Void Leech
+  itemSprite: {fileID: 21300000, guid: 4a00b9260e23db34c918c92d8d6c6f0a, type: 3}
+  worldPrefab: {fileID: 9110552635079468995, guid: e44ef46c1ed28d0429167e6f4236a890, type: 3}
   itemType: 0
   itemDescription: 
-  mainKeyword: 2
+  mainKeyword: 4
   baseKeyword: 0
   rarity: 0

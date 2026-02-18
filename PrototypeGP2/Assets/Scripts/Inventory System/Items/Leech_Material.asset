@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34d798448000bc946b30dd4c5f6feb0a, type: 3}
-  m_Name: Leech_Material
-  m_EditorClassIdentifier: Assembly-CSharp::IngredientObject
-  stableId: 788b676a5460460c96a74535a078b479
-  Id: 4
-  ItemName: Leech_Material
-  itemSprite: {fileID: -1966090463, guid: 4a00b9260e23db34c918c92d8d6c6f0a, type: 3}
-  worldPrefab: {fileID: 925638476725726711, guid: 2f68981d873fa31419b1c7b846ffa764, type: 3}
+  m_Name: AshIngredient
+  m_EditorClassIdentifier: 
+  stableId: b50630a12a9444f081a45d6309dd4bad
+  Id: 20
+  ItemName: Tomb Ash
+  itemSprite: {fileID: 21300000, guid: a7397be00d313c442a766c8b81938603, type: 3}
+  worldPrefab: {fileID: 9110552635079468995, guid: b46ef0c15c014e64fbec0d110b3cecd7, type: 3}
   itemType: 0
   itemDescription: 
-  mainKeyword: 0
+  mainKeyword: 6
   baseKeyword: 3
   rarity: 0
