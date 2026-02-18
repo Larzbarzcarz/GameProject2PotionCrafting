@@ -570,7 +570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BrewButtonUI
   brewer: {fileID: 2120678723}
-  inventoryUI: {fileID: 1643300464}
+  inventoryUI: {fileID: 704631622}
   renameUI: {fileID: 976492661}
 --- !u!1001 &97852649
 PrefabInstance:
@@ -1028,7 +1028,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3601529243478804720, guid: 0695ad5012deaac459fb6069654099f1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1068057993}
   m_SourcePrefab: {fileID: 100100000, guid: 0695ad5012deaac459fb6069654099f1, type: 3}
 --- !u!1001 &221954735
 PrefabInstance:
@@ -2545,40 +2548,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 400646643}
   m_CullTransparentMesh: 1
---- !u!1 &405491445
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 405491446}
-  m_Layer: 0
-  m_Name: PotionNaming
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &405491446
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 405491445}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12591.355, y: -0.00003, z: 15628.645}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 976492662}
-  - {fileID: 976685156}
-  - {fileID: 1998877972}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &433970275 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fcbc17aecb7be27498289f85b44757db, type: 3}
@@ -4607,6 +4576,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 268869929}
   label: {fileID: 0}
+--- !u!84 &922110217
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 6
+  m_Width: 627
+  m_Height: 452
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthStencilFormat: 94
+  m_ColorFormat: 4
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_UseDynamicScaleExplicit: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_EnableRandomWrite: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 0
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
+  m_ShadowSamplingMode: 2
 --- !u!4 &934018895 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ee6c430ca6f58fb4ea0c7712afa0f45e, type: 3}
@@ -4617,25 +4623,15 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1603963271087644022, guid: 3a7cbd0c7fbc5a94d8381b6b77e9375f, type: 3}
   m_PrefabInstance: {fileID: 8646466640832298805}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1194442162}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d3961b1202dc6c54db1fb700e5349088, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PotionRenameUI
---- !u!4 &976492662 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4145487825838625577, guid: 3a7cbd0c7fbc5a94d8381b6b77e9375f, type: 3}
-  m_PrefabInstance: {fileID: 8646466640832298805}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &976685155 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5755548100110950129, guid: e96e7fd40132884428c5ddf884290e0d, type: 3}
-  m_PrefabInstance: {fileID: 1283679172}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &976685156 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4145487825838625577, guid: e96e7fd40132884428c5ddf884290e0d, type: 3}
   m_PrefabInstance: {fileID: 1283679172}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &986238419
@@ -5262,6 +5258,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4c0f48036544de947b322eef9550a5b7, type: 3}
   m_PrefabInstance: {fileID: 353181809}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1068057985 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3601529243478804720, guid: 0695ad5012deaac459fb6069654099f1, type: 3}
+  m_PrefabInstance: {fileID: 214655278}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1068057993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068057985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 991c4f9b3d8eb5845af783aadf8e5b4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIitem
+  item:
+    Name: PotionBaseSO
+    icon: {fileID: 663615239, guid: 00ce17808fa02b84db5dcf4ca0d21aa6, type: 3}
+    StableId: ee9b645aa8584e19a32bff011f81373f
+    VariantKey: Wing_Fungus
 --- !u!1001 &1095697708
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5673,6 +5691,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1166175672}
   m_CullTransparentMesh: 1
+--- !u!1 &1194442162 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5755548100110950129, guid: 3a7cbd0c7fbc5a94d8381b6b77e9375f, type: 3}
+  m_PrefabInstance: {fileID: 8646466640832298805}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1201033162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5817,7 +5840,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 405491446}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1373805935846355615, guid: e96e7fd40132884428c5ddf884290e0d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -5829,15 +5852,15 @@ PrefabInstance:
       objectReference: {fileID: 976492661}
     - target: {fileID: 4145487825838625577, guid: e96e7fd40132884428c5ddf884290e0d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12590.888
+      value: -0.46777344
       objectReference: {fileID: 0}
     - target: {fileID: 4145487825838625577, guid: e96e7fd40132884428c5ddf884290e0d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.25625
+      value: 1.25622
       objectReference: {fileID: 0}
     - target: {fileID: 4145487825838625577, guid: e96e7fd40132884428c5ddf884290e0d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -15626.892
+      value: 1.7529297
       objectReference: {fileID: 0}
     - target: {fileID: 4145487825838625577, guid: e96e7fd40132884428c5ddf884290e0d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5870,6 +5893,10 @@ PrefabInstance:
     - target: {fileID: 5755548100110950129, guid: e96e7fd40132884428c5ddf884290e0d, type: 3}
       propertyPath: m_Name
       value: DoYouWishUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 5755548100110950129, guid: e96e7fd40132884428c5ddf884290e0d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8422,7 +8449,7 @@ PrefabInstance:
     - target: {fileID: 9205371885998440386, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 1951643739}
+      objectReference: {fileID: 922110217}
     - target: {fileID: 9205371885998440386, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: near clip plane
       value: 231.8
@@ -9242,43 +9269,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ee04fae635dfeb6438ac6ca39865ae57, type: 3}
   m_PrefabInstance: {fileID: 607672649}
   m_PrefabAsset: {fileID: 0}
---- !u!84 &1951643739
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 6
-  m_Width: 627
-  m_Height: 452
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthStencilFormat: 94
-  m_ColorFormat: 4
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_UseDynamicScaleExplicit: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_EnableRandomWrite: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 0
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
-  m_ShadowSamplingMode: 2
 --- !u!4 &1952551973 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d26bc8de0092bbb42b064eea4e1e68cd, type: 3}
@@ -9377,11 +9367,11 @@ Transform:
   m_GameObject: {fileID: 1998877970}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13567.875, y: 184.20663, z: -15631.374}
+  m_LocalPosition: {x: 976.51953, y: 184.2066, z: -2.7294922}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 405491446}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1998877973
 MonoBehaviour:
@@ -11681,27 +11671,31 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 405491446}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1603963271087644022, guid: 3a7cbd0c7fbc5a94d8381b6b77e9375f, type: 3}
       propertyPath: promptPanel
       value: 
       objectReference: {fileID: 976685155}
     - target: {fileID: 1603963271087644022, guid: 3a7cbd0c7fbc5a94d8381b6b77e9375f, type: 3}
+      propertyPath: renamePanel
+      value: 
+      objectReference: {fileID: 1194442162}
+    - target: {fileID: 1603963271087644022, guid: 3a7cbd0c7fbc5a94d8381b6b77e9375f, type: 3}
       propertyPath: nameRegistry
       value: 
       objectReference: {fileID: 1998877973}
     - target: {fileID: 4145487825838625577, guid: 3a7cbd0c7fbc5a94d8381b6b77e9375f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12438.468
+      value: -152.8877
       objectReference: {fileID: 0}
     - target: {fileID: 4145487825838625577, guid: 3a7cbd0c7fbc5a94d8381b6b77e9375f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00002
+      value: -0.00001
       objectReference: {fileID: 0}
     - target: {fileID: 4145487825838625577, guid: 3a7cbd0c7fbc5a94d8381b6b77e9375f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12944.527
+      value: 2684.1172
       objectReference: {fileID: 0}
     - target: {fileID: 4145487825838625577, guid: 3a7cbd0c7fbc5a94d8381b6b77e9375f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11734,6 +11728,10 @@ PrefabInstance:
     - target: {fileID: 5755548100110950129, guid: 3a7cbd0c7fbc5a94d8381b6b77e9375f, type: 3}
       propertyPath: m_Name
       value: RenamePotionUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 5755548100110950129, guid: 3a7cbd0c7fbc5a94d8381b6b77e9375f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11812,4 +11810,6 @@ SceneRoots:
   - {fileID: 1470375983}
   - {fileID: 508337293}
   - {fileID: 214655278}
-  - {fileID: 405491446}
+  - {fileID: 8646466640832298805}
+  - {fileID: 1283679172}
+  - {fileID: 1998877972}
