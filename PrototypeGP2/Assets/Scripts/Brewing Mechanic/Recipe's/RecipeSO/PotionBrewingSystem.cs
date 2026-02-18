@@ -25,24 +25,24 @@ public class PotionBrewingSystem : MonoBehaviour
             Debug.Log($"[BREW] Failed: need exactly 2 ingredients, had {cauldron.Sequence.Count}");
             return false;
         }
-     foreach (var id in cauldron.Sequence)
-{
-    Debug.Log($"Trying to lookup id: '{id}'");
-}
-foreach (var kvp in inventory.database.GetItemByStableId)
-{
-    Debug.Log($"Database contains: '{kvp.Key}'");
-}
+        foreach (var id in cauldron.Sequence)
+        {
+            Debug.Log($"Trying to lookup id: '{id}'");
+        }
+        foreach (var kvp in inventory.database.GetItemByStableId)
+        {
+            Debug.Log($"Database contains: '{kvp.Key}'");
+        }
         string firstId = cauldron.Sequence[0];
      
         string secondId = cauldron.Sequence[1];
 
-Debug.Log("Inventory count for first: " + inventory.GetAmount(firstId));
-Debug.Log("Inventory count for second: " + inventory.GetAmount(secondId));
-if (inventory.database.GetItemByStableId.Count == 0)
-{
-    inventory.database.BuildLookup();
-}
+        Debug.Log("Inventory count for first: " + inventory.GetAmount(firstId));
+        Debug.Log("Inventory count for second: " + inventory.GetAmount(secondId));
+        if (inventory.database.GetItemByStableId.Count == 0)
+        {
+            inventory.database.BuildLookup();
+        }
         
 
         if (!inventory.database.GetItemByStableId.TryGetValue(firstId, out var firstSO) ||
@@ -134,7 +134,7 @@ if (inventory.database.GetItemByStableId.Count == 0)
      
 
         inventory.AddItem(new Item(potionBaseSO, brewedVariantKey), 1, brewedVariantKey);
-
+        inventory.Save();
 
         //sets default name on potion to be main ingredient + Potion
         if (nameRegistry != null && !nameRegistry.HasName(brewedVariantKey))

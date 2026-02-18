@@ -12,7 +12,15 @@ public class  InventoryUiCrafting  : MonoBehaviour
 
     private void OnEnable()
     {
-        Refresh();
+        if (inventory != null)
+            inventory.OnChanged += Refresh;
+        //Refresh();
+    }
+
+    private void OnDisable()
+    {
+        if (inventory != null)
+            inventory.OnChanged -= Refresh;
     }
 
     private void Start()

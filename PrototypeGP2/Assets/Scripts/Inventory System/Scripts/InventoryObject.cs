@@ -6,14 +6,18 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using UnityEditor;
 using System.Runtime.Serialization;
+using System;
 
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/New Inventory")]
 public class InventoryObject : ScriptableObject
 {
-    
+    public event Action OnChanged;
+
     public string savePath;
     public ItemDatabaseObject database;
     public Inventory Container;
+
+    private void NotifyChanged() => OnChanged?.Invoke();
 
     public int GetAmount(string stableId)
     {
@@ -43,6 +47,7 @@ public class InventoryObject : ScriptableObject
                 if (slot.amount <= 0)
                     Container.Items.RemoveAt(i);
 
+                NotifyChanged();
                 return true;
             }
         }
@@ -74,6 +79,7 @@ public class InventoryObject : ScriptableObject
 
         Debug.Log("Created new slot.");
         Container.Items.Add(new InventorySlot(_item, _amount));
+        NotifyChanged();
     }
     public void DebugPrint()
     {
@@ -139,12 +145,14 @@ public class InventoryObject : ScriptableObject
             Container.Items.Add(new InventorySlot(item, slot.amount));
         }
         Debug.Log($"Inventory loaded. Slots: {Container.Items.Count}");
+        NotifyChanged();
     }
 
     [ContextMenu("Clear")]
     public void Clear()
     {
         Container = new Inventory();
+        NotifyChanged();
     }
 }
 [System.Serializable]
