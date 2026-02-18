@@ -31,8 +31,12 @@ public class PotionRenameUI : MonoBehaviour
 
     public void Yes()
     {
+        Debug.Log("[RENAME] YES clicked");
+
         if (promptPanel != null) promptPanel.SetActive(false);
         if (renamePanel != null) renamePanel.SetActive(true);
+
+        Debug.Log($"[RENAME] renamePanel active = {renamePanel != null && renamePanel.activeSelf}");
 
         if (nameRegistry != null && renameInput != null)
         {

@@ -15,22 +15,4 @@ MonoBehaviour:
   savePath: Saves/inventory.save
   database: {fileID: 11400000, guid: 5800c4f68444a954abad04ad86edd734, type: 2}
   Container:
-    Items:
-    - amount: 1
-      item:
-        Name: Batwing_Material
-        icon: {fileID: -951022915, guid: 221b82e43c2ebd942939d635bc8f0ccf, type: 3}
-        StableId: 72ca83a8e1e3442a8d7846642c7004ce
-        VariantKey: 
-    - amount: 1
-      item:
-        Name: Mushroom_Material
-        icon: {fileID: 2047017830, guid: e335320ec9b0dd24f986f374e5e89e63, type: 3}
-        StableId: 51f0502ad1764fb9b4c64b55892902eb
-        VariantKey: 
-    - amount: 1
-      item:
-        Name: PotionBaseSO
-        icon: {fileID: 663615239, guid: 00ce17808fa02b84db5dcf4ca0d21aa6, type: 3}
-        StableId: ee9b645aa8584e19a32bff011f81373f
-        VariantKey: Wing_Fungus
+    Items: []
