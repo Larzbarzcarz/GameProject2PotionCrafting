@@ -15,3 +15,5 @@ MonoBehaviour:
   entries:
   - effect: 0
     icon: {fileID: 663615239, guid: 00ce17808fa02b84db5dcf4ca0d21aa6, type: 3}
+  - effect: 1
+    icon: {fileID: 21300000, guid: bc0d88600f19f754586e2615e6a3a469, type: 3}

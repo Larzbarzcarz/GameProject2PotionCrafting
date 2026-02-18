@@ -8,7 +8,7 @@ public class CauldronContents : MonoBehaviour
 
     public IReadOnlyList<string> Sequence => sequence;
 
-    public bool AddIngredients(string stableId)
+    public bool AddIngredients(string StableId)
     {
         if (sequence.Count >= maxIngredients)
         {
@@ -16,21 +16,21 @@ public class CauldronContents : MonoBehaviour
             return false;
         }
 
-        sequence.Add(stableId);
-        Debug.Log($"[Cauldron] Added: {stableId}.Count={sequence.Count}");
+        sequence.Add(StableId);
+        Debug.Log($"[Cauldron] Added: {StableId}.Count={sequence.Count}");
         return true;
     }
 
     public void Clear() => sequence.Clear();
 
-    public bool TryPopLast(out string stableId)
+    public bool TryPopLast(out string StableId)
     {
-        stableId = null;
+        StableId = null;
         if (sequence.Count == 0)
             return false;
 
         int last = sequence.Count - 1;
-        stableId = sequence[last];
+        StableId = sequence[last];
         sequence.RemoveAt(last);
         return true;
     }
@@ -41,12 +41,14 @@ public class CauldronContents : MonoBehaviour
     if (pickup == null)
         return;
 
-    Debug.Log($"[Cauldron] Item entered: {pickup.stableId}");
+ Debug.Log($"[Cauldron] Item entered. item null? {pickup.item == null}");
+Debug.Log($"[Cauldron] StableId: '{pickup.StableId}'");
 
-    if (AddIngredients(pickup.stableId))
-    {
-        
-    }
+if (AddIngredients(pickup.StableId))
+{
+    Destroy(other.gameObject);
+}
+
 }
 
 }

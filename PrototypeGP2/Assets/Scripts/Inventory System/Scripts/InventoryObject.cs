@@ -10,6 +10,7 @@ using System.Runtime.Serialization;
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/New Inventory")]
 public class InventoryObject : ScriptableObject
 {
+    
     public string savePath;
     public ItemDatabaseObject database;
     public Inventory Container;
@@ -55,6 +56,8 @@ public class InventoryObject : ScriptableObject
     }
     public void AddItem(Item _item, int _amount, string variantKey)
     {
+        Debug.Log($"Adding item: {_item.StableId} x{_amount} variant={variantKey}");
+
         _item.VariantKey = variantKey ?? "";
 
         for (int i = 0; i < Container.Items.Count; i++)
@@ -64,11 +67,21 @@ public class InventoryObject : ScriptableObject
             if (slot.item.StableId == _item.StableId && slot.item.VariantKey == _item.VariantKey)
             {
                 slot.AddAmount(_amount);
+                Debug.Log("Stacked onto existing slot.");
                 return;
             }
         }
+
+        Debug.Log("Created new slot.");
         Container.Items.Add(new InventorySlot(_item, _amount));
     }
+    public void DebugPrint()
+    {
+        Debug.Log("---- INVENTORY ----");
+        foreach (var slot in Container.Items)
+            Debug.Log($"{slot.item.StableId} x{slot.amount} variant={slot.item.VariantKey}");
+    }
+
 
     [ContextMenu("Save")]
     public void Save()

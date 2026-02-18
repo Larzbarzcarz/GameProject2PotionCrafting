@@ -134,43 +134,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6ee860949d57a584da9d6d7cc0de8aa9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.59403056
+      value: -0.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6ee860949d57a584da9d6d7cc0de8aa9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.2146373
+      value: 1.486
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6ee860949d57a584da9d6d7cc0de8aa9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.8529413
+      value: 1.092
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6ee860949d57a584da9d6d7cc0de8aa9, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.17422524
+      value: 0.70475554
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6ee860949d57a584da9d6d7cc0de8aa9, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.17130116
+      value: -0.7085049
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6ee860949d57a584da9d6d7cc0de8aa9, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.6834429
+      value: -0.027714519
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6ee860949d57a584da9d6d7cc0de8aa9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.6879007
+      value: 0.023924341
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6ee860949d57a584da9d6d7cc0de8aa9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -241.714
+      value: -85.804
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6ee860949d57a584da9d6d7cc0de8aa9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -90.86099
+      value: -94.306
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6ee860949d57a584da9d6d7cc0de8aa9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 89.383
+      value: 93.999
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 6ee860949d57a584da9d6d7cc0de8aa9, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -193,9 +193,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6ee860949d57a584da9d6d7cc0de8aa9, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1632256014969253742}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6ee860949d57a584da9d6d7cc0de8aa9, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 3047760956696836040}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6ee860949d57a584da9d6d7cc0de8aa9, type: 3}
       insertIndex: -1
@@ -212,23 +209,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6ee860949d57a584da9d6d7cc0de8aa9, type: 3}
   m_PrefabInstance: {fileID: 4411937818347140513}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1632256014969253742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3601529243478804720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 991c4f9b3d8eb5845af783aadf8e5b4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item:
-    Name: DamagePotion
-    icon: {fileID: 2043313906, guid: 5932f02365d3223419ac22e39c9adf74, type: 3}
-    StableId: 1
-    VariantKey: 
 --- !u!114 &3047760956696836040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,7 +221,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 052c7dcecab187a40841b54dbfc066e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stableId: 1
   item: {fileID: 11400000, guid: 757b5ec64df085a459137b152009259a, type: 2}
 --- !u!54 &3864402368660787274
 Rigidbody:

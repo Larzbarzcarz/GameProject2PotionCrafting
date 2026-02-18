@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DamagePotion
   m_EditorClassIdentifier: 
   stableId: baae6e3a005f4ddeb3aa9fe19a7e6149
-  Id: 1
+  Id: 5
   ItemName: DamagePotion
   itemSprite: {fileID: 2043313906, guid: 5932f02365d3223419ac22e39c9adf74, type: 3}
   worldPrefab: {fileID: 3601529243478804720, guid: 0695ad5012deaac459fb6069654099f1, type: 3}

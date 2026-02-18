@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8370106416403302915
+--- !u!1 &925638476725726711
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,42 +8,56 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1096776599240582843}
-  - component: {fileID: 4292409463193852169}
-  - component: {fileID: 8036147482970506555}
-  - component: {fileID: 4488741347401510359}
-  - component: {fileID: -5642491542820318117}
-  - component: {fileID: 7453425560734684508}
+  - component: {fileID: 8248712299620634825}
+  - component: {fileID: 4711509020444749235}
+  - component: {fileID: 8640380341081330888}
+  - component: {fileID: 610955559249557589}
+  - component: {fileID: 3142811901324284532}
+  - component: {fileID: 4261192424744625777}
+  - component: {fileID: 4650385720979799683}
   m_Layer: 6
-  m_Name: Bat_Wing
+  m_Name: Batwing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1096776599240582843
+--- !u!4 &8248712299620634825
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8370106416403302915}
+  m_GameObject: {fileID: 925638476725726711}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0062284693, y: 0.07400362, z: -0.00024471432}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4860941759476323305}
+  - {fileID: 7076460865698801436}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &4292409463193852169
+--- !u!114 &4711509020444749235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925638476725726711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 052c7dcecab187a40841b54dbfc066e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 7d7e4e290ddcd544aa52f9b20f41c79e, type: 2}
+--- !u!135 &8640380341081330888
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8370106416403302915}
+  m_GameObject: {fileID: 925638476725726711}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -56,33 +70,64 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.09
-  m_Center: {x: -0.11, y: 1.35, z: 1.25}
---- !u!114 &8036147482970506555
+  m_Radius: 0.24
+  m_Center: {x: 0.04, y: 1.04, z: 1.74}
+--- !u!114 &610955559249557589
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8370106416403302915}
-  m_Enabled: 1
+  m_GameObject: {fileID: 925638476725726711}
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 052c7dcecab187a40841b54dbfc066e8, type: 3}
+  m_Script: {fileID: 11500000, guid: 2bafdc4e9d043f44eb03ffae08264f1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stableId: 
-  item: {fileID: 11400000, guid: 7d7e4e290ddcd544aa52f9b20f41c79e, type: 2}
---- !u!54 &4488741347401510359
+  cam: {fileID: 0}
+--- !u!114 &3142811901324284532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925638476725726711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 991c4f9b3d8eb5845af783aadf8e5b4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    Name: Batwing
+    icon: {fileID: -951022915, guid: 221b82e43c2ebd942939d635bc8f0ccf, type: 3}
+    StableId: 1
+    VariantKey: 
+--- !u!114 &4261192424744625777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925638476725726711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b72a3e2921157842aa7253ad83cb391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  dragHeight: 0.04
+  planeDistance: 0.31
+--- !u!54 &4650385720979799683
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8370106416403302915}
-  serializedVersion: 4
+  m_GameObject: {fileID: 925638476725726711}
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -98,70 +143,26 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &-5642491542820318117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8370106416403302915}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b72a3e2921157842aa7253ad83cb391, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  dragHeight: 0.3
-  planeDistance: 0.4
---- !u!114 &7453425560734684508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8370106416403302915}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 991c4f9b3d8eb5845af783aadf8e5b4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item:
-    Name: Batwing
-    icon: {fileID: -951022915, guid: 221b82e43c2ebd942939d635bc8f0ccf, type: 3}
-    StableId: 2
-    VariantKey: 
---- !u!1001 &4971747196657447938
+  m_CollisionDetection: 2
+--- !u!1001 &7331326755607888119
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1096776599240582843}
+    m_TransformParent: {fileID: 8248712299620634825}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 553f7d8c5a719314a91a66bb0fa6a830, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.16358815
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 553f7d8c5a719314a91a66bb0fa6a830, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.16358814
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 553f7d8c5a719314a91a66bb0fa6a830, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.16358814
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 553f7d8c5a719314a91a66bb0fa6a830, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.09648895
+      value: -0.12146847
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 553f7d8c5a719314a91a66bb0fa6a830, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.3293462
+      value: -0.07400362
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 553f7d8c5a719314a91a66bb0fa6a830, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.2703255
+      value: 2.5669546
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 553f7d8c5a719314a91a66bb0fa6a830, type: 3}
       propertyPath: m_LocalRotation.w
@@ -173,7 +174,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 553f7d8c5a719314a91a66bb0fa6a830, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 553f7d8c5a719314a91a66bb0fa6a830, type: 3}
       propertyPath: m_LocalRotation.z
@@ -193,15 +194,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 553f7d8c5a719314a91a66bb0fa6a830, type: 3}
       propertyPath: m_Name
-      value: BatWing
+      value: Batman
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 553f7d8c5a719314a91a66bb0fa6a830, type: 3}
---- !u!4 &4860941759476323305 stripped
+--- !u!4 &7076460865698801436 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 553f7d8c5a719314a91a66bb0fa6a830, type: 3}
-  m_PrefabInstance: {fileID: 4971747196657447938}
+  m_PrefabInstance: {fileID: 7331326755607888119}
   m_PrefabAsset: {fileID: 0}

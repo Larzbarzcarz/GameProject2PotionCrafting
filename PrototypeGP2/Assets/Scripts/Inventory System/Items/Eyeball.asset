@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34d798448000bc946b30dd4c5f6feb0a, type: 3}
-  m_Name: Batwing_Material
-  m_EditorClassIdentifier: 
-  stableId: 72ca83a8e1e3442a8d7846642c7004ce
-  Id: 1
-  ItemName: Batwing_Material
-  itemSprite: {fileID: -951022915, guid: 221b82e43c2ebd942939d635bc8f0ccf, type: 3}
-  worldPrefab: {fileID: 925638476725726711, guid: 641204d4f6ef0a6479399046b96bf0fd, type: 3}
+  m_Name: Eyeball
+  m_EditorClassIdentifier: Assembly-CSharp::IngredientObject
+  stableId: 7df21fd95d9c4990b5706df30e0f8fd1
+  Id: 2
+  ItemName: Eyeball_Material
+  itemSprite: {fileID: -765223158, guid: 77066b1a147a804429036da26bb2a73f, type: 3}
+  worldPrefab: {fileID: 925638476725726711, guid: c975ca7cd6b84f54598c570461ca10d5, type: 3}
   itemType: 0
   itemDescription: 
-  mainKeyword: 7
-  baseKeyword: 0
+  mainKeyword: 0
+  baseKeyword: 3
   rarity: 0

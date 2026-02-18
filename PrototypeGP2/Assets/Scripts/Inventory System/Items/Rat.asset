@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34d798448000bc946b30dd4c5f6feb0a, type: 3}
-  m_Name: Batwing_Material
-  m_EditorClassIdentifier: 
-  stableId: 72ca83a8e1e3442a8d7846642c7004ce
-  Id: 1
-  ItemName: Batwing_Material
-  itemSprite: {fileID: -951022915, guid: 221b82e43c2ebd942939d635bc8f0ccf, type: 3}
-  worldPrefab: {fileID: 925638476725726711, guid: 641204d4f6ef0a6479399046b96bf0fd, type: 3}
+  m_Name: Rat
+  m_EditorClassIdentifier: Assembly-CSharp::IngredientObject
+  stableId: 3f4221619fd445e8a37d1bfc3e53fae8
+  Id: 3
+  ItemName: Rat_Material
+  itemSprite: {fileID: 1214806420, guid: fae12a2dea231f146aca27828c286e0e, type: 3}
+  worldPrefab: {fileID: 925638476725726711, guid: c76093ece73762e46ab9296ab2feede3, type: 3}
   itemType: 0
   itemDescription: 
-  mainKeyword: 7
+  mainKeyword: 2
   baseKeyword: 0
   rarity: 0

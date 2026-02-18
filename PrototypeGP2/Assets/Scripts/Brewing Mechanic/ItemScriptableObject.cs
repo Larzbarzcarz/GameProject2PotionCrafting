@@ -15,14 +15,18 @@ public abstract class ItemScriptableObject : ScriptableObject
     public ItemType itemType;
     [TextArea] public string itemDescription;
 
+public void EnsureStableId()
+{
+    if (string.IsNullOrEmpty(stableId))
+    {
+        stableId = System.Guid.NewGuid().ToString("N");
+    }
+}
+
 #if UNITY_EDITOR
     private void OnValidate()
     {
-        if (string.IsNullOrEmpty(stableId))
-        {
-            stableId = System.Guid.NewGuid().ToString("N");
-            UnityEditor.EditorUtility.SetDirty(this);
-        }
+        EnsureStableId();
     }
 #endif
 }
@@ -46,4 +50,5 @@ public class Item
         StableId = item.StableId;
         VariantKey = variantKey ?? "";
     }
+
 }

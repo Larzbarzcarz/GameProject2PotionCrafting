@@ -46,11 +46,17 @@ public class  InventoryUiCrafting  : MonoBehaviour
             return;
         }
 
-        Instantiate(
+        var obj = Instantiate(
             itemSO.worldPrefab,
             cauldronSpawnPoint.position + spawnOffset,
             cauldronSpawnPoint.rotation
         );
+
+        var pickup = obj.GetComponent<PickupItems>();
+        if (pickup != null)
+        {
+            pickup.Initialize(itemSO);  
+        }
     }
 
     private void RemoveOneItem(ItemScriptableObject itemSO)

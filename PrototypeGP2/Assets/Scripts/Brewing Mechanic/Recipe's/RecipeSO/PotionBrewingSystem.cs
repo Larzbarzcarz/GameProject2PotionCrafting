@@ -11,30 +11,39 @@ public class PotionBrewingSystem : MonoBehaviour
     [SerializeField] private PotionRecipeSO recipeMap;
     [SerializeField] private PotionBaseSO potionBaseSO;
     [SerializeField] private PotionIconLibrary iconLibrary;
+    public InventoryObject Inventory => inventory;
 
-    public bool TryBrew(out string brewedVariantKey, out PotionEffectType effectType)
+    public bool TryBrew(InventoryObject inventory, out string brewedVariantKey, out PotionEffectType effectType)
     {
         Debug.Log("=== BREW ATTEMPT ===");
 
         brewedVariantKey = "";
         effectType = default;
-
+      
         if (cauldron.Sequence.Count != 2)
         {
             Debug.Log($"[BREW] Failed: need exactly 2 ingredients, had {cauldron.Sequence.Count}");
             return false;
         }
-
+     foreach (var id in cauldron.Sequence)
+{
+    Debug.Log($"Trying to lookup id: '{id}'");
+}
+foreach (var kvp in inventory.database.GetItemByStableId)
+{
+    Debug.Log($"Database contains: '{kvp.Key}'");
+}
         string firstId = cauldron.Sequence[0];
+     
         string secondId = cauldron.Sequence[1];
 
-
-
-        if (!inventory.HasItem(firstId, 1) || !inventory.HasItem(secondId, 1))
-        {
-            Debug.Log("[BREW] Failed: missing ingredients in inventory.");
-            return false;
-        }
+Debug.Log("Inventory count for first: " + inventory.GetAmount(firstId));
+Debug.Log("Inventory count for second: " + inventory.GetAmount(secondId));
+if (inventory.database.GetItemByStableId.Count == 0)
+{
+    inventory.database.BuildLookup();
+}
+        
 
         if (!inventory.database.GetItemByStableId.TryGetValue(firstId, out var firstSO) ||
             !inventory.database.GetItemByStableId.TryGetValue(secondId, out var secondSO))
@@ -122,8 +131,7 @@ public class PotionBrewingSystem : MonoBehaviour
         }
 
 
-        inventory.RemoveItem(firstId, 1);
-        inventory.RemoveItem(secondId, 1);
+     
 
         inventory.AddItem(new Item(potionBaseSO, brewedVariantKey), 1, brewedVariantKey);
 
