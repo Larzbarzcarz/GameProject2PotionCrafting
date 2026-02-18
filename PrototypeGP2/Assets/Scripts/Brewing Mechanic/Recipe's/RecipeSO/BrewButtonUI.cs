@@ -8,26 +8,17 @@ public class BrewButtonUI : MonoBehaviour
 
     public void Brew()
     {
-        if (brewer == null || inventoryUI == null)
-        {
-            Debug.LogError("[UI] Missing brewer or inventoryUI reference");
-            return;
-        }
-
-        bool success = brewer.TryBrew(inventoryUI.inventory, out var variantKey, out var effect);
-
-        if (!success)
+        brewer.TryBrew(inventoryUI.inventory, out var variantKey, out var effect);
         {
             Debug.Log("Brew failed - not enough ingredients!");
             return;
         }
-
+    
         Debug.Log($"Potion brewed: {effect} (key={variantKey})");
         inventoryUI.Refresh();
 
+
         if (renameUI != null)
-        {
             renameUI.StartRename(variantKey);
-        }
     }
 }
