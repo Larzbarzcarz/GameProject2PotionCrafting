@@ -5,7 +5,7 @@
 			<value>potion-brew</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{b8f000fd-f5b2-49ef-9c32-afc988426c55}</destination>
@@ -39,6 +39,9 @@
 		</relationship>
 	</object>
 	<object class="MasterTrack" id="{631f1176-fe8b-4eb8-ac72-13328cb4ce57}">
+		<relationship name="modules">
+			<destination>{417a59b7-3f4b-4a09-951b-8dc64ba2d3fe}</destination>
+		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{b26cc8b9-9d13-46b2-ba9a-ac076cc3270f}</destination>
 		</relationship>
@@ -56,7 +59,11 @@
 	</object>
 	<object class="EventAutomatableProperties" id="{bb14c54e-c1fa-4da0-91aa-ab005da43c07}" />
 	<object class="MarkerTrack" id="{a9988f2d-8a28-496b-99e1-a7a91c922d4a}" />
-	<object class="Timeline" id="{739a33ac-faed-446c-895e-1558e74c32cc}" />
+	<object class="Timeline" id="{739a33ac-faed-446c-895e-1558e74c32cc}">
+		<relationship name="modules">
+			<destination>{417a59b7-3f4b-4a09-951b-8dc64ba2d3fe}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerMaster" id="{b26cc8b9-9d13-46b2-ba9a-ac076cc3270f}">
 		<relationship name="effectChain">
 			<destination>{ebc31f20-147d-4366-b23b-72bf8cb27333}</destination>
@@ -66,6 +73,14 @@
 		</relationship>
 		<relationship name="mixer">
 			<destination>{25ea33a2-d8f1-4e34-9462-199228ab80a5}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{417a59b7-3f4b-4a09-951b-8dc64ba2d3fe}">
+		<property name="length">
+			<value>2</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{ea880044-70c1-4f4d-916d-035297352843}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{9a5669c4-1090-467b-9a86-8ba73d175f85}">
