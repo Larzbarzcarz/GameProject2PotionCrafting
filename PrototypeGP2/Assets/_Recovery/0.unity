@@ -397,11 +397,11 @@ MonoBehaviour:
   sfxBusPath: bus:/SFX
   huldraMusic:
     Guid:
-      Data1: -1422102794
-      Data2: 1210234444
-      Data3: 1973179068
-      Data4: 629224298
-    Path: event:/Music/Huldra
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1001 &143191468
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -742,11 +742,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06b451ee1c2207f48a59e3e7846786f6, type: 3}
---- !u!4 &318106715 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4145487825838625577, guid: 06b451ee1c2207f48a59e3e7846786f6, type: 3}
-  m_PrefabInstance: {fileID: 318106714}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &342723663
 GameObject:
   m_ObjectHideFlags: 0
@@ -1282,6 +1277,43 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!84 &615893528
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 6
+  m_Width: 620
+  m_Height: 302
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthStencilFormat: 94
+  m_ColorFormat: 4
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_UseDynamicScaleExplicit: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_EnableRandomWrite: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 0
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
+  m_ShadowSamplingMode: 2
 --- !u!1001 &692824558
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1570,25 +1602,25 @@ MonoBehaviour:
     Path: event:/Music/Victory_song
   <buttonPress>k__BackingField:
     Guid:
-      Data1: 388538626
-      Data2: 1299739339
-      Data3: 1312484521
-      Data4: 135698658
-    Path: event:/SFX/Transitions&Buttons/Button_press_1_Confirm_Back
+      Data1: -1356334978
+      Data2: 1194243025
+      Data3: 903337384
+      Data4: -751598848
+    Path: event:/Music/Victory_song
   <Cooking>k__BackingField:
     Guid:
-      Data1: -1249407799
-      Data2: 1257957129
-      Data3: -608489302
-      Data4: 331732578
-    Path: event:/SFX/Transitions&Buttons/potion-brew
+      Data1: 1595007792
+      Data2: 1149318927
+      Data3: 750539184
+      Data4: 760376142
+    Path: event:/SFX/Combat/TreeMonster/Tree_Death_1
   <expeditionStart>k__BackingField:
     Guid:
-      Data1: -1058478570
-      Data2: 1339503843
-      Data3: -1086953312
-      Data4: 1749209727
-    Path: event:/SFX/Transitions&Buttons/Area_unlocked_omnious
+      Data1: 1589108361
+      Data2: 1220236658
+      Data3: -1646264445
+      Data4: -1655142830
+    Path: event:/SFX/Combat/SlimeMonster/Blob_Attack_1
   <victory>k__BackingField:
     Guid:
       Data1: 608321447
@@ -1603,20 +1635,6 @@ MonoBehaviour:
       Data3: -446495809
       Data4: 38442444
     Path: event:/SFX/Transitions&Buttons/Loss
-  <papper>k__BackingField:
-    Guid:
-      Data1: -908453579
-      Data2: 1341743158
-      Data3: 1990645404
-      Data4: 709752449
-    Path: event:/SFX/Transitions&Buttons/Open_menu
-  <bass>k__BackingField:
-    Guid:
-      Data1: 1571948300
-      Data2: 1247981125
-      Data3: -457974339
-      Data4: 465714915
-    Path: event:/SFX/Transitions&Buttons/Error_1
   <playerAttack1>k__BackingField:
     Guid:
       Data1: 1297119950
@@ -2042,6 +2060,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 984915094}
   m_CullTransparentMesh: 1
+--- !u!4 &998818870 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4145487825838625577, guid: 06b451ee1c2207f48a59e3e7846786f6, type: 3}
+  m_PrefabInstance: {fileID: 318106714}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1046706028
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2421,7 +2444,7 @@ PrefabInstance:
     - target: {fileID: 9205371885998440386, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 1744206306}
+      objectReference: {fileID: 615893528}
     - target: {fileID: 9205371885998440386, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: near clip plane
       value: 1.36
@@ -3773,43 +3796,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!84 &1744206306
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 6
-  m_Width: 620
-  m_Height: 302
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthStencilFormat: 94
-  m_ColorFormat: 4
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_UseDynamicScaleExplicit: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_EnableRandomWrite: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 0
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
-  m_ShadowSamplingMode: 2
 --- !u!1001 &1754619662
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4042,7 +4028,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 318106715}
+  - {fileID: 998818870}
   - {fileID: 984915095}
   - {fileID: 1306539375}
   - {fileID: 1246925598}

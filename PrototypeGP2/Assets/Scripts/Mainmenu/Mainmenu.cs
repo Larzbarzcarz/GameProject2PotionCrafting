@@ -74,7 +74,7 @@ public class Mainmenu : MonoBehaviour
 
 	public void OpenCredits()
 	{
-        AudioManager.Instance.PlayOneShot(FMODEvents.instance.buttonPress);
+        AudioManager.Instance.PlayOneShot(FMODEvents.instance.papper);
         Debug.Log("we dont have any creadits yet, add some in the future");
 		CreditsMenu.SetActive(true);
 

@@ -15,6 +15,10 @@ public class Clickforcamera : MonoBehaviour
     public GameObject CraftingButton;
 	public GameObject Recipes;
 	public GameObject Results;
+
+    //-----FMOD Integration-----
+    private TouchManager touchManager;
+
     void Start()
     {
 		Materialing.SetActive(false);
@@ -26,6 +30,7 @@ public class Clickforcamera : MonoBehaviour
 		Results.SetActive(false);
 
         //-----FMOD Integration-----
+        touchManager = FindFirstObjectByType<TouchManager>();
         AudioManager.Instance.PlayMusic(FMODEvents.instance.baseMusic);
     }
 
@@ -41,7 +46,6 @@ public class Clickforcamera : MonoBehaviour
 		Results.SetActive(true);
         //-----FMOD Integration-----
         AudioManager.Instance.PlayOneShot(FMODEvents.instance.buttonPress);
-        AudioManager.Instance.PlayMusic(FMODEvents.instance.cookMusic);
     }
 
     public void SwitchToMain()
@@ -55,6 +59,7 @@ public class Clickforcamera : MonoBehaviour
         mainCamera.SetActive(true);
 
         //-----FMOD Integration-----
+        touchManager.weCooking = false;
         AudioManager.Instance.PlayMusic(FMODEvents.instance.baseMusic);
         AudioManager.Instance.PlayOneShot(FMODEvents.instance.buttonPress);
     }
@@ -71,6 +76,8 @@ public class Clickforcamera : MonoBehaviour
     {
         CraftingInventory.SetActive(false);
         CraftingButton.SetActive(false);
+
+        AudioManager.Instance.PlayOneShot(FMODEvents.instance.buttonPress);
     }
 
     public void OpenInventory()
@@ -78,19 +85,27 @@ public class Clickforcamera : MonoBehaviour
         CraftingButton.SetActive(true);
         CraftingInventory.SetActive(true);
 		Results.SetActive(true);
+
+        AudioManager.Instance.PlayOneShot(FMODEvents.instance.papper);
     }
 	public void OpenRecipes()
 	{	
 			Recipes.SetActive(true);
-	}
+
+        AudioManager.Instance.PlayOneShot(FMODEvents.instance.papper);
+    }
 	public void CloseRecipes()
 	{	
 			Recipes.SetActive(false);
-	}
+
+        AudioManager.Instance.PlayOneShot(FMODEvents.instance.buttonPress);
+    }
 	public void ResultsClose()
 	{
 	Results.SetActive(false);
-	}
+
+        AudioManager.Instance.PlayOneShot(FMODEvents.instance.buttonPress);
+    }
 
 
 }
