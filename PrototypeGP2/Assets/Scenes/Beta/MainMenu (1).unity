@@ -619,19 +619,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 143205739210979633, guid: 06b451ee1c2207f48a59e3e7846786f6, type: 3}
       propertyPath: m_LocalScale.x
-      value: 11.815365
+      value: 23.85
       objectReference: {fileID: 0}
     - target: {fileID: 143205739210979633, guid: 06b451ee1c2207f48a59e3e7846786f6, type: 3}
       propertyPath: m_LocalScale.y
-      value: 8.487355
+      value: 17.13222
       objectReference: {fileID: 0}
     - target: {fileID: 143205739210979633, guid: 06b451ee1c2207f48a59e3e7846786f6, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.78784
+      value: 1.5903008
+      objectReference: {fileID: 0}
+    - target: {fileID: 143205739210979633, guid: 06b451ee1c2207f48a59e3e7846786f6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 143205739210979633, guid: 06b451ee1c2207f48a59e3e7846786f6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -14
+      value: -68
+      objectReference: {fileID: 0}
+    - target: {fileID: 143205739210979633, guid: 06b451ee1c2207f48a59e3e7846786f6, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4145487825838625577, guid: 06b451ee1c2207f48a59e3e7846786f6, type: 3}
       propertyPath: m_LocalScale.x
@@ -2421,7 +2429,7 @@ PrefabInstance:
     - target: {fileID: 9205371885998440386, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 1744206306}
+      objectReference: {fileID: 1254013108}
     - target: {fileID: 9205371885998440386, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: near clip plane
       value: 1.36
@@ -2847,6 +2855,43 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1246925597}
   m_CullTransparentMesh: 1
+--- !u!84 &1254013108
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 6
+  m_Width: 620
+  m_Height: 302
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthStencilFormat: 94
+  m_ColorFormat: 4
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_UseDynamicScaleExplicit: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_EnableRandomWrite: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 0
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
+  m_ShadowSamplingMode: 2
 --- !u!1001 &1259869890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3773,43 +3818,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!84 &1744206306
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 6
-  m_Width: 620
-  m_Height: 302
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthStencilFormat: 94
-  m_ColorFormat: 4
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_UseDynamicScaleExplicit: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_EnableRandomWrite: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 0
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
-  m_ShadowSamplingMode: 2
 --- !u!1001 &1754619662
 PrefabInstance:
   m_ObjectHideFlags: 0
