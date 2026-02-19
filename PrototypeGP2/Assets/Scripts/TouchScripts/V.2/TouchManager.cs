@@ -1,4 +1,5 @@
 using _Project._Scripts.Sound_and_Music;
+using System.Collections;
 using UnityEngine;
 
 using UnityEngine.EventSystems;
@@ -14,7 +15,10 @@ public class TouchManager : MonoBehaviour
     private DragItem current;
     [Header("Potion Throw")]
     public PotionThrowController potionThrow;
-    
+
+    //-----FMOD Integration-----
+    public bool weCooking = false;
+
     void Awake()
     {
         GameObject gameObject = GameObject.FindGameObjectWithTag("Craft");
@@ -81,7 +85,15 @@ Debug.DrawRay(ray.origin, ray.direction * 5f, Color.red, 1f);
                 current.BeginDrag(hit.point);
 
                 //-----FMOD Integration-----
-                AudioManager.Instance.PlayOneShot(FMODEvents.instance.buttonPress);
+                if (!weCooking)
+                {
+                    StartCoroutine(cookDelay());
+                }
+                else
+                {
+                    AudioManager.Instance.PlayOneShot(FMODEvents.instance.buttonPress);
+                }
+                    
                 
 
 
@@ -104,6 +116,14 @@ Debug.DrawRay(ray.origin, ray.direction * 5f, Color.red, 1f);
 
         current.EndDrag();
         current = null;
+    }
+
+    private IEnumerator cookDelay()
+    {
+        AudioManager.Instance.PlayOneShot(FMODEvents.instance.bass);
+        yield return new WaitForSeconds(0.5f);
+        AudioManager.Instance.PlayMusic(FMODEvents.instance.cookMusic);
+        weCooking = true;
     }
 }
 

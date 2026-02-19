@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34d798448000bc946b30dd4c5f6feb0a, type: 3}
+<<<<<<<< HEAD:PrototypeGP2/Assets/Scripts/Inventory System/Items/Eyeball.asset
+  m_Name: Eyeball
+  m_EditorClassIdentifier: Assembly-CSharp::IngredientObject
+  stableId: 7df21fd95d9c4990b5706df30e0f8fd1
+  Id: 2
+  ItemName: Eyeball_Material
+  itemSprite: {fileID: -765223158, guid: 77066b1a147a804429036da26bb2a73f, type: 3}
+  worldPrefab: {fileID: 925638476725726711, guid: c975ca7cd6b84f54598c570461ca10d5, type: 3}
+========
+  m_Name: PlankIngredient
+  m_EditorClassIdentifier: 
+  stableId: e111eb14e5654119b0e3228e3b55215d
+  Id: 12
+  ItemName: Haunted Bark
+  itemSprite: {fileID: 21300000, guid: d9fadc64245affd4b90ec434323d533f, type: 3}
+  worldPrefab: {fileID: 9110552635079468995, guid: 7b1b9e87e54603e46addbc2caebd3d70, type: 3}
+>>>>>>>> parent of 32a3e09 (Fixed the stupid ingredients):PrototypeGP2/Assets/Scripts/Inventory System/Items/PlankIngredient.asset
+  itemType: 0
+  itemDescription: 
+  mainKeyword: 0
+  baseKeyword: 3
+  rarity: 0
