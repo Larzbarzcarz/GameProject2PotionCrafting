@@ -20,6 +20,17 @@ public class EncounterManager : MonoBehaviour
     [SerializeField] private InventoryObject playerInventory;
     [SerializeField] private ExpeditionRewardUI expeditionRewardUI;
 
+    private void Update()
+    {
+        // SANITY SAVER: Press F9 to instantly trigger the Victory Screen and Rewards for testing
+        if (Input.GetKeyDown(KeyCode.F9))
+        {
+            Debug.Log("[EncounterManager] Debug Victory Triggered (F9)");
+            ExpeditionData.CurrentEncounterIndex = ExpeditionData.TotalEncounters;
+            HandleBattleWon();
+        }
+    }
+
     private void Start()
     {
         if (!ExpeditionData.IsExpeditionActive)
