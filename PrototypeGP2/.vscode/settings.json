@@ -60,12 +60,12 @@
         "*.asset": "yaml",
         "*.meta": "yaml",
         "*.prefab": "yaml",
-        "*.unity": "yaml"
+        "*.unity": "yaml",
     },
     "explorer.fileNesting.enabled": true,
     "explorer.fileNesting.patterns": {
-        "*.sln": "*.csproj"
+        "*.sln": "*.csproj",
     },
-    "dotnet.defaultSolution": "PrototypeGP2.slnx",
+    "dotnet.defaultSolution": "PrototypeGP2.sln",
     "dotnet.preferCSharpExtension": true
 }
