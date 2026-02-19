@@ -26,6 +26,8 @@ public class Monster : Combatant
 
     public override float DealDamage()
     {
+
+		Debug.Log("DAMING IS BEING DEALT");
         float damage = strength * 1.2f;
         Debug.Log($"Monster dealing {damage} damage (Strength: {strength} * 1.2).");
         Animator.SetTrigger("Attack");
