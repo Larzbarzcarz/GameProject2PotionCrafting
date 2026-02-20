@@ -32,6 +32,7 @@ public class Enemy : Combatant
     
     protected override void Die()
     {
+        Debug.Log("ENEMY SHOULD BE DEAD");
         isDead = true;
         currentState = EnemyState.Dead;
         Debug.Log("enemy defeated?");
@@ -52,6 +53,7 @@ public class Enemy : Combatant
     {
         Debug.Log("ENEMY TAKING DAMAGE");
         Animator.SetTrigger("Damaged");
+        base.TakeDamage(damage);
     }
    
     

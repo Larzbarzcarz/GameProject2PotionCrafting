@@ -212,8 +212,8 @@ MonoBehaviour:
   speed: 0.76
   strength: 0.81
   agility: 1.14
-  maxHealth: 10
-  currentHealth: 2.74
+  maxHealth: 29.49
+  currentHealth: 20.46
   maxStamina: 10
   currentStamina: 0
   isDead: 0

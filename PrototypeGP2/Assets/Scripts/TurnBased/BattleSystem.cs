@@ -241,6 +241,7 @@ public class BattleSystem : MonoBehaviour
 
             if (enemy.isDead)
             {
+                Debug.Log("ENEMY IS DEAD");
                 battleOver = true;
                 return;
             }
