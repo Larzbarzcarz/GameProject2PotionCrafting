@@ -76,7 +76,7 @@ public class Monster : Combatant
 
 	public override void Dying()
 	{
-		//currentState = MonsterState.Dying;
+		currentState = MonsterState.Dying;
 		//Animator.SetBool("Dying");
     }
 

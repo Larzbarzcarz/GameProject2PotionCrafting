@@ -119,6 +119,43 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!84 &25200495
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 6
+  m_Width: 536
+  m_Height: 360
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthStencilFormat: 94
+  m_ColorFormat: 4
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_UseDynamicScaleExplicit: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_EnableRandomWrite: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 0
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
+  m_ShadowSamplingMode: 2
 --- !u!1 &77442976
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,12 +387,20 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3277394799889370665, guid: 0106fc91d3997b549a289e5ccb079cd8, type: 3}
+      propertyPath: maxStamina
+      value: 1468
+      objectReference: {fileID: 0}
+    - target: {fileID: 3277394799889370665, guid: 0106fc91d3997b549a289e5ccb079cd8, type: 3}
       propertyPath: currentState
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3277394799889370665, guid: 0106fc91d3997b549a289e5ccb079cd8, type: 3}
       propertyPath: currentHealth
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3277394799889370665, guid: 0106fc91d3997b549a289e5ccb079cd8, type: 3}
+      propertyPath: currentStamina
+      value: 1780
       objectReference: {fileID: 0}
     - target: {fileID: 8350907283794935305, guid: 0106fc91d3997b549a289e5ccb079cd8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -925,43 +970,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35c40356f3eb4a4409a4940d1a28fcb2, type: 3}
---- !u!84 &489070737
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 6
-  m_Width: 614
-  m_Height: 360
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthStencilFormat: 94
-  m_ColorFormat: 4
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_UseDynamicScaleExplicit: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_EnableRandomWrite: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 0
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
-  m_ShadowSamplingMode: 2
 --- !u!1 &489100660
 GameObject:
   m_ObjectHideFlags: 0
@@ -2364,7 +2372,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1813454538314249935, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalScale.x
-      value: 11.017889
+      value: 9.618222
       objectReference: {fileID: 0}
     - target: {fileID: 2255326839739188927, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_Name
@@ -2372,7 +2380,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2475294716756555193, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0011275837
+      value: -0.0011276628
       objectReference: {fileID: 0}
     - target: {fileID: 2475294716756555193, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2453,7 +2461,7 @@ PrefabInstance:
     - target: {fileID: 9205371885998440386, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 489070737}
+      objectReference: {fileID: 25200495}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

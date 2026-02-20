@@ -19,7 +19,7 @@ MonoBehaviour:
     Data3: 903337384
     Data4: -751598848
   Banks:
-  - {fileID: -4862488692479079719}
+  - {fileID: 0}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -46,7 +46,7 @@ MonoBehaviour:
     Data3: 1057886855
     Data4: -2094138245
   Banks:
-  - {fileID: 9062802492321396967}
+  - {fileID: 0}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -73,7 +73,7 @@ MonoBehaviour:
     Data3: -1770843228
     Data4: 727737363
   Banks:
-  - {fileID: 9062802492321396967}
+  - {fileID: 0}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -100,7 +100,7 @@ MonoBehaviour:
     Data3: -141975415
     Data4: -822985080
   Banks:
-  - {fileID: 9062802492321396967}
+  - {fileID: 0}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -154,7 +154,7 @@ MonoBehaviour:
     Data3: 269319568
     Data4: 100574040
   Banks:
-  - {fileID: 230664341918532161}
+  - {fileID: 0}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -205,7 +205,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639071025693310201
+  lastModified: 639071231135103858
   FileSizes:
   - Name: 
     Value: 3160
@@ -796,7 +796,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639071025693173571
+  lastModified: 639071231135103858
   FileSizes: []
   Exists: 1
 --- !u!114 &-3408439762666903726
@@ -1184,7 +1184,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 639071025694418890
+  lastModified: 639071231135947405
   FileSizes: []
   Exists: 1
 --- !u!114 &-784126262327934849
@@ -1307,7 +1307,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: -8290974731492169572}
   cacheVersion: 131857
-  cacheTime: 639071025694766903
+  cacheTime: 639071231136026451
   SerializableEventsDict:
   - key: event:/SFX/Transitions&Buttons/potion-brew
     index: 0
@@ -1564,7 +1564,7 @@ MonoBehaviour:
     Data3: 896524966
     Data4: -978500638
   Banks:
-  - {fileID: 9062802492321396967}
+  - {fileID: 0}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1591,7 +1591,7 @@ MonoBehaviour:
     Data3: -457974339
     Data4: 465714915
   Banks:
-  - {fileID: 9062802492321396967}
+  - {fileID: 0}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1645,7 +1645,7 @@ MonoBehaviour:
     Data3: -335062604
     Data4: 1511748186
   Banks:
-  - {fileID: 230664341918532161}
+  - {fileID: 0}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1672,7 +1672,7 @@ MonoBehaviour:
     Data3: 572027026
     Data4: 609511985
   Banks:
-  - {fileID: 9062802492321396967}
+  - {fileID: 0}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1744,7 +1744,7 @@ MonoBehaviour:
     Data3: -66405220
     Data4: 1294433606
   Banks:
-  - {fileID: 9062802492321396967}
+  - {fileID: 0}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1771,7 +1771,7 @@ MonoBehaviour:
     Data3: -154890583
     Data4: 824299586
   Banks:
-  - {fileID: 230664341918532161}
+  - {fileID: 0}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1798,7 +1798,7 @@ MonoBehaviour:
     Data3: 1585115060
     Data4: 2081989149
   Banks:
-  - {fileID: 230664341918532161}
+  - {fileID: 0}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1825,7 +1825,7 @@ MonoBehaviour:
     Data3: 1869607866
     Data4: 377204413
   Banks:
-  - {fileID: 230664341918532161}
+  - {fileID: 0}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1852,7 +1852,7 @@ MonoBehaviour:
     Data3: -154890583
     Data4: 824299586
   Banks:
-  - {fileID: 9062802492321396967}
+  - {fileID: 0}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2734,7 +2734,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 639071025694766903
+  lastModified: 639071231136026451
   FileSizes: []
   Exists: 1
 --- !u!114 &8801273875792743542

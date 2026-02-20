@@ -53,6 +53,7 @@ public class Clickforcamera : MonoBehaviour
         Debug.Log("Switching to main camera");
         craftingCamera.SetActive(false);
         mainCamera.SetActive(true);
+		Results.SetActive(false);
 
         //-----FMOD Integration-----
         AudioManager.Instance.PlayMusic(FMODEvents.instance.baseMusic);
