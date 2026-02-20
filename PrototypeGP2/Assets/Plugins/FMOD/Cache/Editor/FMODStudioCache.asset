@@ -2145,6 +2145,51 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Transitions&Buttons/Area_unlocked_normalwav
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/Transitions&Buttons/Area_unlocked_normalwav
+  Guid:
+    Data1: -961828434
+    Data2: 1236583444
+    Data3: 1731479172
+    Data4: 1826496496
+  Banks:
+  - {fileID: 3768966881344987487}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 8125
+--- !u!114 &-2492861625994560781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Desktop/Music.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: Assets/StreamingAssets/Desktop/Desktop/Music.bank
+  Name: Desktop/Music
+  StudioPath: bank:/Music
+  lastModified: 639071110189804414
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-2468663728040418126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
   m_Name: "event:/Music/Wild and epic (Douglas Dahlstro\u0308m)"
   m_EditorClassIdentifier: 
   Path: "event:/Music/Wild and epic (Douglas Dahlstro\u0308m)"
@@ -5472,6 +5517,35 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
   m_Name: event:/Music/Huldra
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Music/Huldra
+  Guid:
+    Data1: -1422102794
+    Data2: 1210234444
+    Data3: 1973179068
+    Data4: 629224298
+  Banks:
+  - {fileID: 797559085623949770}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -7899674811068971606}
+  - {fileID: -6341649508847481484}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 101876
+--- !u!114 &8589233543224584814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Huldra
   m_EditorClassIdentifier: 
   Path: event:/Music/Huldra
   Guid:
@@ -5488,6 +5562,34 @@ MonoBehaviour:
   Parameters:
   - {fileID: -6380118984090330728}
   - {fileID: -5379113144138781612}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4875
+--- !u!114 &8619050026787737454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Combat/SlimeMonster/Blob_Scream
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/Combat/SlimeMonster/Blob_Scream
+  Guid:
+    Data1: 140078068
+    Data2: 1271005709
+    Data3: 500892046
+    Data4: 1974351928
+  Banks:
+  - {fileID: 3768966881344987487}
+  - {fileID: -1324654577451422914}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
   MinDistance: 1
   MaxDistance: 20
   Length: 4875
