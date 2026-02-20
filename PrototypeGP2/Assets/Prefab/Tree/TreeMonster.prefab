@@ -221,6 +221,7 @@ MonoBehaviour:
   maxStamina: 10
   currentStamina: 0
   isDead: 0
+  Animator: {fileID: -752671516115519315}
   currentState: 0
 --- !u!114 &7248257030790437651
 MonoBehaviour:

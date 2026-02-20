@@ -67,15 +67,14 @@ if (Input.touchCount > 0)
 
     void TryPick(Vector2 screenPos)
     { 	
-		Debug.Log("Trying to pick");
+
         Ray ray = cam.ScreenPointToRay(screenPos);
 Debug.DrawRay(ray.origin, ray.direction * 5f, Color.red, 1f);
-        if (Physics.Raycast(ray, out RaycastHit hit, 1000f))
+        if (Physics.Raycast(ray, out RaycastHit hit, 1000f, draggableMask))
         {
             Debug.Log("Ray hit: " + hit.collider.name);
 
-            current = hit.collider.GetComponentInParent<PickupItems>()?.GetComponent<DragItem>();
-		
+            current = hit.collider.GetComponentInParent<DragItem>();
             if (current != null)
             {
                 Debug.Log("Found DragItem: " + current.name);

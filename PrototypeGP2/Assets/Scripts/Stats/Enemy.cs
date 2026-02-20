@@ -50,6 +50,7 @@ public class Enemy : Combatant
 
     public override void TakeDamage(float damage)
     {
+        Debug.Log("ENEMY TAKING DAMAGE");
         Animator.SetTrigger("Damaged");
     }
    
