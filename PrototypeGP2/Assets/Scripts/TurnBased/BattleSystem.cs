@@ -277,7 +277,7 @@ public class BattleSystem : MonoBehaviour
     private async Task MonsterAttack()
     {
         int hitChance = Random.Range(0, 100);
-
+        monster.DealDamage();
         if (hitChance < 100)
         {
             //-----fmod implementation-----

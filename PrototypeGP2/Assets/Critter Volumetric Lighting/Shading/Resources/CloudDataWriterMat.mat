@@ -113,7 +113,7 @@ Material:
     - _Offset: 0
     - _Parallax: 0.005
     - _PlaneLengthWorldUnits: 60
-    - _PlaneWidthWorldUnits: 15.627633
+    - _PlaneWidthWorldUnits: 11.586276
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1

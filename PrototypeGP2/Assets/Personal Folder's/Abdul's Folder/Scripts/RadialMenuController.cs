@@ -79,8 +79,8 @@ public class RadialMenu : MonoBehaviour
         if (!playersTurn) return;
 
         actionText.text = "Choose Attack";
-        HeavyAttackButton.gameObject.SetActive(true);
-        LightAttackButton.gameObject.SetActive(true);
+        //HeavyAttackButton.gameObject.SetActive(true);
+        //LightAttackButton.gameObject.SetActive(true);
         showHeavyLight = true;
     }
 

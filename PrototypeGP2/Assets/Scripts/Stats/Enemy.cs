@@ -3,6 +3,7 @@ using UnityEngine;
 public class Enemy : Combatant
 {
     public bool isDead = false;
+    public Animator Animator;
 
     //-----fmod implementation-----
     private MonsterSound monsterSounds;
@@ -41,9 +42,15 @@ public class Enemy : Combatant
 
     public override float DealDamage()
     {
+        Animator.SetTrigger("Attack");
         monsterSounds.PlayMonsterSoundHit();
 
         return strength; 
+    }
+
+    public override void TakeDamage(float damage)
+    {
+        Animator.SetTrigger("Damaged");
     }
    
     
