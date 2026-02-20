@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.03.00">
-	<object class="AudioFile" id="{37059a46-11df-44bb-89d9-fac2fb82975e}">
+	<object class="AudioFile" id="{ea880044-70c1-4f4d-916d-035297352843}">
 		<property name="assetPath">
-			<value>potion-brew.wav</value>
+			<value>lab/potion-brew.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>48</value>

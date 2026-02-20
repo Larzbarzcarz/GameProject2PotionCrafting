@@ -15,8 +15,6 @@ public class Clickforcamera : MonoBehaviour
     public GameObject CraftingButton;
 	public GameObject Recipes;
 	public GameObject Results;
-
-    public TouchManager touchManager;
     void Start()
     {
 		Materialing.SetActive(false);
@@ -28,8 +26,6 @@ public class Clickforcamera : MonoBehaviour
 		Results.SetActive(false);
 
         //-----FMOD Integration-----
-        touchManager = FindFirstObjectByType<TouchManager>();
-
         AudioManager.Instance.PlayMusic(FMODEvents.instance.baseMusic);
     }
 
@@ -45,8 +41,7 @@ public class Clickforcamera : MonoBehaviour
 		Results.SetActive(true);
         //-----FMOD Integration-----
         AudioManager.Instance.PlayOneShot(FMODEvents.instance.buttonPress);
-        touchManager.weCooking = false;
-        //AudioManager.Instance.PlayMusic(FMODEvents.instance.cookMusic);
+        AudioManager.Instance.PlayMusic(FMODEvents.instance.cookMusic);
     }
 
     public void SwitchToMain()
@@ -75,32 +70,27 @@ public class Clickforcamera : MonoBehaviour
 
     public void CloseInventory()
     {
-        AudioManager.Instance.PlayOneShot(FMODEvents.instance.buttonPress);
         CraftingInventory.SetActive(false);
         CraftingButton.SetActive(false);
     }
 
     public void OpenInventory()
     {
-        AudioManager.Instance.PlayOneShot(FMODEvents.instance.papper);
         CraftingButton.SetActive(true);
         CraftingInventory.SetActive(true);
 		Results.SetActive(true);
     }
 	public void OpenRecipes()
-	{
-        AudioManager.Instance.PlayOneShot(FMODEvents.instance.papper);
-        Recipes.SetActive(true);
+	{	
+			Recipes.SetActive(true);
 	}
 	public void CloseRecipes()
-	{
-        AudioManager.Instance.PlayOneShot(FMODEvents.instance.buttonPress);
-        Recipes.SetActive(false);
+	{	
+			Recipes.SetActive(false);
 	}
 	public void ResultsClose()
 	{
-        AudioManager.Instance.PlayOneShot(FMODEvents.instance.buttonPress);
-        Results.SetActive(false);
+	Results.SetActive(false);
 	}
 
 

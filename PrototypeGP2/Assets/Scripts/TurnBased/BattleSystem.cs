@@ -374,16 +374,9 @@ public class BattleSystem : MonoBehaviour
             dialogueText.text = "You Win!";
             if (monster != null) monster.Victory();
             OnBattleWon?.Invoke();
-<<<<<<< HEAD
             AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.victory, monster.transform.position);
             AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.victoryMusic, monster.transform.position);
 
-=======
-            //THis is not expedition victory so sounds should not be here
-            //AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.victory, monster.transform.position);
-            //AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.victoryMusic, monster.transform.position);
-            
->>>>>>> fmod-tweaks
         }
         else
         {
