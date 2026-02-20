@@ -19,8 +19,7 @@ MonoBehaviour:
     Data3: 903337384
     Data4: -751598848
   Banks:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: -4862488692479079719}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -47,8 +46,7 @@ MonoBehaviour:
     Data3: 1057886855
     Data4: -2094138245
   Banks:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 9062802492321396967}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -75,8 +73,7 @@ MonoBehaviour:
     Data3: -1770843228
     Data4: 727737363
   Banks:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 9062802492321396967}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -130,8 +127,7 @@ MonoBehaviour:
     Data3: -141975415
     Data4: -822985080
   Banks:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 9062802492321396967}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -185,8 +181,7 @@ MonoBehaviour:
     Data3: 269319568
     Data4: 100574040
   Banks:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 230664341918532161}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -312,12 +307,12 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639065002813503045
+  lastModified: 639071025693310201
   FileSizes:
   - Name: 
-    Value: 3180
+    Value: 3160
   Exists: 1
---- !u!114 &-8269928055581992761
+--- !u!114 &-8227323147293660563
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -327,22 +322,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Music/Huldra
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Music/Huldra
+  m_Name: event:/SFX/Transitions&Buttons/Loss
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Transitions&Buttons/Loss
   Guid:
-    Data1: -1422102794
-    Data2: 1210234444
-    Data3: 1973179068
-    Data4: 629224298
+    Data1: 1762265248
+    Data2: 1304171386
+    Data3: -446495809
+    Data4: 38442444
   Banks:
-  - {fileID: -861548514170077976}
+  - {fileID: 8678990213038149938}
   IsStream: 1
   Is3D: 0
-  IsOneShot: 0
-  Parameters:
-  - {fileID: -6672395516419260913}
-  - {fileID: -5397853992225959745}
+  IsOneShot: 1
+  Parameters: []
   MinDistance: 1
   MaxDistance: 20
   Length: 101876
@@ -546,16 +539,16 @@ MonoBehaviour:
     Data3: -608489302
     Data4: 331732578
   Banks:
-  - {fileID: -861548514170077976}
   - {fileID: -3428437760358927326}
+  - {fileID: -861548514170077976}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
---- !u!114 &-7477064332073568754
+  Length: 2000
+--- !u!114 &-6888869703808832893
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -565,9 +558,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Combat/Wolf/Attack_2
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/SFX/Combat/Wolf/Attack_2
+  m_Name: event:/Music/Fight now my creature
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Fight now my creature
   Guid:
     Data1: 547267808
     Data2: 1254636883
@@ -775,31 +768,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 56161
---- !u!114 &-6672395516419260913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Huldra/Intensity
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
-  Name: Intensity
-  StudioPath: 
-  Min: 0
-  Max: 3
-  Default: 0
-  ID:
-    data1: 1345328335
-    data2: 1711026036
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
+  Length: 56338
 --- !u!114 &-6667686574379045089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -881,7 +850,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2869
---- !u!114 &-6517147382395539762
+--- !u!114 &-6380118984090330728
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1204,7 +1173,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: parameter:/Huldra/Keep at 0 for smooth loop
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorParamRef
+  m_EditorClassIdentifier: 
   Name: Keep at 0 for smooth loop
   StudioPath: 
   Min: 0
@@ -1217,7 +1186,7 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &-5118401076427822873
+--- !u!114 &-5202372359070829074
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1227,14 +1196,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Combat/SlimeMonster/Blob_Taking_damage_1
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/SFX/Combat/SlimeMonster/Blob_Taking_damage_1
+  m_Name: event:/Music/Battle_Draft_1
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Battle_Draft_1
   Guid:
-    Data1: 218610581
-    Data2: 1314505230
-    Data3: 896524966
-    Data4: -978500638
+    Data1: -1349515241
+    Data2: 1076093604
+    Data3: 1548957075
+    Data4: 693489264
   Banks:
   - {fileID: -3043663850900121444}
   - {fileID: -1324654577451422914}
@@ -1269,7 +1238,8 @@ MonoBehaviour:
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
-  Parameters: []
+  Parameters:
+  - {fileID: 6637417085015871555}
   MinDistance: 1
   MaxDistance: 20
   Length: 58818
@@ -1844,7 +1814,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639065002813482973
+  lastModified: 639071025693173571
   FileSizes: []
   Exists: 1
 --- !u!114 &-3408439762666903726
@@ -1979,24 +1949,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: "event:/Music/Wild and epic (Douglas Dahlstro\u0308m)"
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: "event:/Music/Wild and epic (Douglas Dahlstro\u0308m)"
+  m_Name: event:/Music/MENU_1
+  m_EditorClassIdentifier: 
+  Path: event:/Music/MENU_1
   Guid:
-    Data1: -1533850616
-    Data2: 1074016506
-    Data3: -1590546295
-    Data4: 1134614059
+    Data1: -1540838565
+    Data2: 1271127015
+    Data3: -1336963910
+    Data4: 1174947339
   Banks:
   - {fileID: -861548514170077976}
   IsStream: 1
   Is3D: 0
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters:
-  - {fileID: -6369730684011444385}
+  - {fileID: -784126262327934849}
   MinDistance: 1
   MaxDistance: 20
-  Length: 120422
+  Length: 56161
 --- !u!114 &-3126702871345580455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2175,24 +2145,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Transitions&Buttons/Open_menu
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/SFX/Transitions&Buttons/Open_menu
+  m_Name: "event:/Music/Wild and epic (Douglas Dahlstro\u0308m)"
+  m_EditorClassIdentifier: 
+  Path: "event:/Music/Wild and epic (Douglas Dahlstro\u0308m)"
   Guid:
-    Data1: -908453579
-    Data2: 1341743158
-    Data3: 1990645404
-    Data4: 709752449
+    Data1: -1533850616
+    Data2: 1074016506
+    Data3: -1590546295
+    Data4: 1134614059
   Banks:
   - {fileID: -3043663850900121444}
   - {fileID: -1324654577451422914}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
-  Parameters: []
+  Parameters:
+  - {fileID: 557406681818901400}
   MinDistance: 1
   MaxDistance: 20
-  Length: 3500
+  Length: 120422
 --- !u!114 &-2308504778030848780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2751,7 +2722,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 6000
---- !u!114 &-876503327934616834
+--- !u!114 &-861548514170077976
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2788,14 +2759,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Music.bank
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MENU_1/AudioVolume
   m_EditorClassIdentifier: 
-  Path: Assets/StreamingAssets/Desktop/Music.bank
-  Name: Music
-  StudioPath: bank:/Music
-  lastModified: 639070996461608591
-  FileSizes: []
+  Name: AudioVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2569903215
+    data2: 3956595975
+  Type: 0
+  IsGlobal: 0
+  Labels: []
   Exists: 1
 --- !u!114 &-706751473466921407
 MonoBehaviour:
@@ -3415,8 +3392,7 @@ MonoBehaviour:
     Data3: 896524966
     Data4: -978500638
   Banks:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 9062802492321396967}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -3471,8 +3447,7 @@ MonoBehaviour:
     Data3: -457974339
     Data4: 465714915
   Banks:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 9062802492321396967}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -3554,8 +3529,7 @@ MonoBehaviour:
     Data3: -335062604
     Data4: 1511748186
   Banks:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 230664341918532161}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -3582,8 +3556,7 @@ MonoBehaviour:
     Data3: 572027026
     Data4: 609511985
   Banks:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 9062802492321396967}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -3655,8 +3628,7 @@ MonoBehaviour:
     Data3: -66405220
     Data4: 1294433606
   Banks:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 9062802492321396967}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -3710,8 +3682,7 @@ MonoBehaviour:
     Data3: -154890583
     Data4: 824299586
   Banks:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 230664341918532161}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -3738,8 +3709,7 @@ MonoBehaviour:
     Data3: 1585115060
     Data4: 2081989149
   Banks:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 230664341918532161}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -3766,8 +3736,7 @@ MonoBehaviour:
     Data3: 1869607866
     Data4: 377204413
   Banks:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 230664341918532161}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -3823,8 +3792,7 @@ MonoBehaviour:
     Data3: -154890583
     Data4: 824299586
   Banks:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 9062802492321396967}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -4214,7 +4182,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 539
---- !u!114 &4164620298309152780
+--- !u!114 &4177205905409673356
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4224,14 +4192,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Combat/Wolf/Death_1
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/SFX/Combat/Wolf/Death_1
+  m_Name: event:/Music/Victory_song
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Victory_song
   Guid:
-    Data1: 1305301940
-    Data2: 1338819212
-    Data3: -78772312
-    Data4: 805809367
+    Data1: -1356334978
+    Data2: 1194243025
+    Data3: 903337384
+    Data4: -751598848
   Banks:
   - {fileID: -3043663850900121444}
   - {fileID: -1324654577451422914}
@@ -4241,7 +4209,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 3374
+  Length: 22535
 --- !u!114 &4179022568633637253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4347,6 +4315,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &4582474003447966439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Brewing POTIONS
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Brewing POTIONS
+  Guid:
+    Data1: 1984062112
+    Data2: 1082654795
+    Data3: -1875238250
+    Data4: -186099557
+  Banks:
+  - {fileID: -861548514170077976}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 54700
 --- !u!114 &4629157536635591071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4902,6 +4897,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 3278
+--- !u!114 &6637417085015871555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Battle_Draft_1/AudioVolume
+  m_EditorClassIdentifier: 
+  Name: AudioVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2569903215
+    data2: 3956595975
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &6694896232860913536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5452,21 +5471,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Combat/TreeMonster/Tree_Death_1
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/SFX/Combat/TreeMonster/Tree_Death_1
+  m_Name: event:/Music/Huldra
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Huldra
   Guid:
-    Data1: 1595007792
-    Data2: 1149318927
-    Data3: 750539184
-    Data4: 760376142
+    Data1: -1422102794
+    Data2: 1210234444
+    Data3: 1973179068
+    Data4: 629224298
   Banks:
   - {fileID: -3043663850900121444}
   - {fileID: -1324654577451422914}
   IsStream: 0
   Is3D: 0
-  IsOneShot: 1
-  Parameters: []
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -6380118984090330728}
+  - {fileID: -5379113144138781612}
   MinDistance: 1
   MaxDistance: 20
   Length: 4875
@@ -5567,7 +5588,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 639065002814461023
+  lastModified: 639071025694766903
   FileSizes: []
   Exists: 1
 --- !u!114 &8801273875792743542

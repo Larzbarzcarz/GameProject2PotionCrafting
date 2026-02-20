@@ -15,7 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Beta/BetaLevel1Art.unity
     guid: c43fcd2c48c2b4b48aaceca0cbc26686
   m_configObjects:
-    com.unity.adaptivePerformance.basic.provider_settings: {fileID: 11400000, guid: 08db1e67bb28fe745b75b5e731451d42, type: 2}
     com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: 90fa9048a9756d942834eeb3bb053a2c, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: c482af454de8f234e8c66a4a2590a47a, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 2e19cc2e646725343bf8d6440f6f6420, type: 2}
