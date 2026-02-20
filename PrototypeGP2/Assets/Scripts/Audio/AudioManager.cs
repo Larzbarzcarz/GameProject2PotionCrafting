@@ -138,24 +138,16 @@ namespace _Project._Scripts.Sound_and_Music
         {
             if (music.IsNull) return;
 
-            // If switching to Huldra, stop any non-Huldra music
            if (music.Guid == huldraMusic.Guid)
             {
-                // Stop currently playing non-Huldra music
-                if (_currentMusicInstance.isValid())
-                {
-                    _currentMusicInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-                    _currentMusicInstance.release();
-                }
+                StopMusic();
 
-                // If Huldra is already playing and paused, resume it
                 if (_huldraInstance.isValid())
                 {
                     _huldraInstance.setPaused(false);
                 }
                 else
                 {
-                    // Create and start Huldra if not already created
                     _huldraInstance = RuntimeManager.CreateInstance(music);
                     _huldraInstance.start();
                 }
@@ -165,7 +157,6 @@ namespace _Project._Scripts.Sound_and_Music
             }
             else
             {
-                // If Huldra is playing, pause it
                 if (_huldraInstance.isValid() && !_huldraPaused)
                 {
                     _huldraInstance.setPaused(true);
@@ -173,14 +164,8 @@ namespace _Project._Scripts.Sound_and_Music
                 }
             }
 
-            // Stop any currently playing non-Huldra music
-            if (_currentMusicInstance.isValid())
-            {
-                _currentMusicInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-                _currentMusicInstance.release();
-            }
+            StopMusic();
 
-            // Play the requested non-Huldra music
             _currentMusicInstance = RuntimeManager.CreateInstance(music);
             _currentMusicInstance.start();
             _isMusicPlaying = true;
