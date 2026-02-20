@@ -4,7 +4,7 @@ public class Monster : Combatant
 {
     public Animator Animator;
     bool victory = false;
-	bool dying = false;
+    bool dying = false;
 
     public bool Dead;
     public enum MonsterState
@@ -26,8 +26,6 @@ public class Monster : Combatant
 
     public override float DealDamage()
     {
-
-		Debug.Log("DAMING IS BEING DEALT");
         float damage = strength * 1.2f;
         Debug.Log($"Monster dealing {damage} damage (Strength: {strength} * 1.2).");
         Animator.SetTrigger("Attack");
@@ -49,7 +47,7 @@ public class Monster : Combatant
         if (victory && Animator != null && Time.frameCount % 60 == 0)
         {
             var state = Animator.GetCurrentAnimatorStateInfo(0);
-            Debug.Log($"[MONSTER DEBUG] checking victory mode - animator state hash: {state.fullPathHash} - loop: {state.loop}");
+            // Debug.Log($"[MONSTER DEBUG] checking victory mode - animator state hash: {state.fullPathHash} - loop: {state.loop}");
         }
     }
 
@@ -68,16 +66,16 @@ public class Monster : Combatant
         {
             Animator.Rebind();
             Animator.Update(0f);
-            
+
             var state = Animator.GetCurrentAnimatorStateInfo(0);
             Debug.Log($"[Monster] Post-Rebind state hash: {state.fullPathHash}. (If this is still a walking animation, check if 'Walking' is your Animator's default state!)");
         }
     }
 
-	public override void Dying()
-	{
-		currentState = MonsterState.Dying;
-		//Animator.SetBool("Dying");
+    public override void Dying()
+    {
+        //currentState = MonsterState.Dying;
+        //Animator.SetBool("Dying");
     }
 
 

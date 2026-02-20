@@ -6,8 +6,8 @@ using System.Collections.Generic;
 public class EncounterManager : MonoBehaviour
 {
     [Header("Configuration")]
-    [SerializeField] private int labSceneIndex = 0;
-    
+    [SerializeField] private int labSceneIndex = 1;
+
     [Header("References")]
     [SerializeField] private BattleSystem battleSystem;
     [SerializeField] private GameObject victoryPanel;
@@ -19,6 +19,17 @@ public class EncounterManager : MonoBehaviour
     [SerializeField] private ItemDatabaseObject itemDatabase;
     [SerializeField] private InventoryObject playerInventory;
     [SerializeField] private ExpeditionRewardUI expeditionRewardUI;
+
+    private void Update()
+    {
+        // SANITY SAVER: Press F9 to instantly trigger the Victory Screen and Rewards for testing
+        if (Input.GetKeyDown(KeyCode.F9))
+        {
+            Debug.Log("[EncounterManager] Debug Victory Triggered (F9)");
+            ExpeditionData.CurrentEncounterIndex = ExpeditionData.TotalEncounters;
+            HandleBattleWon();
+        }
+    }
 
     private void Start()
     {
@@ -35,14 +46,14 @@ public class EncounterManager : MonoBehaviour
         {
             battleSystem.OnBattleWon += HandleBattleWon;
             battleSystem.OnBattleLost += HandleBattleLost;
-            
+
             StartEncounter();
         }
         else
         {
             Debug.LogError("[EncounterManager] BattleSystem reference is missing!");
         }
-        
+
         if (victoryPanel) victoryPanel.SetActive(false);
         if (intermissionPanel) intermissionPanel.SetActive(false);
         if (defeatPanel) defeatPanel.SetActive(false);
@@ -60,7 +71,7 @@ public class EncounterManager : MonoBehaviour
     private void StartEncounter()
     {
         Debug.Log($"[EncounterManager] Starting encounter {ExpeditionData.CurrentEncounterIndex}/{ExpeditionData.TotalEncounters}");
-        
+
         if (combatUI != null) combatUI.SetActive(true);
 
         if (battleSystem != null)
@@ -74,21 +85,19 @@ public class EncounterManager : MonoBehaviour
     {
         Debug.Log("[EncounterManager] Battle Won!");
 
-        if (combatUI == null)
-        {
-            Debug.LogWarning("[EncounterManager] combatUI is NOT assigned in the Inspector! Please drag 'Fight_UI (1)' into the Combat UI slot.");
-        }
+        // Ensure all combat-specific HUD is hidden
+        if (battleSystem != null) battleSystem.InventoryInactive();
 
         if (ExpeditionData.CurrentEncounterIndex < ExpeditionData.TotalEncounters)
         {
-            if (intermissionPanel != null) 
+            if (intermissionPanel != null)
             {
                 intermissionPanel.SetActive(true);
             }
             else
             {
                 Debug.Log("[EncounterManager] No Intermission Panel. Auto-continuing in 2 seconds...");
-                Invoke(nameof(StartNextEncounter), 2.0f); 
+                Invoke(nameof(StartNextEncounter), 2.0f);
             }
         }
         else
@@ -96,8 +105,47 @@ public class EncounterManager : MonoBehaviour
             // Expedition Complete - Grant Rewards
             GrantRewards();
 
-            if (combatUI != null) combatUI.SetActive(false);
-            if (victoryPanel != null) victoryPanel.SetActive(true);
+            // Hide the entire Combat UI root
+            if (combatUI != null)
+            {
+                combatUI.SetActive(false);
+            }
+            else
+            {
+                Debug.LogError("[EncounterManager] CRITICAL: 'Combat UI' slot is EMPTY! Drag 'Fight_UI (1)' into this slot to fix the overlap.");
+            }
+
+            if (victoryPanel != null)
+            {
+                // Ensure the Victory parent container (Sucessorfailscreen) is active
+                GameObject parentObj = victoryPanel.transform.parent ? victoryPanel.transform.parent.gameObject : null;
+                if (parentObj != null) parentObj.SetActive(true);
+
+                victoryPanel.SetActive(true);
+
+                // OBJECTIVE FIX: Recursively enable children (like the inactive VictoryText)
+                foreach (Transform child in victoryPanel.GetComponentsInChildren<Transform>(true))
+                {
+                    child.gameObject.SetActive(true);
+                }
+            }
+
+            // Ensure the separate Reward UI root is visible
+            if (expeditionRewardUI != null)
+            {
+                expeditionRewardUI.gameObject.SetActive(true);
+
+                // Ensure the Reward UI Canvas is at the VERY FRONT
+                Canvas rewardCanvas = expeditionRewardUI.GetComponentInChildren<Canvas>(true);
+                if (rewardCanvas != null)
+                {
+                    rewardCanvas.gameObject.SetActive(true);
+                    rewardCanvas.overrideSorting = true;
+                    rewardCanvas.sortingOrder = 1000; // Force to absolute front
+                    Debug.Log($"[EncounterManager] Forced Reward Canvas '{rewardCanvas.name}' to Sorting Order 1000.");
+                }
+            }
+
             ExpeditionData.EndExpedition();
         }
     }
@@ -111,7 +159,9 @@ public class EncounterManager : MonoBehaviour
         }
 
         List<Item> rewards = GenerateRewards();
-        
+
+        Debug.Log($"[EncounterManager] Granting {rewards.Count} rewards...");
+
         // Add to inventory
         foreach (var reward in rewards)
         {
@@ -123,6 +173,8 @@ public class EncounterManager : MonoBehaviour
         {
             expeditionRewardUI.DisplayRewards(rewards);
         }
+
+        Debug.Log("[EncounterManager] All rewards granted and added to inventory.");
     }
 
     private List<Item> GenerateRewards()
@@ -177,7 +229,7 @@ public class EncounterManager : MonoBehaviour
                 else if (rare.Count > 0) chosen = rare[Random.Range(0, rare.Count)];
                 else if (legendary.Count > 0) chosen = legendary[Random.Range(0, legendary.Count)];
             }
-            
+
             if (chosen != null)
             {
                 generatedRewards.Add(new Item(chosen));
@@ -191,6 +243,10 @@ public class EncounterManager : MonoBehaviour
     private void HandleBattleLost()
     {
         Debug.Log("[EncounterManager] Battle Lost.");
+
+        // Ensure inventory is hidden
+        if (battleSystem != null) battleSystem.InventoryInactive();
+
         if (combatUI != null) combatUI.SetActive(false);
         if (defeatPanel != null) defeatPanel.SetActive(true);
         ExpeditionData.EndExpedition();

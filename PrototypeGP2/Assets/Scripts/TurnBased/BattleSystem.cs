@@ -3,35 +3,35 @@ using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
- 
+
 public enum PlayerAction
 {
     None,
     Attack,
     Defend
 }
- 
+
 public class BattleSystem : MonoBehaviour
 {
-    [Header("References")] 
+    [Header("References")]
     public Combatant monster;
     public Combatant enemy;
     public RandomMonsterSpawn monsterSpawner;
     public Transform enemySpawnPoint;
 
-   
+
     public TextMeshProUGUI dialogueText;
     public GameObject inventory;
-    [SerializeField] private InventoryUI  displayInventory;
- 
+    [SerializeField] private InventoryUI displayInventory;
+
     [Header("Costs")]
     [SerializeField] private int attackCost = 2;
     [SerializeField] private int defendCost = 1;
- 
+
     private PlayerAction selectedAction = PlayerAction.None;
     private bool isDefending;
     private bool battleOver;
- 
+
     public event System.Action OnBattleWon;
     public event System.Action OnBattleLost;
     [Header("Inventory")]
@@ -41,9 +41,9 @@ public class BattleSystem : MonoBehaviour
     [Header("UI Elements")]
     public GameObject ClawImage;
 
-    [Header("Spawn")] 
+    [Header("Spawn")]
     public Camera BattleCamera;
-   
+
 
     public void SpawnInventoryItem(ItemScriptableObject itemSO)
     {
@@ -65,8 +65,8 @@ public class BattleSystem : MonoBehaviour
         Vector3 spawnPosition = BattleCamera.transform.position + BattleCamera.transform.forward * spawnDistance;
 
         spawnPosition += new Vector3(0, -0.5f, 0);
-        
-        
+
+
 
         Instantiate(
             itemSO.worldPrefab,
@@ -154,21 +154,21 @@ public class BattleSystem : MonoBehaviour
     public void BeginBattle()
     {
         battleOver = false;
-        
+
         if (enemy == null && monsterSpawner != null)
         {
-             if (enemySpawnPoint == null)
-             {
-                 Debug.LogError("[BattleSystem] enemySpawnPoint is MISSING in BeginBattle!");
-                 return;
-             }
+            if (enemySpawnPoint == null)
+            {
+                Debug.LogError("[BattleSystem] enemySpawnPoint is MISSING in BeginBattle!");
+                return;
+            }
 
-             enemy = monsterSpawner.SpawnUniqueMonster(enemySpawnPoint.position);
+            enemy = monsterSpawner.SpawnUniqueMonster(enemySpawnPoint.position);
         }
 
         if (enemy == null)
         {
-             Debug.LogError("[BattleSystem] Enemy failed to spawn/reference in BeginBattle!");
+            Debug.LogError("[BattleSystem] Enemy failed to spawn/reference in BeginBattle!");
         }
         else
         {
@@ -206,7 +206,7 @@ public class BattleSystem : MonoBehaviour
 
         Debug.Log("[BattleSystem] Spawning new enemy for encounter...");
         enemy = monsterSpawner.SpawnUniqueMonster(enemySpawnPoint.position);
-        
+
         if (enemy != null)
         {
             BindHealthBars();
@@ -225,28 +225,28 @@ public class BattleSystem : MonoBehaviour
 
     private async Task StartBattleAsync()
     {
-      
+
         await Wait(1000);
- 
+
         await DoBattleLoop();
         EndBattle();
     }
- 
-    
+
+
     private async Task DoBattleLoop()
     {
         while (!battleOver)
         {
             await MonsterTurn();
- 
+
             if (enemy.isDead)
             {
                 battleOver = true;
                 return;
             }
- 
+
             await EnemyTurn();
- 
+
             if (monster.CurrentHealth <= 0)
             {
                 battleOver = true;
@@ -254,30 +254,30 @@ public class BattleSystem : MonoBehaviour
             }
         }
     }
- 
+
     private async Task MonsterTurn()
     {
         dialogueText.text = "Choose an action";
         selectedAction = PlayerAction.None;
- 
+
         await WaitUntilActionSelected();
- 
+
         switch (selectedAction)
         {
             case PlayerAction.Attack:
                 await MonsterAttack();
                 break;
- 
+
             case PlayerAction.Defend:
                 await MonsterDefend();
                 break;
         }
     }
- 
+
     private async Task MonsterAttack()
     {
         int hitChance = Random.Range(0, 100);
-        monster.DealDamage();
+
         if (hitChance < 100)
         {
             //-----fmod implementation-----
@@ -309,14 +309,14 @@ public class BattleSystem : MonoBehaviour
         {
             dialogueText.text = "You missed!";
         }
- 
+
         await Wait(1000);
     }
- 
+
     private async Task MonsterDefend()
     {
         int defendChance = Random.Range(0, 100);
- 
+
         if (defendChance < 70)
         {
             isDefending = true;
@@ -327,15 +327,15 @@ public class BattleSystem : MonoBehaviour
             dialogueText.text = "You failed to defend!";
             monster.TakeDamage(2f);
         }
- 
+
         await Wait(1000);
     }
- 
+
     private async Task EnemyTurn()
     {
         dialogueText.text = "Enemy attacks!";
         await Wait(1000);
- 
+
         float damage = isDefending ? 1f : 2f;
         monster.TakeDamage(damage);
 
@@ -365,7 +365,7 @@ public class BattleSystem : MonoBehaviour
             await Wait(1000);
         }
     }
- 
+
     private void EndBattle()
     {
         if (enemy.isDead)
@@ -375,7 +375,7 @@ public class BattleSystem : MonoBehaviour
             OnBattleWon?.Invoke();
             AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.victory, monster.transform.position);
             AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.victoryMusic, monster.transform.position);
-            
+
         }
         else
         {
@@ -384,41 +384,41 @@ public class BattleSystem : MonoBehaviour
             AudioManager.Instance.PlayOneShot(FMODEvents.instance.loss);
         }
     }
- 
+
     #region UI
- 
+
     public void OnAttackButton()
     {
         if (selectedAction != PlayerAction.None) return;
- 
+
         if (!monster.TrySpendStamina(attackCost))
         {
             dialogueText.text = "Not enough stamina!";
             return;
         }
- 
+
         selectedAction = PlayerAction.Attack;
     }
- 
+
     public void OnDefendButton()
     {
         if (selectedAction != PlayerAction.None) return;
- 
+
         if (!monster.TrySpendStamina(defendCost))
         {
             dialogueText.text = "Not enough stamina!";
             return;
         }
- 
+
         selectedAction = PlayerAction.Defend;
     }
- 
+
     #endregion
- 
+
     #region Helpers
- 
+
     private async Task Wait(int ms) => await Task.Delay(ms);
- 
+
     private async Task WaitUntilActionSelected()
     {
         while (selectedAction == PlayerAction.None)
@@ -427,12 +427,12 @@ public class BattleSystem : MonoBehaviour
             await Task.Yield();
         }
     }
- 
+
     public void RunAway()
     {
-        SceneManager.LoadSceneAsync(0);
+        SceneManager.LoadSceneAsync(1);
     }
- 
+
     #endregion
 
     public void InventoryActive()
