@@ -62,9 +62,12 @@ Debug.Log($"{name} took {damage} damage. HP now: {currentHealth}");
         damage = Mathf.Max(0, damage);
         currentHealth -= damage;
 
-        if (currentHealth <= 0)
-            Die();
+			
+		if (CurrentHealth <= 0)
+ 			Die();
 
+			
+        
 		if (currentHealth < 100)
 			Dying();
     }
@@ -111,5 +114,10 @@ Debug.Log($"{name} took {damage} damage. HP now: {currentHealth}");
 {
 
 }
-	
+public virtual void Heal()
+{
+}
+
+
+
 }

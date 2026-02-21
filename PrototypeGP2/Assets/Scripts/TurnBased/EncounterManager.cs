@@ -72,13 +72,13 @@ public class EncounterManager : MonoBehaviour
     {
         Debug.Log($"[EncounterManager] Starting encounter {ExpeditionData.CurrentEncounterIndex}/{ExpeditionData.TotalEncounters}");
 
-        if (combatUI != null) combatUI.SetActive(true);
+        if (battleSystem.enemy != null)
+    {
+        Destroy(battleSystem.enemy.gameObject);
+        battleSystem.enemy = null;
+    }
 
-        if (battleSystem != null)
-        {
-            battleSystem.ResetForNewEncounter();
-            battleSystem.BeginBattle();
-        }
+    battleSystem.BeginBattle();
     }
 
     private void HandleBattleWon()
@@ -254,11 +254,16 @@ public class EncounterManager : MonoBehaviour
 
     public void StartNextEncounter()
     {
-        if (intermissionPanel != null) intermissionPanel.SetActive(false);
+       
+    Debug.Log("STARTING NEXT ENCOUNTER");
 
-        ExpeditionData.AdvanceEncounter();
+    if (intermissionPanel != null)
+        intermissionPanel.SetActive(false);
 
-        StartEncounter();
+    ExpeditionData.AdvanceEncounter();
+
+    StartEncounter();
+
     }
 
     public void ReturnToLab()

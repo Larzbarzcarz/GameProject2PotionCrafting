@@ -589,6 +589,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   potionThrow: {fileID: 0}
+  weCooking: 0
 --- !u!1 &94863410 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8545986237809628484, guid: 863e8afe9c2d6724393cf1021fdae773, type: 3}
@@ -843,6 +844,10 @@ PrefabInstance:
     - target: {fileID: 925638476725726711, guid: c76093ece73762e46ab9296ab2feede3, type: 3}
       propertyPath: m_Name
       value: Rat
+      objectReference: {fileID: 0}
+    - target: {fileID: 925638476725726711, guid: c76093ece73762e46ab9296ab2feede3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3142811901324284532, guid: c76093ece73762e46ab9296ab2feede3, type: 3}
       propertyPath: item.Name
@@ -4270,11 +4275,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1798342755243477739, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: orthographic size
-      value: 2.687019
+      value: 2.687755
       objectReference: {fileID: 0}
     - target: {fileID: 1813454538314249935, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalScale.x
-      value: 8.048077
+      value: 7.591837
       objectReference: {fileID: 0}
     - target: {fileID: 1813454538314249935, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalScale.y
@@ -4294,11 +4299,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2475294716756555193, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0000009594055
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2475294716756555193, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.003254056
+      value: 0.005579853
       objectReference: {fileID: 0}
     - target: {fileID: 3132409262940554809, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4410,15 +4415,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8788124287499514057, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.8966365
+      value: -3.8992677
       objectReference: {fileID: 0}
     - target: {fileID: 8788124287499514057, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.564671
+      value: 3.563617
       objectReference: {fileID: 0}
     - target: {fileID: 8788124287499514057, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.8966355
+      value: -3.8992672
       objectReference: {fileID: 0}
     - target: {fileID: 8788124287499514057, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4443,7 +4448,7 @@ PrefabInstance:
     - target: {fileID: 9205371885998440386, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 882784514}
+      objectReference: {fileID: 1945095790}
     - target: {fileID: 9205371885998440386, guid: e96cffa9d00b6b545adfeb26165952cc, type: 3}
       propertyPath: orthographic size
       value: 2.7
@@ -4770,6 +4775,20 @@ MonoBehaviour:
       Data3: -446495809
       Data4: 38442444
     Path: event:/SFX/Transitions&Buttons/Loss
+  <papper>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <bass>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   <playerAttack1>k__BackingField:
     Guid:
       Data1: 1297119950
@@ -4936,7 +4955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85e1ffe66b8fc4f458d513d650b263bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 11400000, guid: c6d8a819f5008c741901fd171ce8c188, type: 2}
+  inventory: {fileID: 11400000, guid: a8ca9e30fd84d7f41abae0322779694f, type: 2}
   slots:
   - {fileID: 268869950}
   - {fileID: 268869949}
@@ -4968,6 +4987,10 @@ PrefabInstance:
     - target: {fileID: 925638476725726711, guid: 2f68981d873fa31419b1c7b846ffa764, type: 3}
       propertyPath: m_Name
       value: Leech
+      objectReference: {fileID: 0}
+    - target: {fileID: 925638476725726711, guid: 2f68981d873fa31419b1c7b846ffa764, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8248712299620634825, guid: 2f68981d873fa31419b1c7b846ffa764, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5965,43 +5988,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 041320fa9d7be76409d6c93c1bfd835c, type: 3}
   m_PrefabInstance: {fileID: 197809242}
   m_PrefabAsset: {fileID: 0}
---- !u!84 &882784514
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 6
-  m_Width: 620
-  m_Height: 416
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthStencilFormat: 94
-  m_ColorFormat: 4
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_UseDynamicScaleExplicit: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_EnableRandomWrite: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 0
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
-  m_ShadowSamplingMode: 2
 --- !u!114 &917506609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8288,6 +8274,10 @@ PrefabInstance:
     - target: {fileID: 925638476725726711, guid: c975ca7cd6b84f54598c570461ca10d5, type: 3}
       propertyPath: m_Name
       value: Eyeball
+      objectReference: {fileID: 0}
+    - target: {fileID: 925638476725726711, guid: c975ca7cd6b84f54598c570461ca10d5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8248712299620634825, guid: c975ca7cd6b84f54598c570461ca10d5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10714,6 +10704,7 @@ MonoBehaviour:
   CraftingButton: {fileID: 1166175672}
   Recipes: {fileID: 1442651936}
   Results: {fileID: 1470375984}
+  touchManager: {fileID: 0}
 --- !u!4 &1762327173
 Transform:
   m_ObjectHideFlags: 0
@@ -11130,15 +11121,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8248712299620634825, guid: 641204d4f6ef0a6479399046b96bf0fd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1
+      value: -0.66
       objectReference: {fileID: 0}
     - target: {fileID: 8248712299620634825, guid: 641204d4f6ef0a6479399046b96bf0fd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 1.47
       objectReference: {fileID: 0}
     - target: {fileID: 8248712299620634825, guid: 641204d4f6ef0a6479399046b96bf0fd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.88
+      value: -0.221
       objectReference: {fileID: 0}
     - target: {fileID: 8248712299620634825, guid: 641204d4f6ef0a6479399046b96bf0fd, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11461,6 +11452,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 268869925}
   label: {fileID: 0}
+--- !u!84 &1945095790
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 6
+  m_Width: 620
+  m_Height: 441
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthStencilFormat: 94
+  m_ColorFormat: 4
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_UseDynamicScaleExplicit: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_EnableRandomWrite: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 0
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
+  m_ShadowSamplingMode: 2
 --- !u!1001 &1945829310
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12511,7 +12539,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8248712299620634825, guid: 24c3975a837f3324685dd46a732f66d2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.81
+      value: -0.345
       objectReference: {fileID: 0}
     - target: {fileID: 8248712299620634825, guid: 24c3975a837f3324685dd46a732f66d2, type: 3}
       propertyPath: m_LocalPosition.y

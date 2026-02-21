@@ -82,10 +82,11 @@ public class BattleSystem : MonoBehaviour
     }
 
     private void Update()
-    {
+    { 
         // debug instakill button
         if (Input.GetKeyDown(KeyCode.Insert))
         {
+            Debug.Log("INSERTING");
             if (enemy != null && !enemy.isDead)
             {
                 Debug.Log("DEBUG INSTA KILL");
@@ -155,7 +156,7 @@ public class BattleSystem : MonoBehaviour
     {
         battleOver = false;
 
-        if (enemy == null && monsterSpawner != null)
+        if (monsterSpawner != null)
         {
             if (enemySpawnPoint == null)
             {
@@ -182,8 +183,8 @@ public class BattleSystem : MonoBehaviour
     {
         if (enemy != null)
         {
-            Debug.Log("[BattleSystem] Destroying old enemy...");
-            Destroy(enemy.gameObject);
+            Debug.Log("[BattleSystem] Cleaning old enemy...");
+            enemy.gameObject.SetActive(false);
             enemy = null;
         }
 
@@ -374,16 +375,11 @@ public class BattleSystem : MonoBehaviour
             dialogueText.text = "You Win!";
             if (monster != null) monster.Victory();
             OnBattleWon?.Invoke();
-<<<<<<< HEAD
-            AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.victory, monster.transform.position);
-            AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.victoryMusic, monster.transform.position);
-
-=======
-            //THis is not expedition victory so sounds should not be here
+    //THis is not expedition victory so sounds should not be here
             //AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.victory, monster.transform.position);
             //AudioManager.Instance.PlayOneShotAtPosition(FMODEvents.instance.victoryMusic, monster.transform.position);
             
->>>>>>> fmod-tweaks
+
         }
         else
         {
@@ -425,7 +421,17 @@ public class BattleSystem : MonoBehaviour
 
     #region Helpers
 
-    private async Task Wait(int ms) => await Task.Delay(ms);
+    private async Task Wait(int ms)
+    {
+        float timer = 0f;
+        float duration = ms / 1000f;
+
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+            await Task.Yield();
+        }
+    }
 
     private async Task WaitUntilActionSelected()
     {
@@ -451,5 +457,20 @@ public class BattleSystem : MonoBehaviour
     public void InventoryInactive()
     {
         inventory.SetActive(false);
+    }
+    public void Heal(int amount)
+    {
+        //monster.currentHP += amount;
+        //monster.currentHP = Mathf.Min(monster.currentHP, monster.maxHP);
+
+        Debug.Log("Player healed for " + amount);
+    }
+
+    public void DamageEnemy(int amount)
+    {
+        //enemy.currentHP -= amount;
+        //enemy.currentHP = Mathf.Max(enemy.currentHP, 0);
+
+        Debug.Log("Enemy took " + amount + " damage");
     }
 }

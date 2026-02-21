@@ -15,7 +15,14 @@ public class InventoryUI : MonoBehaviour
     }
     private void HandleItemClicked(ItemScriptableObject item)
     {
-        battleSystem.SpawnInventoryItem(item);
+        if (item.itemType == ItemType.Potion)
+        {
+            UsePotion(item);
+        }
+        else
+        {
+            battleSystem.SpawnInventoryItem(item);
+        }
     }
     private void Start()
     {
@@ -44,6 +51,20 @@ public class InventoryUI : MonoBehaviour
 
             slots[i].Set(itemSO, slot.amount);
         }
+    }
+    private void UsePotion(ItemScriptableObject item)
+    {
+        Debug.Log("Using potion: " + item.ItemName);
+
+        
+        int healAmount = 20;
+        int damageAmount = 15;
+
+        battleSystem.Heal(healAmount);
+        
+
+        inventory.RemoveItem(item.StableId, 1); 
+        Refresh();
     }
 }
 

@@ -77,6 +77,13 @@ public class Monster : Combatant
         //currentState = MonsterState.Dying;
         //Animator.SetBool("Dying");
     }
+	
+	public override void Heal()
+	{
+	}
+	
+
+	
 
 
 
