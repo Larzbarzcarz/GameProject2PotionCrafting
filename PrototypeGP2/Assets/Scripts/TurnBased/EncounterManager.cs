@@ -84,7 +84,7 @@ public class EncounterManager : MonoBehaviour
     private void HandleBattleWon()
     {
         Debug.Log("[EncounterManager] Battle Won!");
-
+       
         // Ensure all combat-specific HUD is hidden
         if (battleSystem != null) battleSystem.InventoryInactive();
 
@@ -103,6 +103,10 @@ public class EncounterManager : MonoBehaviour
         else
         {
             // Expedition Complete - Grant Rewards
+            if (battleSystem.monster != null)
+            {
+                battleSystem.monster.Victory();
+            }
             GrantRewards();
 
             // Hide the entire Combat UI root

@@ -16,13 +16,7 @@ public class Monster : Combatant
 
     public MonsterState currentState = MonsterState.Alive;
 
-    protected override void Die()
-    {
-
-
-        currentState = MonsterState.Dead;
-        Debug.Log("Monster died!");
-    }
+   
 
     public override float DealDamage()
     {
@@ -83,7 +77,18 @@ public class Monster : Combatant
 	}
 	
 
-	
+    protected override void Die()
+    {
+        if (currentState == MonsterState.Dead)
+            return;
+
+        currentState = MonsterState.Dead;
+
+        if (Animator != null)
+            Animator.SetTrigger("Die");
+
+        Debug.Log("Monster died!");
+    }
 
 
 
